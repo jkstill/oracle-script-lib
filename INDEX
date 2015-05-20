@@ -1,0 +1,426 @@
+
+LIB ADMIN:
+@distribution.sh: the script that builds the linux tar and windows zips files
+
+PARALLEL PROCESSING:
+
+@px.sql: query gv$px_process to see all parallel slaves clusterwide-works for single node too
+
+SUPPORTING SCRIPTS:
+
+@clears.sql: clear sqlplus settings
+@clear_for_spool.sql: set sqlplus for spooling output without headers,etc
+@colors.sql: define values for sqlprompt colors
+@columns.sql: several sqlplus column settings
+@epoch.sql: get epoch to the millisecond using timestamp
+@get_date_range.sql: get begin and end date, put in vars - also date format var
+@oversion_minor.sql: get the XX.xx version of oracle and store in &v_oversion_minor
+@oversion_major.sql: get the XX version of oracle and store in &v_oversion_major
+@timestamp_to_millisecond.sql: convert timestamp to millisecond demo
+@ttitle.sql: set title and width
+@title.sql: set title and width
+@title80.sql:  set title and width to 80
+@title132.sql: title and width to 132
+@nls_date_format.sql: 
+@spool_example.sql: 
+@sql_trick_1.sql: demonstrates a very useful technique for conditionally executing SQL
+
+RDBMS UTILITIES:
+
+@bootstrap_objects.sql: report objects from sys.bootstrap$ that may not be modified
+@cores.sql: report the number of CPU cores from v$osstat - may be subject to hyperthreading
+@dual_data_gen.sql: generate many rows from dual - uses a lot of memory for large number of rows
+@dual_data_gen-low-mem.sql: generate many rows without using extra PGA
+@dump.sql: Dump a table to a CSV file, generate SQL Loader parameter and control files.
+@gen_fk_from-11.1.sql: generate existing foreign key constraings from data dictionary
+@gen_fk_from-11.2.sql: generate existing foreign key constraings from data dictionary
+@gen_fk_to-11.1.sql: generate existing foreign key constraings from data dictionary
+@gen_fk_to-11.2.sql: generate existing foreign key constraings from data dictionary
+@set_events.sql: various methods to set events, including per sql_id
+@10046.sql: Set event 10046 in a session
+@troff.sql: Turn off SQL tracing for all sessions of an account
+@tron.sql: Turn on SQL tracing for all sessions of an account
+@oradebug_doc.sql: dump the documentation for oradebug
+@dumptrace_off.sql: Turn on SQL_trace in a session
+@dumptrace_on.sql: Turn off SQL_trace in a session
+@dumptracem_off.sql: Turn on SQL_trace for all sessions for a user
+@dumptracem_on.sql: Turn off SQL_trace for all sessions for a user
+@dup_role.sql: Generate SQL script to duplicate a database role
+@dup_role_users.sql: Generate SQL script to duplicate all users of a role
+@dup_user.sql: Generate SQL script to duplicate a database user
+@user_ddl.sql: Generate SQL script to duplicate a database user using DBMS_METADATA
+@dbms_system_undoc_calls.sql: some undocumented dbms_system calls - how to write to alert.log
+@show_event_messages.sql: List events 1000-10999
+@spacemap.sql: create a map of segments and free space
+@spacemap_rpt.sql: report on spacemap created by spacemap.sql
+@spacemap_sum.sql: create a summary of space as created by spacemap.sql
+@spacemap_sum_rpt.sql: report on space summary table created by spacemap_sum.sql
+@table_ddl.sql: generate DDL for owner.table, with indexes, constraints, etc
+@pt.sql: similar to Tom Kytes print_table, but no stored procedure required and better quoting
+@q_quote.sql: demo for the q[] quoting mechanism in SQL - 10g+ I think
+
+
+TEMPORARY SEGMENTS/SORTS:
+
+@showtemp.sql: show who owns TEMP segments and type of segment
+@whotmp8i.sql: show who owns TEMP segments - more info than showtemp.sql
+@showsort.sql: Show sort activity
+
+IO:
+
+@avg_disk_times.sql: Show avg physical read/write times 
+@who5.sql: physical IO per session
+@io_begin.sql: Save snapshot of current file IO statistics
+@io_end.sql: Save snapshot of current file IO statistics
+@io_order.sql: Shows snapshot of IO stats based on io_begin and io_end
+@io_stat2.sql: Shows snapshot of IO stats based on io_begin and io_end
+@io_stat3.sql: Shows snapshot of IO stats based on io_begin and io_end
+@io_stat.sql: Shows snapshot of IO stats based on io_begin and io_end
+@io_tbs.sql: Shows snapshot of IO stats based on io_begin and io_end
+@lfsdiag: diagnose logfile sync
+@ioweight.sql: Show IO per tablespace order by weight
+@showtrans.sql: Show current transactions with IO
+@trans_per_hour.sql: Transactions per hour with statistics per xaction
+
+EVENTS:
+
+@set_events.sql: various methods of generating trace and dump info with events
+@sysevent_begin.sql: Beginning snapshot of system events
+@sysevent_end.sql: Ending snapshot of system events
+@sysevent_rpt.sql: Report on system event snapshots
+@sessevent2.sql: Show events from v$session_event
+@sessevent.sql: Show events from v$session_event
+@session_fix.sql: Show fix_control_settings for session
+@system_fix.sql: Show fix_control_settings for system
+@system_fix_all.sql: Show all fix_control_settings for system
+
+WAITS/LOCKS/LATCHES/ASH and PERFORMANCE:
+
+@itl_waits.sql: show itl waits - increase initrans
+@itl_waits_hist.sql: show itl waits history
+@showlatch.sql: Show latches and stats
+@showlock.sql: Show locks in database with waiters and blockers
+@getstat.sql: called by getstats.sql
+@getstats.sql: Get stats from v$sysstat
+@getstatu2.sql: Get stats from v$sesstat
+@latch_statsa.sql: 
+@latch_statss.sql: 
+@sesswait.sql: Show waits from v$session_wait - calls the script linked or copied to sesswaitu.sql
+@sesswaitu.sql: script called by sesswait.sql - copy or softlink one of the following sesswait scripts
+@sesswaitp.sql: show current waits for a session id - may call as '@sesswaitp SID'
+@sesswaitu72.sql: sesswaitu for 72
+@sesswaitu73.sql: sesswaitu for 73
+@sesswaitu10g.sql: sesswaitu for 10g
+@sesswaitu_112.sql: sesswaitu for 11.2
+@dba_kgllock.sql: show waiters/blockers on library cache locks.
+@libcachepin_waits.sql: if there are waits on Library Cache Pin in v$session_wait this script will show what the waits are for, and which session is causing them
+@mystat.sql: query v$mystat
+@snapper.sql: Tanel Poder script extraordinaire
+@snapper4.sql: Tanel Poder script extraordinaire - version 4
+
+AWR/ASH:
+@ash_blocking.sql: get list of row lock blocks - blocked and blockers with SQL_ID
+@ash_blockers.sql: current blocking aggregated by event
+ash_log_sync.sql: log sync events
+@awr_blockers.sql: historic blocking aggregated by sql_id
+@awr_create_snapshot.sql: create an AWR snapshot
+@awr_defined.sql: Run a non-interactive AWR report
+@awr_RAC_defined.sql: Run a non-interactive AWR report on RAC
+@awr_get_snapshots.sql: Get AWR snapshots for a date range
+@awr_bracket_snaps.sql: get snap_id values for a pair of days
+@awr_settings: query the dba_hist_wr_control view
+@dba_hist_sys_time_model.sql: example of querying dba_hist_sys_time_model - set your own stat_name
+
+STATSPACK:
+
+@snapNmin.sql: start level 7 snapshot, sleep 2 minutes, complete snapshot and create report
+@sp_current.sql: get data associated with latest snapshot
+@sp_get_date_range.sql:  enter a begin and end date and this script looks up the snap_id for each and sets variables for them
+@sp_getsql.sql: retrieve the SQL from input is the hash value of the sql statement in stats$sqltext this will be seen in reports created by spreport.sql in 9i+ where the snapshot level is 5+
+@sp_io_stat_drive.sql: get statspack data on physical IO per drive and date range aggregated per hour
+@sp_io_stat_sys.sql: report on total IO for the system aggregated per the hour
+@sp_job_submit.sql:  run statspack snapshot every 15 minutes via dbms_job
+@sp_lvl_0.sql: change statspack to level 0
+@sp_lvl_5.sql: change statspack to level 5
+@sp_lvl_6.sql: change statspack to level 6
+@sp_lvl_7.sql: change statspack to level 7
+@sp_lvl_current.sql: get current default snapshot level
+@sp_lvl_sql.sql: example - change statspack SQL collection levels
+@sp_plan.sql: display historic execution plans from statspack data inputs are number of most recent snapshots to search and the SQL statement to look for (search is case insensitive) the function full_sql_text (full_sql_text.sql) must be created prior to running this script
+@full_sql_text.sql:  use this to return the full text of a sql statement from statspack data - version dependent - may not be needed.
+@sp_plan_hash.sql: Show execution plans from statspack data. first create view with sp_plan_table.sql - input is the hash value of the sql statement in stats$sqltext this will be seen in reports created by spreport.sql in 9i+ where the snapshot level is 5+
+@sp_plan_table.sql: create a view stats_plan_table for use with dbms_xplan.display and stats$sql_plan
+@sp_recent.sql: get the 10 most recent snapshots
+@sp_snap.sql: perform a snapshot
+@sp_snap_6.sql: perform a level 6 snapshot
+@sp_snap_id.sql: example of searching for specific snap_id
+
+@spreport.sql: call ?/rdbms/admin/sprepins statspack report - calls snap_ids.sql to create a text file of snapshot IDs for viewing in another window
+@snap_ids.sql: called by spreport.sql - generate list of snapshot IDs
+
+USERS LOGGED ON:
+
+@who.sql: summary of users logged on
+@who2.sql: detailed info of users logged on
+@who5.sql: IO per session
+@who6.sql: Show session info for background sessions
+@who7.sql: Show session info with IO stats per session
+@who8.sql: similar to who2.sql: - shows module and action
+@who_dba_jobs.sql: show sessions with jobs running (from dba_jobs)
+@who9.sql: same as who_dba_jobs.sql
+@who_dblink.sql: sessions using a database link
+@who_protocol.sql: show connection method for each session
+
+PARAMETERS:
+
+@check_events.sql: Determine if any events are set in database
+@getallparm.sql:  get parameters including hidden
+@getparm.sql: get parameters
+@showallparm.sql: Show all database parameters, including .hidden. parameters
+@showparm.sql: Show database parameters
+@showparmchanges.sql: show parameters that have changed - uses AWR
+@showparmdrvr.sql: Performs the query for getparm.sql and showparm.sql
+@showallparm73drvr.sql: Performs the query for getallparm.sql and showallparm.sql
+@parms_dump_csv.sql: Dump all parameters to CSV file
+@sys_context.sql: Demo of getting oracle environment settings with sys_context function
+
+EXECUTION_PLAN:
+
+@explain_plan_columns.sql: column settings
+@sql_current_plan.sql: get dynamic sql plans for hash value from v$sqlplan - works on 9i - must create view with dynamic_plan_table.sql
+@dynamic_plan_table.sql: creates view used by sql_current_plan.sql
+@liveplan.sql: get dynamic execution plan from hash value
+@liveplan10g_hash.sql: get dynamic execution plan from hash value for 10g+
+@liveplan10g_sqlid.sql: get dynamic execution plan from sql_id for 10g+
+@liveplan_hash.sql: a bit of a misnomer - pulls sql and hash value for a session
+@showplan72.sql: show execution plans for oracle 7.2
+@showplan73.sql: show execution plans for oracle 7.2+
+@showplan9i.sql: show execution plans for oracle 9i+
+@showplan_last.sql: show execution plan for most recently executed cursor in current session
+@get_bind_values.sql:  get the bind values for a sql_id
+
+PL/SQL:
+
+@raise_error.sql: raise any error in the database
+@get_table_lock.sql:  runs a tight loop trying to acquire lock on table - use on busy systems to get the lock required - DO NOT LEAVE TABLE LOCKED!
+@sqlplus_return_code.sql: examples of exiting SQLPlus with an error code
+@sqlplus_return_code_2.sql: more examples of exiting SQLPlus with an error cod
+@user_exit.sql: an example of exiting sqlplus if the current user is not the one expected
+
+DATABASE STATISTICS - DBMS_STATS - OPTIMIZER:
+@chk4incremental.sql: check to see if incremental stats were gathered for a table
+@dbms_stats_get_prefs.sql: get stats prefs per table and indexes
+@gather_table_stats.sql: gather stats on a tables specified in table_list.sql
+@get_prefs.sql: show stats prefs for a schema
+@get_stats_job.sql: get name of stored procedure used for autotask stats job - 10g+, maybe 9i
+@get_stats_task.sql: get the name of the autotask task used to run the auto stats job - 11g+
+@getobj_stats.sql:  show stats for a table down to subpartition level
+@histogram_values.sql: show the actual values for histograms
+@histo_types.sql: get type of histograms for a schema 
+@histo_dist.sql:  show distribution for frequency histograms for schema,table, column
+@histo_hist.sql: show historical histogram info for schema,table, column
+@histo_hist_dist.sql: show distribution of values for historical histograms for schema,table, column
+@locked_stats.sql: show tables and indexes with locked statistics
+@logsetup.sql: called by some scripts to create a log - create logs dir first
+@ndv.sql: show NDV for a table
+@partstats.sql: Show basic stats info on table and partitions
+@partstats_sum.sql: Summary of partition stats
+@sampled_size.sql:  show sample size used to collect stats
+@sampled_size_details.sql:  show sample size used to collect stats
+@set_avg_stats.sql: set average stats on empty partitions - uses table_list.sql
+@set_table_prefs.sql:  set table preferences - uses table_list.sql
+@show_os_stats.sql: Show stats from v$aux_stats$
+@show_os_stats_hist.sql: Show stats from wri$_optstat_aux_history
+@stat.sql: get stats info for a table - see comments
+@stats_config.sql: set the schema name for some stats scripts
+@stats_mod.sql:  show stats being gathered by gather_table_stats.sql
+@stats_prefs.sql: show dbms_stats preferences
+@stats_trace.sql: show how to trace dbms_stats - comments only
+@stats_trace_test.sql: show that settings to trace stats are not persistent
+@stats_wait.sql: show waits on stats collection
+@sysaux_free.sql: show free space in sysaux
+@table_list.sql: list of tables for gather_table_stats.sql
+@unlock_stats.sql: unlocks stats - uses table_list.sql
+
+
+AUTOTASK and SCHEDULER:
+@autotask_client_attributes.sql: call dbms_auto_task_admin.get_client_attributes
+@autotask_client_history.sql: show dba_autotask_client_history
+@autotask_client_job.sql: show dba_autotask_client_job
+@autotask_clients.sql: show dba_autotask_client
+@autotask_job_history.sql: show dba_autotask_job_history
+@autotask_operation.sql: show dba_autotask_operation
+@autotask_resources.sql: call dbms_auto_task_admin.get_p1_resources
+@autotask_sched.sql: show dba_autotask_schedule
+@autotask_sql_setup.sql: set env for autotask scripts
+@autotask_task.sql: show dba_autotask_task
+@autotask_window_clients.sql: show dba_autotask_window_clients
+@autotask_window_hist.sql: show dba_autotask_window_history
+@dba_sched_jobs.sql: show dba_scheduler_jobs
+@dba_sched_jobs_hist.sql: show scheduler jobs history
+@disable_resource_manager.sql: the right method to disable the resource manager
+@opthist.sql: show values of dba_stats prefs from the source table
+@schedcols.sql: col commands for scripts
+@scheduler_programs.sql: show dba_scheduler_programs
+@scheduler_windows.sql: show dba_scheduler_windows
+timezone specific:
+@tz_set.sql: set the nls_timezone_tz_format for autotask scripts
+@get_sched_tz.sql: get the default timezone for the scheduler
+@set_sess_tz.sql: set session timezone the same as scheduler default timezone
+
+
+INSTANCE and/or DATABASE:
+
+@average_active_sessions.sql: show average active sessions - does not use ASH
+@archived_log_sums.sql: show rolling total of archive logs for N days
+@archived_log_dest.sql: show archived log destination and status for active destinations
+@bct_status.sql: show status of block change tracking file
+@iot_segments.sql: show segments for IOT objects. These are actually index segments
+@db_corrupt.sql: report on corrupt database blocks and objects
+@dba_dependencies.sql: find all dependencies for owner/object
+@dba_jobs_running.sql: Show db jobs currently running
+@dba_jobs.sql: Show all scheduled db jobs
+@dba_feature_usage.sql: report on used features from dba_feature_usage_statistics
+@database_properties.sql: show properties from database_properties
+@dbms_application.sql: example of dbms_applicatoin_info usage
+@default_tablespace.sql: show default tablespace properties 10g+
+@findobj.sql: Find an object in the data dictionary
+@findcol.sql: Find a column for a user in the data dictionary
+@fk_hierarchy.sql: Display hierarchy of tables related by Foreign Key
+@getsql.sql: call with sql_id to get sql_fulltext
+@all_jobs.sql: Show all scheduled db jobs
+@show_jobs.sql: does the work for dba_jobs.sql and all_jobs.sql
+@la8.sql: Shows last analyzed dates for database objects . 8.0+
+@la.sql: Shows last analyzed dates for database objects . 7.3
+@purge_cursors.sql: purge a list of SQL cursors from shared_pool - 10g+ see Oracle Note 457309.1
+@sql_spawned_reasons.sql: Show reasons for creating new child of SQL
+@show_check_cons.sql: Show non-system generated check constraints
+@show_data_types.sql: Show non-system column data types
+@show_fk.sql: Show foreign keys for a user
+@showpk.sql: Show all primary keys 
+@showsga.sql: Show SGA breakdown
+@showuser.sql: Show user info
+@showpriv.sql: Show privileges granted to a role or user
+@showrole.sql: Show roles for a grantee
+@showroles.sql: Show all roles and privileges granted
+@showprofile.sql: Show resources for a profile from dba_profiles
+@showrbs.sql: Show RBS and info
+@showrbslock.sql: Show RBS locks
+@showsnapshot_logs.sql: Show snapshot logs
+@showsnapshots.sql: Show snapshots
+@show_supp_logs.sql: Show supplemental logs for replication
+@showdiscon.sql: Show all disabled constraints
+@showdistrg.sql: Show all disabled triggers
+@showlog.sql: Show redo logs
+@show_logon_triggers.sql: Show logon triggers
+@showindex.sql: Show indexes for a user
+@showtab.sql: Show tables for a user
+@showcol.sql: Show column details for OWNER.TABLE
+@invalid.sql: Show invalid objects
+@showinv.sql: soft link to invalid.sql
+@shownls.sql: Show database NLS parameters
+@showview.sql: Show the text for views - opens up view.txt in editor
+@showdblink.sql: Show database links
+@showdis.sql: Show disabled constraints
+@showkey.sql: Show primary and unique keys and unique indexes for a table
+@showmem.sql: Show memory usage per session
+@showobjprivs.sql: Show privileges granted on an owners objects
+@showpin.sql: Show objects pinned in the shared pool
+@showpipes.sql: Show database pipes
+@showsrc.sql: show source of PL/SQL stored objects
+@plsql_called_objects.sql: Shows entry PL/SQL object and current PL/SQL object for a session
+@rbs_no_optimal.sql: Set all rollback segments to have no OPTIMAL size
+@rbs_optimal.sql: Set all rollback segments to have an OPTIMAL size of 2xInitial
+@rbs_shrink.sql: Shrink all rollback segments to OPTIMAL
+@uifk.sql: Select from view creatdd in uifk_v.sql
+@uifk_gen.sql: Uses the view created in uifk_v.sql to generate index DDL
+@uifk_v.sql: Creates a view find all unindexed foreign key contraints
+@showdb.sql: show database info
+@show_active_log_dest.sql: show active log dest if available
+@dba_recyclebin_purge_gen.sql: generate code to purge individual objects from dba_recyclebin
+@restricted_session_disable.sql: everyone can login
+@restricted_session_enable.sql: only DBA can login
+@sess_longops.sql: query v$session_longops
+@recompile.sql: Recompile invalid objects.  Still works better than DBMSU_UILITY.COMPILE_SCHEMA
+@reverse_role_lookup.sql: Find all users granted a role
+@loghistory_8.sql: show archive logs with time between switches
+
+SNAPSHOTS and MATERIALIZED_VIEWS:
+
+@show_mview_status.sql: show status from dba_mview_analysis
+@showregistered_snapshots.sql: Show all snapshots registered at master site
+@deregister_snapshots.sql: Degister a snapshot - see script comments
+@showsnapshot_logs.sql: Show snapshot/mview logs
+@showsnapshot_sites.sql: run from the master site-shows databases that have snapshots based on-tables/logs in master database
+@showsnapshots.sql: Show snapshots/mviews in database
+
+SECURITY:
+
+@dba_table_audit_flags.sql: This script creates a SYS view against SYS tables  to show all audit flags per object
+@show_session_audit.sql: select all from session_audit - lots of rows
+@getaud.sql: generate SQL to reproduce current audit settings
+
+STORAGE:
+
+@dfshrink-gen-9i.sql: report of space savings by shrinking datafiles - generate df shrink code
+@dfshrink-gen.sql: generate code to shrink datafiles - improved script for 10g+
+@dbms_space_asa_rpt.sql: Show report from Auto Space Advisor
+@showdf.sql: Show all database tablespace files and file info
+@showdf8i.sql: Show all database tablespace files and file info oracle 8i
+@showdf7.sql: Show all database tablespace files and file info oracle 7
+@showfreemax.sql: Show size of maximum chunk of free space per tablespace
+@showfree.sql: Show all free space per tablespace
+@showfreesum.sql: Show sum of all free space per tablespace
+@showtbs.sql: Show all tablespaces and info
+@showspace.sql: Use DBMS_SPACE to display space stats for an object
+@maxext3.sql: Locates database objects that will be unable to extend based on next extent size and available space, and/or due to maximum number of extents.
+@undo_blocks_required.sql: calculate the number bytes of UNDO space required to satisfy the undo requirements based on the UNDO_RETENTION paramter (seconds), block size  and UNDO block requests per second
+@undo_retention_available.sql: calculate how long undo retention should be good for based on the the bytes available in the UNDO tablespace  block size and UNDO block requests per second
+@undo_stats.sql: used to see if ORA-1555 occurred. also shows maxquerylen and undo_retention - should not be ora-1555 if maxquerylen lt undo_retention
+
+ASM:
+
+@asm_diskgroup_attributes.sql: show diskgroup attributes
+@asm_diskgroup_templates.sql: show diskgroup template values
+@asm_files.sql: show files in ASM
+@asm_files_path.sql: show files in ASM with full path
+
+DRCP: Database Resident Connection Pooling
+
+@drcp_config.sql: show current DRCP config
+@drcp_connections_per_broker.sql: set number of connections managed per broker
+@drcp_num_brokers.sql: set the number of DRCP brokers
+@drcp_pool_cc_stats.sql: show connection class statistics
+@drcp_pool_ratio.sql: show ratio of connection requests to number of pools
+@drcp_pool_stats.sql: show aggregate DRCP pool stats
+@drcp_start.sql: start DRCP
+@drcp_stop.sql: stop DRCP
+@whocp.sql: like who2.sql - includes DRCP service name
+
+DATES: Dates and Date Math
+
+@date_math.sql: how to get the minutes between to dates of the same day
+@date_math2.sql: how to get the minutes between to dates of the same day
+@date_math3.sql: cause a job to run at exactly 00:30 or 12:30, regardless of the last time it started
+@date_math_4.sql: round timestamps to previous interval of N minutes
+@job_submit.sql: controlling run_time of dbms_jobs
+
+MEMORY: Memory Settings and/or Advisors
+
+@db_cache_advice.sql: run db cache advisor
+@pgacols.sql: column formatting
+@pga_advice.sql: run pga cache advisor
+@pga_advice_hist.sql: pga cached advice history
+@pga_history_sum.sql: pga cached advice summary
+@pga_history_week.sql: pga history per week
+@pga_workarea_active.sql: show active pga workareas
+@pga_workarea_hist.sql: history of active pga workarea
+@pgastat.sql: PGA stats from gv$pgastat
+@pgastat_hist.sql: PGA stats from dba_hist_pgastat
+@shared_pool_advice.sql: shared pool advisor
+
+
+
+12c: Scripts that are specific to Oracle 12c
+@show_container.sql: display the current container database name
+
