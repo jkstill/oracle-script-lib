@@ -119,6 +119,8 @@ WAITS/LOCKS/LATCHES/ASH and PERFORMANCE:
 @snapper4.sql: Tanel Poder script extraordinaire - version 4
 
 AWR/ASH:
+@aas_history.sql: get history of Average Active Sessions
+@aas_hist_metrics.sql: get average active sessions along with CPU metrics
 @ash_blocking.sql: get list of row lock blocks - blocked and blockers with SQL_ID
 @ash_blockers.sql: current blocking aggregated by event
 ash_log_sync.sql: log sync events
