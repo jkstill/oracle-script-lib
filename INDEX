@@ -289,6 +289,7 @@ INSTANCE and/or DATABASE:
 @findobj.sql: Find an object in the data dictionary
 @findcol.sql: Find a column for a user in the data dictionary
 @fk_hierarchy.sql: Display hierarchy of tables related by Foreign Key
+@fra_config.sql: show FRA location and size
 @getsql.sql: call with sql_id to get sql_fulltext
 @all_jobs.sql: Show all scheduled db jobs
 @show_jobs.sql: does the work for dba_jobs.sql and all_jobs.sql
