@@ -30,6 +30,12 @@ from (
 		, typchk_dep_mismatch , no_trigger_mismatch , flashback_cursor , anydata_transformation
 		, pddl_env_mismatch , top_level_rpi_cursor , different_long_length , logical_standby_apply
 		, diff_call_durn , bind_uacs_diff , plsql_cmp_switchs_diff , cursor_parts_mismatch
+		, stb_object_mismatch , crossedition_trigger_mismatch , pq_slave_mismatch , top_level_ddl_mismatch
+		, multi_px_mismatch , bind_peeked_pq_mismatch , mv_rewrite_mismatch , roll_invalid_mismatch
+		, optimizer_mode_mismatch , px_mismatch , mv_staleobj_mismatch , flashback_table_mismatch
+		, litrep_comp_mismatch , plsql_debug , load_optimizer_stats , acl_mismatch
+		, flashback_archive_mismatch , lock_user_schema_failed , remote_mapping_mismatch , load_runtime_heap_failed
+		, hash_match_failed , purged_cursor , bind_length_upgradeable , use_feedback_stats
 	from v$sql_shared_cursor
 )
 UNPIVOT (invalidated 
@@ -54,6 +60,18 @@ UNPIVOT (invalidated
 		, different_long_length as    'different_long_length'    , logical_standby_apply as    'logical_standby_apply'    
 		, diff_call_durn as           'diff_call_durn'           , bind_uacs_diff as           'bind_uacs_diff'           
 		, plsql_cmp_switchs_diff as   'plsql_cmp_switchs_diff'   , cursor_parts_mismatch as    'cursor_parts_mismatch'    
+		, stb_object_mismatch as            'stb_object_mismatch'           , crossedition_trigger_mismatch as  'crossedition_trigger_mismatch' 
+		, pq_slave_mismatch as              'pq_slave_mismatch'             , top_level_ddl_mismatch as         'top_level_ddl_mismatch'        
+		, multi_px_mismatch as              'multi_px_mismatch'             , bind_peeked_pq_mismatch as        'bind_peeked_pq_mismatch'       
+		, mv_rewrite_mismatch as            'mv_rewrite_mismatch'           , roll_invalid_mismatch as          'roll_invalid_mismatch'         
+		, optimizer_mode_mismatch as        'optimizer_mode_mismatch'       , px_mismatch as                    'px_mismatch'                   
+		, mv_staleobj_mismatch as           'mv_staleobj_mismatch'          , flashback_table_mismatch as       'flashback_table_mismatch'      
+		, litrep_comp_mismatch as           'litrep_comp_mismatch'          , plsql_debug as                    'plsql_debug'                   
+		, load_optimizer_stats as           'load_optimizer_stats'          , acl_mismatch as                   'acl_mismatch'                  
+		, flashback_archive_mismatch as     'flashback_archive_mismatch'    , lock_user_schema_failed as        'lock_user_schema_failed'       
+		, remote_mapping_mismatch as        'remote_mapping_mismatch'       , load_runtime_heap_failed as       'load_runtime_heap_failed'      
+		, hash_match_failed as              'hash_match_failed'             , purged_cursor as                  'purged_cursor'                 
+		, bind_length_upgradeable as        'bind_length_upgradeable'       , use_feedback_stats as             'use_feedback_stats'  
 	)
 )
 where invalidated = 'Y'
