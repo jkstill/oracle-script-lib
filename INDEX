@@ -77,7 +77,7 @@ IO:
 @io_stat3.sql: Shows snapshot of IO stats based on io_begin and io_end
 @io_stat.sql: Shows snapshot of IO stats based on io_begin and io_end
 @io_tbs.sql: Shows snapshot of IO stats based on io_begin and io_end
-@lfsdiag: diagnose logfile sync
+@lfsdiag.sql: diagnose logfile sync
 @ioweight.sql: Show IO per tablespace order by weight
 @showtrans.sql: Show current transactions with IO
 @trans_per_hour.sql: Transactions per hour with statistics per xaction
@@ -130,7 +130,7 @@ ash_log_sync.sql: log sync events
 @awr_RAC_defined.sql: Run a non-interactive AWR report on RAC
 @awr_get_snapshots.sql: Get AWR snapshots for a date range
 @awr_bracket_snaps.sql: get snap_id values for a pair of days
-@awr_settings: query the dba_hist_wr_control view
+@awr_settings.sql: query the dba_hist_wr_control view
 @dba_hist_sys_time_model.sql: example of querying dba_hist_sys_time_model - set your own stat_name
 
 STATSPACK:
@@ -211,8 +211,10 @@ PL/SQL:
 
 DATABASE STATISTICS - DBMS_STATS - OPTIMIZER:
 @chk4incremental.sql: check to see if incremental stats were gathered for a table
+@cursor-invalidation-reasons.sql: show reasons for cursor invalidation from v$sql_shared_cursor
 @dbms_stats_get_prefs.sql: get stats prefs per table and indexes
 @gather_table_stats.sql: gather stats on a tables specified in table_list.sql
+@global-prefs.sql: display global dbms_stats prefs
 @get_prefs.sql: show stats prefs for a schema
 @get_stats_job.sql: get name of stored procedure used for autotask stats job - 10g+, maybe 9i
 @get_stats_task.sql: get the name of the autotask task used to run the auto stats job - 11g+

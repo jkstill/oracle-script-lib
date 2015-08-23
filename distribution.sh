@@ -1,6 +1,6 @@
 :
 
-SQLDIR=/home/jkstill/oracle/admin/sql
+SQLDIR=/home/jkstill/github/jkstill/oracle-script-lib
 TARFILE=~/ftp/sql_scripts_t12.tar
 ZIPFILE=~/ftp/sql_scripts_t12_windows.zip
 
@@ -25,7 +25,9 @@ rm -f snapper.sql.[2-9]
 rm -f snapper4.sql.[2-9]
 
 # h dereferences symbolic links and gets the file instead of the link
-tar chvf $TARFILE INDEX* $FILES
+CMD="tar chvf $TARFILE INDEX* $FILES"
+#echo CMD:$CMD
+$CMD
 gzip $TARFILE
 
 echo 
