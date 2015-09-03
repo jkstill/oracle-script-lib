@@ -1,4 +1,3 @@
-
 -- asm_files_path.sql
 -- from Oracle Note 470211.1
 
@@ -12,12 +11,19 @@ set pagesize 200 linesize 200
 alter session set nls_date_format='YYYY-MM-DD HH24:MI:SS';
 
 col full_path format a80
+col db format a15
 
 --select 'THIS ASM REPORT WAS GENERATED AT: ==)> ' , sysdate " "	from dual;
 
 --select 'HOSTNAME ASSOCIATED WITH THIS ASM INSTANCE: ==)> ' , MACHINE " " from v$session where program like '%SMON%';
 
-select full_path, system_created, alias_directory, file_type, modification_date
+select
+	substr(full_path,instr(full_path,'/')+1,instr(full_path,'/',1,2) - instr(full_path,'/',1,1) -1) db
+	, full_path
+	, system_created
+	, alias_directory
+	--, file_type
+	, modification_date
 from (
 select
 	concat('+'||gname, sys_connect_by_path(aname, '/')) full_path
@@ -44,6 +50,7 @@ from
 start with (mod(pindex, power(2, 24))) = 0
 connect by prior rindex = pindex
 )
+where file_type = 'DATAFILE'
 order by modification_date
 /
 
