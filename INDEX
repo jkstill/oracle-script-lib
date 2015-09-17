@@ -1,4 +1,10 @@
 
+TUNING: scripts to aid with tuning
+
+profile_from_awr.sql: create a SQL Profile from plan in AWR
+
+
+
 LIB ADMIN:
 @distribution.sh: the script that builds the linux tar and windows zips files
 
@@ -424,7 +430,6 @@ MEMORY: Memory Settings and/or Advisors
 @pgastat.sql: PGA stats from gv$pgastat
 @pgastat_hist.sql: PGA stats from dba_hist_pgastat
 @shared_pool_advice.sql: shared pool advisor
-
 
 
 12c: Scripts that are specific to Oracle 12c
