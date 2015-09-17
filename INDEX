@@ -96,6 +96,7 @@ EVENTS:
 
 WAITS/LOCKS/LATCHES/ASH and PERFORMANCE:
 
+@active_status.sql: show which current active sessions are on CPU
 @itl_waits.sql: show itl waits - increase initrans
 @itl_waits_hist.sql: show itl waits history
 @showlatch.sql: Show latches and stats
