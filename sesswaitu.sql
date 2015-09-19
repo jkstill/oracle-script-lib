@@ -7,7 +7,7 @@
 -- eg. @sesswaitu 'USSP'
 -- if username not passed, it will ask for it
 	
-set line 170 feed on pause off echo off
+set line 190 feed on pause off echo off
 set trimspool on
 
 clear col
@@ -42,6 +42,7 @@ select
 	s.username username,
 	e.event event,
 	s.sid,
+	s.sql_id,
 	e.p1text,
 	e.p1,
 	e.p2text,
