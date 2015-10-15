@@ -9,6 +9,10 @@
 -- also builds a control file and a parameter file for SQL*LOADER
 --
 -- 08/28/2000 - use defined variables for quotes and commas
+-- 
+-- This is the script found in Oracle Note 1050919.6
+-- I wrote it in 1994, and it has been enhanced a few times since then
+-- 
 
 
 set trimspool on
