@@ -8,6 +8,13 @@
 -- the GTXID will match for those sessions
 -- just run the script on both databases
 
+col origin format a30
+col gtxid format a35
+col lsession format a15
+col username format a20
+col waiting format a20
+col status format a5
+
 Select /*+ ORDERED */
 substr(s.ksusemnm,1,10)||'-'|| substr(s.ksusepid,1,10)      "ORIGIN",
 substr(g.K2GTITID_ORA,1,35) "GTXID",
@@ -21,7 +28,7 @@ substr(
 		3,'SNIPED', 
 		'KILLED'
 	),1,1
-) "S",
+) status,
 substr(w.event,1,10) "WAITING"
 from  x$k2gte g, x$ktcxb t, x$ksuse s, v$session_wait w, v$session s2
 where  g.K2GTDXCB =t.ktcxbxba

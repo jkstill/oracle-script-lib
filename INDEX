@@ -103,6 +103,7 @@ EVENTS:
 WAITS/LOCKS/LATCHES/ASH and PERFORMANCE:
 
 @active_status.sql: show which current active sessions are on CPU
+@ashtop.sql: Tanel Poder script for top ASH events
 @itl_waits.sql: show itl waits - increase initrans
 @itl_waits_hist.sql: show itl waits history
 @showlatch.sql: Show latches and stats
@@ -306,6 +307,7 @@ INSTANCE and/or DATABASE:
 @show_jobs.sql: does the work for dba_jobs.sql and all_jobs.sql
 @la8.sql: Shows last analyzed dates for database objects . 8.0+
 @la.sql: Shows last analyzed dates for database objects . 7.3
+@pivot.sql: Simple demo of PIVOT
 @purge_cursors.sql: purge a list of SQL cursors from shared_pool - 10g+ see Oracle Note 457309.1
 @sql_spawned_reasons.sql: Show reasons for creating new child of SQL
 @show_check_cons.sql: Show non-system generated check constraints

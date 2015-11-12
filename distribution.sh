@@ -24,6 +24,11 @@ wget http://blog.tanelpoder.com/files/scripts/snapper4.sql
 rm -f snapper.sql.[2-9]
 rm -f snapper4.sql.[2-9]
 
+# get current version of ashtop from Tanel Poder
+wget http://blog.tanelpoder.com/files/scripts/ashtop.sql
+# remove old backup copies of snapper that were created by wget - keep one available
+rm -f ashtop.sql.[2-9]
+
 # h dereferences symbolic links and gets the file instead of the link
 CMD="tar chvf $TARFILE INDEX* $FILES"
 #echo CMD:$CMD
