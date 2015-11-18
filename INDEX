@@ -103,6 +103,7 @@ EVENTS:
 WAITS/LOCKS/LATCHES/ASH and PERFORMANCE:
 
 @active_status.sql: show which current active sessions are on CPU
+@ash_cpu_hist.sql: cpu historic usage from dba_hist_sysmetric_history - 12c+
 @ashtop.sql: Tanel Poder script for top ASH events
 @itl_waits.sql: show itl waits - increase initrans
 @itl_waits_hist.sql: show itl waits history
