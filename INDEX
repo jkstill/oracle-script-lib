@@ -136,6 +136,7 @@ ash_log_sync.sql: log sync events
 @awr_blockers.sql: historic blocking aggregated by sql_id
 @awr_create_snapshot.sql: create an AWR snapshot
 @awr_defined.sql: Run a non-interactive AWR report
+@awr_file_io_times.sql: Historical IO times on ASM files
 @awr_RAC_defined.sql: Run a non-interactive AWR report on RAC
 @awr_get_snapshots.sql: Get AWR snapshots for a date range
 @awr_bracket_snaps.sql: get snap_id values for a pair of days
