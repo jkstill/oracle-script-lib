@@ -46,7 +46,7 @@ select  distinct
 	, min(session_id) over (partition by to_char(h.sample_time,'yyyy-mm-dd hh24:mi'), session_id, session_serial# order by session_id, session_serial#) session_id
 from v$active_session_history h
 join dba_users u on u.user_id = h.user_id
-where u.username = 'WACSMDMS_OPER'
+where u.username = '&&target_user'
 )
 select 
 	sample_time

@@ -1,5 +1,27 @@
 -- ash-waits-user.sql
--- summarize ASH all wait time for a user
+
+/*
+
+ summarize ASH all wait time for a user
+ call with username, start time and end time
+ format for time is 'YYY-MM-DD HH24:MI'
+ use literal BEGIN and END to get all rows
+
+ use ash-sessions.sql to get the time period
+
+ examples:
+
+ @ash-waits-user SCOTT '2016-03-16 16:52' '2016-03-16 17:21'
+
+ @ash-waits-user SCOTT BEGIN '2016-03-16 17:21'
+
+ @ash-waits-user SCOTT '2016-03-16 16:52' END
+
+ @ash-waits-user SCOTT BEGIN END
+
+
+*/
+
 
 set linesize 200 trimspool on
 set pagesize 60
@@ -14,6 +36,9 @@ col total_wait_seconds new_value total_wait_seconds
 col elapsed_seconds new_value elapsed_seconds
 col cpu_time new_value cpu_time
 
+col snap_begin_time new_value snap_begin_time noprint
+col snap_end_time new_value snap_end_time noprint
+
 col wait_seconds format 999,999 head 'WAIT|SECONDS'
 col pct_elapsed format 99.9 head 'PERCENT|ELAPSED'
 
@@ -21,10 +46,26 @@ prompt
 prompt Target User: 
 prompt
 
+set feed off term off echo off verify off
+select upper('&&1') target_user from dual;
+set term on 
+
+prompt
+prompt Start Time: 
+prompt 
 
 set feed off term off echo off verify off
+select upper('&&2') snap_begin_time from dual;
+set term on 
 
-select upper('&&1') target_user from dual;
+prompt
+prompt End Time: 
+prompt 
+
+set feed off term off echo off verify off
+select upper('&&3') snap_end_time from dual;
+set term on 
+
 
 select  
 	count(*) cpu_time
@@ -52,6 +93,24 @@ declare
 begin
 
 	select max(sample_time) - min(sample_time) into ash_interval from v$active_session_history;
+
+
+	select
+		max(sample_time) - min(sample_time) into ash_interval
+	from v$active_session_history
+	where sample_time 
+	between
+		decode('&&snap_begin_time',
+			'BEGIN',
+			to_timestamp('1900-01-01 00:01','yyyy-mm-dd hh24:mi'),
+			to_timestamp('&&snap_begin_time','yyyy-mm-dd hh24:mi')
+		)
+		AND
+		decode('&&snap_end_time',
+			'END',
+			to_timestamp('4000-12-31 23:59','yyyy-mm-dd hh24:mi'),
+			to_timestamp('&&snap_end_time','yyyy-mm-dd hh24:mi')
+		);
 
 	:v_wall_seconds := 
 		(extract(hour from ash_interval) * 3600 )
