@@ -101,11 +101,9 @@ EVENTS:
 @system_fix.sql: Show fix_control_settings for system
 @system_fix_all.sql: Show all fix_control_settings for system
 
-WAITS/LOCKS/LATCHES/ASH and PERFORMANCE:
+WAITS/LOCKS/LATCHES and PERFORMANCE:
 
 @active_status.sql: show which current active sessions are on CPU
-@ash_cpu_hist.sql: cpu historic usage from dba_hist_sysmetric_history - 12c+
-@ashtop.sql: Tanel Poder script for top ASH events
 @itl_waits.sql: show itl waits - increase initrans
 @itl_waits_hist.sql: show itl waits history
 @showlatch.sql: Show latches and stats
@@ -133,6 +131,10 @@ AWR/ASH:
 @aas_hist_metrics.sql: get average active sessions along with CPU metrics
 @ash_blocking.sql: get list of row lock blocks - blocked and blockers with SQL_ID
 @ash_blockers.sql: current blocking aggregated by event
+@ash-waits-user.sql: summarize ASH all wait time for a user
+@ash-sessions.sql: frequency of sessions for a user
+@ash_cpu_hist.sql: cpu historic usage from dba_hist_sysmetric_history - 12c+
+@ashtop.sql: Tanel Poder script for top ASH events
 ash_log_sync.sql: log sync events
 @awr_blockers.sql: historic blocking aggregated by sql_id
 @awr_create_snapshot.sql: create an AWR snapshot
