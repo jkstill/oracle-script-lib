@@ -62,6 +62,7 @@ RDBMS UTILITIES:
 @spacemap_rpt.sql: report on spacemap created by spacemap.sql
 @spacemap_sum.sql: create a summary of space as created by spacemap.sql
 @spacemap_sum_rpt.sql: report on space summary table created by spacemap_sum.sql
+@sqlid-trace.sql: set 10046 or 10053 trace per sqlid regardless of session
 @table_ddl.sql: generate DDL for owner.table, with indexes, constraints, etc
 @pt.sql: similar to Tom Kytes print_table, but no stored procedure required and better quoting
 @q_quote.sql: demo for the q[] quoting mechanism in SQL - 10g+ I think
