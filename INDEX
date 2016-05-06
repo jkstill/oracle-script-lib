@@ -35,6 +35,7 @@ RDBMS UTILITIES:
 
 @block_decode.sql: find which object a block belongs to
 @bootstrap_objects.sql: report objects from sys.bootstrap$ that may not be modified
+@cluster-factor.sql: get the clustering factor for all indexes on a table
 @cores.sql: report the number of CPU cores from v$osstat - may be subject to hyperthreading
 @dual_data_gen.sql: generate many rows from dual - uses a lot of memory for large number of rows
 @dual_data_gen-low-mem.sql: generate many rows without using extra PGA
@@ -45,6 +46,7 @@ RDBMS UTILITIES:
 @gen_fk_to-11.2.sql: generate existing foreign key constraings from data dictionary
 @set_events.sql: various methods to set events, including per sql_id
 @10046.sql: Set event 10046 in a session
+@10046_off.sql: Stop event 10046 in a session
 @troff.sql: Turn off SQL tracing for all sessions of an account
 @tron.sql: Turn on SQL tracing for all sessions of an account
 @oradebug_doc.sql: dump the documentation for oradebug
