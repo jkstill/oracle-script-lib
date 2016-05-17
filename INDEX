@@ -406,6 +406,8 @@ STORAGE:
 ASM:
 
 @asm_disks.sql: show ASM disks
+@asm_disk_errors.sql: show ASM disk errors
+@asm_disk_stats.sql: show ASM disk statistics
 @asm_diskgroups.sql: show diskgroups
 @asm_diskgroup_attributes.sql: show diskgroup attributes
 @asm_diskgroup_templates.sql: show diskgroup template values
