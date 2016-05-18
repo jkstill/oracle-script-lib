@@ -16,19 +16,19 @@ col begin_interval_time format a30
 col end_interval_time format a30 
 
 with deltas as (
-select  
+select
 	snap.instance_number
 	, snap.begin_interval_time
 	, snap.end_interval_time
 	, stat.stat_name
 	-- the stat.value and lag_value columns are used for data verification
-	--, stat.value 
-	--, lag(stat.value) 
-		--over (partition by stat.stat_name order by  snap.instance_number, snap.snap_id) 
+	--, stat.value
+	--, lag(stat.value)
+		--over (partition by stat.stat_name order by  snap.instance_number, snap.snap_id)
 	--lag_value
-	, stat.value - 
-		lag(stat.value) 
-		over (partition by stat.stat_name order by  snap.instance_number, snap.snap_id) 
+	, stat.value -
+		lag(stat.value)
+		over (partition by stat.stat_name order by  snap.instance_number, snap.snap_id)
 	stat_delta
 from dba_hist_snapshot snap, dba_hist_sysstat stat
 where snap.instance_number = stat.instance_number
@@ -48,8 +48,21 @@ select
 from deltas d
 group by d.instance_number, trunc(d.begin_interval_time), d.stat_name
 )
-select * from sums s
-order by s.snap_date, s.instance_number
+select 
+	p.instance_number
+	, p.snap_date
+	, p.user_commits
+	, p.transaction_rollbacks
+	, p.redo_sync_writes
+from sums s
+pivot (
+	max(s.stat_delta) 
+	for stat_name in (
+		'user commits' as "USER_COMMITS"
+		, 'transaction rollbacks' as "TRANSACTION_ROLLBACKS"
+		, 'redo synch writes' as "REDO_SYNC_WRITES"
+	)
+) p
+order by p.snap_date, p.instance_number
 /
-
 
