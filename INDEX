@@ -65,6 +65,7 @@ RDBMS UTILITIES:
 @spacemap_sum.sql: create a summary of space as created by spacemap.sql
 @spacemap_sum_rpt.sql: report on space summary table created by spacemap_sum.sql
 @sqlid-trace.sql: set 10046 or 10053 trace per sqlid regardless of session
+@sql-command-types.sql: list all sql available commands 
 @table_ddl.sql: generate DDL for owner.table, with indexes, constraints, etc
 @pt.sql: similar to Tom Kytes print_table, but no stored procedure required and better quoting
 @q_quote.sql: demo for the q[] quoting mechanism in SQL - 10g+ I think
@@ -147,6 +148,7 @@ ash_log_sync.sql: log sync events
 @awr_get_snapshots.sql: Get AWR snapshots for a date range
 @awr_bracket_snaps.sql: get snap_id values for a pair of days
 @awr_settings.sql: query the dba_hist_wr_control view
+@awr-trans-counts.sql: show summary of user commits, rollbacks and log sync writes by day
 @dba_hist_sys_time_model.sql: example of querying dba_hist_sys_time_model - set your own stat_name
 @dbw-hist.sql: DBWR CPU and Wait time from dba_hist_active_sess_history
 @sysmetric-history.sql: pivot to CSV for several metrics in dba_hist_sysmetric_history
