@@ -42,7 +42,6 @@ order by snap.instance_number, stat.stat_name, snap.snap_id
 select
 	p.instance_number
 	, p.snap_date
-	, snap_date
 	, p.user_commits
 	, p.transaction_rollbacks
 	, p.redo_sync_writes
