@@ -15,11 +15,12 @@ col instance_number head 'I#' format 999
 col begin_interval_time format a30 
 col end_interval_time format a30 
 
+
 with deltas as (
 select
 	snap.instance_number
-	, snap.begin_interval_time
-	, snap.end_interval_time
+	, to_char(trunc(snap.begin_interval_time),'yyyy-mm-dd') snap_date
+	--, snap.end_interval_time
 	, stat.stat_name
 	-- the stat.value and lag_value columns are used for data verification
 	--, stat.value
@@ -37,26 +38,17 @@ where snap.instance_number = stat.instance_number
 	--and snap.begin_interval_time between timestamp '2016-05-16 00:00:00.000'
 		--and timestamp '2016-05-16 23:59:59.999'
 order by snap.instance_number, stat.stat_name, snap.snap_id
-),
--- aggregate by day
-sums as (
-select
-	d.instance_number
-	, to_char(trunc(min(d.begin_interval_time)),'yyyy-mm-dd') snap_date
-	, d.stat_name
-	, sum(d.stat_delta) stat_delta
-from deltas d
-group by d.instance_number, trunc(d.begin_interval_time), d.stat_name
 )
-select 
+select
 	p.instance_number
 	, p.snap_date
+	, snap_date
 	, p.user_commits
 	, p.transaction_rollbacks
 	, p.redo_sync_writes
-from sums s
+from deltas d
 pivot (
-	max(s.stat_delta) 
+	sum(d.stat_delta)
 	for stat_name in (
 		'user commits' as "USER_COMMITS"
 		, 'transaction rollbacks' as "TRANSACTION_ROLLBACKS"
@@ -65,4 +57,5 @@ pivot (
 ) p
 order by p.snap_date, p.instance_number
 /
+
 
