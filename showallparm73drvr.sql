@@ -17,11 +17,12 @@ undef 1
 
 set trimspool on
 set pages 60
+set linesize 200 trimspool on
 
 @title 'Initialization Parms for Version >= 7.3.X' 160
 
 col num format 999999999999999
-col name format a25 head 'PARAMETER NAME'
+col name format a60 head 'PARAMETER NAME'
 col value format a30 head 'VALUE'
 col description format a30 head 'DESCRIPTION'
 column isses_modifiable head 'SESS|MOD?' format a4

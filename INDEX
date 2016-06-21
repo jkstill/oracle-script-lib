@@ -58,6 +58,7 @@ RDBMS UTILITIES:
 @dup_role_users.sql: Generate SQL script to duplicate all users of a role
 @dup_user.sql: Generate SQL script to duplicate a database user
 @user_ddl.sql: Generate SQL script to duplicate a database user using DBMS_METADATA
+@hwm-df.sql: Find the high water mark for each datafile and determine how much each file can be shrunk
 @dbms_system_undoc_calls.sql: some undocumented dbms_system calls - how to write to alert.log
 @show_event_messages.sql: List events 1000-10999
 @spacemap.sql: create a map of segments and free space
