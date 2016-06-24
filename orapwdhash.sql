@@ -52,12 +52,8 @@ declare
 		mod_len number;
 	begin
 		tot_len:=length(userpwd);
-		--debugw(pv_level => '5',
-		--	pv_str => 'tot_len:='||tot_len);
 		for i in 1..tot_len loop
 			curr_char:=substr(userpwd,i,1);
-			--debugw(pv_level => '5',
-			--	pv_str => 'curr_char:='||curr_char);
 			enc_str:=enc_str||chr(0)||curr_char;
 		end loop;
 		-- padd to 8 byte boundaries
@@ -67,8 +63,6 @@ declare
 		else
 			padd_len:=8 - mod_len;
 		end if;
-		--debugw(pv_level => '5',
-		--	pv_str => 'padd_len:='||padd_len);
 		for i in 1..padd_len loop
 			enc_str:=enc_str||chr(0);
 		end loop;
@@ -77,24 +71,28 @@ declare
 
 begin
 
+	unicode_str(username || password,raw_ip);
 
-        unicode_str(username || password,raw_ip);
+	dbms_obfuscation_toolkit.DESEncrypt(
+		input => raw_ip, 
+		key => raw_key, 
+		encrypted_data => enc_raw
+	);
 
-        dbms_obfuscation_toolkit.DESEncrypt(input => raw_ip,
-                key => raw_key, encrypted_data => enc_raw );
+	hexstr:=rawtohex(enc_raw);
+	len:=length(hexstr);
+	raw_key2:=hextoraw(substr(hexstr,(len-16+1),16));
+	dbms_obfuscation_toolkit.DESEncrypt(
+		input => raw_ip, 
+		key => raw_key2, 
+		encrypted_data => pwd_hash
+	);
 
+	hexstr:=hextoraw(pwd_hash);
+	len:=length(hexstr);
+	password_hash:=substr(hexstr,(len-16+1),16);
 
-        hexstr:=rawtohex(enc_raw);
-        len:=length(hexstr);
-        raw_key2:=hextoraw(substr(hexstr,(len-16+1),16));
-        dbms_obfuscation_toolkit.DESEncrypt(input => raw_ip,
-                key => raw_key2, encrypted_data => pwd_hash );
-
-        hexstr:=hextoraw(pwd_hash);
-        len:=length(hexstr);
-        password_hash:=substr(hexstr,(len-16+1),16);
-
-        dbms_output.put_line('Hash: ' || password_hash);
+	dbms_output.put_line('Hash: ' || password_hash);
 
 end;
 /
