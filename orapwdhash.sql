@@ -63,10 +63,20 @@ declare
 		else
 			padd_len:=8 - mod_len;
 		end if;
-		for i in 1..padd_len loop
-			enc_str:=enc_str||chr(0);
-		end loop;
+
+		-- eliminate this loop 
+		--for i in 1..padd_len loop
+			--enc_str:=enc_str||chr(0);
+		--end loop;
+
+		enc_str := rpad(
+			enc_str,
+			length(enc_str)+padd_len,
+			chr(0)
+		);
+
 		unistr:=utl_raw.cast_to_raw(enc_str);
+
 	end;
 
 begin
