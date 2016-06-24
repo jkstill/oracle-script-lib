@@ -388,6 +388,7 @@ SECURITY:
 @show_session_audit.sql: select all from session_audit - lots of rows
 @getaud.sql: generate SQL to reproduce current audit settings
 @privmaps.sql: Show all privileges granted to a user, and whether direct or through a role
+@orapwdhash.sql: Determine the 10g password hash for username and password.  Good for detecting accounts where username = password
 
 STORAGE:
 
