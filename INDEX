@@ -387,6 +387,7 @@ SECURITY:
 @dba_table_audit_flags.sql: This script creates a SYS view against SYS tables  to show all audit flags per object
 @show_session_audit.sql: select all from session_audit - lots of rows
 @getaud.sql: generate SQL to reproduce current audit settings
+@privmaps.sql: Show all privileges granted to a user, and whether direct or through a role
 
 STORAGE:
 
