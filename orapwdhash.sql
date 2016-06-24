@@ -50,7 +50,6 @@ declare
 		padd_len number;
 		ch char(1);
 		mod_len number;
-		debugp varchar2(256);
 	begin
 		tot_len:=length(userpwd);
 		--debugw(pv_level => '5',
@@ -73,16 +72,6 @@ declare
 		for i in 1..padd_len loop
 			enc_str:=enc_str||chr(0);
 		end loop;
-		-- /* debug code
-		for i in 1..tot_len*2+padd_len loop
-			ch:=substr(enc_str,i,1);
-			if (ch = chr(0)) then
-				debugp:=debugp||'|*';
-			else
-				debugp:=debugp||'|'||ch;
-			end if;
-		end loop;
-		-- end debug code */
 		unistr:=utl_raw.cast_to_raw(enc_str);
 	end;
 
