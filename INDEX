@@ -321,6 +321,7 @@ INSTANCE and/or DATABASE:
 @show_jobs.sql: does the work for dba_jobs.sql and all_jobs.sql
 @la8.sql: Shows last analyzed dates for database objects . 8.0+
 @la.sql: Shows last analyzed dates for database objects . 7.3
+@log-switch-histogram.sql: Display a histogram of redo log switch times
 @pivot.sql: Simple demo of PIVOT
 @purge_cursors.sql: purge a list of SQL cursors from shared_pool - 10g+ see Oracle Note 457309.1
 @sql_spawned_reasons.sql: Show reasons for creating new child of SQL
