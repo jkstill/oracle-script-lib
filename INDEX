@@ -258,6 +258,7 @@ DATABASE STATISTICS - DBMS_STATS - OPTIMIZER:
 @set_table_prefs.sql:  set table preferences - uses table_list.sql
 @show_os_stats.sql: Show stats from v$aux_stats$
 @show_os_stats_hist.sql: Show stats from wri$_optstat_aux_history
+@stale-stats.sql: Show stats that are stale and at least 7 days old
 @stat.sql: get stats info for a table - see comments
 @stats_config.sql: set the schema name for some stats scripts
 @stats_mod.sql:  show stats being gathered by gather_table_stats.sql
