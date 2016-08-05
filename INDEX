@@ -325,6 +325,7 @@ INSTANCE and/or DATABASE:
 @log-switch-histogram.sql: Display a histogram of redo log switch times
 @pivot.sql: Simple demo of PIVOT
 @purge_cursors.sql: purge a list of SQL cursors from shared_pool - 10g+ see Oracle Note 457309.1
+@reserved-words.sql: List reserved words from v$reserved_words
 @sql_spawned_reasons.sql: Show reasons for creating new child of SQL
 @show_check_cons.sql: Show non-system generated check constraints
 @show_data_types.sql: Show non-system column data types
