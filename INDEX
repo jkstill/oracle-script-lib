@@ -11,6 +11,10 @@ LIB ADMIN:
 PARALLEL PROCESSING:
 
 @px.sql: query gv$px_process to see all parallel slaves clusterwide-works for single node too
+@pq-ash-all.sql: aggregate PQ query counts per time period
+@pq-ash-sqlid.sql: aggregate PQ per sqlid and time
+@pq-awr-all.sql: aggregate PQ per time period
+@pq-awr-sqlid.sql: aggregate PQ per sqlid and time
 
 SUPPORTING SCRIPTS:
 
