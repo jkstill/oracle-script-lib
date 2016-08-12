@@ -157,6 +157,7 @@ ash_log_sync.sql: log sync events
 @awr-trans-counts.sql: show summary of user commits, rollbacks and log sync writes by day
 @dba_hist_sys_time_model.sql: example of querying dba_hist_sys_time_model - set your own stat_name
 @dbw-hist.sql: DBWR CPU and Wait time from dba_hist_active_sess_history
+@resize-ops-metric.sql: Look back through AWR for excessive SGA resize operations before ORA-4031 occurs
 @sysmetric-history.sql: pivot to CSV for several metrics in dba_hist_sysmetric_history
 @session-history.sql: history of sessions from dba_hist_active_sess_history
 
