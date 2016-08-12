@@ -17,7 +17,7 @@ define look_back_days=60
 
 with pop as (
 	--by hour
-	--select begin_interval_time, count(*) resize_count
+	--select begin_interval_time
 	-- by day
 	select trunc(begin_interval_time) begin_interval_time
 		, count(*) resize_count
