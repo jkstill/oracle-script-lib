@@ -38,7 +38,8 @@ metrics as (
 		p.begin_interval_time
 		, p.resize_count
 		, r.resize_stddev
-		, round(p.resize_count / r.resize_stddev,1) resize_metric
+		-- set resize metric to 1 if r.resize_stddev is 0
+		, round(p.resize_count / decode(r.resize_stddev,0,p.resize_count,r.resize_stddev),1) resize_metric
 	from pop p
 	natural join resize_stddev r
 	where p.begin_interval_time >= systimestamp - interval '&look_back_days' DAY
