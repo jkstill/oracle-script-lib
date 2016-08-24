@@ -160,6 +160,7 @@ ash_log_sync.sql: log sync events
 @resize-ops-metric.sql: Look back through AWR for excessive SGA resize operations before ORA-4031 occurs
 @sysmetric-history.sql: pivot to CSV for several metrics in dba_hist_sysmetric_history
 @session-history.sql: history of sessions from dba_hist_active_sess_history
+@wsqlmon.sql: Provide SQL-Monitor like report from AWR - based on Tanel Poder script for ASH
 
 STATSPACK:
 
