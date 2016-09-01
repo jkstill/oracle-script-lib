@@ -1,6 +1,5 @@
-nls_time_format
 
-set colsep " "
+@nls_time_format
 
 set linesize 200 trimspool on
 set pagesize 60
