@@ -32,9 +32,12 @@ SUPPORTING SCRIPTS:
 @title.sql: set title and width
 @title80.sql:  set title and width to 80
 @title132.sql: title and width to 132
-@nls_date_format.sql: 
+@nls_date_format.sql: set custom date and time formats, several options available at runtime
+@nls_time_format.sql: set custom (fixed) date and time formats
 @spool_example.sql: 
 @sql_trick_1.sql: demonstrates a very useful technique for conditionally executing SQL
+
+
 
 RDBMS UTILITIES:
 
@@ -157,6 +160,7 @@ ash_log_sync.sql: log sync events
 @awr-trans-counts.sql: show summary of user commits, rollbacks and log sync writes by day
 @dba_hist_sys_time_model.sql: example of querying dba_hist_sys_time_model - set your own stat_name
 @dbw-hist.sql: DBWR CPU and Wait time from dba_hist_active_sess_history
+@flash-hist-stats.sql: retrieve recent flash cache stats from AWR
 @resize-ops-metric.sql: Look back through AWR for excessive SGA resize operations before ORA-4031 occurs
 @sysmetric-history.sql: pivot to CSV for several metrics in dba_hist_sysmetric_history
 @session-history.sql: history of sessions from dba_hist_active_sess_history
