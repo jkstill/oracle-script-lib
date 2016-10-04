@@ -1,4 +1,5 @@
 
+
 -- resize-ops-metric.sql
 -- look back through AWR for excessive resize operations
 -- it may be that SGA needs an increase before ORA-4031 occurs
@@ -16,21 +17,24 @@ define look_back_days=60
 
 with pop as (
 	--by hour
-	select start_time begin_interval_time
-		, count(*) resize_count
-	from GV$MEMORY_RESIZE_OPS m
-	-- by hour
-	group by start_time
+	select begin_interval_time
 	-- by day
-	--group by trunc(begin_interval_time)
-	order by start_time
+	--select trunc(begin_interval_time) begin_interval_time
+		, count(*) resize_count
+	from dba_hist_memory_resize_ops m
+	join dba_hist_snapshot s on s.snap_id = m.snap_id
+	-- by hour
+	group by begin_interval_time
+	-- by day
+	--group by trunc(begin_interval_time) 
+	order by begin_interval_time
 ),
 resize_stddev as(
 	select distinct round(stddev(resize_count) over (),2) resize_stddev
 	from pop
 ),
 metrics as (
-	select
+	select 
 		p.begin_interval_time
 		, p.resize_count
 		, r.resize_stddev
@@ -42,7 +46,7 @@ metrics as (
 )
 select begin_interval_time
 	, resize_count
-	, resize_stddev
+	, resize_stddev 
 	, resize_metric
 	, case
 		when resize_metric >= &warning_threshold then

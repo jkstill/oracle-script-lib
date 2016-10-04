@@ -164,7 +164,8 @@ ash_log_sync.sql: log sync events
 @dbw-hist.sql: DBWR CPU and Wait time from dba_hist_active_sess_history
 @flash-hist-stats.sql: retrieve recent flash cache stats from AWR
 @osstat-cpu.sql: dump OS CPU metrics to CSV file
-@resize-ops-metric.sql: Look back through AWR for excessive SGA resize operations before ORA-4031 occurs
+@resize-ops-metric-awr.sql: Look back through AWR for excessive SGA resize operations before ORA-4031 occurs
+@resize-ops-metric.sql: Look in gv$memory_resize_ops for excessive SGA resize operations before ORA-4031 occurs
 @sysmetric-history.sql: pivot to CSV for several metrics in dba_hist_sysmetric_history
 @session-history.sql: history of sessions from dba_hist_active_sess_history
 @wsqlmon.sql: Provide SQL-Monitor like report from AWR - based on Tanel Poder script for ASH
