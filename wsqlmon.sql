@@ -67,7 +67,7 @@ FROM
     dba_hist_active_sess_history ash
 WHERE
     1=1
-AND ash.sql_id LIKE '&1'
+AND ash.sql_id LIKE '&&1'
 AND ash.sql_child_number LIKE '&2'
 and ash.snap_id between &3 and &4
 GROUP BY
