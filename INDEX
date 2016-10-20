@@ -24,6 +24,7 @@ SUPPORTING SCRIPTS:
 @columns.sql: several sqlplus column settings
 @epoch.sql: get epoch to the millisecond using timestamp
 @get_date_range.sql: get begin and end date, put in vars - also date format var
+@opcodes.sql: list of SQL opcodes for use in 10g-. See cpu-busy.sql
 @oversion_minor.sql: get the XX.xx version of oracle and store in &v_oversion_minor
 @oversion_major.sql: get the XX version of oracle and store in &v_oversion_major
 @timestamp_to_millisecond.sql: convert timestamp to millisecond demo
@@ -199,6 +200,7 @@ STATSPACK:
 
 USERS LOGGED ON:
 
+@get-curr-ospid.sql: get the server PID for your current session
 @who.sql: summary of users logged on
 @who2.sql: detailed info of users logged on
 @who5.sql: IO per session
