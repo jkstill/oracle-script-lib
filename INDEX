@@ -171,6 +171,10 @@ ash_log_sync.sql: log sync events
 @session-history.sql: history of sessions from dba_hist_active_sess_history
 @wsqlmon.sql: Provide SQL-Monitor like report from AWR - based on Tanel Poder script for ASH
 
+@awr-cpu-stats.sql: Report on sar like CPU stats from AWR
+@cpu-busy.sql: Show what SQL Operations were on CPU
+@sql-plans.sql: Show plans used by a selected SQL for a date and time range
+
 STATSPACK:
 
 @snapNmin.sql: start level 7 snapshot, sleep 2 minutes, complete snapshot and create report
