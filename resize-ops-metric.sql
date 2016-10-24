@@ -17,10 +17,12 @@ define look_back_days=60
 with pop as (
 	--by hour
 	select start_time begin_interval_time
+		, inst_id
 		, count(*) resize_count
 	from GV$MEMORY_RESIZE_OPS m
 	-- by hour
 	group by start_time
+		, inst_id
 	-- by day
 	--group by trunc(begin_interval_time)
 	order by start_time
@@ -31,7 +33,8 @@ resize_stddev as(
 ),
 metrics as (
 	select
-		p.begin_interval_time
+		to_char(p.begin_interval_time,'yyyy-mm-dd hh24:mi:ss') begin_interval_time
+		, p.inst_id
 		, p.resize_count
 		, r.resize_stddev
 		-- set resize metric to 1 if r.resize_stddev is 0
@@ -40,7 +43,7 @@ metrics as (
 	natural join resize_stddev r
 	where p.begin_interval_time >= systimestamp - interval '&look_back_days' DAY
 )
-select begin_interval_time
+select begin_interval_time, inst_id
 	, resize_count
 	, resize_stddev
 	, resize_metric
@@ -51,5 +54,5 @@ select begin_interval_time
 			'No Worries'
 	end action
 from metrics
-order by 1
+order by 2,1
 /
