@@ -160,6 +160,8 @@ ash_log_sync.sql: log sync events
 @awr_get_snapshots.sql: Get AWR snapshots for a date range
 @awr_bracket_snaps.sql: get snap_id values for a pair of days
 @awr_settings.sql: query the dba_hist_wr_control view
+@awr-top-events.sql: get the top events from AWR per instance for a date range
+@awr-top-sqlid-events.sql: get the top events from AWR per instance and SQL_ID for a date range
 @awr-trans-counts.sql: show summary of user commits, rollbacks and log sync writes by day
 @dba_hist_sys_time_model.sql: example of querying dba_hist_sys_time_model - set your own stat_name
 @dbw-hist.sql: DBWR CPU and Wait time from dba_hist_active_sess_history
