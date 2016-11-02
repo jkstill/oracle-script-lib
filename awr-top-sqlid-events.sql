@@ -1,8 +1,9 @@
 
-
 -- awr-top-sqlid-events.sql
 -- get top 5 events per AWR snapshot, per sql_id
 -- Jared Still still@pythian.com jkstill@gmail.com
+--
+-- 2016-11-02 jkstill - added enqueue decode
 
 -- requires https://github.com/jkstill/oracle-script-lib/blob/master/get_date_range.sql
 
@@ -11,6 +12,18 @@
 
 -- or just specify it here
 --@get_date_range '2016-10-26 10:00:00' '2016-10-26 16:00:00'
+
+@clears 
+
+set linesize 200 trimspool on
+set pagesize 60
+
+col event format a30
+col p1text format a20
+col p1 format a25
+col p2text format a20
+
+spool aws-top-sqlid-event.log
 
 break on begin_interval skip 1
 
@@ -31,6 +44,15 @@ data as (
 			when 'ON CPU' then 'CPU'
 			else h.event
 		end event
+		, h.p1text
+		, CASE
+			WHEN event like 'enq%' THEN
+				'0x'||trim(to_char(h.p1, 'XXXXXXXXXXXXXXXX'))||': '||
+				chr(bitand(h.p1, -16777216)/16777215)||
+				chr(bitand(h.p1,16711680)/65535)||
+				' mode '||bitand(h.p1, power(2,14)-1)
+			ELSE NULL 
+		END AS p1
 		, h.sql_id	
 	from dba_hist_active_sess_history h
 ),
@@ -40,6 +62,8 @@ select  distinct
 	, d.instance_number
 	, d.sql_id
 	, d.event
+	, d.p1text
+	, d.p1
 	, count(d.event) over (partition by d.snap_id, d.sql_id, d.event, d.instance_number) event_count
 from data d
 join dba_hist_snapshot hs on hs.snap_id = d.snap_id
@@ -56,6 +80,8 @@ rank_output as (
 		, instance_number
 		, sql_id
 		, event
+		, p1text
+		, p1
 		, event_count
 		, row_number() over (partition by begin_interval, instance_number order by event_count desc)	 event_rank
 	from agg_data
@@ -65,6 +91,8 @@ select
 		, instance_number
 		, sql_id
 		, event
+		, p1text
+		, p1
 		, event_count
 		, event_rank
 from rank_output
@@ -72,3 +100,6 @@ where event_rank <= 5
 order by begin_interval, event_count desc
 /
 
+spool off
+
+ed aws-top-sqlid-event.log

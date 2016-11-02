@@ -8,7 +8,7 @@ set term off
 
 spool osstat-cpu-lks.csv
 
-prompt BEGIN_TIME,END_TIME,ELAPSED_SECONDS,INSTANCE_NUMBER,BUSY_TIME,IDLE_TIME,IOWAIT_TIME,LOAD,SYS_TIME,USER_TIME
+prompt BEGIN_TIME,END_TIME,ELAPSED_SECONDS,INSTANCE_NUMBER,BUSY_TIME,IDLE_TIME,IOWAIT_TIME,LOAD,PHYSICAL_MEMORY_BYTES,SYS_TIME,USER_TIME,VM_IN_BYTES,VM_OUT_BYTES
 
 with data as (
 	select o.snap_id
@@ -26,7 +26,7 @@ with data as (
 	join dba_hist_snapshot s on s.snap_id = o.snap_id
 		and s.instance_number = o.instance_number
 		and s.dbid = o.dbid
-	where stat_name in ('LOAD','IDLE_TIME','BUSY_TIME','USER_TIME','SYS_TIME','IOWAIT_TIME')
+	where stat_name in ('LOAD','IDLE_TIME','BUSY_TIME','USER_TIME','SYS_TIME','IOWAIT_TIME','VM_IN_BYTES','VM_OUT_BYTES','PHYSICAL_MEMORY_BYTES')
 )
 select
 	begin_time
