@@ -22,6 +22,7 @@ SUPPORTING SCRIPTS:
 @clear_for_spool.sql: set sqlplus for spooling output without headers,etc
 @colors.sql: define values for sqlprompt colors
 @columns.sql: several sqlplus column settings
+@enqueue-bitand.sql: Demonstrate how to decode v$session.p1 values for enqueue waits
 @epoch.sql: get epoch to the millisecond using timestamp
 @get_date_range.sql: get begin and end date, put in vars - also date format var
 @opcodes.sql: list of SQL opcodes for use in 10g-. See cpu-busy.sql
