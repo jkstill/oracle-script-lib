@@ -48,8 +48,8 @@ data as (
 		, CASE
 			WHEN event like 'enq%' THEN
 				'0x'||trim(to_char(h.p1, 'XXXXXXXXXXXXXXXX'))||': '||
-				chr(bitand(h.p1, -16777216)/16777215)||
-				chr(bitand(h.p1,16711680)/65535)||
+				chr(bitand(h.p1, 4278190080)/16777216)||
+				chr(bitand(h.p1,16711680)/65536)||
 				' mode '||bitand(h.p1, power(2,14)-1)
 			ELSE NULL 
 		END AS p1

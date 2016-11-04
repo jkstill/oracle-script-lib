@@ -48,8 +48,7 @@ I can see where it may be useful where this particular bitmask is required, but 
 
 In fact the values used in the example do not return integer values.
 
-What is needed is to just mask 2 bytes of P1 for each of the 2 characters.
-Why 2 bytes?  Because the value is encoded as BCD  - Binary Coded Decimal
+What is needed is to just mask the byte of each of the two characters in P1 that represent the lock name
 
 See the examples following.
 
@@ -75,7 +74,7 @@ hexbreak as (
 	select hexnum
 		, to_number(substr(hexnum,1,2),'XXXXXXXX') enq_name_byte_1
 		, to_number(substr(hexnum,3,2),'XXXXXXXX') enq_name_byte_2
-		, substr(hexnum,5) enq_mode
+		, to_number(substr(hexnum,5),'XXXXXXXX') enq_mode
 from hex
 )
 select 
@@ -111,7 +110,7 @@ from data;
 
 prompt
 prompt Now use the bit-twiddly method with reasonable values
-prompt The following Hex numbers will mask the two bytes needed for each character of the enqueue name
+prompt The following Hex numbers are used to mask the two bytes needed for the characters of the enqueue name
 prompt The returned results will be integer values
 prompt
 prompt 
