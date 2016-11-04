@@ -18,6 +18,7 @@ PARALLEL PROCESSING:
 
 SUPPORTING SCRIPTS:
 
+@ascii.sql: generate a simple ascii table
 @clears.sql: clear sqlplus settings
 @clear_for_spool.sql: set sqlplus for spooling output without headers,etc
 @colors.sql: define values for sqlprompt colors
