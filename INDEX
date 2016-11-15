@@ -349,6 +349,8 @@ INSTANCE and/or DATABASE:
 @la8.sql: Shows last analyzed dates for database objects . 8.0+
 @la.sql: Shows last analyzed dates for database objects . 7.3
 @log-switch-histogram.sql: Display a histogram of redo log switch times
+@loghistory_8.sql: show archive logs with time between switches
+@loghist-csv.sql: dump history of archive logs (with timing) to CSV
 @pivot.sql: Simple demo of PIVOT
 @purge_cursors.sql: purge a list of SQL cursors from shared_pool - 10g+ see Oracle Note 457309.1
 @reserved-words.sql: List reserved words from v$reserved_words
@@ -402,7 +404,6 @@ INSTANCE and/or DATABASE:
 @sess_longops.sql: query v$session_longops
 @recompile.sql: Recompile invalid objects.  Still works better than DBMSU_UILITY.COMPILE_SCHEMA
 @reverse_role_lookup.sql: Find all users granted a role
-@loghistory_8.sql: show archive logs with time between switches
 
 SNAPSHOTS and MATERIALIZED_VIEWS:
 
