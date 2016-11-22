@@ -8,6 +8,10 @@ profile_from_awr.sql: create a SQL Profile from plan in AWR
 LIB ADMIN:
 @distribution.sh: the script that builds the linux tar and windows zips files
 
+BACKUP and RECOVERY:
+@rman-bkup-status.sql: Status of backups
+@rman-bkup-details.sql: Details for a backup set
+
 PARALLEL PROCESSING:
 
 @px.sql: query gv$px_process to see all parallel slaves clusterwide-works for single node too
@@ -79,6 +83,7 @@ RDBMS UTILITIES:
 @sqlid-trace.sql: set 10046 or 10053 trace per sqlid regardless of session
 @sql-command-types.sql: list all sql available commands 
 @table_ddl.sql: generate DDL for owner.table, with indexes, constraints, etc
+@print_table_2.sql: Tom Kytes print_table, but as an anonymous block
 @pt.sql: similar to Tom Kytes print_table, but no stored procedure required and better quoting
 @q_quote.sql: demo for the q[] quoting mechanism in SQL - 10g+ I think
 
@@ -453,9 +458,9 @@ ASM:
 
 DRCP: Database Resident Connection Pooling
 
-@drcp_config.sql: show current DRCP config
-@drcp_connections_per_broker.sql: set number of connections managed per broker
-@drcp_num_brokers.sql: set the number of DRCP brokers
+@drcp_show_config.sql: show current DRCP config
+@drcp_set_connections_per_broker.sql: set number of connections managed per broker
+@drcp_set_num_brokers.sql: set the number of DRCP brokers
 @drcp_pool_cc_stats.sql: show connection class statistics
 @drcp_pool_ratio.sql: show ratio of connection requests to number of pools
 @drcp_pool_stats.sql: show aggregate DRCP pool stats
