@@ -349,6 +349,7 @@ INSTANCE and/or DATABASE:
 @fra_config.sql: show FRA location and size
 @getsql.sql: call with sql_id to get sql_fulltext
 @incarnations.sql: Show database incarnations
+@indexes-not-used.sql: Query AWR to try and determine which indexes are unused
 @all_jobs.sql: Show all scheduled db jobs
 @show_jobs.sql: does the work for dba_jobs.sql and all_jobs.sql
 @la8.sql: Shows last analyzed dates for database objects . 8.0+
