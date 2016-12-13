@@ -1,4 +1,4 @@
--- indexes-not-used.sql
+-- index-usage-awr.sql
 -- jared still 2016-12-07
 -- still@pythian.com jkstill@gmail.com
 --
@@ -6,7 +6,11 @@
 -- the more AWR data, the better.
 
 set linesize 200 trimspool on
-set pagesize 50 
+set pagesize 60
+
+col index_used_awr head 'IDX|USED|AWR' format a4
+
+--spool index-usage-awr.txt
 
 with users2chk as (
 	select
@@ -28,10 +32,13 @@ indexes_used as (
 	join users2chk u on u.username = sp.object_owner
 		and sp.object_type = 'INDEX'
 )
-select i.owner, i.index_name, iu.index_name
+select i.owner, i.index_name, decode(iu.index_name,null,'NO','YES') index_used_awr
 from indexes i
 full outer join indexes_used iu on iu.owner = i.owner
 	and iu.index_name = i.index_name
-where iu.index_name is null
 order by 1,2
 /
+
+--spool off
+--ed index-usage-awr.txt
+
