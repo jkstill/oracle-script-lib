@@ -7,7 +7,7 @@
 -- currently does not handle partition specific index info
 -- eg. STATUS value is valid only for non-partitioned indexes
 
-set linesize 200 trimspool on
+set linesize 300 trimspool on
 set pagesize 60
 
 col index_used_awr head 'IDX|USED|AWR' format a4
@@ -33,7 +33,7 @@ with users2chk as (
 	and username not in ('SQLTXPLAIN')
 ),
 indexes as (
-	select owner, index_name, join_index, partitioned, degree
+	select owner, table_name, table_owner, index_name, join_index, partitioned, degree
 		, leaf_blocks, distinct_keys
 		, avg_leaf_blocks_per_key, avg_data_blocks_per_key
 		, clustering_factor, num_rows ,
@@ -67,6 +67,8 @@ indexes_used as (
 		and sp.object_type = 'INDEX'
 )
 select i.owner
+	, t.table_name
+	, t.blocks - nvl(t.empty_blocks,0) table_blocks
 	, i.index_name
 	, i.index_type
 	, i.join_index
@@ -76,6 +78,8 @@ select i.owner
 	, i.clustering_factor, i.num_rows	
 	, decode(iu.index_name,null,'NO','YES') index_used_awr
 from indexes i
+join dba_tables t	 on t.owner = i.table_owner
+	and t.table_name = i.table_name
 full outer join indexes_used iu on iu.owner = i.owner
 	and iu.index_name = i.index_name
 order by 1,2
@@ -83,4 +87,5 @@ order by 1,2
 
 --spool off
 --ed index-usage-awr.txt
+
 
