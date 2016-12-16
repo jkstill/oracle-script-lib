@@ -339,6 +339,7 @@ INSTANCE and/or DATABASE:
 @dba_jobs_running.sql: Show db jobs currently running
 @dba_jobs.sql: Show all scheduled db jobs
 @dba_feature_usage.sql: report on used features from dba_feature_usage_statistics
+@dba-registry.sql: current registered components
 @dba-registry-history.sql: report on upgrade and PSU history
 @database_properties.sql: show properties from database_properties
 @dbms_application.sql: example of dbms_applicatoin_info usage
