@@ -16,12 +16,12 @@ prompt Table Owner:
 prompt
 
 set feed off term off
-select upper('&&1) u_owner from dual;
+select upper('&&1') u_owner from dual;
 set term on
 
 prompt Table Name:
 set term off
-select upper('&&2) u_table from dual;
+select upper('&&2') u_table from dual;
 set term on feed on
 
 
