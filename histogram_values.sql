@@ -1,4 +1,5 @@
 
+col column_name format a30
 col column_value format 99999999999999999999999999999999999999
 col column_actual_value format a60
 
@@ -39,7 +40,7 @@ from
 	select
 		column_name,
 		endpoint_number,
-		lag(endpoint_number,1) over( order by column_name, endpoint_number) prev_endpoint,
+		lag(endpoint_number,1) over( partition by column_name order by endpoint_number) prev_endpoint,
 		endpoint_value,
 		substr(endpoint_actual_value,1,60) endpoint_actual_value
 	from dba_tab_histograms
