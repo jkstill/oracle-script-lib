@@ -49,6 +49,7 @@ select
 	, case anydata.GETTYPENAME(b.value_anydata) 
 		when 'SYS.VARCHAR' then	 anydata.accessvarchar(b.value_anydata)
 		when 'SYS.VARCHAR2' then anydata.accessvarchar2(b.value_anydata)
+		when 'SYS.CHAR' then anydata.accesschar(b.value_anydata)
 		when 'SYS.DATE' then to_char(anydata.accessdate(b.value_anydata),'yyyy-mm-dd hh24:mi:ss')
 		when 'SYS.TIMESTAMP' then to_char(anydata.accesstimestamp(b.value_anydata),'yyyy-mm-dd hh24:mi:ss')
 		when 'SYS.NUMBER' then to_char(anydata.accessnumber(b.value_anydata))
