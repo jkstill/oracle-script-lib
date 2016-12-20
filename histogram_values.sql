@@ -45,8 +45,8 @@ from
 	from dba_tab_histograms
 	where ( owner, table_name, column_name ) in (
 		select distinct owner,table_name,column_name from dba_histograms
-		where owner = 'ASPUSER'
-		and table_name = 'SMS_FUNCTION_CUSTOMER_TB'
+		where owner = '&u_owner'
+		and table_name = '&u_table'
 	)
 	order  by column_name
 )
