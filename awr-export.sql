@@ -3,8 +3,7 @@
 -- as per Simon Pane
 -- https://www.pythian.com/blog/author/pane/
 -- simple yet effective
--- best to run from the db server
--- could be run remotely - requires same version and patch level of oracle server
+-- output is expdp dump file - requires an appropriate Oracle DIRECTORY object
 
 
 COLUMN OUTPUT NEW_VALUE dbname
