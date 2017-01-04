@@ -159,6 +159,7 @@ AWR/ASH:
 @ash_cpu_hist.sql: cpu historic usage from dba_hist_sysmetric_history - 12c+
 @ashtop.sql: Tanel Poder script for top ASH events
 ash_log_sync.sql: log sync events
+@awr-export.sql: export AWR - useful for pre-migration work
 @awr_blockers.sql: historic blocking aggregated by sql_id
 @awr_create_snapshot.sql: create an AWR snapshot
 @awr_defined.sql: Run a non-interactive AWR report
