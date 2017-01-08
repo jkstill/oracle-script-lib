@@ -154,6 +154,11 @@ AWR/ASH:
 @aas_hist_metrics.sql: get average active sessions along with CPU metrics
 @ash_blocking.sql: get list of row lock blocks - blocked and blockers with SQL_ID
 @ash_blockers.sql: current blocking aggregated by event
+@ash-blocker-waits.sql: find top level blockers in ASH
+@ash_blockers_10g.sql: find top level blockers in ASH for 10g
+@awr-blocker-waits.sql: find top level blockers in AWR
+@awr-itl-waits.sql: find ITL waits
+@awr_itl_waits_10g.sql: find ITL waits in 10g
 @ash-waits-user.sql: summarize ASH all wait time for a user
 @ash-sessions.sql: frequency of sessions for a user
 @ash_cpu_hist.sql: cpu historic usage from dba_hist_sysmetric_history - 12c+
@@ -178,6 +183,10 @@ ash_log_sync.sql: log sync events
 @osstat-cpu.sql: dump OS CPU metrics to CSV file
 @resize-ops-metric-awr.sql: Look back through AWR for excessive SGA resize operations before ORA-4031 occurs
 @resize-ops-metric.sql: Look in gv$memory_resize_ops for excessive SGA resize operations before ORA-4031 occurs
+@rowlock-hist.sql: rowlock history
+@rowlock-mode-decode.sql: decode rowlocks in AWR
+@rowlock-sqlid-counts.sql: count of rowlock enq by sqlid
+@rowlock-sqlid-hist.sql: count of rowlock enq by sqlid - full outer join on snapshot
 @sysmetric-history.sql: pivot to CSV for several metrics in dba_hist_sysmetric_history
 @session-history.sql: history of sessions from dba_hist_active_sess_history
 @wsqlmon.sql: Provide SQL-Monitor like report from AWR - based on Tanel Poder script for ASH
@@ -401,6 +410,7 @@ INSTANCE and/or DATABASE:
 @showpin.sql: Show objects pinned in the shared pool
 @showpipes.sql: Show database pipes
 @showsrc.sql: show source of PL/SQL stored objects
+@sql-version-counts.sql: top 10 count of versions of SQL_ID
 @plsql_called_objects.sql: Shows entry PL/SQL object and current PL/SQL object for a session
 @rbs_no_optimal.sql: Set all rollback segments to have no OPTIMAL size
 @rbs_optimal.sql: Set all rollback segments to have an OPTIMAL size of 2xInitial
@@ -500,4 +510,8 @@ MEMORY: Memory Settings and/or Advisors
 
 12c: Scripts that are specific to Oracle 12c
 @show_container.sql: display the current container database name
+
+#################
+
+
 
