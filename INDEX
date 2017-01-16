@@ -227,6 +227,7 @@ USERS LOGGED ON:
 @get-curr-ospid.sql: get the server PID for your current session
 @who.sql: summary of users logged on
 @who2.sql: detailed info of users logged on
+@who2g.sql: detailed info of users logged on - includes all instances and PDB for 12c
 @who5.sql: IO per session
 @who6.sql: Show session info for background sessions
 @who7.sql: Show session info with IO stats per session
