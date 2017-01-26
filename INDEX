@@ -125,6 +125,7 @@ EVENTS:
 WAITS/LOCKS/LATCHES and PERFORMANCE:
 
 @active_status.sql: show which current active sessions are on CPU
+cpu-killer.sql: max out a CPU. Do Not use in production!
 @itl_waits.sql: show itl waits - increase initrans
 @itl_waits_hist.sql: show itl waits history
 @showlatch.sql: Show latches and stats
@@ -136,6 +137,7 @@ WAITS/LOCKS/LATCHES and PERFORMANCE:
 @latch_statss.sql: 
 @sesswait.sql: Show waits from v$session_wait - calls the script linked or copied to sesswaitu.sql
 @sesswaitu.sql: script called by sesswait.sql - copy or softlink one of the following sesswait scripts
+@sesswaitug.sql: similar to sesswaitu.sql, but uses gv$ views
 @sesswaitp.sql: show current waits for a session id - may call as '@sesswaitp SID'
 @sesswaitu72.sql: sesswaitu for 72
 @sesswaitu73.sql: sesswaitu for 73
@@ -279,6 +281,7 @@ DATABASE STATISTICS - DBMS_STATS - OPTIMIZER:
 @cursor-invalidation-reasons.sql: show reasons for cursor invalidation from v$sql_shared_cursor
 @dbms_stats_get_prefs.sql: get stats prefs per table and indexes
 @dbms_stats_report.sql: HTML report of dbms_stats activity
+@dup-system-stats.sql: Generate PL/SQL to duplicate system statistics to another database
 @gather_table_stats.sql: gather stats on a tables specified in table_list.sql
 @global-prefs.sql: display global dbms_stats prefs
 @get_prefs.sql: show stats prefs for a schema
