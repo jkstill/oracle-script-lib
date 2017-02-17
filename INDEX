@@ -60,6 +60,8 @@ RDBMS UTILITIES:
 @gen_fk_from-11.2.sql: generate existing foreign key constraings from data dictionary
 @gen_fk_to-11.1.sql: generate existing foreign key constraings from data dictionary
 @gen_fk_to-11.2.sql: generate existing foreign key constraings from data dictionary
+@gen_list_data_with_dual.sql: generating test data with dual
+@gen_list_data_without_dual.sql: generating test data without dual - 10g+
 @set_events.sql: various methods to set events, including per sql_id
 @10046.sql: Set event 10046 in a session
 @10046_off.sql: Stop event 10046 in a session
@@ -377,6 +379,7 @@ INSTANCE and/or DATABASE:
 @log-switch-histogram.sql: Display a histogram of redo log switch times
 @loghistory_8.sql: show archive logs with time between switches
 @loghist-csv.sql: dump history of archive logs (with timing) to CSV
+@oracle-naming-inconsistencies.sql:  highlight some of the inconsistencies oracle data dictionary column names
 @pivot.sql: Simple demo of PIVOT
 @purge_cursors.sql: purge a list of SQL cursors from shared_pool - 10g+ see Oracle Note 457309.1
 @reserved-words.sql: List reserved words from v$reserved_words
