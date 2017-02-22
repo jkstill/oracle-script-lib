@@ -186,6 +186,7 @@ ash_log_sync.sql: log sync events
 @flash-hist-stats.sql: retrieve recent flash cache stats from AWR
 @getsql-awr.sql: call with sql_id to get SQL text from AWR
 @osstat-cpu.sql: dump OS CPU metrics to CSV file
+@plan-counts-force.sql: count of plans matched with force_matching_signature
 @resize-ops-metric-awr.sql: Look back through AWR for excessive SGA resize operations before ORA-4031 occurs
 @resize-ops-metric.sql: Look in gv$memory_resize_ops for excessive SGA resize operations before ORA-4031 occurs
 @rowlock-hist.sql: rowlock history
