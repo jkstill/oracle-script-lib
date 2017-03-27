@@ -2,6 +2,7 @@
 -- who2.sql
 -- jared still
 -- jkstill@gmail.com
+-- just a comment
 
 @clears
 
