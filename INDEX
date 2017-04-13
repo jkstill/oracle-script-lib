@@ -184,6 +184,7 @@ ash_log_sync.sql: log sync events
 @dba_hist_sys_time_model.sql: example of querying dba_hist_sys_time_model - set your own stat_name
 @dbw-hist.sql: DBWR CPU and Wait time from dba_hist_active_sess_history
 @flash-hist-stats.sql: retrieve recent flash cache stats from AWR
+@get-binds.sql: get bind values from dba_hist_sqlbind
 @getsql-awr.sql: call with sql_id to get SQL text from AWR
 @osstat-cpu.sql: dump OS CPU metrics to CSV file
 @plan-counts-force.sql: count of plans matched with force_matching_signature
@@ -269,6 +270,7 @@ EXECUTION_PLAN:
 @showplan73.sql: show execution plans for oracle 7.2+
 @showplan9i.sql: show execution plans for oracle 9i+
 @showplan_last.sql: show execution plan for most recently executed cursor in current session
+@gen_bind_vars.sql: gather bind values from v$sql_bind and generate SQL
 @get_bind_values.sql:  get the bind values for a sql_id
 @get_awr_bind_values.sql:  get the bind values for a sql_id from AWR
 
