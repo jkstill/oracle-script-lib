@@ -22,7 +22,7 @@ set term on feed on echo off pause off verify off
 prompt Which SQL_ID? :
 
 set term off feed off
-select '&1' u_sql_id from dual;
+select '&3' u_sql_id from dual;
 set term on feed on
 
 var v_sql_id varchar2(30)
