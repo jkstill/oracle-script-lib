@@ -506,6 +506,8 @@ DATES: Dates and Date Math
 @date_math_4.sql: round timestamps to previous interval of N minutes
 @date_math_epoch.sql: get epoch to the millisecond using timestamp
 @job_submit.sql: controlling run_time of dbms_jobs
+@e2ts.sql: Convert epoch value to oracle timestamp
+@ts2e.sql: Convert oracle timestamp to epoch value
 
 MEMORY: Memory Settings and/or Advisors
 
