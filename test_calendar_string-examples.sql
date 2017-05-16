@@ -18,6 +18,7 @@
 -- between 00:00 and 06:00 every 2 hours at the top of the hour and second
 -- midnight, 2, 4 and 6
 @@test_calendar_string 'FREQ=HOURLY;BYHOUR=0,1,2,3,4,5,6;INTERVAL=2;BYMINUTE=00;BYSECOND=0' 30
+@@test_calendar_string 'FREQ=HOURLY;BYHOUR=0,2,4,6;BYMINUTE=00;BYSECOND=0' 30
 
 -- this example is incorrect as it is run every other day - the interval applies to the frequency
 --@@test_calendar_string 'FREQ=DAILY;BYHOUR=0,1,2,3,4,5,6;BYMINUTE=00;INTERVAL=2;BYSECOND=0' 30

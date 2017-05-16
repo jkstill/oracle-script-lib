@@ -21,6 +21,7 @@ DECLARE
   l_return_date_after  TIMESTAMP := l_start_date;
   l_next_run_date      TIMESTAMP;
 BEGIN
+	DBMS_OUTPUT.put_line('Starting Date: ' || l_start_date); 
   FOR i IN 1 .. l_iterations LOOP
     DBMS_SCHEDULER.evaluate_calendar_string(  
       calendar_string   => l_calendar_string,

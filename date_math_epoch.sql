@@ -1,6 +1,6 @@
 
 
--- epoch.sql
+-- date_math_epoch.sql
 -- convert current timestamp to epoch (UTC)
 -- convert epoch to timestamp
 -- Jared Still - 2017-05-16
