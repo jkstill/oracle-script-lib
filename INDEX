@@ -29,7 +29,6 @@ SUPPORTING SCRIPTS:
 @colors.sql: define values for sqlprompt colors
 @columns.sql: several sqlplus column settings
 @enqueue-bitand.sql: Demonstrate how to decode v$session.p1 values for enqueue waits
-@epoch.sql: get epoch to the millisecond using timestamp
 @get_date_range.sql: get begin and end date, put in vars - also date format var
 @opcodes.sql: list of SQL opcodes for use in 10g-. See cpu-busy.sql
 @oversion_minor.sql: get the XX.xx version of oracle and store in &v_oversion_minor
@@ -165,6 +164,7 @@ AWR/ASH:
 @awr-itl-waits.sql: find ITL waits
 @awr_itl_waits_10g.sql: find ITL waits in 10g
 @ash-waits-user.sql: summarize ASH all wait time for a user
+@ash-snapshot-define-begin-end.sql: example of how to bracket snap_id
 @ash-sessions.sql: frequency of sessions for a user
 @ash_cpu_hist.sql: cpu historic usage from dba_hist_sysmetric_history - 12c+
 @ashtop.sql: Tanel Poder script for top ASH events
@@ -234,6 +234,7 @@ USERS LOGGED ON:
 @get-curr-ospid.sql: get the server PID for your current session
 @who.sql: summary of users logged on
 @who2.sql: detailed info of users logged on
+@who2s.sql: shortened version of who2.sql which is called by some scripts
 @who2g.sql: detailed info of users logged on - includes all instances and PDB for 12c
 @who5.sql: IO per session
 @who6.sql: Show session info for background sessions
@@ -343,6 +344,7 @@ AUTOTASK and SCHEDULER:
 @schedcols.sql: col commands for scripts
 @scheduler_programs.sql: show dba_scheduler_programs
 @scheduler_windows.sql: show dba_scheduler_windows
+@test_calendar_string.sql: provide a scheduler calendar string and number of iterations to see when job runs in dbms_scheduler. Courtesy of oracle-base.com
 timezone specific:
 @tz_set.sql: set the nls_timezone_tz_format for autotask scripts
 @get_sched_tz.sql: get the default timezone for the scheduler
@@ -499,9 +501,10 @@ DRCP: Database Resident Connection Pooling
 DATES: Dates and Date Math
 
 @date_math.sql: how to get the minutes between to dates of the same day
-@date_math2.sql: how to get the minutes between to dates of the same day
-@date_math3.sql: cause a job to run at exactly 00:30 or 12:30, regardless of the last time it started
+@date_math_2.sql: how to get the minutes between to dates of the same day
+@date_math_3.sql: cause a job to run at exactly 00:30 or 12:30, regardless of the last time it started
 @date_math_4.sql: round timestamps to previous interval of N minutes
+@date_math_epoch.sql: get epoch to the millisecond using timestamp
 @job_submit.sql: controlling run_time of dbms_jobs
 
 MEMORY: Memory Settings and/or Advisors
