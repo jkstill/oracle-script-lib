@@ -1,14 +1,17 @@
 
 -- e2ts.sql
--- convert a highres (usec) epoch value to a timestamp
+-- convert a lowres (msec) epoch value to a timestamp
 -- 
+-- Jared Still 2017-05-16
+-- still@pythian.com jkstill@gmail.com
 
-prompt Convert a highres epoch value with microseconds to a timestamp with time zone
+
+prompt Convert a lowres epoch value with seconds to a timestamp with time zone
 prompt
 prompt Valid timezone values can be offsets or names
 prompt Examples Time Zones: 'PST', '-7:00', 'US/Pacific'
 prompt
-prompt Example:  @e2ts 1482014820627926 US/Eastern
+prompt Example:  @e2ts 1482181330 US/Eastern
 
 
 

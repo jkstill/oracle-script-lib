@@ -2,13 +2,16 @@
 -- ts2e.sql
 -- convert a timestamp to highres (usec) epoch value 
 -- 
+-- Jared Still 2017-05-16
+-- still@pythian.com jkstill@gmail.com
 
-prompt Convert a highres epoch value with microseconds to a timestamp with time zone
+
+prompt Convert a timestamp to a lowres (seconds) epoch value 
 prompt
 prompt Valid timezone values can be offsets or names
 prompt Examples Time Zones: 'PST', '-7:00', 'US/Pacific', 'US/Eastern'
 prompt
-prompt Example:  @ts2e '17-DEC-16 10.47.00.627926000 PM' 'US/Eastern'
+prompt Example: @ts2e '19-DEC-16 04.02.10.838000000 PM' 'US/Eastern'
 
 
 
