@@ -437,6 +437,8 @@ INSTANCE and/or DATABASE:
 @sess_longops.sql: query v$session_longops
 @recompile.sql: Recompile invalid objects.  Still works better than DBMSU_UILITY.COMPILE_SCHEMA
 @reverse_role_lookup.sql: Find all users granted a role
+@undo-active.sql:  Show active undo blocks - RAC aware
+@undo-active-12c.sql:  Show active undo blocks in 12c - RAC aware
 @wait_chains.sql: Troubleshooting Database Contention With V$Wait_Chains (Doc ID 1428210.1)
 
 SNAPSHOTS and MATERIALIZED_VIEWS:
