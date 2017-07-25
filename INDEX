@@ -169,14 +169,16 @@ AWR/ASH:
 @ash_cpu_hist.sql: cpu historic usage from dba_hist_sysmetric_history - 12c+
 @ashtop.sql: Tanel Poder script for top ASH events
 ash_log_sync.sql: log sync events
-@awr-export.sql: export AWR - useful for pre-migration work
 @awr_blockers.sql: historic blocking aggregated by sql_id
+@awr_bracket_snaps.sql: get snap_id values for a pair of days
 @awr_create_snapshot.sql: create an AWR snapshot
 @awr_defined.sql: Run a non-interactive AWR report
+@awr-export.sql: export AWR - useful for pre-migration work
 @awr_file_io_times.sql: Historical IO times on ASM files
 @awr_RAC_defined.sql: Run a non-interactive AWR report on RAC
 @awr_get_snapshots.sql: Get AWR snapshots for a date range
-@awr_bracket_snaps.sql: get snap_id values for a pair of days
+@awr-get-retention.sql: Display AWR retention and interval
+@awr-set-retention.sql: Example of setting AWR retention and interval
 @awr_settings.sql: query the dba_hist_wr_control view
 @awr-top-events.sql: get the top events from AWR per instance for a date range
 @awr-top-sqlid-events.sql: get the top events from AWR per instance and SQL_ID for a date range
