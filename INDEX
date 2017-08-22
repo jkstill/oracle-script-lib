@@ -517,6 +517,8 @@ DATES: Dates and Date Math
 MEMORY: Memory Settings and/or Advisors
 
 @db_cache_advice.sql: run db cache advisor
+@mem-subpool-mgt.sql: parameters used to manage memory subpools - requires SYSDBA
+@ora-4031-info-shared-pool.sql: displays several memory related configuration settings
 @pgacols.sql: column formatting
 @pga_advice.sql: run pga cache advisor
 @pga_advice_hist.sql: pga cached advice history
@@ -527,6 +529,9 @@ MEMORY: Memory Settings and/or Advisors
 @pgastat.sql: PGA stats from gv$pgastat
 @pgastat_hist.sql: PGA stats from dba_hist_pgastat
 @shared_pool_advice.sql: shared pool advisor
+
+
+
 
 
 12c: Scripts that are specific to Oracle 12c
