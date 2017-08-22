@@ -4,6 +4,11 @@
 -- look back through AWR for excessive resize operations
 -- it may be that SGA needs an increase before ORA-4031 occurs
 
+-- when AMM/ASMM is used SGA memory is divided into pools
+-- sometimes Oracle will throw ORA-4031 even though there is sufficient memory in another subpool
+-- see mem-subpool-mgt.sql 
+
+
 set linesize 200 trimspool on
 set pagesize 60
 
