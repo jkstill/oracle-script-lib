@@ -5,7 +5,9 @@ readmeFile='README.md'
 
 heading () {
 	local -r idxHdr="$*"
+	echo '</pre>'
 	echo "<h3>$idxHdr</h3>"
+	echo '<pre>'
 	:
 }
 
@@ -21,6 +23,12 @@ content () {
 
 echo > $readmeFile
 
+echo '<html>' >> $readmeFile
+echo '<body>' >> $readmeFile
+
+# assumes the first line is a header
+echo "<pre>" >> $readmeFile
+
 while read line
 do
 	#echo Line: "=== $line ==="
@@ -35,3 +43,6 @@ do
 
 done < <(grep -vE '^#|^\s*$' INDEX) >> $readmeFile
 
+echo '</pre>' >> $readmeFile
+echo '</body>' >> $readmeFile
+echo '</html>' >> $readmeFile
