@@ -1,20 +1,23 @@
 :
 
-SQLDIR=/home/jkstill/github/jkstill/oracle-script-lib
-TARFILE=~/ftp/sql_scripts_t12.tar
-ZIPFILE=~/ftp/sql_scripts_t12_windows.zip
+SQLDIR=/home/jkstill/oracle/oracle-script-lib/sql
+TARFILE=~/ftp/sql_scripts.tar
+ZIPFILE=~/ftp/sql_scripts_windows.zip
 
 rm -f ${TARFILE}.gz
 
 FILES=$(grep ^@ INDEX*| cut -f2 -d@ | cut -f1 -d:)
 
-cd $SQLDIR
+cd $SQLDIR || {
+	echo Could not chdir to $SQLDIR
+	exit 3
+}
 
 # maintain symlinks as needed
 
-for f in $(grep ^@ INDEX.ashmasters| cut -f2 -d@ | cut -f1 -d:)
+for f in $(grep ^@ ../INDEX.ashmasters| cut -f2 -d@ | cut -f1 -d:)
 do
-	ln -s ../ashmasters/ashmasters/$f . 2>/dev/null
+	ln -s ../../ashmasters/$f . 2>/dev/null
 done
 
 # get current version of snapper from Tanel Poder
@@ -30,7 +33,8 @@ wget http://blog.tanelpoder.com/files/scripts/ashtop.sql
 rm -f ashtop.sql.[2-9]
 
 # h dereferences symbolic links and gets the file instead of the link
-CMD="tar chvf $TARFILE INDEX* $FILES"
+
+CMD="tar chvf $TARFILE ../INDEX* $FILES"
 #echo CMD:$CMD
 $CMD
 gzip $TARFILE
@@ -51,13 +55,17 @@ tar xvfz $TARFILE
 
 unix2dos *.sql
 unix2dos INDEX
-zip $ZIPFILE INDEX *.sql
+zip $ZIPFILE INDEX* *.sql
 
 rm -f $TMPDIR/INDEX*
 rm -f $TMPDIR/*.sql
 rm -f $TMPDIR/distribution.sh
 cd
 rmdir $TMPDIR
+
+: <<'JKS-DOC'
+
+# skipping dropbox
 
 dropboxDir=/home/jkstill/Dropbox/Public/oracle/SQL-Library
 
@@ -78,6 +86,8 @@ echo
 
 cp $TARFILE $dropboxDir
 cp $ZIPFILE $dropboxDir
+
+JKS-DOC
 
 echo Files:
 echo "  $TARFILE"
