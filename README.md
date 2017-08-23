@@ -5,9 +5,7 @@
 </pre>
 <h3>TUNING: scripts to aid with tuning</h3>
 <pre>
-</pre>
-<h3>profile_from_awr.sql: create a SQL Profile from plan in AWR</h3>
-<pre>
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/profile_from_awr.sql'>profile_from_awr.sql</a> - create a SQL Profile from plan in AWR
 </pre>
 <h3>LIB ADMIN:</h3>
 <pre>
