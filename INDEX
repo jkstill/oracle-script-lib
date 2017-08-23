@@ -1,7 +1,7 @@
 
 TUNING: scripts to aid with tuning
 
-profile_from_awr.sql: create a SQL Profile from plan in AWR
+@profile_from_awr.sql: create a SQL Profile from plan in AWR
 
 
 LIB ADMIN:
