@@ -1,4 +1,9 @@
 
+-- trans_per_hour.sql
+-- approximate the trans based on commits and rollbacks
+-- 
+
+set serveroutput on size 1000000
 
 var start_date char(20)
 
@@ -58,10 +63,10 @@ begin
 			;
 	elsif v_version = 8 then
 		v_sqlcmd := 'select to_char(startup_time,' || '''' || 'mm/dd/yyyy hh24:mi:ss' || '''' || ') into :start_date from v$instance';
-		null;
 	elsif v_version = 9 then
 		v_sqlcmd := 'select to_char(startup_time,' || '''' || 'mm/dd/yyyy hh24:mi:ss' || '''' || ') into :start_date from v$instance';
-		null;
+	else
+		v_sqlcmd := 'select to_char(startup_time,' || '''' || 'mm/dd/yyyy hh24:mi:ss' || '''' || ') into :start_date from v$instance';
 	end if;
 
 	h_sql_cursor := dbms_sql.open_cursor;
