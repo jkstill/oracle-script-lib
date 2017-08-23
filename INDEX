@@ -126,7 +126,7 @@ EVENTS:
 WAITS/LOCKS/LATCHES and PERFORMANCE:
 
 @active_status.sql: show which current active sessions are on CPU
-cpu-killer.sql: max out a CPU. Do Not use in production!
+@cpu-killer.sql: max out a CPU. Do Not use in production!
 @itl_waits.sql: show itl waits - increase initrans
 @itl_waits_hist.sql: show itl waits history
 @showlatch.sql: Show latches and stats
