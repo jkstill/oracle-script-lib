@@ -1,3 +1,0 @@
-
-exec statspack.snap;
-

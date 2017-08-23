@@ -1,3 +1,0 @@
-
-@@show_jobs ALL
-
