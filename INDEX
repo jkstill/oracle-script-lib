@@ -180,6 +180,7 @@ ash_log_sync.sql: log sync events
 @awr-get-retention.sql: Display AWR retention and interval
 @awr-set-retention.sql: Example of setting AWR retention and interval
 @awr_settings.sql: query the dba_hist_wr_control view
+@awr-resource_limit.sql: history of processes and sessions from dba_hist_resource_limit
 @awr-top-events.sql: get the top events from AWR per instance for a date range
 @awr-top-sqlid-events.sql: get the top events from AWR per instance and SQL_ID for a date range
 @awr-trans-counts.sql: show summary of user commits, rollbacks and log sync writes by day
@@ -222,6 +223,7 @@ STATSPACK:
 @sp_plan_hash.sql: Show execution plans from statspack data. first create view with sp_plan_table.sql - input is the hash value of the sql statement in stats$sqltext this will be seen in reports created by spreport.sql in 9i+ where the snapshot level is 5+
 @sp_plan_table.sql: create a view stats_plan_table for use with dbms_xplan.display and stats$sql_plan
 @sp_recent.sql: get the 10 most recent snapshots
+@sp_resource_limit.sql: history of processes and sessions from stats$resource_limit
 @sp_snap.sql: perform a snapshot
 @sp_snap_6.sql: perform a level 6 snapshot
 @sp_snap_id.sql: example of searching for specific snap_id

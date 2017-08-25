@@ -185,6 +185,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-get-retention.sql'>awr-get-retention.sql</a> - Display AWR retention and interval
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-set-retention.sql'>awr-set-retention.sql</a> - Example of setting AWR retention and interval
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_settings.sql'>awr_settings.sql</a> - query the dba_hist_wr_control view
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-resource_limit.sql'>awr-resource_limit.sql</a> - history of processes and sessions from dba_hist_resource_limit
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-top-events.sql'>awr-top-events.sql</a> - get the top events from AWR per instance for a date range
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-top-sqlid-events.sql'>awr-top-sqlid-events.sql</a> - get the top events from AWR per instance and SQL_ID for a date range
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-trans-counts.sql'>awr-trans-counts.sql</a> - show summary of user commits, rollbacks and log sync writes by day
@@ -227,6 +228,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sp_plan_hash.sql'>sp_plan_hash.sql</a> - Show execution plans from statspack data. first create view with sp_plan_table.sql - input is the hash value of the sql statement in stats$sqltext this will be seen in reports created by spreport.sql in 9i+ where the snapshot level is 5+
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sp_plan_table.sql'>sp_plan_table.sql</a> - create a view stats_plan_table for use with dbms_xplan.display and stats$sql_plan
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sp_recent.sql'>sp_recent.sql</a> - get the 10 most recent snapshots
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sp_resource_limit.sql'>sp_resource_limit.sql</a> - history of processes and sessions from stats$resource_limit
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sp_snap.sql'>sp_snap.sql</a> - perform a snapshot
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sp_snap_6.sql'>sp_snap_6.sql</a> - perform a level 6 snapshot
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sp_snap_id.sql'>sp_snap_id.sql</a> - example of searching for specific snap_id
