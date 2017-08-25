@@ -185,7 +185,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-get-retention.sql'>awr-get-retention.sql</a> - Display AWR retention and interval
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-set-retention.sql'>awr-set-retention.sql</a> - Example of setting AWR retention and interval
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_settings.sql'>awr_settings.sql</a> - query the dba_hist_wr_control view
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-resource_limit.sql'>awr-resource_limit.sql</a> - history of processes and sessions from dba_hist_resource_limit
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-resource-limit.sql'>awr-resource-limit.sql</a> - history of processes and sessions from dba_hist_resource_limit
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-top-events.sql'>awr-top-events.sql</a> - get the top events from AWR per instance for a date range
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-top-sqlid-events.sql'>awr-top-sqlid-events.sql</a> - get the top events from AWR per instance and SQL_ID for a date range
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-trans-counts.sql'>awr-trans-counts.sql</a> - show summary of user commits, rollbacks and log sync writes by day
