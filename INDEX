@@ -274,6 +274,7 @@ EXECUTION_PLAN:
 @showplan9i.sql: show execution plans for oracle 9i+
 @showplan_last.sql: show execution plan for most recently executed cursor in current session
 @gen_bind_vars.sql: gather bind values from v$sql_bind and generate SQL
+@gen_bind_vars_awr.sql: gather bind values from dba_hist_sqltext and generate SQL
 @get_bind_values.sql:  get the bind values for a sql_id
 @get_awr_bind_values.sql:  get the bind values for a sql_id from AWR
 
