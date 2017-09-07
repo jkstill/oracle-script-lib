@@ -1,0 +1,1089 @@
+
+
+Date: 09/07/17                            Jared Still                               Page:   1
+Time: 01:28 PM              Tables For PERFSTAT - Search Criteria %             SYS
+                                      ORCL  Database
+
+TABLE                          COLUMN                         TYPE      SIZE       NULLABLE
+------------------------------ ------------------------------ --------- ---------- --------
+STATS$BG_EVENT_SUMMARY         DBID                           NUMBER               NOT NULL
+                               EVENT                          VARCHAR2  (64)       NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               TIME_WAITED_MICRO              NUMBER               NULL
+                               TOTAL_TIMEOUTS                 NUMBER               NULL
+                               TOTAL_WAITS                    NUMBER               NULL
+
+STATS$BUFFERED_QUEUES          CNUM_MSGS                      NUMBER               NULL
+                               CSPILL_MSGS                    NUMBER               NULL
+                               DBID                           NUMBER               NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               NUM_MSGS                       NUMBER               NULL
+                               QUEUE_NAME                     VARCHAR2  (30)       NOT NULL
+                               QUEUE_SCHEMA                   VARCHAR2  (30)       NOT NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               STARTUP_TIME                   DATE                 NOT NULL
+
+STATS$BUFFERED_SUBSCRIBERS     CNUM_MSGS                      NUMBER               NULL
+                               DBID                           NUMBER               NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               NUM_MSGS                       NUMBER               NULL
+                               QUEUE_NAME                     VARCHAR2  (30)       NOT NULL
+                               QUEUE_SCHEMA                   VARCHAR2  (30)       NOT NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               STARTUP_TIME                   DATE                 NOT NULL
+                               SUBSCRIBER_ADDRESS             VARCHAR2  (1024)     NULL
+                               SUBSCRIBER_ID                  NUMBER               NOT NULL
+                               SUBSCRIBER_NAME                VARCHAR2  (30)       NULL
+                               SUBSCRIBER_TYPE                VARCHAR2  (30)       NULL
+                               TOTAL_SPILLED_MSG              NUMBER               NULL
+
+STATS$BUFFER_POOL_STATISTICS   BLOCK_SIZE                     NUMBER               NULL
+                               BUFFER_BUSY_WAIT               NUMBER               NULL
+                               BUF_GOT                        NUMBER               NULL
+                               CNUM_REPL                      NUMBER               NULL
+                               CNUM_SET                       NUMBER               NULL
+                               CNUM_WRITE                     NUMBER               NULL
+                               CONSISTENT_GETS                NUMBER               NULL
+                               DBID                           NUMBER               NOT NULL
+                               DB_BLOCK_CHANGE                NUMBER               NULL
+                               DB_BLOCK_GETS                  NUMBER               NULL
+                               DIRTY_BUFFERS_INSPECTED        NUMBER               NULL
+                               FREE_BUFFER_INSPECTED          NUMBER               NULL
+                               FREE_BUFFER_WAIT               NUMBER               NULL
+                               ID                             NUMBER               NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               NAME                           VARCHAR2  (20)       NULL
+                               PHYSICAL_READS                 NUMBER               NULL
+                               PHYSICAL_WRITES                NUMBER               NULL
+                               SET_MSIZE                      NUMBER               NULL
+
+Date: 09/07/17                            Jared Still                               Page:   2
+Time: 01:28 PM              Tables For PERFSTAT - Search Criteria %             SYS
+                                      ORCL  Database
+
+TABLE                          COLUMN                         TYPE      SIZE       NULLABLE
+------------------------------ ------------------------------ --------- ---------- --------
+STATS$BUFFER_POOL_STATISTICS   SNAP_ID                        NUMBER               NOT NULL
+                               SUM_SCAN                       NUMBER               NULL
+                               SUM_WRITE                      NUMBER               NULL
+                               WRITE_COMPLETE_WAIT            NUMBER               NULL
+
+STATS$CR_BLOCK_SERVER          CR_REQUESTS                    NUMBER               NULL
+                               CURRENT_REQUESTS               NUMBER               NULL
+                               CURRENT_RESULTS                NUMBER               NULL
+                               DATA_REQUESTS                  NUMBER               NULL
+                               DBID                           NUMBER               NOT NULL
+                               DISK_READ_RESULTS              NUMBER               NULL
+                               ERRORS                         NUMBER               NULL
+                               FAIL_RESULTS                   NUMBER               NULL
+                               FAIRNESS_CLEARS                NUMBER               NULL
+                               FAIRNESS_DOWN_CONVERTS         NUMBER               NULL
+                               FLUSHES                        NUMBER               NULL
+                               FLUSHES_QUEUED                 NUMBER               NULL
+                               FLUSH_MAX_TIME                 NUMBER               NULL
+                               FLUSH_QUEUE_FULL               NUMBER               NULL
+                               FREE_GC_ELEMENTS               NUMBER               NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               LIGHT_WORKS                    NUMBER               NULL
+                               PRIVATE_RESULTS                NUMBER               NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               TX_REQUESTS                    NUMBER               NULL
+                               UNDO_REQUESTS                  NUMBER               NULL
+                               ZERO_RESULTS                   NUMBER               NULL
+
+STATS$CURRENT_BLOCK_SERVER     DBID                           NUMBER               NOT NULL
+                               FLUSH1                         NUMBER               NULL
+                               FLUSH10                        NUMBER               NULL
+                               FLUSH100                       NUMBER               NULL
+                               FLUSH1000                      NUMBER               NULL
+                               FLUSH10000                     NUMBER               NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               PIN1                           NUMBER               NULL
+                               PIN10                          NUMBER               NULL
+                               PIN100                         NUMBER               NULL
+                               PIN1000                        NUMBER               NULL
+                               PIN10000                       NUMBER               NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               WRITE1                         NUMBER               NULL
+                               WRITE10                        NUMBER               NULL
+                               WRITE100                       NUMBER               NULL
+                               WRITE1000                      NUMBER               NULL
+                               WRITE10000                     NUMBER               NULL
+
+STATS$DATABASE_INSTANCE        DBID                           NUMBER               NOT NULL
+                               DB_NAME                        VARCHAR2  (9)        NOT NULL
+                               HOST_NAME                      VARCHAR2  (64)       NULL
+                               INSTANCE_NAME                  VARCHAR2  (16)       NOT NULL
+
+Date: 09/07/17                            Jared Still                               Page:   3
+Time: 01:28 PM              Tables For PERFSTAT - Search Criteria %             SYS
+                                      ORCL  Database
+
+TABLE                          COLUMN                         TYPE      SIZE       NULLABLE
+------------------------------ ------------------------------ --------- ---------- --------
+STATS$DATABASE_INSTANCE        INSTANCE_NUMBER                NUMBER               NOT NULL
+                               PARALLEL                       VARCHAR2  (3)        NOT NULL
+                               PLATFORM_NAME                  VARCHAR2  (101)      NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               STARTUP_TIME                   DATE                 NOT NULL
+                               VERSION                        VARCHAR2  (17)       NOT NULL
+
+STATS$DB_CACHE_ADVICE          ADVICE_STATUS                  VARCHAR2  (3)        NULL
+                               BLOCK_SIZE                     NUMBER               NOT NULL
+                               BUFFERS_FOR_ESTIMATE           NUMBER               NOT NULL
+                               DBID                           NUMBER               NOT NULL
+                               ESTD_CLUSTER_READS             NUMBER               NULL
+                               ESTD_CLUSTER_READ_TIME         NUMBER               NULL
+                               ESTD_PCT_OF_DB_TIME_FOR_READS  NUMBER               NULL
+                               ESTD_PHYSICAL_READS            NUMBER               NULL
+                               ESTD_PHYSICAL_READ_FACTOR      NUMBER               NULL
+                               ESTD_PHYSICAL_READ_TIME        NUMBER               NULL
+                               ID                             NUMBER               NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               NAME                           VARCHAR2  (20)       NOT NULL
+                               SIZE_FACTOR                    NUMBER               NULL
+                               SIZE_FOR_ESTIMATE              NUMBER               NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+
+STATS$DLM_MISC                 DBID                           NUMBER               NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               NAME                           VARCHAR2  (38)       NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               STATISTIC#                     NUMBER               NOT NULL
+                               VALUE                          NUMBER               NULL
+
+STATS$DYNAMIC_REMASTER_STATS   CLEANUP_TIME                   NUMBER               NULL
+                               CURRENT_OBJECTS                NUMBER               NULL
+                               DBID                           NUMBER               NOT NULL
+                               FIXWRITE_TIME                  NUMBER               NULL
+                               FREEZE_TIME                    NUMBER               NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               QUIESCE_TIME                   NUMBER               NULL
+                               REMASTERED_OBJECTS             NUMBER               NULL
+                               REMASTER_OPS                   NUMBER               NULL
+                               REMASTER_TIME                  NUMBER               NULL
+                               REPLAYED_LOCKS_RECEIVED        NUMBER               NULL
+                               REPLAYED_LOCKS_SENT            NUMBER               NULL
+                               REPLAY_TIME                    NUMBER               NULL
+                               RESOURCES_CLEANED              NUMBER               NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               SYNC_TIME                      NUMBER               NULL
+
+STATS$ENQUEUE_STATISTICS       CUM_WAIT_TIME                  NUMBER               NULL
+                               DBID                           NUMBER               NOT NULL
+                               EQ_TYPE                        VARCHAR2  (2)        NOT NULL
+
+Date: 09/07/17                            Jared Still                               Page:   4
+Time: 01:28 PM              Tables For PERFSTAT - Search Criteria %             SYS
+                                      ORCL  Database
+
+TABLE                          COLUMN                         TYPE      SIZE       NULLABLE
+------------------------------ ------------------------------ --------- ---------- --------
+STATS$ENQUEUE_STATISTICS       EVENT#                         NUMBER               NULL
+                               FAILED_REQ#                    NUMBER               NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               REQ_REASON                     VARCHAR2  (64)       NOT NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               SUCC_REQ#                      NUMBER               NULL
+                               TOTAL_REQ#                     NUMBER               NULL
+                               TOTAL_WAIT#                    NUMBER               NULL
+
+STATS$EVENT_HISTOGRAM          DBID                           NUMBER               NOT NULL
+                               EVENT_ID                       NUMBER               NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               WAIT_COUNT                     NUMBER               NULL
+                               WAIT_TIME_MILLI                NUMBER               NOT NULL
+
+STATS$FILESTATXS               DBID                           NUMBER               NOT NULL
+                               FILE#                          NUMBER               NULL
+                               FILENAME                       VARCHAR2  (513)      NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               PHYBLKRD                       NUMBER               NULL
+                               PHYBLKWRT                      NUMBER               NULL
+                               PHYRDS                         NUMBER               NULL
+                               PHYWRTS                        NUMBER               NULL
+                               READTIM                        NUMBER               NULL
+                               SINGLEBLKRDS                   NUMBER               NULL
+                               SINGLEBLKRDTIM                 NUMBER               NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               TIME                           NUMBER               NULL
+                               TSNAME                         VARCHAR2  (30)       NOT NULL
+                               WAIT_COUNT                     NUMBER               NULL
+                               WRITETIM                       NUMBER               NULL
+
+STATS$FILE_HISTOGRAM           DBID                           NUMBER               NOT NULL
+                               FILE#                          NUMBER               NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               SINGLEBLKRDS                   NUMBER               NULL
+                               SINGLEBLKRDTIM_MILLI           NUMBER               NOT NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+
+STATS$IDLE_EVENT               EVENT                          VARCHAR2  (64)       NOT NULL
+
+STATS$INSTANCE_CACHE_TRANSFER  CLASS                          VARCHAR2  (18)       NOT NULL
+                               CR_BLOCK                       NUMBER               NULL
+                               CR_BUSY                        NUMBER               NULL
+                               CR_CONGESTED                   NUMBER               NULL
+                               CURRENT_BLOCK                  NUMBER               NULL
+                               CURRENT_BUSY                   NUMBER               NULL
+                               CURRENT_CONGESTED              NUMBER               NULL
+                               DBID                           NUMBER               NOT NULL
+                               INSTANCE                       NUMBER               NOT NULL
+
+Date: 09/07/17                            Jared Still                               Page:   5
+Time: 01:28 PM              Tables For PERFSTAT - Search Criteria %             SYS
+                                      ORCL  Database
+
+TABLE                          COLUMN                         TYPE      SIZE       NULLABLE
+------------------------------ ------------------------------ --------- ---------- --------
+STATS$INSTANCE_CACHE_TRANSFER  INSTANCE_NUMBER                NUMBER               NOT NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+
+STATS$INSTANCE_RECOVERY        ACTUAL_REDO_BLKS               NUMBER               NULL
+                               CKPT_BLOCK_WRITES              NUMBER               NULL
+                               DBID                           NUMBER               NOT NULL
+                               ESTIMATED_MTTR                 NUMBER               NULL
+                               FAST_START_IO_TARGET_REDO_BLKS NUMBER               NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               LOG_CHKPT_INTERVAL_REDO_BLKS   NUMBER               NULL
+                               LOG_CHKPT_TIMEOUT_REDO_BLKS    NUMBER               NULL
+                               LOG_FILE_SIZE_REDO_BLKS        NUMBER               NULL
+                               RECOVERY_ESTIMATED_IOS         NUMBER               NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               TARGET_MTTR                    NUMBER               NULL
+                               TARGET_REDO_BLKS               NUMBER               NULL
+
+STATS$INTERCONNECT_PINGS       DBID                           NUMBER               NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               ITER_500B                      NUMBER               NULL
+                               ITER_8K                        NUMBER               NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               TARGET_INSTANCE                NUMBER               NOT NULL
+                               WAITSQ_500B                    NUMBER               NULL
+                               WAITSQ_8K                      NUMBER               NULL
+                               WAIT_500B                      NUMBER               NULL
+                               WAIT_8K                        NUMBER               NULL
+
+STATS$IOSTAT_FUNCTION          DBID                           NUMBER               NOT NULL
+                               FUNCTION_ID                    NUMBER               NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               LARGE_READ_MEGABYTES           NUMBER               NULL
+                               LARGE_READ_REQS                NUMBER               NULL
+                               LARGE_WRITE_MEGABYTES          NUMBER               NULL
+                               LARGE_WRITE_REQS               NUMBER               NULL
+                               NUMBER_OF_WAITS                NUMBER               NULL
+                               SMALL_READ_MEGABYTES           NUMBER               NULL
+                               SMALL_READ_REQS                NUMBER               NULL
+                               SMALL_WRITE_MEGABYTES          NUMBER               NULL
+                               SMALL_WRITE_REQS               NUMBER               NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               WAIT_TIME                      NUMBER               NULL
+
+STATS$IOSTAT_FUNCTION_NAME     FUNCTION_ID                    NUMBER               NOT NULL
+                               FUNCTION_NAME                  VARCHAR2  (18)       NOT NULL
+
+STATS$JAVA_POOL_ADVICE         DBID                           NUMBER               NOT NULL
+                               ESTD_LC_LOAD_TIME              NUMBER               NULL
+                               ESTD_LC_LOAD_TIME_FACTOR       NUMBER               NULL
+                               ESTD_LC_MEMORY_OBJECTS         NUMBER               NULL
+                               ESTD_LC_MEMORY_OBJECT_HITS     NUMBER               NULL
+
+Date: 09/07/17                            Jared Still                               Page:   6
+Time: 01:28 PM              Tables For PERFSTAT - Search Criteria %             SYS
+                                      ORCL  Database
+
+TABLE                          COLUMN                         TYPE      SIZE       NULLABLE
+------------------------------ ------------------------------ --------- ---------- --------
+STATS$JAVA_POOL_ADVICE         ESTD_LC_SIZE                   NUMBER               NULL
+                               ESTD_LC_TIME_SAVED             NUMBER               NULL
+                               ESTD_LC_TIME_SAVED_FACTOR      NUMBER               NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               JAVA_POOL_SIZE_FACTOR          NUMBER               NULL
+                               JAVA_POOL_SIZE_FOR_ESTIMATE    NUMBER               NOT NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+
+STATS$LATCH                    DBID                           NUMBER               NOT NULL
+                               GETS                           NUMBER               NULL
+                               IMMEDIATE_GETS                 NUMBER               NULL
+                               IMMEDIATE_MISSES               NUMBER               NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               LATCH#                         NUMBER               NOT NULL
+                               LEVEL#                         NUMBER               NULL
+                               MISSES                         NUMBER               NULL
+                               NAME                           VARCHAR2  (64)       NOT NULL
+                               SLEEP1                         NUMBER               NULL
+                               SLEEP2                         NUMBER               NULL
+                               SLEEP3                         NUMBER               NULL
+                               SLEEP4                         NUMBER               NULL
+                               SLEEPS                         NUMBER               NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               SPIN_GETS                      NUMBER               NULL
+                               WAIT_TIME                      NUMBER               NULL
+
+STATS$LATCH_CHILDREN           CHILD#                         NUMBER               NOT NULL
+                               DBID                           NUMBER               NOT NULL
+                               GETS                           NUMBER               NULL
+                               IMMEDIATE_GETS                 NUMBER               NULL
+                               IMMEDIATE_MISSES               NUMBER               NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               LATCH#                         NUMBER               NOT NULL
+                               MISSES                         NUMBER               NULL
+                               SLEEP1                         NUMBER               NULL
+                               SLEEP2                         NUMBER               NULL
+                               SLEEP3                         NUMBER               NULL
+                               SLEEP4                         NUMBER               NULL
+                               SLEEPS                         NUMBER               NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               SPIN_GETS                      NUMBER               NULL
+                               WAIT_TIME                      NUMBER               NULL
+
+STATS$LATCH_MISSES_SUMMARY     DBID                           NUMBER               NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               NWFAIL_COUNT                   NUMBER               NULL
+                               PARENT_NAME                    VARCHAR2  (50)       NOT NULL
+                               SLEEP_COUNT                    NUMBER               NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               WHERE_IN_CODE                  VARCHAR2  (64)       NOT NULL
+                               WTR_SLP_COUNT                  NUMBER               NULL
+
+Date: 09/07/17                            Jared Still                               Page:   7
+Time: 01:28 PM              Tables For PERFSTAT - Search Criteria %             SYS
+                                      ORCL  Database
+
+TABLE                          COLUMN                         TYPE      SIZE       NULLABLE
+------------------------------ ------------------------------ --------- ---------- --------
+
+STATS$LATCH_PARENT             DBID                           NUMBER               NOT NULL
+                               GETS                           NUMBER               NULL
+                               IMMEDIATE_GETS                 NUMBER               NULL
+                               IMMEDIATE_MISSES               NUMBER               NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               LATCH#                         NUMBER               NOT NULL
+                               LEVEL#                         NUMBER               NOT NULL
+                               MISSES                         NUMBER               NULL
+                               SLEEP1                         NUMBER               NULL
+                               SLEEP2                         NUMBER               NULL
+                               SLEEP3                         NUMBER               NULL
+                               SLEEP4                         NUMBER               NULL
+                               SLEEPS                         NUMBER               NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               SPIN_GETS                      NUMBER               NULL
+                               WAIT_TIME                      NUMBER               NULL
+
+STATS$LEVEL_DESCRIPTION        DESCRIPTION                    VARCHAR2  (300)      NULL
+                               SNAP_LEVEL                     NUMBER               NOT NULL
+
+STATS$LIBRARYCACHE             DBID                           NUMBER               NOT NULL
+                               DLM_INVALIDATIONS              NUMBER               NULL
+                               DLM_INVALIDATION_REQUESTS      NUMBER               NULL
+                               DLM_LOCK_REQUESTS              NUMBER               NULL
+                               DLM_PIN_RELEASES               NUMBER               NULL
+                               DLM_PIN_REQUESTS               NUMBER               NULL
+                               GETHITS                        NUMBER               NULL
+                               GETS                           NUMBER               NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               INVALIDATIONS                  NUMBER               NULL
+                               NAMESPACE                      VARCHAR2  (15)       NOT NULL
+                               PINHITS                        NUMBER               NULL
+                               PINS                           NUMBER               NULL
+                               RELOADS                        NUMBER               NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+
+STATS$MEMORY_DYNAMIC_COMPS     COMPONENT                      VARCHAR2  (64)       NOT NULL
+                               CURRENT_SIZE                   NUMBER               NULL
+                               DBID                           NUMBER               NOT NULL
+                               GRANULE_SIZE                   NUMBER               NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               LAST_OPER_MODE                 VARCHAR2  (9)        NULL
+                               LAST_OPER_TIME                 DATE                 NULL
+                               LAST_OPER_TYPE                 VARCHAR2  (13)       NULL
+                               MAX_SIZE                       NUMBER               NULL
+                               MIN_SIZE                       NUMBER               NULL
+                               OPER_COUNT                     NUMBER               NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               USER_SPECIFIED_SIZE            NUMBER               NULL
+
+
+Date: 09/07/17                            Jared Still                               Page:   8
+Time: 01:28 PM              Tables For PERFSTAT - Search Criteria %             SYS
+                                      ORCL  Database
+
+TABLE                          COLUMN                         TYPE      SIZE       NULLABLE
+------------------------------ ------------------------------ --------- ---------- --------
+STATS$MEMORY_RESIZE_OPS        COMPONENT                      VARCHAR2  (64)       NOT NULL
+                               DBID                           NUMBER               NOT NULL
+                               END_TIME                       DATE                 NOT NULL
+                               FINAL_SIZE                     NUMBER               NOT NULL
+                               INITIAL_SIZE                   NUMBER               NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               NUM_OPS                        NUMBER               NULL
+                               OPER_MODE                      VARCHAR2  (9)        NOT NULL
+                               OPER_TYPE                      VARCHAR2  (13)       NOT NULL
+                               PARAMETER                      VARCHAR2  (80)       NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               START_TIME                     DATE                 NOT NULL
+                               STATUS                         VARCHAR2  (9)        NOT NULL
+                               TARGET_SIZE                    NUMBER               NOT NULL
+
+STATS$MEMORY_TARGET_ADVICE     DBID                           NUMBER               NOT NULL
+                               ESTD_DB_TIME                   NUMBER               NULL
+                               ESTD_DB_TIME_FACTOR            NUMBER               NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               MEMORY_SIZE                    NUMBER               NOT NULL
+                               MEMORY_SIZE_FACTOR             NUMBER               NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               VERSION                        NUMBER               NULL
+
+STATS$MUTEX_SLEEP              DBID                           NUMBER               NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               LOCATION                       VARCHAR2  (40)       NOT NULL
+                               MUTEX_TYPE                     VARCHAR2  (32)       NOT NULL
+                               SLEEPS                         NUMBER               NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               WAIT_TIME                      NUMBER               NULL
+
+STATS$OSSTAT                   DBID                           NUMBER               NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               OSSTAT_ID                      NUMBER               NOT NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               VALUE                          NUMBER               NULL
+
+STATS$OSSTATNAME               CUMULATIVE                     VARCHAR2  (3)        NULL
+                               OSSTAT_ID                      NUMBER               NOT NULL
+                               STAT_NAME                      VARCHAR2  (64)       NOT NULL
+
+STATS$PARAMETER                DBID                           NUMBER               NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               ISDEFAULT                      VARCHAR2  (9)        NULL
+                               ISMODIFIED                     VARCHAR2  (10)       NULL
+                               NAME                           VARCHAR2  (64)       NOT NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               VALUE                          VARCHAR2  (4000)     NULL
+
+STATS$PGASTAT                  DBID                           NUMBER               NOT NULL
+
+Date: 09/07/17                            Jared Still                               Page:   9
+Time: 01:28 PM              Tables For PERFSTAT - Search Criteria %             SYS
+                                      ORCL  Database
+
+TABLE                          COLUMN                         TYPE      SIZE       NULLABLE
+------------------------------ ------------------------------ --------- ---------- --------
+STATS$PGASTAT                  INSTANCE_NUMBER                NUMBER               NOT NULL
+                               NAME                           VARCHAR2  (64)       NOT NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               VALUE                          NUMBER               NULL
+
+STATS$PGA_TARGET_ADVICE        ADVICE_STATUS                  VARCHAR2  (3)        NULL
+                               BYTES_PROCESSED                NUMBER               NULL
+                               DBID                           NUMBER               NOT NULL
+                               ESTD_EXTRA_BYTES_RW            NUMBER               NULL
+                               ESTD_OVERALLOC_COUNT           NUMBER               NULL
+                               ESTD_PGA_CACHE_HIT_PERCENTAGE  NUMBER               NULL
+                               ESTD_TIME                      NUMBER               NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               PGA_TARGET_FACTOR              NUMBER               NULL
+                               PGA_TARGET_FOR_ESTIMATE        NUMBER               NOT NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+
+STATS$PROCESS_MEMORY_ROLLUP    ALLOCATED                      NUMBER               NULL
+                               AVG_ALLOCATED                  NUMBER               NULL
+                               CATEGORY                       VARCHAR2  (15)       NOT NULL
+                               DBID                           NUMBER               NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               MAX_ALLOCATED                  NUMBER               NULL
+                               MAX_MAX_ALLOCATED              NUMBER               NULL
+                               NON_ZERO_ALLOCATIONS           NUMBER               NULL
+                               PID                            NUMBER               NOT NULL
+                               SERIAL#                        NUMBER               NOT NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               STDDEV_ALLOCATED               NUMBER               NULL
+                               USED                           NUMBER               NULL
+
+STATS$PROCESS_ROLLUP           AVG_PGA_ALLOC_MEM              NUMBER               NULL
+                               BACKGROUND                     VARCHAR2  (1)        NULL
+                               DBID                           NUMBER               NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               MAX_PGA_ALLOC_MEM              NUMBER               NULL
+                               MAX_PGA_MAX_MEM                NUMBER               NULL
+                               NUM_PROCESSES                  NUMBER               NULL
+                               PGA_ALLOC_MEM                  NUMBER               NULL
+                               PGA_FREEABLE_MEM               NUMBER               NULL
+                               PGA_USED_MEM                   NUMBER               NULL
+                               PID                            NUMBER               NOT NULL
+                               PROGRAM                        VARCHAR2  (48)       NULL
+                               SERIAL#                        NUMBER               NOT NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               SPID                           VARCHAR2  (12)       NULL
+                               STDDEV_PGA_ALLOC_MEM           NUMBER               NULL
+
+STATS$PROPAGATION_RECEIVER     DBID                           NUMBER               NOT NULL
+                               DST_QUEUE_NAME                 VARCHAR2  (30)       NOT NULL
+                               DST_QUEUE_SCHEMA               VARCHAR2  (30)       NOT NULL
+
+Date: 09/07/17                            Jared Still                               Page:  10
+Time: 01:28 PM              Tables For PERFSTAT - Search Criteria %             SYS
+                                      ORCL  Database
+
+TABLE                          COLUMN                         TYPE      SIZE       NULLABLE
+------------------------------ ------------------------------ --------- ---------- --------
+STATS$PROPAGATION_RECEIVER     ELAPSED_ENQUEUE_TIME           NUMBER               NULL
+                               ELAPSED_RULE_TIME              NUMBER               NULL
+                               ELAPSED_UNPICKLE_TIME          NUMBER               NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               SRC_DBNAME                     VARCHAR2  (128)      NOT NULL
+                               SRC_QUEUE_NAME                 VARCHAR2  (30)       NOT NULL
+                               SRC_QUEUE_SCHEMA               VARCHAR2  (30)       NOT NULL
+                               STARTUP_TIME                   DATE                 NOT NULL
+
+STATS$PROPAGATION_SENDER       DBID                           NUMBER               NOT NULL
+                               DBLINK                         VARCHAR2  (128)      NOT NULL
+                               DST_QUEUE_NAME                 VARCHAR2  (30)       NOT NULL
+                               DST_QUEUE_SCHEMA               VARCHAR2  (30)       NOT NULL
+                               ELAPSED_DEQUEUE_TIME           NUMBER               NULL
+                               ELAPSED_PICKLE_TIME            NUMBER               NULL
+                               ELAPSED_PROPAGATION_TIME       NUMBER               NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               QUEUE_NAME                     VARCHAR2  (30)       NOT NULL
+                               QUEUE_SCHEMA                   VARCHAR2  (30)       NOT NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               STARTUP_TIME                   DATE                 NULL
+                               TOTAL_BYTES                    NUMBER               NULL
+                               TOTAL_MSGS                     NUMBER               NULL
+
+STATS$RESOURCE_LIMIT           CURRENT_UTILIZATION            NUMBER               NULL
+                               DBID                           NUMBER               NOT NULL
+                               INITIAL_ALLOCATION             VARCHAR2  (10)       NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               LIMIT_VALUE                    VARCHAR2  (10)       NULL
+                               MAX_UTILIZATION                NUMBER               NULL
+                               RESOURCE_NAME                  VARCHAR2  (30)       NOT NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+
+STATS$ROLLSTAT                 AVEACTIVE                      NUMBER               NULL
+                               AVESHRINK                      NUMBER               NULL
+                               DBID                           NUMBER               NOT NULL
+                               EXTENDS                        NUMBER               NULL
+                               EXTENTS                        NUMBER               NULL
+                               GETS                           NUMBER               NULL
+                               HWMSIZE                        NUMBER               NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               OPTSIZE                        NUMBER               NULL
+                               RSSIZE                         NUMBER               NULL
+                               SHRINKS                        NUMBER               NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               USN                            NUMBER               NOT NULL
+                               WAITS                          NUMBER               NULL
+                               WRAPS                          NUMBER               NULL
+                               WRITES                         NUMBER               NULL
+                               XACTS                          NUMBER               NULL
+
+Date: 09/07/17                            Jared Still                               Page:  11
+Time: 01:28 PM              Tables For PERFSTAT - Search Criteria %             SYS
+                                      ORCL  Database
+
+TABLE                          COLUMN                         TYPE      SIZE       NULLABLE
+------------------------------ ------------------------------ --------- ---------- --------
+
+STATS$ROWCACHE_SUMMARY         DBID                           NUMBER               NOT NULL
+                               DLM_CONFLICTS                  NUMBER               NULL
+                               DLM_RELEASES                   NUMBER               NULL
+                               DLM_REQUESTS                   NUMBER               NULL
+                               FLUSHES                        NUMBER               NULL
+                               GETMISSES                      NUMBER               NULL
+                               GETS                           NUMBER               NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               MODIFICATIONS                  NUMBER               NULL
+                               PARAMETER                      VARCHAR2  (32)       NOT NULL
+                               SCANCOMPLETES                  NUMBER               NULL
+                               SCANMISSES                     NUMBER               NULL
+                               SCANS                          NUMBER               NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               TOTAL_USAGE                    NUMBER               NULL
+                               USAGE                          NUMBER               NULL
+
+STATS$RULE_SET                 CPU_TIME                       NUMBER               NULL
+                               DBID                           NUMBER               NOT NULL
+                               ELAPSED_TIME                   NUMBER               NULL
+                               EVALUATIONS                    NUMBER               NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               NAME                           VARCHAR2  (30)       NOT NULL
+                               OWNER                          VARCHAR2  (30)       NOT NULL
+                               RELOADS                        NUMBER               NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               SQL_EXECUTIONS                 NUMBER               NULL
+                               SQL_FREE_EVALUATIONS           NUMBER               NULL
+                               STARTUP_TIME                   DATE                 NOT NULL
+
+STATS$SEG_STAT                 BUFFER_BUSY_WAITS              NUMBER               NULL
+                               DATAOBJ#                       NUMBER               NOT NULL
+                               DBID                           NUMBER               NOT NULL
+                               DB_BLOCK_CHANGES               NUMBER               NULL
+                               DIRECT_PHYSICAL_READS          NUMBER               NULL
+                               DIRECT_PHYSICAL_WRITES         NUMBER               NULL
+                               GC_BUFFER_BUSY                 NUMBER               NULL
+                               GC_CR_BLOCKS_RECEIVED          NUMBER               NULL
+                               GC_CURRENT_BLOCKS_RECEIVED     NUMBER               NULL
+                               GLOBAL_CACHE_CR_BLOCKS_SERVED  NUMBER               NULL
+                               GLOBAL_CACHE_CU_BLOCKS_SERVED  NUMBER               NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               ITL_WAITS                      NUMBER               NULL
+                               LOGICAL_READS                  NUMBER               NULL
+                               OBJ#                           NUMBER               NOT NULL
+                               PHYSICAL_READS                 NUMBER               NULL
+                               PHYSICAL_WRITES                NUMBER               NULL
+                               ROW_LOCK_WAITS                 NUMBER               NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               TS#                            NUMBER               NOT NULL
+
+Date: 09/07/17                            Jared Still                               Page:  12
+Time: 01:28 PM              Tables For PERFSTAT - Search Criteria %             SYS
+                                      ORCL  Database
+
+TABLE                          COLUMN                         TYPE      SIZE       NULLABLE
+------------------------------ ------------------------------ --------- ---------- --------
+
+STATS$SEG_STAT_OBJ             DATAOBJ#                       NUMBER               NOT NULL
+                               DBID                           NUMBER               NOT NULL
+                               OBJ#                           NUMBER               NOT NULL
+                               OBJECT_NAME                    VARCHAR2  (30)       NOT NULL
+                               OBJECT_TYPE                    VARCHAR2  (18)       NULL
+                               OWNER                          VARCHAR2  (30)       NOT NULL
+                               SUBOBJECT_NAME                 VARCHAR2  (30)       NULL
+                               TABLESPACE_NAME                VARCHAR2  (30)       NOT NULL
+                               TS#                            NUMBER               NOT NULL
+
+STATS$SESSION_EVENT            DBID                           NUMBER               NOT NULL
+                               EVENT                          VARCHAR2  (64)       NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               MAX_WAIT                       NUMBER               NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               TIME_WAITED_MICRO              NUMBER               NULL
+                               TOTAL_TIMEOUTS                 NUMBER               NULL
+                               TOTAL_WAITS                    NUMBER               NULL
+
+STATS$SESSTAT                  DBID                           NUMBER               NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               STATISTIC#                     NUMBER               NOT NULL
+                               VALUE                          NUMBER               NULL
+
+STATS$SESS_TIME_MODEL          DBID                           NUMBER               NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               STAT_ID                        NUMBER               NOT NULL
+                               VALUE                          NUMBER               NOT NULL
+
+STATS$SGA                      DBID                           NUMBER               NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               NAME                           VARCHAR2  (64)       NOT NULL
+                               PARALLEL                       VARCHAR2  (3)        NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               STARTUP_TIME                   DATE                 NULL
+                               VALUE                          NUMBER               NOT NULL
+                               VERSION                        VARCHAR2  (17)       NULL
+
+STATS$SGASTAT                  BYTES                          NUMBER               NULL
+                               DBID                           NUMBER               NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               NAME                           VARCHAR2  (64)       NOT NULL
+                               POOL                           VARCHAR2  (12)       NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+
+STATS$SGA_TARGET_ADVICE        DBID                           NUMBER               NOT NULL
+                               ESTD_DB_TIME                   NUMBER               NULL
+                               ESTD_DB_TIME_FACTOR            NUMBER               NULL
+
+Date: 09/07/17                            Jared Still                               Page:  13
+Time: 01:28 PM              Tables For PERFSTAT - Search Criteria %             SYS
+                                      ORCL  Database
+
+TABLE                          COLUMN                         TYPE      SIZE       NULLABLE
+------------------------------ ------------------------------ --------- ---------- --------
+STATS$SGA_TARGET_ADVICE        ESTD_PHYSICAL_READS            NUMBER               NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               SGA_SIZE                       NUMBER               NOT NULL
+                               SGA_SIZE_FACTOR                NUMBER               NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+
+STATS$SHARED_POOL_ADVICE       DBID                           NUMBER               NOT NULL
+                               ESTD_LC_LOAD_TIME              NUMBER               NULL
+                               ESTD_LC_LOAD_TIME_FACTOR       NUMBER               NULL
+                               ESTD_LC_MEMORY_OBJECTS         NUMBER               NULL
+                               ESTD_LC_MEMORY_OBJECT_HITS     NUMBER               NULL
+                               ESTD_LC_SIZE                   NUMBER               NULL
+                               ESTD_LC_TIME_SAVED             NUMBER               NULL
+                               ESTD_LC_TIME_SAVED_FACTOR      NUMBER               NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               SHARED_POOL_SIZE_FACTOR        NUMBER               NULL
+                               SHARED_POOL_SIZE_FOR_ESTIMATE  NUMBER               NOT NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+
+STATS$SNAPSHOT                 ALL_INIT                       VARCHAR2  (5)        NULL
+                               BASELINE                       VARCHAR2  (1)        NULL
+                               BUFFER_GETS_TH                 NUMBER               NULL
+                               DBID                           NUMBER               NOT NULL
+                               DISK_READS_TH                  NUMBER               NULL
+                               EXECUTIONS_TH                  NUMBER               NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               PARSE_CALLS_TH                 NUMBER               NULL
+                               SEG_BUFF_BUSY_TH               NUMBER               NOT NULL
+                               SEG_CR_BKS_RC_TH               NUMBER               NULL
+                               SEG_CR_BKS_SD_TH               NUMBER               NULL
+                               SEG_CU_BKS_RC_TH               NUMBER               NULL
+                               SEG_CU_BKS_SD_TH               NUMBER               NULL
+                               SEG_ITL_WAITS_TH               NUMBER               NOT NULL
+                               SEG_LOG_READS_TH               NUMBER               NOT NULL
+                               SEG_PHY_READS_TH               NUMBER               NOT NULL
+                               SEG_ROWLOCK_W_TH               NUMBER               NOT NULL
+                               SERIAL#                        NUMBER               NULL
+                               SESSION_ID                     NUMBER               NOT NULL
+                               SHARABLE_MEM_TH                NUMBER               NULL
+                               SNAPSHOT_EXEC_TIME_S           NUMBER               NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               SNAP_LEVEL                     NUMBER               NULL
+                               SNAP_TIME                      DATE                 NOT NULL
+                               STARTUP_TIME                   DATE                 NOT NULL
+                               UCOMMENT                       VARCHAR2  (160)      NULL
+                               VERSION_COUNT_TH               NUMBER               NULL
+
+STATS$SQLTEXT                  ADDRESS                        RAW       (8)        NULL
+                               COMMAND_TYPE                   NUMBER               NULL
+                               LAST_SNAP_ID                   NUMBER               NULL
+                               OLD_HASH_VALUE                 NUMBER               NOT NULL
+
+Date: 09/07/17                            Jared Still                               Page:  14
+Time: 01:28 PM              Tables For PERFSTAT - Search Criteria %             SYS
+                                      ORCL  Database
+
+TABLE                          COLUMN                         TYPE      SIZE       NULLABLE
+------------------------------ ------------------------------ --------- ---------- --------
+STATS$SQLTEXT                  PIECE                          NUMBER               NOT NULL
+                               SQL_ID                         VARCHAR2  (13)       NULL
+                               SQL_TEXT                       VARCHAR2  (64)       NULL
+                               TEXT_SUBSET                    VARCHAR2  (31)       NOT NULL
+
+STATS$SQL_PLAN                 ACCESS_PREDICATES              VARCHAR2  (4000)     NULL
+                               BYTES                          NUMBER               NULL
+                               CARDINALITY                    NUMBER               NULL
+                               COST                           NUMBER               NULL
+                               CPU_COST                       NUMBER               NULL
+                               DEPTH                          NUMBER               NULL
+                               DISTRIBUTION                   VARCHAR2  (20)       NULL
+                               FILTER_PREDICATES              VARCHAR2  (4000)     NULL
+                               ID                             NUMBER               NOT NULL
+                               IO_COST                        NUMBER               NULL
+                               OBJECT#                        NUMBER               NULL
+                               OBJECT_ALIAS                   VARCHAR2  (65)       NULL
+                               OBJECT_NAME                    VARCHAR2  (31)       NULL
+                               OBJECT_NODE                    VARCHAR2  (40)       NULL
+                               OBJECT_OWNER                   VARCHAR2  (31)       NULL
+                               OBJECT_TYPE                    VARCHAR2  (20)       NULL
+                               OPERATION                      VARCHAR2  (30)       NULL
+                               OPTIMIZER                      VARCHAR2  (20)       NULL
+                               OPTIONS                        VARCHAR2  (30)       NULL
+                               OTHER                          VARCHAR2  (4000)     NULL
+                               OTHER_TAG                      VARCHAR2  (35)       NULL
+                               PARENT_ID                      NUMBER               NULL
+                               PARTITION_ID                   NUMBER               NULL
+                               PARTITION_START                VARCHAR2  (64)       NULL
+                               PARTITION_STOP                 VARCHAR2  (64)       NULL
+                               PLAN_HASH_VALUE                NUMBER               NOT NULL
+                               POSITION                       NUMBER               NULL
+                               PROJECTION                     VARCHAR2  (4000)     NULL
+                               QBLOCK_NAME                    VARCHAR2  (31)       NULL
+                               REMARKS                        VARCHAR2  (4000)     NULL
+                               SEARCH_COLUMNS                 NUMBER               NULL
+                               SNAP_ID                        NUMBER               NULL
+                               TEMP_SPACE                     NUMBER               NULL
+                               TIME                           NUMBER               NULL
+
+STATS$SQL_PLAN_USAGE           ADDRESS                        RAW       (8)        NULL
+                               COST                           NUMBER               NOT NULL
+                               DBID                           NUMBER               NOT NULL
+                               HASH_VALUE                     NUMBER               NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               LAST_ACTIVE_TIME               DATE                 NULL
+                               OLD_HASH_VALUE                 NUMBER               NOT NULL
+                               OPTIMIZER                      VARCHAR2  (20)       NULL
+                               PLAN_HASH_VALUE                NUMBER               NOT NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               SQL_ID                         VARCHAR2  (13)       NULL
+
+Date: 09/07/17                            Jared Still                               Page:  15
+Time: 01:28 PM              Tables For PERFSTAT - Search Criteria %             SYS
+                                      ORCL  Database
+
+TABLE                          COLUMN                         TYPE      SIZE       NULLABLE
+------------------------------ ------------------------------ --------- ---------- --------
+STATS$SQL_PLAN_USAGE           TEXT_SUBSET                    VARCHAR2  (31)       NOT NULL
+
+STATS$SQL_STATISTICS           DBID                           NUMBER               NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               SINGLE_USE_SQL                 NUMBER               NOT NULL
+                               SINGLE_USE_SQL_MEM             NUMBER               NOT NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               TOTAL_CURSORS                  NUMBER               NULL
+                               TOTAL_SQL                      NUMBER               NOT NULL
+                               TOTAL_SQL_MEM                  NUMBER               NOT NULL
+
+STATS$SQL_SUMMARY              ADDRESS                        RAW       (8)        NULL
+                               APPLICATION_WAIT_TIME          NUMBER               NULL
+                               AVG_HARD_PARSE_TIME            NUMBER               NULL
+                               BUFFER_GETS                    NUMBER               NULL
+                               CHILD_LATCH                    NUMBER               NULL
+                               CLUSTER_WAIT_TIME              NUMBER               NULL
+                               COMMAND_TYPE                   NUMBER               NULL
+                               CONCURRENCY_WAIT_TIME          NUMBER               NULL
+                               CPU_TIME                       NUMBER               NULL
+                               DBID                           NUMBER               NOT NULL
+                               DIRECT_WRITES                  NUMBER               NULL
+                               DISK_READS                     NUMBER               NULL
+                               ELAPSED_TIME                   NUMBER               NULL
+                               END_OF_FETCH_COUNT             NUMBER               NULL
+                               EXACT_MATCHING_SIGNATURE       NUMBER               NULL
+                               EXECUTIONS                     NUMBER               NULL
+                               FETCHES                        NUMBER               NULL
+                               FORCE_MATCHING_SIGNATURE       NUMBER               NULL
+                               HASH_VALUE                     NUMBER               NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               INVALIDATIONS                  NUMBER               NULL
+                               JAVA_EXEC_TIME                 NUMBER               NULL
+                               LAST_ACTIVE_TIME               DATE                 NULL
+                               LOADED_VERSIONS                NUMBER               NULL
+                               LOADS                          NUMBER               NULL
+                               MODULE                         VARCHAR2  (64)       NULL
+                               OLD_HASH_VALUE                 NUMBER               NOT NULL
+                               OUTLINE_CATEGORY               VARCHAR2  (64)       NULL
+                               OUTLINE_SID                    NUMBER               NULL
+                               PARSE_CALLS                    NUMBER               NULL
+                               PLSQL_EXEC_TIME                NUMBER               NULL
+                               PROGRAM_ID                     NUMBER               NULL
+                               PROGRAM_LINE#                  NUMBER               NULL
+                               PX_SERVERS_EXECUTIONS          NUMBER               NULL
+                               ROWS_PROCESSED                 NUMBER               NULL
+                               SHARABLE_MEM                   NUMBER               NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               SORTS                          NUMBER               NULL
+                               SQL_ID                         VARCHAR2  (13)       NULL
+                               SQL_PROFILE                    VARCHAR2  (64)       NULL
+
+Date: 09/07/17                            Jared Still                               Page:  16
+Time: 01:28 PM              Tables For PERFSTAT - Search Criteria %             SYS
+                                      ORCL  Database
+
+TABLE                          COLUMN                         TYPE      SIZE       NULLABLE
+------------------------------ ------------------------------ --------- ---------- --------
+STATS$SQL_SUMMARY              SQL_TEXT                       VARCHAR2  (1000)     NULL
+                               TEXT_SUBSET                    VARCHAR2  (31)       NOT NULL
+                               USER_IO_WAIT_TIME              NUMBER               NULL
+                               VERSION_COUNT                  NUMBER               NULL
+
+STATS$SQL_WORKAREA_HISTOGRAM   DBID                           NUMBER               NOT NULL
+                               HIGH_OPTIMAL_SIZE              NUMBER               NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               LOW_OPTIMAL_SIZE               NUMBER               NOT NULL
+                               MULTIPASSES_EXECUTIONS         NUMBER               NULL
+                               ONEPASS_EXECUTIONS             NUMBER               NULL
+                               OPTIMAL_EXECUTIONS             NUMBER               NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               TOTAL_EXECUTIONS               NUMBER               NULL
+
+STATS$STATSPACK_PARAMETER      ALL_INIT                       VARCHAR2  (5)        NOT NULL
+                               BUFFER_GETS_TH                 NUMBER               NOT NULL
+                               DBID                           NUMBER               NOT NULL
+                               DISK_READS_TH                  NUMBER               NOT NULL
+                               EXECUTIONS_TH                  NUMBER               NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               JOB                            NUMBER               NULL
+                               LAST_MODIFIED                  DATE                 NULL
+                               NUM_SQL                        NUMBER               NOT NULL
+                               OLD_SQL_CAPTURE_MTH            VARCHAR2  (10)       NOT NULL
+                               PARSE_CALLS_TH                 NUMBER               NOT NULL
+                               PIN_STATSPACK                  VARCHAR2  (10)       NOT NULL
+                               SEG_BUFF_BUSY_TH               NUMBER               NOT NULL
+                               SEG_CR_BKS_RC_TH               NUMBER               NOT NULL
+                               SEG_CU_BKS_RC_TH               NUMBER               NOT NULL
+                               SEG_ITL_WAITS_TH               NUMBER               NOT NULL
+                               SEG_LOG_READS_TH               NUMBER               NOT NULL
+                               SEG_PHY_READS_TH               NUMBER               NOT NULL
+                               SEG_ROWLOCK_W_TH               NUMBER               NOT NULL
+                               SESSION_ID                     NUMBER               NOT NULL
+                               SHARABLE_MEM_TH                NUMBER               NOT NULL
+                               SNAP_LEVEL                     NUMBER               NOT NULL
+                               UCOMMENT                       VARCHAR2  (160)      NULL
+                               VERSION_COUNT_TH               NUMBER               NOT NULL
+
+STATS$STREAMS_APPLY_SUM        APPLY_NAME                     VARCHAR2  (30)       NOT NULL
+                               COORD_ELAPSED_SCHEDULE_TIME    NUMBER               NULL
+                               COORD_TOTAL_APPLIED            NUMBER               NULL
+                               COORD_TOTAL_RECEIVED           NUMBER               NULL
+                               COORD_TOTAL_WAIT_COMMITS       NUMBER               NULL
+                               COORD_TOTAL_WAIT_DEPS          NUMBER               NULL
+                               DBID                           NUMBER               NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               READER_ELAPSED_DEQUEUE_TIME    NUMBER               NULL
+                               READER_ELAPSED_SCHEDULE_TIME   NUMBER               NULL
+                               READER_TOTAL_MESSAGES_DEQUEUED NUMBER               NULL
+
+Date: 09/07/17                            Jared Still                               Page:  17
+Time: 01:28 PM              Tables For PERFSTAT - Search Criteria %             SYS
+                                      ORCL  Database
+
+TABLE                          COLUMN                         TYPE      SIZE       NULLABLE
+------------------------------ ------------------------------ --------- ---------- --------
+STATS$STREAMS_APPLY_SUM        SERVER_ELAPSED_APPLY_TIME      NUMBER               NULL
+                               SERVER_ELAPSED_DEQUEUE_TIME    NUMBER               NULL
+                               SERVER_TOTAL_MESSAGES_APPLIED  NUMBER               NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               STARTUP_TIME                   DATE                 NOT NULL
+
+STATS$STREAMS_CAPTURE          CAPTURE_NAME                   VARCHAR2  (30)       NOT NULL
+                               DBID                           NUMBER               NOT NULL
+                               ELAPSED_CAPTURE_TIME           NUMBER               NULL
+                               ELAPSED_ENQUEUE_TIME           NUMBER               NULL
+                               ELAPSED_LCR_TIME               NUMBER               NULL
+                               ELAPSED_PAUSE_TIME             NUMBER               NULL
+                               ELAPSED_REDO_WAIT_TIME         NUMBER               NULL
+                               ELAPSED_RULE_TIME              NUMBER               NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               STARTUP_TIME                   DATE                 NOT NULL
+                               TOTAL_MESSAGES_CAPTURED        NUMBER               NULL
+                               TOTAL_MESSAGES_ENQUEUED        NUMBER               NULL
+
+STATS$STREAMS_POOL_ADVICE      DBID                           NUMBER               NOT NULL
+                               ESTD_SPILL_COUNT               NUMBER               NULL
+                               ESTD_SPILL_TIME                NUMBER               NULL
+                               ESTD_UNSPILL_COUNT             NUMBER               NULL
+                               ESTD_UNSPILL_TIME              NUMBER               NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               STREAMS_POOL_SIZE_FACTOR       NUMBER               NULL
+                               STREAMS_POOL_SIZE_FOR_ESTIMATE NUMBER               NOT NULL
+
+STATS$SYSSTAT                  DBID                           NUMBER               NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               NAME                           VARCHAR2  (64)       NOT NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               STATISTIC#                     NUMBER               NOT NULL
+                               VALUE                          NUMBER               NULL
+
+STATS$SYSTEM_EVENT             DBID                           NUMBER               NOT NULL
+                               EVENT                          VARCHAR2  (64)       NOT NULL
+                               EVENT_ID                       NUMBER               NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               TIME_WAITED_MICRO              NUMBER               NULL
+                               TIME_WAITED_MICRO_FG           NUMBER               NULL
+                               TOTAL_TIMEOUTS                 NUMBER               NULL
+                               TOTAL_TIMEOUTS_FG              NUMBER               NULL
+                               TOTAL_WAITS                    NUMBER               NULL
+                               TOTAL_WAITS_FG                 NUMBER               NULL
+
+STATS$SYS_TIME_MODEL           DBID                           NUMBER               NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+
+Date: 09/07/17                            Jared Still                               Page:  18
+Time: 01:28 PM              Tables For PERFSTAT - Search Criteria %             SYS
+                                      ORCL  Database
+
+TABLE                          COLUMN                         TYPE      SIZE       NULLABLE
+------------------------------ ------------------------------ --------- ---------- --------
+STATS$SYS_TIME_MODEL           SNAP_ID                        NUMBER               NOT NULL
+                               STAT_ID                        NUMBER               NOT NULL
+                               VALUE                          NUMBER               NOT NULL
+
+STATS$TEMPSTATXS               DBID                           NUMBER               NOT NULL
+                               FILE#                          NUMBER               NULL
+                               FILENAME                       VARCHAR2  (513)      NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               PHYBLKRD                       NUMBER               NULL
+                               PHYBLKWRT                      NUMBER               NULL
+                               PHYRDS                         NUMBER               NULL
+                               PHYWRTS                        NUMBER               NULL
+                               READTIM                        NUMBER               NULL
+                               SINGLEBLKRDS                   NUMBER               NULL
+                               SINGLEBLKRDTIM                 NUMBER               NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               TIME                           NUMBER               NULL
+                               TSNAME                         VARCHAR2  (30)       NOT NULL
+                               WAIT_COUNT                     NUMBER               NULL
+                               WRITETIM                       NUMBER               NULL
+
+STATS$TEMP_SQLSTATS            AVG_ELAPSED_TIME               NUMBER               NULL
+                               AVG_HARD_PARSE_TIME            NUMBER               NULL
+                               DELTA_BUFFER_GETS              NUMBER               NULL
+                               DELTA_CLUSTER_WAIT_TIME        NUMBER               NULL
+                               DELTA_CPU_TIME                 NUMBER               NULL
+                               DELTA_DISK_READS               NUMBER               NULL
+                               DELTA_ELAPSED_TIME             NUMBER               NULL
+                               DELTA_EXECUTIONS               NUMBER               NULL
+                               DELTA_PARSE_CALLS              NUMBER               NULL
+                               DELTA_ROWS_PROCESSED           NUMBER               NULL
+                               DELTA_VERSION_COUNT            NUMBER               NULL
+                               LAST_SHARABLE_MEM              NUMBER               NULL
+                               LAST_VERSION_COUNT             NUMBER               NULL
+                               MAX_SHARABLE_MEM               NUMBER               NULL
+                               MAX_VERSION_COUNT              NUMBER               NULL
+                               MODULE                         VARCHAR2  (64)       NULL
+                               OLD_HASH_VALUE                 NUMBER               NULL
+                               TEXT_SUBSET                    VARCHAR2  (31)       NULL
+
+STATS$THREAD                   CURRENT_GROUP#                 NUMBER               NULL
+                               DBID                           NUMBER               NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               OPEN_TIME                      DATE                 NULL
+                               SEQUENCE#                      NUMBER               NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               STATUS                         VARCHAR2  (6)        NULL
+                               THREAD#                        NUMBER               NOT NULL
+                               THREAD_INSTANCE_NUMBER         NUMBER               NULL
+
+STATS$TIME_MODEL_STATNAME      STAT_ID                        NUMBER               NOT NULL
+
+Date: 09/07/17                            Jared Still                               Page:  19
+Time: 01:28 PM              Tables For PERFSTAT - Search Criteria %             SYS
+                                      ORCL  Database
+
+TABLE                          COLUMN                         TYPE      SIZE       NULLABLE
+------------------------------ ------------------------------ --------- ---------- --------
+STATS$TIME_MODEL_STATNAME      STAT_NAME                      VARCHAR2  (64)       NOT NULL
+
+STATS$UNDOSTAT                 ACTIVEBLKS                     NUMBER               NULL
+                               BEGIN_TIME                     DATE                 NOT NULL
+                               DBID                           NUMBER               NOT NULL
+                               END_TIME                       DATE                 NOT NULL
+                               EXPBLKRELCNT                   NUMBER               NULL
+                               EXPBLKREUCNT                   NUMBER               NULL
+                               EXPIREDBLKS                    NUMBER               NULL
+                               EXPSTEALCNT                    NUMBER               NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               MAXCONCURRENCY                 NUMBER               NULL
+                               MAXQUERYID                     VARCHAR2  (13)       NULL
+                               MAXQUERYLEN                    NUMBER               NULL
+                               NOSPACEERRCNT                  NUMBER               NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               SSOLDERRCNT                    NUMBER               NULL
+                               TUNED_UNDORETENTION            NUMBER               NULL
+                               TXNCOUNT                       NUMBER               NULL
+                               UNDOBLKS                       NUMBER               NULL
+                               UNDOTSN                        NUMBER               NOT NULL
+                               UNEXPIREDBLKS                  NUMBER               NULL
+                               UNXPBLKRELCNT                  NUMBER               NULL
+                               UNXPBLKREUCNT                  NUMBER               NULL
+                               UNXPSTEALCNT                   NUMBER               NULL
+
+STATS$WAITSTAT                 CLASS                          VARCHAR2  (22)       NOT NULL
+                               DBID                           NUMBER               NOT NULL
+                               INSTANCE_NUMBER                NUMBER               NOT NULL
+                               SNAP_ID                        NUMBER               NOT NULL
+                               TIME                           NUMBER               NULL
+                               WAIT_COUNT                     NUMBER               NULL
+
+
+878 rows selected.
+
+13:28:42 oravm01.jks.com - sys@oravm1 SQL> spool off

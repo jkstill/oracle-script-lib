@@ -168,7 +168,7 @@ AWR/ASH:
 @ash-sessions.sql: frequency of sessions for a user
 @ash_cpu_hist.sql: cpu historic usage from dba_hist_sysmetric_history - 12c+
 @ashtop.sql: Tanel Poder script for top ASH events
-ash_log_sync.sql: log sync events
+@ash_log_sync.sql: log sync events
 @awr_blockers.sql: historic blocking aggregated by sql_id
 @awr_bracket_snaps.sql: get snap_id values for a pair of days
 @awr_create_snapshot.sql: create an AWR snapshot
@@ -205,6 +205,8 @@ ash_log_sync.sql: log sync events
 
 STATSPACK:
 
+
+@statspack-tables.txt: not a script - just a description of statspack tables
 @snapNmin.sql: start level 7 snapshot, sleep 2 minutes, complete snapshot and create report
 @sp_current.sql: get data associated with latest snapshot
 @sp_get_date_range.sql:  enter a begin and end date and this script looks up the snap_id for each and sets variables for them
@@ -227,6 +229,7 @@ STATSPACK:
 @sp_snap.sql: perform a snapshot
 @sp_snap_6.sql: perform a level 6 snapshot
 @sp_snap_id.sql: example of searching for specific snap_id
+@sp_top_sql_io.sql: get top 10 SQL from statspack in terms of Disk Reads
 
 @spreport.sql: call ?/rdbms/admin/sprepins statspack report - calls snap_ids.sql to create a text file of snapshot IDs for viewing in another window
 @snap_ids.sql: called by spreport.sql - generate list of snapshot IDs

@@ -171,9 +171,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash-sessions.sql'>ash-sessions.sql</a> - frequency of sessions for a user
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash_cpu_hist.sql'>ash_cpu_hist.sql</a> - cpu historic usage from dba_hist_sysmetric_history - 12c+
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ashtop.sql'>ashtop.sql</a> - Tanel Poder script for top ASH events
-</pre>
-<h3>ash_log_sync.sql: log sync events</h3>
-<pre>
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash_log_sync.sql'>ash_log_sync.sql</a> - log sync events
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_blockers.sql'>awr_blockers.sql</a> - historic blocking aggregated by sql_id
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_bracket_snaps.sql'>awr_bracket_snaps.sql</a> - get snap_id values for a pair of days
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_create_snapshot.sql'>awr_create_snapshot.sql</a> - create an AWR snapshot
@@ -210,6 +208,7 @@
 </pre>
 <h3>STATSPACK:</h3>
 <pre>
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/statspack-tables.txt'>statspack-tables.txt</a> - not a script - just a description of statspack tables
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/snapNmin.sql'>snapNmin.sql</a> - start level 7 snapshot, sleep 2 minutes, complete snapshot and create report
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sp_current.sql'>sp_current.sql</a> - get data associated with latest snapshot
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sp_get_date_range.sql'>sp_get_date_range.sql</a> - enter a begin and end date and this script looks up the snap_id for each and sets variables for them
@@ -232,6 +231,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sp_snap.sql'>sp_snap.sql</a> - perform a snapshot
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sp_snap_6.sql'>sp_snap_6.sql</a> - perform a level 6 snapshot
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sp_snap_id.sql'>sp_snap_id.sql</a> - example of searching for specific snap_id
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sp_top_sql_io.sql'>sp_top_sql_io.sql</a> - get top 10 SQL from statspack in terms of Disk Reads
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/spreport.sql'>spreport.sql</a> - call ?/rdbms/admin/sprepins statspack report - calls snap_ids.sql to create a text file of snapshot IDs for viewing in another window
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/snap_ids.sql'>snap_ids.sql</a> - called by spreport.sql - generate list of snapshot IDs
 </pre>
