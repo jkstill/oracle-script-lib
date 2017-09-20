@@ -537,6 +537,10 @@ MEMORY: Memory Settings and/or Advisors
 @shared_pool_advice.sql: shared pool advisor
 
 
+METRICS: Metrics reported by oracle - v$sysmetric, v$sysmetric_history ...
+
+@metric-names.sql: detail of metrics reported along with collection intervals
+@os-load.sql: OS Load as reported by oracle for past hour
 
 
 

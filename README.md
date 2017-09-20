@@ -539,6 +539,11 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pgastat_hist.sql'>pgastat_hist.sql</a> - PGA stats from dba_hist_pgastat
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/shared_pool_advice.sql'>shared_pool_advice.sql</a> - shared pool advisor
 </pre>
+<h3>METRICS: Metrics reported by oracle - v$sysmetric, v$sysmetric_history ...</h3>
+<pre>
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/metric-names.sql'>metric-names.sql</a> - detail of metrics reported along with collection intervals
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/os-load.sql'>os-load.sql</a> - OS Load as reported by oracle for past hour
+</pre>
 <h3>12c: Scripts that are specific to Oracle 12c</h3>
 <pre>
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show_container.sql'>show_container.sql</a> - display the current container database name
