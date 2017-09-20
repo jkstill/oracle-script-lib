@@ -28,3 +28,8 @@ where sql_id = '&&u_sqlid'
 
 
 spool off
+
+set term on feed on
+set linesize 200 trimspool on 
+set pages 60
+
