@@ -429,6 +429,7 @@ INSTANCE and/or DATABASE:
 @showpin.sql: Show objects pinned in the shared pool
 @showpipes.sql: Show database pipes
 @showsrc.sql: show source of PL/SQL stored objects
+@show-x-dollar-tables.sql: list of all x$tables
 @sql-version-counts.sql: top 10 count of versions of SQL_ID
 @plsql_called_objects.sql: Shows entry PL/SQL object and current PL/SQL object for a session
 @rbs_no_optimal.sql: Set all rollback segments to have no OPTIMAL size

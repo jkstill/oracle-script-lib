@@ -432,6 +432,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showpin.sql'>showpin.sql</a> - Show objects pinned in the shared pool
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showpipes.sql'>showpipes.sql</a> - Show database pipes
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showsrc.sql'>showsrc.sql</a> - show source of PL/SQL stored objects
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show-x-dollar-tables.sql'>show-x-dollar-tables.sql</a> - list of all x$tables
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-version-counts.sql'>sql-version-counts.sql</a> - top 10 count of versions of SQL_ID
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/plsql_called_objects.sql'>plsql_called_objects.sql</a> - Shows entry PL/SQL object and current PL/SQL object for a session
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/rbs_no_optimal.sql'>rbs_no_optimal.sql</a> - Set all rollback segments to have no OPTIMAL size

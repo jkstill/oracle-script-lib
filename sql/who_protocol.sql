@@ -13,6 +13,7 @@ col serial# format 999999
 col AUTHENTICATION_TYPE format a20
 col osuser format a15
 col NETWORK_SERVICE_BANNER format a80
+col client_driver format a9 head 'CLIENT|DRIVER'
 
 select
 	s.username,
@@ -20,6 +21,7 @@ select
 	s.serial#,
 	--p.pid ppid,
 	si.osuser,
+	si.client_driver,
 	substr(si.NETWORK_SERVICE_BANNER,1,80) NETWORK_SERVICE_BANNER
 from v$session s, v$process p, v$session_connect_info si
 where s.username is not null
