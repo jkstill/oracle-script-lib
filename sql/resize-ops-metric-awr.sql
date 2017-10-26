@@ -17,8 +17,13 @@ col begin_interval_time format a30
 -- number of standard deviations
 define warning_threshold=3
 
--- days previous to check
-define look_back_days=60
+-- look back how far?
+-- further back than 99 days requires using a WEEK or MONTH interval rather than DAY
+-- interval '100' DAY will cause ORA-01873 'precision too small'
+define look_back_units='DAY'
+define look_back_count=60
+--define look_back_units='MONTH'
+--define look_back_count=18
 
 with pop as (
 	--by hour
@@ -52,7 +57,7 @@ metrics as (
 		, round(p.resize_count / decode(r.resize_stddev,0,p.resize_count,r.resize_stddev),1) resize_metric
 	from pop p
 	natural join resize_stddev r
-	where p.begin_interval_time >= systimestamp - interval '&look_back_days' DAY
+	where p.begin_interval_time >= systimestamp - interval '&look_back_count' &look_back_units
 )
 select begin_interval_time, instance_number
 	, resize_count
