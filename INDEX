@@ -385,6 +385,8 @@ INSTANCE and/or DATABASE:
 @index-usage-awr.sql: Query AWR to try and determine which indexes are unused
 @all_jobs.sql: Show all scheduled db jobs
 @show_jobs.sql: does the work for dba_jobs.sql and all_jobs.sql
+@kglh-growth.sql: monitor for unbounded growth of shared pool memory structures
+@kglh-growth-awr.sql: check AWR for unbounded growth of shared pool memory structures
 @la8.sql: Shows last analyzed dates for database objects . 8.0+
 @la.sql: Shows last analyzed dates for database objects . 7.3
 @log-switch-histogram.sql: Display a histogram of redo log switch times
@@ -395,6 +397,8 @@ INSTANCE and/or DATABASE:
 @purge_cursors.sql: purge a list of SQL cursors from shared_pool - 10g+ see Oracle Note 457309.1
 @reserved-words.sql: List reserved words from v$reserved_words
 @sql_spawned_reasons.sql: Show reasons for creating new child of SQL
+@shared-pool-top-sql.sql: show top SQL consumers of shared_pool
+@shared-pool-top-users.sql: show top SCHEMA/USER consumers of shared_pool
 @show_check_cons.sql: Show non-system generated check constraints
 @show_data_types.sql: Show non-system column data types
 @show_fk.sql: Show foreign keys for a user

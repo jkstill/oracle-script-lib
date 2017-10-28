@@ -388,6 +388,8 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/index-usage-awr.sql'>index-usage-awr.sql</a> - Query AWR to try and determine which indexes are unused
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/all_jobs.sql'>all_jobs.sql</a> - Show all scheduled db jobs
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show_jobs.sql'>show_jobs.sql</a> - does the work for dba_jobs.sql and all_jobs.sql
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/kglh-growth.sql'>kglh-growth.sql</a> - monitor for unbounded growth of shared pool memory structures
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/kglh-growth-awr.sql'>kglh-growth-awr.sql</a> - check AWR for unbounded growth of shared pool memory structures
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/la8.sql'>la8.sql</a> - Shows last analyzed dates for database objects . 8.0+
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/la.sql'>la.sql</a> - Shows last analyzed dates for database objects . 7.3
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/log-switch-histogram.sql'>log-switch-histogram.sql</a> - Display a histogram of redo log switch times
@@ -398,6 +400,8 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/purge_cursors.sql'>purge_cursors.sql</a> - purge a list of SQL cursors from shared_pool - 10g+ see Oracle Note 457309.1
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/reserved-words.sql'>reserved-words.sql</a> - List reserved words from v$reserved_words
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql_spawned_reasons.sql'>sql_spawned_reasons.sql</a> - Show reasons for creating new child of SQL
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/shared-pool-top-sql.sql'>shared-pool-top-sql.sql</a> - show top SQL consumers of shared_pool
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/shared-pool-top-users.sql'>shared-pool-top-users.sql</a> - show top SCHEMA/USER consumers of shared_pool
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show_check_cons.sql'>show_check_cons.sql</a> - Show non-system generated check constraints
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show_data_types.sql'>show_data_types.sql</a> - Show non-system column data types
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show_fk.sql'>show_fk.sql</a> - Show foreign keys for a user
