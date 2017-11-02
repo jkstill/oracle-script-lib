@@ -10,6 +10,9 @@ col child_nume format 999999 head 'CHILD|NUMBER'
 col position format 999 head 'POS'
 col name format a20
 col value_string format a40
+col bind_string format a40
+col type_name format a15
+
 
 set line 200
 
@@ -40,6 +43,16 @@ select
    , b.position
    , b.name
    , b.value_string
+	, anydata.GETTYPENAME(b.value_anydata) type_name
+	-- use the anydata values as they are sometimes more reliable dependent on oracle version
+	, case anydata.GETTYPENAME(b.value_anydata)
+		when 'SYS.VARCHAR' then  anydata.accessvarchar(b.value_anydata)
+		when 'SYS.VARCHAR2' then anydata.accessvarchar2(b.value_anydata)
+		when 'SYS.CHAR' then anydata.accesschar(b.value_anydata)
+		when 'SYS.DATE' then to_char(anydata.accessdate(b.value_anydata),'yyyy-mm-dd hh24:mi:ss')
+		when 'SYS.TIMESTAMP' then to_char(anydata.accesstimestamp(b.value_anydata),'yyyy-mm-dd hh24:mi:ss')
+				when 'SYS.NUMBER' then to_char(anydata.accessnumber(b.value_anydata))
+	end bind_string
 from GV$SQL_BIND_CAPTURE b
 join plans p on p.address = b.address
    and p.inst_id = b.inst_id
