@@ -1,0 +1,86 @@
+
+
+Interesting error in 11.2.0.4 that was discovered while investigating cursor invalidations.
+
+I was using this script to get a report:
+
+https://github.com/jkstill/oracle-script-lib/blob/master/sql/cursor-invalidation-reasons.sql
+
+The results were kind of odd, as while looking roll_invalid_mismatch I noticed an apparent off by one error
+
+
+14:45:57 SYS@orcl AS SYSDBA> @cursor-invalidation-reasons.sql                                                                                                                           
+                                                                                                                                                                                        
+SQL_ID	      ADDRESS	       CHILD_ADDRESS	CHILD_NUMBER PARAMETER		       REASON                                                                                           
+------------- ---------------- ---------------- ------------ ------------------------- -------------------------------------------------------------------------------------------------
+03xr01r6v3nfp 0000000AFAE38B20 0000000AF9E874B8 	   1 bind_length_upgradeable   <ChildNode><ChildNumber>1</ChildNumber><ID>40</ID><reason>Bind mismatch(22)</reason><size>4x4</si
+03xr01r6v3nfp 0000000AFAE38B20 0000000AF5550568 	   2 bind_length_upgradeable   <ChildNode><ChildNumber>2</ChildNumber><ID>40</ID><reason>Bind mismatch(22)</reason><size>4x4</si
+03xr01r6v3nfp 0000000AFAE38B20 0000000AFD3BFBD0 	   3 bind_length_upgradeable   <ChildNode><ChildNumber>3</ChildNumber><ID>40</ID><reason>Bind mismatch(22)</reason><size>4x4</si
+03xr01r6v3nfp 0000000AFAE38B20 0000000AF4B79908 	   4 bind_length_upgradeable   <ChildNode><ChildNumber>4</ChildNumber><ID>40</ID><reason>Bind mismatch(22)</reason><size>4x4</si
+03xr01r6v3nfp 0000000AFAE38B20 00000009E8E61870 	   5 bind_length_upgradeable   <ChildNode><ChildNumber>5</ChildNumber><ID>34</ID><reason>Rolling Invalidate Window Exceeded(2)</
+03xr01r6v3nfp 0000000AFAE38B20 00000003A4970C98 	   6 roll_invalid_mismatch     <ChildNode><ChildNumber>6</ChildNumber><ID>40</ID><reason>Bind mismatch(22)</reason><size>4x4</si
+03xr01r6v3nfp 0000000AFAE38B20 00000002B271B010 	   7 bind_length_upgradeable   <ChildNode><ChildNumber>7</ChildNumber><ID>40</ID><reason>Bind mismatch(22)</reason><size>4x4</si
+03xr01r6v3nfp 0000000AFAE38B20 00000002BA20E200 	   8 bind_length_upgradeable   <ChildNode><ChildNumber>8</ChildNumber><ID>40</ID><reason>Bind mismatch(22)</reason><size>4x4</si
+03xr01r6v3nfp 0000000AFAE38B20 00000002A90F9D38 	   9 bind_length_upgradeable   <ChildNode><ChildNumber>9</ChildNumber><ID>40</ID><reason>Bind mismatch(22)</reason><size>4x4</si
+03xr01r6v3nfp 0000000AFAE38B20 00000001D23C4708 	  10 bind_length_upgradeable   <ChildNode><ChildNumber>10</ChildNumber><ID>34</ID><reason>Rolling Invalidate Window Exceeded(2)<
+03xr01r6v3nfp 0000000AFAE38B20 000000725770B9D8 	  11 roll_invalid_mismatch     <ChildNode><ChildNumber>11</ChildNumber><ID>40</ID><reason>Bind mismatch(22)</reason><size>4x4</s
+03xr01r6v3nfp 0000000AFAE38B20 000000724E6EA6A8 	  12 bind_length_upgradeable   <ChildNode><ChildNumber>12</ChildNumber><ID>40</ID><reason>Bind mismatch(22)</reason><size>4x4</s
+03xr01r6v3nfp 0000000AFAE38B20 00000070BC3B4688 	  13 bind_length_upgradeable   <ChildNode><ChildNumber>13</ChildNumber><ID>34</ID><reason>Rolling Invalidate Window Exceeded(3)<
+03xr01r6v3nfp 0000000AFAE38B20 00000003A6409BD8 	  14 roll_invalid_mismatch     <ChildNode><ChildNumber>14</ChildNumber><ID>40</ID><reason>Bind mismatch(22)</reason><size>4x4</s
+03xr01r6v3nfp 0000000AFAE38B20 00000001C7228238 	  15 bind_length_upgradeable   <ChildNode><ChildNumber>15</ChildNumber><ID>40</ID><reason>Bind mismatch(22)</reason><size>4x4</s
+
+
+
+The parameter 'roll_invalidate_mismatch' shows a reason of 'Bind Mismatch', while the correct reason appears in the previous row for 'bind_length_upgradable'
+
+I spent a little time experimenting with UNPIVOT thinking I must have messed it up somewhere.
+
+No, the query is fine, it is the data that is wrong:
+
+
+  1  	select sql_id, address, child_address, child_number
+  2  		, roll_invalid_mismatch
+  3  		, reason
+  4  	from v$sql_shared_cursor
+  5  	where sql_id = '03xr01r6v3nfp'
+  6  	and roll_invalid_mismatch = 'Y'
+  7* order by sql_id, child_number
+15:32:06 SYS@orcl AS SYSDBA> /
+
+SQL_ID	      ADDRESS	       CHILD_ADDRESS	CHILD_NUMBER R REASON
+------------- ---------------- ---------------- ------------ - ----------------------------------------------------------------------------
+03xr01r6v3nfp 0000000AFAE38B20 00000003A4970C98 	   6 Y <ChildNode><ChildNumber>6</ChildNumber><ID>40</ID><reason>Bind mismatch(22)<
+03xr01r6v3nfp 0000000AFAE38B20 000000725770B9D8 	  11 Y <ChildNode><ChildNumber>11</ChildNumber><ID>40</ID><reason>Bind mismatch(22)
+03xr01r6v3nfp 0000000AFAE38B20 00000003A6409BD8 	  14 Y <ChildNode><ChildNumber>14</ChildNumber><ID>40</ID><reason>Bind mismatch(22)
+
+3 rows selected.
+
+
+
+Checking the code in v$fixed_view_definition was no help, as the view_definition column is varchar2(4000), and you guessed it, this view is longer than that.
+
+
+SYSDBA> desc v$fixed_view_definition
+ Name					   Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ VIEW_NAME					    VARCHAR2(30)
+ VIEW_DEFINITION				    VARCHAR2(4000)
+
+
+
+The view is also not stored in dba_views:
+
+
+
+15:43:04 SYS@orcl AS SYSDBA> set long 1000000
+15:43:10 SYS@orcl AS SYSDBA> l
+  1* select text from dba_views where view_name = 'V_$FIXED_VIEW_DEFINITION'
+15:43:11 SYS@orcl AS SYSDBA> /
+
+TEXT
+--------------------------------------------------------------------------------
+select "VIEW_NAME","VIEW_DEFINITION" from v$fixed_view_definition
+
+1 row selected.
+
+

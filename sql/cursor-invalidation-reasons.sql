@@ -5,6 +5,8 @@
 -- jkstill@gmail.com
 -- still@pythian.com
 -- 2015-08-22
+--
+-- 2017-11-02 see v-dollar-sql_shared_cursor-bug.txt for an issue with v$sql_shared_cursor 
 
 col sql_id format a13
 col address format a16
