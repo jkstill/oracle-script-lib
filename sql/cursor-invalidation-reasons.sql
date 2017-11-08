@@ -6,20 +6,57 @@
 -- still@pythian.com
 -- 2015-08-22
 --
--- 2017-11-02 see v-dollar-sql_shared_cursor-bug.txt for an issue with v$sql_shared_cursor 
+-- 2017-11-02 jkstill - see v-dollar-sql_shared_cursor-bug.txt for an issue with v$sql_shared_cursor 
+--            (may not be a bug, but my misunderstanding the relationship of the parameter and reason columns)
+-- 2017-11-08 jkstill - used xmltable() to decode reason column
+--            filter on a single sql_id
+--            included optimizer modes, though that does not seem to get populated
 
 col sql_id format a13
 col address format a16
 col child_address format a16
-col child_number format 9999999
+col child_number format 9999999 head 'CHILD#'
 col parameter format a25
-col reason format a200 
+col reason format a60
+col optimizer_mode_cursor  format a10 head 'OPTIMIZER|MODE|CURSOR'
+col optimizer_mode_current  format a10 head 'OPTIMIZER|MODE|CURRENT'
 
-set long 200
+set long 10000
 
-set linesize 400 trimspool on
+prompt
+prompt 'SQL_ID?: '
+prompt
 
-select sql_id, address, child_address, child_number, parameter, reason
+ttitle off
+set term off head off verify off pause off
+
+col u_sql_id new_value u_sql_id noprint
+
+select '&1' u_sql_id from dual;
+set term on feed on head on
+
+
+set linesize 200 trimspool on
+
+select 
+	s.sql_id
+	, s.address
+	, s.child_address
+	, s.child_number
+	, decode(x.optimizer_mode_cursor, 1, 'ALL_ROWS',
+		2, 'FIRST_ROWS', 
+		3, 'RULE', 
+		4, 'CHOOSE', x.optimizer_mode_cursor,
+		'NA'
+	) AS optimizer_mode_cursor
+	, decode(x.optimizer_mode_current, 1, 'ALL_ROWS',
+		2, 'FIRST_ROWS', 
+		3, 'RULE', 
+		4, 'CHOOSE', x.optimizer_mode_current,
+		'NA'
+	) AS optimizer_mode_current
+	, s.parameter
+	, x.reason
 from (
 	select sql_id, address, child_address, child_number, reason
 		, unbound_cursor , sql_type_mismatch , optimizer_mismatch , outline_mismatch
@@ -39,6 +76,7 @@ from (
 		, flashback_archive_mismatch , lock_user_schema_failed , remote_mapping_mismatch , load_runtime_heap_failed
 		, hash_match_failed , purged_cursor , bind_length_upgradeable , use_feedback_stats
 	from v$sql_shared_cursor
+	where sql_id = '&u_sql_id'
 )
 UNPIVOT (invalidated 
 	for parameter in(
@@ -75,8 +113,19 @@ UNPIVOT (invalidated
 		, hash_match_failed as              'hash_match_failed'             , purged_cursor as                  'purged_cursor'                 
 		, bind_length_upgradeable as        'bind_length_upgradeable'       , use_feedback_stats as             'use_feedback_stats'  
 	)
-)
+) s,
+-- XML from Troubleshooting Oracle Performance Version 2, Christian Antognini
+XMLTable('/Root'
+	PASSING XMLType('<Root>'||reason||'</Root>')
+	COLUMNS child_number NUMBER                  PATH '/Root/ChildNode[1]/ChildNumber',
+		id NUMBER                            PATH '/Root/ChildNode[1]/ID',
+		reason VARCHAR2(100)                 PATH '/Root/ChildNode[1]/reason',
+		optimizer_mode_hinted_cursor NUMBER  PATH '/Root/ChildNode[1]/optimizer_mode_hinted_cursor',
+		optimizer_mode_cursor NUMBER         PATH '/Root/ChildNode[1]/optimizer_mode_cursor',
+		optimizer_mode_current NUMBER        PATH '/Root/ChildNode[1]/optimizer_mode_current'
+) x
 where invalidated = 'Y'
 order by sql_id, child_number
 /
+
 
