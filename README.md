@@ -57,6 +57,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dual_data_gen.sql'>dual_data_gen.sql</a> - generate many rows from dual - uses a lot of memory for large number of rows
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dual_data_gen-low-mem.sql'>dual_data_gen-low-mem.sql</a> - generate many rows without using extra PGA
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dump.sql'>dump.sql</a> - Dump a table to a CSV file, generate SQL Loader parameter and control files.
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/find-index-sql.sql'>find-index-sql.sql</a> - find SQL where an index has been used - uses AWR
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_fk_from-11.1.sql'>gen_fk_from-11.1.sql</a> - generate existing foreign key constraings from data dictionary
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_fk_from-11.2.sql'>gen_fk_from-11.2.sql</a> - generate existing foreign key constraings from data dictionary
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_fk_to-11.1.sql'>gen_fk_to-11.1.sql</a> - generate existing foreign key constraings from data dictionary
@@ -154,39 +155,40 @@
 </pre>
 <h3>AWR/ASH:</h3>
 <pre>
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/aas_history.sql'>aas_history.sql</a> - get history of Average Active Sessions
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/aas-calc.sql'>aas-calc.sql</a> - dump calculated AAS to CSV file
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/aas-std.sql'>aas-std.sql</a> - dump AAS to CSV file
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/aas_hist_metrics.sql'>aas_hist_metrics.sql</a> - get average active sessions along with CPU metrics
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash_blocking.sql'>ash_blocking.sql</a> - get list of row lock blocks - blocked and blockers with SQL_ID
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash_blockers.sql'>ash_blockers.sql</a> - current blocking aggregated by event
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/aas_history.sql'>aas_history.sql</a> - get history of Average Active Sessions
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash-blocker-waits.sql'>ash-blocker-waits.sql</a> - find top level blockers in ASH
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash-events.sql'>ash-events.sql</a> - simple filtered query on ASH events for a SQL_ID
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash-sessions.sql'>ash-sessions.sql</a> - frequency of sessions for a user
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash-snapshot-define-begin-end.sql'>ash-snapshot-define-begin-end.sql</a> - example of how to bracket snap_id
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash-waits-user.sql'>ash-waits-user.sql</a> - summarize ASH all wait time for a user
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash_blockers.sql'>ash_blockers.sql</a> - current blocking aggregated by event
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash_blockers_10g.sql'>ash_blockers_10g.sql</a> - find top level blockers in ASH for 10g
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash_blocking.sql'>ash_blocking.sql</a> - get list of row lock blocks - blocked and blockers with SQL_ID
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash_cpu_hist.sql'>ash_cpu_hist.sql</a> - cpu historic usage from dba_hist_sysmetric_history - 12c+
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash_log_sync.sql'>ash_log_sync.sql</a> - log sync events
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ashtop.sql'>ashtop.sql</a> - Tanel Poder script for top ASH events
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-blocker-waits.sql'>awr-blocker-waits.sql</a> - find top level blockers in AWR
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-cpu-stats.sql'>awr-cpu-stats.sql</a> - Report on sar like CPU stats from AWR
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-export.sql'>awr-export.sql</a> - export AWR - useful for pre-migration work
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-get-retention.sql'>awr-get-retention.sql</a> - Display AWR retention and interval
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-itl-waits.sql'>awr-itl-waits.sql</a> - find ITL waits
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_itl_waits_10g.sql'>awr_itl_waits_10g.sql</a> - find ITL waits in 10g
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash-waits-user.sql'>ash-waits-user.sql</a> - summarize ASH all wait time for a user
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash-snapshot-define-begin-end.sql'>ash-snapshot-define-begin-end.sql</a> - example of how to bracket snap_id
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash-sessions.sql'>ash-sessions.sql</a> - frequency of sessions for a user
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash_cpu_hist.sql'>ash_cpu_hist.sql</a> - cpu historic usage from dba_hist_sysmetric_history - 12c+
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ashtop.sql'>ashtop.sql</a> - Tanel Poder script for top ASH events
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash_log_sync.sql'>ash_log_sync.sql</a> - log sync events
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-resource-limit.sql'>awr-resource-limit.sql</a> - history of processes and sessions from dba_hist_resource_limit
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-set-retention.sql'>awr-set-retention.sql</a> - Example of setting AWR retention and interval
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-top-events.sql'>awr-top-events.sql</a> - get the top events from AWR per instance for a date range
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-top-sqlid-events.sql'>awr-top-sqlid-events.sql</a> - get the top events from AWR per instance and SQL_ID for a date range
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-trans-counts.sql'>awr-trans-counts.sql</a> - show summary of user commits, rollbacks and log sync writes by day
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_RAC_defined.sql'>awr_RAC_defined.sql</a> - Run a non-interactive AWR report on RAC
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_blockers.sql'>awr_blockers.sql</a> - historic blocking aggregated by sql_id
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_bracket_snaps.sql'>awr_bracket_snaps.sql</a> - get snap_id values for a pair of days
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_create_snapshot.sql'>awr_create_snapshot.sql</a> - create an AWR snapshot
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_defined.sql'>awr_defined.sql</a> - Run a non-interactive AWR report
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-export.sql'>awr-export.sql</a> - export AWR - useful for pre-migration work
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_file_io_times.sql'>awr_file_io_times.sql</a> - Historical IO times on ASM files
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_RAC_defined.sql'>awr_RAC_defined.sql</a> - Run a non-interactive AWR report on RAC
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_get_snapshots.sql'>awr_get_snapshots.sql</a> - Get AWR snapshots for a date range
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-get-retention.sql'>awr-get-retention.sql</a> - Display AWR retention and interval
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-set-retention.sql'>awr-set-retention.sql</a> - Example of setting AWR retention and interval
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_itl_waits_10g.sql'>awr_itl_waits_10g.sql</a> - find ITL waits in 10g
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_settings.sql'>awr_settings.sql</a> - query the dba_hist_wr_control view
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-resource-limit.sql'>awr-resource-limit.sql</a> - history of processes and sessions from dba_hist_resource_limit
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-top-events.sql'>awr-top-events.sql</a> - get the top events from AWR per instance for a date range
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-top-sqlid-events.sql'>awr-top-sqlid-events.sql</a> - get the top events from AWR per instance and SQL_ID for a date range
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-trans-counts.sql'>awr-trans-counts.sql</a> - show summary of user commits, rollbacks and log sync writes by day
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/cpu-busy.sql'>cpu-busy.sql</a> - Show what SQL Operations were on CPU
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dba_hist_sys_time_model.sql'>dba_hist_sys_time_model.sql</a> - example of querying dba_hist_sys_time_model - set your own stat_name
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dbw-hist.sql'>dbw-hist.sql</a> - DBWR CPU and Wait time from dba_hist_active_sess_history
@@ -201,9 +203,9 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/rowlock-mode-decode.sql'>rowlock-mode-decode.sql</a> - decode rowlocks in AWR
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/rowlock-sqlid-counts.sql'>rowlock-sqlid-counts.sql</a> - count of rowlock enq by sqlid
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/rowlock-sqlid-hist.sql'>rowlock-sqlid-hist.sql</a> - count of rowlock enq by sqlid - full outer join on snapshot
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/session-history.sql'>session-history.sql</a> - history of sessions from dba_hist_active_sess_history
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-plans.sql'>sql-plans.sql</a> - Show plans used by a selected SQL for a date and time range
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sysmetric-history.sql'>sysmetric-history.sql</a> - pivot to CSV for several metrics in dba_hist_sysmetric_history
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/session-history.sql'>session-history.sql</a> - history of sessions from dba_hist_active_sess_history
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/wsqlmon.sql'>wsqlmon.sql</a> - Provide SQL-Monitor like report from AWR - based on Tanel Poder script for ASH
 </pre>
 <h3>STATSPACK:</h3>
@@ -293,6 +295,7 @@
 <h3>DATABASE STATISTICS - DBMS_STATS - OPTIMIZER:</h3>
 <pre>
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/chk4incremental.sql'>chk4incremental.sql</a> - check to see if incremental stats were gathered for a table
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/cursor-counts.sql'>cursor-counts.sql</a> - simple report on cursors with count of child cursors
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/cursor-invalidation-reasons.sql'>cursor-invalidation-reasons.sql</a> - show reasons for cursor invalidation from v$sql_shared_cursor
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dbms_stats_get_prefs.sql'>dbms_stats_get_prefs.sql</a> - get stats prefs per table and indexes
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dbms_stats_report.sql'>dbms_stats_report.sql</a> - HTML report of dbms_stats activity

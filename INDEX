@@ -54,6 +54,7 @@ RDBMS UTILITIES:
 @dual_data_gen.sql: generate many rows from dual - uses a lot of memory for large number of rows
 @dual_data_gen-low-mem.sql: generate many rows without using extra PGA
 @dump.sql: Dump a table to a CSV file, generate SQL Loader parameter and control files.
+@find-index-sql.sql: find SQL where an index has been used - uses AWR
 @gen_fk_from-11.1.sql: generate existing foreign key constraings from data dictionary
 @gen_fk_from-11.2.sql: generate existing foreign key constraings from data dictionary
 @gen_fk_to-11.1.sql: generate existing foreign key constraings from data dictionary
@@ -151,39 +152,40 @@ WAITS/LOCKS/LATCHES and PERFORMANCE:
 @snapper4.sql: Tanel Poder script extraordinaire - version 4
 
 AWR/ASH:
-@aas_history.sql: get history of Average Active Sessions
 @aas-calc.sql: dump calculated AAS to CSV file
 @aas-std.sql: dump AAS to CSV file
 @aas_hist_metrics.sql: get average active sessions along with CPU metrics
-@ash_blocking.sql: get list of row lock blocks - blocked and blockers with SQL_ID
-@ash_blockers.sql: current blocking aggregated by event
+@aas_history.sql: get history of Average Active Sessions
 @ash-blocker-waits.sql: find top level blockers in ASH
+@ash-events.sql: simple filtered query on ASH events for a SQL_ID
+@ash-sessions.sql: frequency of sessions for a user
+@ash-snapshot-define-begin-end.sql: example of how to bracket snap_id
+@ash-waits-user.sql: summarize ASH all wait time for a user
+@ash_blockers.sql: current blocking aggregated by event
 @ash_blockers_10g.sql: find top level blockers in ASH for 10g
+@ash_blocking.sql: get list of row lock blocks - blocked and blockers with SQL_ID
+@ash_cpu_hist.sql: cpu historic usage from dba_hist_sysmetric_history - 12c+
+@ash_log_sync.sql: log sync events
+@ashtop.sql: Tanel Poder script for top ASH events
 @awr-blocker-waits.sql: find top level blockers in AWR
 @awr-cpu-stats.sql: Report on sar like CPU stats from AWR
+@awr-export.sql: export AWR - useful for pre-migration work
+@awr-get-retention.sql: Display AWR retention and interval
 @awr-itl-waits.sql: find ITL waits
-@awr_itl_waits_10g.sql: find ITL waits in 10g
-@ash-waits-user.sql: summarize ASH all wait time for a user
-@ash-snapshot-define-begin-end.sql: example of how to bracket snap_id
-@ash-sessions.sql: frequency of sessions for a user
-@ash_cpu_hist.sql: cpu historic usage from dba_hist_sysmetric_history - 12c+
-@ashtop.sql: Tanel Poder script for top ASH events
-@ash_log_sync.sql: log sync events
+@awr-resource-limit.sql: history of processes and sessions from dba_hist_resource_limit
+@awr-set-retention.sql: Example of setting AWR retention and interval
+@awr-top-events.sql: get the top events from AWR per instance for a date range
+@awr-top-sqlid-events.sql: get the top events from AWR per instance and SQL_ID for a date range
+@awr-trans-counts.sql: show summary of user commits, rollbacks and log sync writes by day
+@awr_RAC_defined.sql: Run a non-interactive AWR report on RAC
 @awr_blockers.sql: historic blocking aggregated by sql_id
 @awr_bracket_snaps.sql: get snap_id values for a pair of days
 @awr_create_snapshot.sql: create an AWR snapshot
 @awr_defined.sql: Run a non-interactive AWR report
-@awr-export.sql: export AWR - useful for pre-migration work
 @awr_file_io_times.sql: Historical IO times on ASM files
-@awr_RAC_defined.sql: Run a non-interactive AWR report on RAC
 @awr_get_snapshots.sql: Get AWR snapshots for a date range
-@awr-get-retention.sql: Display AWR retention and interval
-@awr-set-retention.sql: Example of setting AWR retention and interval
+@awr_itl_waits_10g.sql: find ITL waits in 10g
 @awr_settings.sql: query the dba_hist_wr_control view
-@awr-resource-limit.sql: history of processes and sessions from dba_hist_resource_limit
-@awr-top-events.sql: get the top events from AWR per instance for a date range
-@awr-top-sqlid-events.sql: get the top events from AWR per instance and SQL_ID for a date range
-@awr-trans-counts.sql: show summary of user commits, rollbacks and log sync writes by day
 @cpu-busy.sql: Show what SQL Operations were on CPU
 @dba_hist_sys_time_model.sql: example of querying dba_hist_sys_time_model - set your own stat_name
 @dbw-hist.sql: DBWR CPU and Wait time from dba_hist_active_sess_history
@@ -198,9 +200,9 @@ AWR/ASH:
 @rowlock-mode-decode.sql: decode rowlocks in AWR
 @rowlock-sqlid-counts.sql: count of rowlock enq by sqlid
 @rowlock-sqlid-hist.sql: count of rowlock enq by sqlid - full outer join on snapshot
+@session-history.sql: history of sessions from dba_hist_active_sess_history
 @sql-plans.sql: Show plans used by a selected SQL for a date and time range
 @sysmetric-history.sql: pivot to CSV for several metrics in dba_hist_sysmetric_history
-@session-history.sql: history of sessions from dba_hist_active_sess_history
 @wsqlmon.sql: Provide SQL-Monitor like report from AWR - based on Tanel Poder script for ASH
 
 STATSPACK:
@@ -291,6 +293,7 @@ PL/SQL:
 
 DATABASE STATISTICS - DBMS_STATS - OPTIMIZER:
 @chk4incremental.sql: check to see if incremental stats were gathered for a table
+@cursor-counts.sql: simple report on cursors with count of child cursors
 @cursor-invalidation-reasons.sql: show reasons for cursor invalidation from v$sql_shared_cursor
 @dbms_stats_get_prefs.sql: get stats prefs per table and indexes
 @dbms_stats_report.sql: HTML report of dbms_stats activity
