@@ -254,7 +254,6 @@ begin
 end;
 /
 
-spool off
 
 prompt -- alter session set events '10046 off';
 prompt -- select '-- ' || value tracefile_name from v$diag_info where name = 'Default Trace File';
@@ -262,6 +261,8 @@ prompt -- select '-- ' || value tracefile_name from v$diag_info where name = 'De
 prompt
 prompt SQL in 'sql-exe-&my_sql_id..sql'
 prompt
+
+spool off
 
 @clears
 set line 80
