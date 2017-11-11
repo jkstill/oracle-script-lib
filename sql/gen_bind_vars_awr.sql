@@ -49,8 +49,9 @@ prompt set echo on
 prompt set timing on pause off
 prompt set linesize 200 trimspool on
 
-prompt -- alter session set events '10046 trace name context forever, level 12';
-prompt -- alter session set tracefile_identifier = '&my_sql_id-TEST';
+prompt -- alter session set events '10046 trace name context forever, level 12';;
+prompt -- alter session set tracefile_identifier = '&my_sql_id-TEST';;
+prompt
 
 
 -- do not set GT 2499
@@ -258,8 +259,10 @@ end;
 /
 
 
-prompt -- alter session set events '10046 off';
-prompt -- select '-- ' || value tracefile_name from v$diag_info where name = 'Default Trace File';
+prompt
+prompt -- alter session set events '10046 off';;
+prompt
+prompt -- select value tracefile_name from v$diag_info where name = 'Default Trace File';;
 
 prompt
 prompt spool off
