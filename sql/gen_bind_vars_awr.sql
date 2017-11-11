@@ -6,32 +6,22 @@
 -- create a sqlplus script to run them
 -- crude parsing of data types could use some refinement
 -- works for what I need now
-
+--
+-- jkstill 2017-11-10
+-- refactored quite a bit 
+-- no longer using utl_file due to SQL formatting issues
+--
 -- parameters:
 -- 1: sql_id
--- 2: utl_file - write output to utl_file_dir if this is 'y'
---		any other values disables utl_file output.
---		there must be a directory DB Directory
---		which you have access.
-
-
--- directory to write to
-define u_dba_dir='MYDIR'
-
-
--- use this to examine dba_directories
 /*
 
-col owner format a30
-col directory_name format a30
-col directory_path format a120
+for this script utl_file is no longer being used.
+The problem is that some SQL is over 2499 characters in length, and it may be stored as one line in the data dictionary
+SQLPlus cannot execute lines that long
 
-set linesize 200 trimspool on
-set pagesize 100
+Formatting with PL/SQL and keeping the syntax legal was proving more difficult that necessary for this script.
 
-select *
-from dba_directories
-order by owner, directory_name;
+So, spooled output from sqlplus is being used instead.
 
 */
 
@@ -39,7 +29,6 @@ order by owner, directory_name;
 @clears
 
 col my_sql_id new_value my_sql_id noprint
-col utl_file_output new_value utl_file_output noprint
 
 prompt
 prompt SQL_ID: 
@@ -47,28 +36,28 @@ set feed off term off
 select '&1' my_sql_id from dual;
 
 set feed on term on
-prompt
-prompt Write &u_dba_dir? Y/N: 
-set feed off term off
-select upper('&2') utl_file_output from dual;
 
 @clear_for_spool
 
 set serveroutput on size unlimited
 
-set line 4000
+spool 'sql-exe-&my_sql_id..sql'
+
+prompt set timing on pause off
+prompt set linesize 200 trimspool on
+
+prompt -- alter session set events '10046 trace name context forever, level 12';
+prompt -- alter session set tracefile_identifier = '&my_sql_id-TEST';
+prompt -- select '-- ' || value tracefile_name from v$diag_info where name = 'Default Trace File';
+
+
+-- do not set GT 2499
+-- SQL statements input on sqlplus cmdline cannot be longer than 2499
+set line 500
 
 declare
 
-	BUFSIZE integer := 4000;
-
-	b_utl_file_out boolean := false;
-
-	v_file_prefix varchar2(30) := 'sql_bind_gen';
-	v_file_suffix varchar2(4) := '.sql';
-	v_filename varchar2(100);
-	v_directory varchar2(30) := '&u_dba_dir';
-	f_handle utl_file.file_type;
+	debug boolean := false;
 
 	type bindrectyp is record (
 		snap_id number,
@@ -95,12 +84,11 @@ declare
 	v_bind_key varchar(100);
 	v_snap_id number := 0;
 
-	v_sql varchar2(20000);
+	v_sql clob;
 
 	cursor c_get_sql( v_sql_id_in varchar2 )
 	is
 	select sql_id, sql_text
-	--from v$sql
 	from dba_hist_sqltext
 	where sql_id = v_sql_id_in;
 
@@ -132,62 +120,35 @@ declare
 	procedure pl (v_string_in varchar2)
 	is
 	begin
-		dbms_output.put_line(v_string_in);
+		p(v_string_in);
+		dbms_output.put_line('');
 	end;
 
-	procedure fp (f_handle_in utl_file.file_type, v_string_in varchar2)
+	procedure dout (v_string_in varchar2)
 	is
 	begin
-		if b_utl_file_out then
-			utl_file.put(f_handle_in,v_string_in);
-		end if;
-	end;
-
-	procedure fpl (f_handle_in utl_file.file_type, v_string_in varchar2)
-	is
-	begin
-		if b_utl_file_out then
-			utl_file.put_line(f_handle_in,v_string_in);
-		end if;
-	end;
-
-	function fopen ( v_directory_in varchar2, v_filename_in varchar2, v_mode_in varchar2,i_bufsize_in integer)
-	return utl_file.file_type
-	is
-		f_handle utl_file.file_type;
-	begin
-		if b_utl_file_out then
-			f_handle := utl_file.fopen(v_directory_in,v_filename_in,v_mode_in,i_bufsize_in);
-			if utl_file.is_open(f_handle) then
-				pl('Opened file: '  || v_filename_in  || ' in ' || v_directory_in);
-				return f_handle;
-			else
-				raise_application_error(-20000,'error opening ' || v_filename_in );
-			end if;
-		else 
-			return null;
+		if ( debug ) then
+			pl(v_string_in);
 		end if;
 	end;
 
 begin
-
-	if '&&utl_file_output' = 'Y' then
-		b_utl_file_out := true;
-	end if;
 
 	--t_sql_id(1) := '6pk8u51cuxykt';
 	t_sql_id(1) := '&&my_sql_id';
 	
 	for i in t_sql_id.first ..t_sql_id.last
 	loop
-		--pl('working on ' || t_sql_id(i));
+		--dout('working on ' || t_sql_id(i));
 		-- get sql
 		for sqlrec in c_get_sql(t_sql_id(i))
 		loop
 			v_sql := sqlrec.sql_text;
-			--pl('working on child ' || sqlrec.child_number );
-			--pl('###################################################');
-			--pl('SQL:' || v_sql);
+
+			--dout('-- V_SQL: ' || v_sql);
+			--dout('working on child ' || sqlrec.child_number );
+			--dout('###################################################');
+			--dout('SQL:' || v_sql);
 
 			-- get bind names into associative array
 			t_bind_names := t_bin_names_empty;
@@ -196,10 +157,10 @@ begin
 					t_bind_names(bindnamerec.position).bind_name := bindnamerec.name;
 					t_bind_names(bindnamerec.position).datatype_string := bindnamerec.datatype_string;
 
-					pl('======= bind definitions =============================');
-					pl('bind position: ' || bindnamerec.position);
-					pl('bind name    : ' || bindnamerec.name);
-					pl('bind datatype: ' || bindnamerec.datatype_string);
+					dout('-- ======= bind definitions =============================');
+					dout('-- bind position: ' || bindnamerec.position);
+					dout('-- bind name    : ' || bindnamerec.name);
+					dout('-- bind datatype: ' || bindnamerec.datatype_string);
 
 			end loop;
 
@@ -217,28 +178,21 @@ begin
 				t_binds(v_bind_key).datatype_string := bindrec.datatype_string;
 				t_binds(v_bind_key).value_string := bindrec.value_string;
 
-				pl('======= bind values =============================');
-				pl('bind snapid  : ' || bindrec.snap_id);
-				pl('bind position: ' || bindrec.position);
-				pl('bind name	  : ' || bindrec.name);
-				pl('bind datatype: ' || bindrec.datatype_string);
-				pl('value        : ' || bindrec.value_string);
+				dout('-- ======= bind values =============================');
+				dout('-- bind snapid  : ' || bindrec.snap_id);
+				dout('-- bind position: ' || bindrec.position);
+				dout('-- bind name	  : ' || bindrec.name);
+				dout('-- bind datatype: ' || bindrec.datatype_string);
+				dout('-- value        : ' || bindrec.value_string);
 
 			end loop;
-
-			v_filename := v_file_prefix || '_' || sqlrec.sql_id || v_file_suffix;
-			pl( v_filename);
-
-			f_handle := fopen(v_directory,v_filename,'W',BUFSIZE);
 
 			-- create variable definitions
 			for i in t_bind_names.first .. t_bind_names.last
 			loop
 				p('var ' || substr(t_bind_names(i).bind_name,2));
-				fp(f_handle,'var ' || substr(t_bind_names(i).bind_name,2));
 				if t_bind_names(i).datatype_string like 'NUMBER%' then
 					pl(' number');
-					fpl(f_handle,' number');
 				else
 					pl(' varchar2(' || 
 						substr(
@@ -248,7 +202,7 @@ begin
 						) || ')'
 					);
 
-					fpl(f_handle,' varchar2(' || 
+					pl(' varchar2(' || 
 						substr(
 							t_bind_names(i).datatype_string,
 							instr(t_bind_names(i).datatype_string,
@@ -258,8 +212,9 @@ begin
 				end if;
 			end loop;
 
-			pl('begin');
-			fpl(f_handle,'begin');
+			pl('	');
+			pl(v_sql);  
+			pl('	');
 
 			v_bind_key := t_binds.first;
 
@@ -271,41 +226,28 @@ begin
 
 				v_snap_id := substr(v_bind_key,1,instr(v_bind_key,':')-1);
 
-				p(t_binds(v_bind_key).bind_name || ' := ');
-				fp(f_handle,t_binds(v_bind_key).bind_name || ' := ');
+				p('exec ' || t_binds(v_bind_key).bind_name || ' := ');
 
 				if t_binds(v_bind_key).datatype_string like 'NUMBER%' then
 					pl(' to_number(''' || t_binds(v_bind_key).value_string || ''');');
-					fpl(f_handle,' to_number(''' || t_binds(v_bind_key).value_string || ''');');
 				elsif t_binds(v_bind_key).datatype_string = 'DATE' then
 					pl('to_date(''' || t_binds(v_bind_key).value_string || ''');');
-					fpl(f_handle,'to_date(''' || t_binds(v_bind_key).value_string || ''');');
 				else
 					pl('''' || t_binds(v_bind_key).value_string || ''';');
-					fpl(f_handle,'''' || t_binds(v_bind_key).value_string || ''';');
 				end if;
 
 				v_bind_key := t_binds.next(v_bind_key);
 
 				if v_snap_id != substr(v_bind_key,1,instr(v_bind_key,':')-1) then
-					pl('bind_key: ' || v_bind_key);
-					pl(v_sql);
+					pl('-- bind_key: ' || v_bind_key);
+					--pl(v_sql || ';');
 					pl('/');
-					fpl(f_handle,v_sql);
-					fpl(f_handle,'/');
 				end if;
 
 			end loop;
-			pl('end;');
+
+			-- get the last SQL exe in
 			pl('/');
-
-			fpl(f_handle,'end;');
-			fpl(f_handle,'/');
-
-
-			if b_utl_file_out then
-				utl_file.fclose(f_handle);
-			end if;
 			
 		end loop;
 	end loop;
@@ -313,8 +255,14 @@ begin
 end;
 /
 
+spool off
+
+prompt
+prompt SQL in 'sql-exe-&my_sql_id..sql'
+prompt
 
 @clears
 set line 80
 undef 1 2
+
 
