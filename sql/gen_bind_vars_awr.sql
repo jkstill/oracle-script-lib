@@ -43,6 +43,9 @@ set serveroutput on size unlimited
 
 spool 'sql-exe-&my_sql_id..sql'
 
+prompt spool 'sql-exe-&my_sql_id..log'
+prompt set echo on
+
 prompt set timing on pause off
 prompt set linesize 200 trimspool on
 
@@ -259,10 +262,13 @@ prompt -- alter session set events '10046 off';
 prompt -- select '-- ' || value tracefile_name from v$diag_info where name = 'Default Trace File';
 
 prompt
-prompt SQL in 'sql-exe-&my_sql_id..sql'
-prompt
+prompt spool off
 
 spool off
+
+prompt
+prompt SQL in 'sql-exe-&my_sql_id..sql'
+prompt
 
 @clears
 set line 80
