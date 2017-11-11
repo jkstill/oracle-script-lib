@@ -48,7 +48,6 @@ prompt set linesize 200 trimspool on
 
 prompt -- alter session set events '10046 trace name context forever, level 12';
 prompt -- alter session set tracefile_identifier = '&my_sql_id-TEST';
-prompt -- select '-- ' || value tracefile_name from v$diag_info where name = 'Default Trace File';
 
 
 -- do not set GT 2499
@@ -256,6 +255,9 @@ end;
 /
 
 spool off
+
+prompt -- alter session set events '10046 off';
+prompt -- select '-- ' || value tracefile_name from v$diag_info where name = 'Default Trace File';
 
 prompt
 prompt SQL in 'sql-exe-&my_sql_id..sql'
