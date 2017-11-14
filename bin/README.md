@@ -100,6 +100,7 @@ example:
 
 ./get-bind-info.pl orcl_ora_48585_doio5cpk2xyzk-.trc
 
+``` text
 ...
 
 ====== tim: 1510368247005494 =========
@@ -171,4 +172,7 @@ Execution Statistics
  BIND#15="N"
  BIND#16="ROUTENUM"
  BIND#17=1
+
+```
+
 
