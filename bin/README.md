@@ -98,9 +98,11 @@ An improvement would be to detect the cursor# by the SQL_ID, as it is possible f
 
 example:
 
-./get-bind-info.pl orcl_ora_48585_doio5cpk2xyzk-.trc
 
 ``` text
+
+./get-bind-info.pl orcl_ora_48585_doio5cpk2xyzk.trc
+
 ...
 
 ====== tim: 1510368247005494 =========
