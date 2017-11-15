@@ -84,8 +84,6 @@ foreach my $tim ( sort {$b <=> $a} keys %hBinds ) {
 
 	# sample FETCH
 	# FETCH #140304068176776:c=269959,e=725736,p=59,cr=40022,cu=0,mis=0,r=0,dep=0,og=1,plh=1619557942,tim=1510368246997484
-	print "FETCH: $hBinds{$tim}->{FETCH}\n";
-
 
 	my @a=split(/,/,$hBinds{$tim}->{FETCH});
 
@@ -121,11 +119,12 @@ Execution Statistics
 
 };
 
-print "Bind Values\n";
+	print "Bind Values\n";
 
 	my $bc=0;
 	my @b = map { 'BIND#' . $bc++ . '=' . $_ } @{$hBinds{$tim}->{BINDS}};
 	print join("\n",@b), "\n";
 
+	print "FETCH: $hBinds{$tim}->{FETCH}\n";
 
 }
