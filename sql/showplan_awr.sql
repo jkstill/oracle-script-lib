@@ -11,6 +11,9 @@ set echo off term off head off
 select '&1' usql_id from dual;
 set term on head on
 
+set linesize 250 trimspool on
+set pagesize 200
+
 var sqlidvar varchar2(20)
 var childnumvar number
 

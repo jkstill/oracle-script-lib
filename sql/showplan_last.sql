@@ -10,6 +10,9 @@ clear break
 clear compute
 
 
+set linesize 250 trimspool on
+set pagesize 200
+
 select *
 --from table(dbms_xplan.display_cursor( null,null,'ALL ALLSTATS LAST'))
 --

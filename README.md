@@ -278,6 +278,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showplan72.sql'>showplan72.sql</a> - show execution plans for oracle 7.2
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showplan73.sql'>showplan73.sql</a> - show execution plans for oracle 7.2+
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showplan9i.sql'>showplan9i.sql</a> - show execution plans for oracle 9i+
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showplan_awr.sql'>showplan_awr.sql</a> - show execution plans from AWR
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showplan_last.sql'>showplan_last.sql</a> - show execution plan for most recently executed cursor in current session
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_bind_vars.sql'>gen_bind_vars.sql</a> - gather bind values from v$sql_bind and generate SQL
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_bind_vars_awr.sql'>gen_bind_vars_awr.sql</a> - gather bind values from dba_hist_sqltext and generate SQL

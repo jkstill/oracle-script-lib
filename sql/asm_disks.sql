@@ -12,8 +12,12 @@ col failgroup_type format a10 head 'FAILGROUP|TYPE'
 col voting_file format a4 head 'VOTE|DISK'
 col failgroup format a15
 
-select 
+
+select
 	dg.name
+	, dg.con_id
+	, d.total_mb
+	, d.free_mb
 	, dg.state
 	, dg.type
 	, d.failgroup
@@ -25,5 +29,4 @@ from v$asm_diskgroup dg
 join v$asm_disk d on d.group_number = dg.group_number
 order by dg.name, d.name
 /
-
 
