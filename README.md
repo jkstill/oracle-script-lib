@@ -204,6 +204,8 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/rowlock-sqlid-counts.sql'>rowlock-sqlid-counts.sql</a> - count of rowlock enq by sqlid
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/rowlock-sqlid-hist.sql'>rowlock-sqlid-hist.sql</a> - count of rowlock enq by sqlid - full outer join on snapshot
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/session-history.sql'>session-history.sql</a> - history of sessions from dba_hist_active_sess_history
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-exe-times-ash.sql'>sql-exe-times-ash.sql</a> - stats and histograms of exucution times for a SQL_ID
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-exe-times-awr.sql'>sql-exe-times-awr.sql</a> - stats and histograms of exucution times for a SQL_ID for past 30 days
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-plans.sql'>sql-plans.sql</a> - Show plans used by a selected SQL for a date and time range
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sysmetric-history.sql'>sysmetric-history.sql</a> - pivot to CSV for several metrics in dba_hist_sysmetric_history
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/top10-sql-ash.sql'>top10-sql-ash.sql</a> - get top (by count) sql statements from ASH
