@@ -206,6 +206,8 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/session-history.sql'>session-history.sql</a> - history of sessions from dba_hist_active_sess_history
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-plans.sql'>sql-plans.sql</a> - Show plans used by a selected SQL for a date and time range
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sysmetric-history.sql'>sysmetric-history.sql</a> - pivot to CSV for several metrics in dba_hist_sysmetric_history
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/top10-sql-ash.sql'>top10-sql-ash.sql</a> - get top (by count) sql statements from ASH
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/top10-sql-awr.sql'>top10-sql-awr.sql</a> - get top (by count) sql statements from AWR for past 30 days
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/wsqlmon.sql'>wsqlmon.sql</a> - Provide SQL-Monitor like report from AWR - based on Tanel Poder script for ASH
 </pre>
 <h3>STATSPACK:</h3>
