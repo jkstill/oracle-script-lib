@@ -65,7 +65,7 @@ from histo_data
 group by histogram, seconds
 order by 1
 )
-&stats select sql_id, executions, min_seconds, avg_seconds, med_seconds, total_seconds
+&stats select sql_id, executions, min_seconds, avg_seconds, med_seconds, max_seconds, total_seconds
 &stats from stats
 &histo select
 	&histo exe_count
