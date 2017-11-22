@@ -22,7 +22,7 @@ prompt
 prompt SQL_ID: 
 prompt
 
-set term off feed off
+set term off feed off verify off
 
 select '&1' u_sql_id from dual;
 
