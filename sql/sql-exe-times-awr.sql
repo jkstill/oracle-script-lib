@@ -22,6 +22,7 @@ col med_seconds format 99,990.09
 col seconds format 99,990.099
 col executions format 99,999,999,999
 col histogram format a100
+col bucket format a12
 
 
 set linesize 200 trimspool on
