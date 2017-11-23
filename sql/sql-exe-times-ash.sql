@@ -1,4 +1,5 @@
 
+
 -- sql-exe-times-ash.sql
 -- call with sql_id
 -- Jared Still - Pythian - still@pythian.com jkstill@gmail.com
@@ -7,8 +8,10 @@
 -- was going about getting execution times all wrong 
 -- now deriving execution times based on begin and end times 
 -- for a sql_exec_id per inst_id,session_id,serial# during the period tested
+-- 
+-- standardized the histogram buckets
 
-
+@clears
 
 col u_sql_id new_value u_sql_id noprint
 var v_sql_id varchar2(13) 
@@ -19,7 +22,7 @@ col med_seconds format 99,990.09
 col seconds format 99,990.099
 col executions format 99,999,999
 col histogram format a100
-col bucket format a12
+col bucket_name format a12 heading 'EXE SECONDS'
 
 set linesize 200 trimspool on
 set pagesize 100
@@ -79,19 +82,58 @@ from sql_seconds
 histo_data as (
 	select s.sql_id
 		-- limit to 100 characters
-		, substr(rpad('*',count(*) over (partition by floor(s.seconds)),'*'),1,100) histogram
-		, ' <= ' || to_char(floor(s.seconds) +1) bucket
-		, floor(s.seconds) +1 seconds
-	from sql_seconds s
+		, substr(rpad('*',count(*) over (partition by s.seconds),'*'),1,100) histogram
+		--, ' <= ' || to_char(s.seconds +1) bucket
+		, s.bucket_name
+		, s.seconds
+	from 
+	(
+		select  sql_id
+		, case
+			when seconds <= 1 then '<= 1'
+			when seconds <= 2 then '<= 2'
+			when seconds <= 3 then '<= 3'
+			when seconds <= 4 then '<= 4'
+			when seconds <= 5 then '<= 5'
+			when seconds <= 10 then '<= 10'
+			when seconds <= 15 then '<= 15'
+			when seconds <= 20 then '<= 20'
+			when seconds <= 30 then '<= 30'
+			when seconds <= 40 then '<= 40'
+			when seconds <= 50 then '<= 50'
+			when seconds <= 60 then '<= 60'
+			when seconds <= 120 then '<= 120'
+			when seconds <= 300 then '<= 300'
+			else	'>300'
+		end bucket_name
+		, case
+			when seconds <= 1 then 1
+			when seconds <= 2 then 2
+			when seconds <= 3 then 3
+			when seconds <= 4 then 4
+			when seconds <= 5 then 5
+			when seconds <= 10 then 10
+			when seconds <= 15 then 15
+			when seconds <= 20 then 20
+			when seconds <= 30 then 30
+			when seconds <= 40 then 40
+			when seconds <= 50 then 50
+			when seconds <= 60 then 60
+			when seconds <= 120 then 120
+			when seconds <= 300 then 300
+			else	301
+		end seconds
+		from sql_seconds s
+	) s
 ), 
 histogram as (
 select
 	count(*) exe_count
 	, seconds
-	, bucket
+	, bucket_name
 	, histogram
 from histo_data
-group by seconds, bucket, histogram
+group by seconds, bucket_name, histogram
 order by seconds
 )
 &stats select inst_id, sql_id, executions, min_seconds, avg_seconds, med_seconds, max_seconds, total_seconds
@@ -99,7 +141,7 @@ order by seconds
 &histo select
 	&histo exe_count
 	--&histo , seconds
-	&histo , bucket
+	&histo , bucket_name
 	&histo , histogram
 &histo from histogram
 /
@@ -109,3 +151,4 @@ def histo=''
 def stats='--'
 
 /
+
