@@ -507,6 +507,7 @@ ASM:
 @asm_diskgroup_templates.sql: show diskgroup template values
 @asm_files.sql: show files in ASM
 @asm_files_path.sql: show files in ASM with full path
+@asm_partners.sql: show ASM disk partners - must be run from ASM instance
 
 DRCP: Database Resident Connection Pooling
 

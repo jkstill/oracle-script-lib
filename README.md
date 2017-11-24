@@ -510,6 +510,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/asm_diskgroup_templates.sql'>asm_diskgroup_templates.sql</a> - show diskgroup template values
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/asm_files.sql'>asm_files.sql</a> - show files in ASM
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/asm_files_path.sql'>asm_files_path.sql</a> - show files in ASM with full path
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/asm_partners.sql'>asm_partners.sql</a> - show ASM disk partners - must be run from ASM instance
 </pre>
 <h3>DRCP: Database Resident Connection Pooling</h3>
 <pre>
