@@ -1,5 +1,6 @@
 
 -- gen_bind_vars_awr.sql
+--
 -- jared still 2017-08-28 - jkstill@gmail.com, still@pythian.com
 -- copied from gen_bind_vars.sql and modified for AWR
 -- given a SQL_ID get the SQL and bind variables
@@ -7,12 +8,29 @@
 -- crude parsing of data types could use some refinement
 -- works for what I need now
 --
+-- the generated SQL statement may need some editing
+--
 -- jkstill 2017-11-10
--- refactored quite a bit 
+-- refactored quite a bit
 -- no longer using utl_file due to SQL formatting issues
 --
+-- jkstill 2017-11-27
+-- now uses a BETWEEN to get the historical metrics
+-- dates are set to the :v_start_days_back and :v_end_days_back
+-- see parameters at end of comments
+--
+-- also renames system generated bind variables from SYS_B_ to B_
+-- generated bind variables with just a digit name are also changed. eg: :1 becomes :G1
+
 -- parameters:
 -- 1: sql_id
+-- 2: days back for begin snap_id
+-- 3: days back for end snap_id
+-- to generate a script using bind values from 30 to 60 days ago
+-- @gen_bind_vars_awr 'sd3h4987dnwe8' 60 30
+--
+
+
 /*
 
 for this script utl_file is no longer being used.
@@ -29,6 +47,8 @@ So, spooled output from sqlplus is being used instead.
 @clears
 
 col my_sql_id new_value my_sql_id noprint
+col my_start_days_back new_value my_start_days_back noprint
+col my_end_days_back new_value my_end_days_back noprint
 
 prompt
 prompt SQL_ID: 
@@ -36,6 +56,36 @@ set feed off term off
 select '&1' my_sql_id from dual;
 
 set feed on term on
+
+prompt
+prompt Days back for Begin SNAP_ID:
+prompt
+
+set term off feed off
+select '&2' my_start_days_back from dual;
+set term on feed on
+
+prompt
+prompt Days back for End SNAP_ID:
+prompt
+
+set term off feed off
+select '&3' my_end_days_back from dual;
+set term on feed on
+
+
+-- change these as needed
+
+var v_start_days_back number
+var v_end_days_back number
+
+begin
+	:v_start_days_back := &my_start_days_back;
+	-- must be GE start days
+	:v_end_days_back := &my_end_days_back;
+end;
+/
+
 
 @clear_for_spool
 
@@ -49,6 +99,7 @@ prompt set echo on
 prompt set timing on pause off
 prompt set linesize 200 trimspool on
 
+prompt -- alter session set statistics_level = 'ALL';;
 prompt -- alter session set events '10046 trace name context forever, level 12';;
 prompt -- alter session set tracefile_identifier = '&my_sql_id-TEST';;
 prompt
@@ -61,6 +112,9 @@ set line 500
 declare
 
 	debug boolean := false;
+
+	t_begin_interval timestamp;
+	t_end_interval timestamp;
 
 	type bindrectyp is record (
 		snap_id number,
@@ -89,29 +143,60 @@ declare
 
 	v_sql clob;
 
+	-- renames system generated bind var names
 	cursor c_get_sql( v_sql_id_in varchar2 )
 	is
+	with first_iteration as (
+		select sql_id, replace(sql_text,'SYS_B_','B_') sql_text
+		from dba_hist_sqltext
+		where sql_id = v_sql_id_in
+	),
+	second_iteration as (
+		select sql_id, regexp_replace(sql_text,':([[:digit:]]+)',':G' || '\1' ) sql_text
+		from first_iteration
+	)
 	select sql_id, sql_text
-	from dba_hist_sqltext
-	where sql_id = v_sql_id_in;
+	from second_iteration;
 
 	cursor c_get_binds( v_sql_id_in varchar2 )
 	is
-	select distinct snap_id, position, name, datatype_string, value_string, last_captured
-	from dba_hist_sqlbind
-	where sql_id = v_sql_id_in 
+	select distinct
+		b.snap_id, b.position
+		-- convert the names of system generated bind variables
+		-- these will be SYS_B_ and just digits such as '1'
+		, case
+			when b.name like ':SYS_B_%' then substr(b.name,6)
+			when regexp_like(b.name,'^:[[:digit:]]') then 'G' || substr(b.name,2)
+			else b.name
+		end name
+	, b.datatype_string, b.value_string, b.last_captured
+	from dba_hist_sqlbind b
+	where b.sql_id = v_sql_id_in
+	-- limit amount of data to look at if you like
+	and b.snap_id >= (
+		select max(snap_id)
+		from dba_hist_snapshot
+		--where begin_interval_time >= systimestamp - interval '1' day
+		--where begin_interval_time between (systimestamp - interval '25' day) and (systimestamp - interval '24' day)
+		where begin_interval_time between t_begin_interval and t_end_interval
+			and instance_number =  sys_context('userenv','instance')
+	)
 	order by snap_id, last_captured, position;
 
 	cursor c_get_bind_names( v_sql_id_in varchar2 )
 	is
-	select distinct position, name, datatype_string
-	from dba_hist_sqlbind
-	where sql_id = v_sql_id_in 
-		and snap_id = ( 
-			select max(snap_id)
-			from dba_hist_sqlbind
-			where sql_id = v_sql_id_in
-		)
+	select distinct
+		b.position
+		-- convert the names of system generated bind variables
+		-- these will ber SYS_B_ and just digits such as '1'
+		, case
+			when b.name like ':SYS_B_%' then substr(b.name,6)
+			when regexp_like(b.name,'^:[[:digit:]]') then 'G'	|| substr(b.name,2)
+			else b.name
+		end name
+		, datatype_string
+	from dba_hist_sql_bind_metadata b
+	where b.sql_id = v_sql_id_in
 	order by position;
 
 	procedure p (v_string_in varchar2)
@@ -136,6 +221,15 @@ declare
 	end;
 
 begin
+
+	v_sql := q'[select systimestamp - interval ']' || :v_start_days_back || q'[' day from dual]';
+	execute immediate v_sql into t_begin_interval;
+	v_sql := q'[select systimestamp - interval ']' || :v_end_days_back || q'[' day from dual]';
+	execute immediate v_sql into t_end_interval;
+
+	pl('-- Begin Interval Time: ' || t_begin_interval);
+	pl('--	End Interval Time: ' || t_end_interval);
+	pl('--');
 
 	--t_sql_id(1) := '6pk8u51cuxykt';
 	t_sql_id(1) := '&&my_sql_id';
@@ -162,7 +256,7 @@ begin
 
 					dout('-- ======= bind definitions =============================');
 					dout('-- bind position: ' || bindnamerec.position);
-					dout('-- bind name    : ' || bindnamerec.name);
+					dout('-- bind name	 : ' || bindnamerec.name);
 					dout('-- bind datatype: ' || bindnamerec.datatype_string);
 
 			end loop;
@@ -182,30 +276,23 @@ begin
 				t_binds(v_bind_key).value_string := bindrec.value_string;
 
 				dout('-- ======= bind values =============================');
-				dout('-- bind snapid  : ' || bindrec.snap_id);
+				dout('-- bind snapid	 : ' || bindrec.snap_id);
 				dout('-- bind position: ' || bindrec.position);
 				dout('-- bind name	  : ' || bindrec.name);
 				dout('-- bind datatype: ' || bindrec.datatype_string);
-				dout('-- value        : ' || bindrec.value_string);
+				dout('-- value			 : ' || bindrec.value_string);
 
 			end loop;
 
 			-- create variable definitions
 			for i in t_bind_names.first .. t_bind_names.last
 			loop
-				p('var ' || substr(t_bind_names(i).bind_name,2));
+				--p('var ' || substr(t_bind_names(i).bind_name,2));
+				p('var ' || t_bind_names(i).bind_name);
 				if t_bind_names(i).datatype_string like 'NUMBER%' then
 					pl(' number');
 				else
-					pl(' varchar2(' || 
-						substr(
-							t_bind_names(i).datatype_string,
-							instr(t_bind_names(i).datatype_string,
-							'(')+1,instr(t_bind_names(i).datatype_string,')') - instr(t_bind_names(i).datatype_string,'(')-1
-						) || ')'
-					);
-
-					pl(' varchar2(' || 
+					pl(' varchar2(' ||
 						substr(
 							t_bind_names(i).datatype_string,
 							instr(t_bind_names(i).datatype_string,
@@ -216,7 +303,7 @@ begin
 			end loop;
 
 			pl('	');
-			pl(v_sql);  
+			pl(v_sql);
 			pl('	');
 
 			v_bind_key := t_binds.first;
@@ -229,7 +316,7 @@ begin
 
 				v_snap_id := substr(v_bind_key,1,instr(v_bind_key,':')-1);
 
-				p('exec ' || t_binds(v_bind_key).bind_name || ' := ');
+				p('exec :' || t_binds(v_bind_key).bind_name || ' := ');
 
 				if t_binds(v_bind_key).datatype_string like 'NUMBER%' then
 					pl(' to_number(''' || t_binds(v_bind_key).value_string || ''');');
@@ -276,5 +363,4 @@ prompt
 @clears
 set line 80
 undef 1 2
-
 
