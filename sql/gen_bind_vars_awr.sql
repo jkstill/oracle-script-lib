@@ -21,6 +21,14 @@
 --
 -- also renames system generated bind variables from SYS_B_ to B_
 -- generated bind variables with just a digit name are also changed. eg: :1 becomes :G1
+--
+-- jkstill 2017-11-27
+-- use numtodsinterval() to calculate dates
+-- "select systimestamp - interval '100' day from dual" will cause ORA-01873: the leading precision of the interval is too small
+-- this can be corrected by:
+-- "select systimestamp - interval '100' day(3) from dual" 
+-- use of numtodsinterval() is much cleaner
+
 
 -- parameters:
 -- 1: sql_id
@@ -222,10 +230,8 @@ declare
 
 begin
 
-	v_sql := q'[select systimestamp - interval ']' || :v_start_days_back || q'[' day from dual]';
-	execute immediate v_sql into t_begin_interval;
-	v_sql := q'[select systimestamp - interval ']' || :v_end_days_back || q'[' day from dual]';
-	execute immediate v_sql into t_end_interval;
+	t_begin_interval := systimestamp - numtodsinterval(:v_start_days_back,'day');
+	t_end_interval := systimestamp - numtodsinterval(:v_end_days_back,'day');
 
 	pl('-- Begin Interval Time: ' || t_begin_interval);
 	pl('--	End Interval Time: ' || t_end_interval);
