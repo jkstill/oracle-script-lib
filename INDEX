@@ -397,10 +397,14 @@ INSTANCE and/or DATABASE:
 @kglh-growth-awr.sql: check AWR for unbounded growth of shared pool memory structures
 @la8.sql: Shows last analyzed dates for database objects . 8.0+
 @la.sql: Shows last analyzed dates for database objects . 7.3
+@login.sql: set prompt and editor on login
 @log-switch-histogram.sql: Display a histogram of redo log switch times
 @loghistory_8.sql: show archive logs with time between switches
 @loghist-csv.sql: dump history of archive logs (with timing) to CSV
-@oracle-naming-inconsistencies.sql:  highlight some of the inconsistencies oracle data dictionary column names
+@oracle-exclude-demo.sql: demonstrate the use of oracle-exclude-inline.sql
+@oracle-exclude-inline.sql: inline version of oracle-exclude-schema.sql
+@oracle-exclude-schema.sql: show schemas owned by Oracle and are frequently excluded from queries
+@oracle-naming-inconsistencies.sql: highlight some of the inconsistencies oracle data dictionary column names
 @pivot.sql: Simple demo of PIVOT
 @purge_cursors.sql: purge a list of SQL cursors from shared_pool - 10g+ see Oracle Note 457309.1
 @reserved-words.sql: List reserved words from v$reserved_words

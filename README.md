@@ -403,6 +403,9 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/log-switch-histogram.sql'>log-switch-histogram.sql</a> - Display a histogram of redo log switch times
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/loghistory_8.sql'>loghistory_8.sql</a> - show archive logs with time between switches
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/loghist-csv.sql'>loghist-csv.sql</a> - dump history of archive logs (with timing) to CSV
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/oracle-exclude-demo.sql'>oracle-exclude-demo.sql</a> - demonstrate the use of oracle-exclude-inline.sql
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/oracle-exclude-inline.sql'>oracle-exclude-inline.sql</a> - inline version of oracle-exclude-schema.sql
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/oracle-exclude-schema.sql'>oracle-exclude-schema.sql</a> - show schemas owned by Oracle and are frequently excluded from queries
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/oracle-naming-inconsistencies.sql'>oracle-naming-inconsistencies.sql</a> - highlight some of the inconsistencies oracle data dictionary column names
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pivot.sql'>pivot.sql</a> - Simple demo of PIVOT
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/purge_cursors.sql'>purge_cursors.sql</a> - purge a list of SQL cursors from shared_pool - 10g+ see Oracle Note 457309.1
