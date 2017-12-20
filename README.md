@@ -332,6 +332,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/stats_config.sql'>stats_config.sql</a> - set the schema name for some stats scripts
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/stats_mod.sql'>stats_mod.sql</a> - show stats being gathered by gather_table_stats.sql
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/stats_prefs.sql'>stats_prefs.sql</a> - show dbms_stats preferences
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/stats-sqlid.sql'>stats-sqlid.sql</a> - show basic stats infor for tables and indexes associated with a SQL_ID
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/stats_trace.sql'>stats_trace.sql</a> - show how to trace dbms_stats - comments only
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/stats_trace_test.sql'>stats_trace_test.sql</a> - show that settings to trace stats are not persistent
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/stats_wait.sql'>stats_wait.sql</a> - show waits on stats collection
@@ -400,6 +401,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/kglh-growth-awr.sql'>kglh-growth-awr.sql</a> - check AWR for unbounded growth of shared pool memory structures
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/la8.sql'>la8.sql</a> - Shows last analyzed dates for database objects . 8.0+
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/la.sql'>la.sql</a> - Shows last analyzed dates for database objects . 7.3
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/login.sql'>login.sql</a> - set prompt and editor on login
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/log-switch-histogram.sql'>log-switch-histogram.sql</a> - Display a histogram of redo log switch times
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/loghistory_8.sql'>loghistory_8.sql</a> - show archive logs with time between switches
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/loghist-csv.sql'>loghist-csv.sql</a> - dump history of archive logs (with timing) to CSV

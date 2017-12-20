@@ -330,6 +330,7 @@ DATABASE STATISTICS - DBMS_STATS - OPTIMIZER:
 @stats_config.sql: set the schema name for some stats scripts
 @stats_mod.sql:  show stats being gathered by gather_table_stats.sql
 @stats_prefs.sql: show dbms_stats preferences
+@stats-sqlid.sql: show basic stats infor for tables and indexes associated with a SQL_ID
 @stats_trace.sql: show how to trace dbms_stats - comments only
 @stats_trace_test.sql: show that settings to trace stats are not persistent
 @stats_wait.sql: show waits on stats collection
