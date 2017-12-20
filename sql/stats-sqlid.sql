@@ -10,6 +10,12 @@
 -- as this report becomes much busier and hard to read if PHV is matched exactly
 --
 -- initial testing with 12.2 SYS SQL_ID cyw0c6qyrvsdd
+-- 
+-- call with SQL_ID and status of Diagnostic Pack licensing
+-- do not use AWR
+--    @stats-sqlid.sql cyw0c6qyrvsdd N
+-- use AWR
+--    @stats-sqlid.sql cyw0c6qyrvsdd D
 
 
 @clears
@@ -17,6 +23,7 @@
 ttitle off
 btitle off
 
+col s_diag_pack new_value s_diag_pack noprint
 col s_sql_id new_value s_sql_id noprint
 var v_sql_id varchar2(13)
 
@@ -43,10 +50,17 @@ begin
 end;
 /
 
-
 whenever sqlerror continue
-
 set feed on
+
+prompt
+prompt Diag Pack (Y/N)? : 
+prompt
+
+set feed off term off 
+select decode(upper('&2'),'Y','','--') s_diag_pack from dual;
+set feed on term on
+
 
 set pagesize 100
 set linesize 300 trimspool on
@@ -105,25 +119,25 @@ with objects as (
 			where sql_id = :v_sql_id
 			and object_owner is not null
 			and object_type in ('TABLE','INDEX')
-			union all
-			select 
-				sql_id
-				, plan_hash_value phv
-				, object_owner
-				, object_name
-				, object_type
-				, case partition_start
-					when 'ROW LOCATION' then 'ROWID'
-					else partition_start
-				end partition_start
-				, case partition_stop
-					when 'ROW LOCATION' then 'ROWID'
-					else partition_stop
-				end partition_stop
-			from dba_hist_sql_plan
-			where sql_id = :v_sql_id
-			and object_owner is not null
-			and object_type in ('TABLE','INDEX')
+			&s_diag_pack union all
+			&s_diag_pack select 
+				&s_diag_pack sql_id
+				&s_diag_pack , plan_hash_value phv
+				&s_diag_pack , object_owner
+				&s_diag_pack , object_name
+				&s_diag_pack , object_type
+				&s_diag_pack , case partition_start
+					&s_diag_pack when 'ROW LOCATION' then 'ROWID'
+					&s_diag_pack else partition_start
+				&s_diag_pack end partition_start
+				&s_diag_pack , case partition_stop
+					&s_diag_pack when 'ROW LOCATION' then 'ROWID'
+					&s_diag_pack else partition_stop
+				&s_diag_pack end partition_stop
+			&s_diag_pack from dba_hist_sql_plan
+			&s_diag_pack where sql_id = :v_sql_id
+			&s_diag_pack and object_owner is not null
+			&s_diag_pack and object_type in ('TABLE','INDEX')
 		)
 	)
 	group by
@@ -188,7 +202,6 @@ order by sql_id
 
 --ed stats-sqlid.txt
 
-
-undef 1
+undef 1 2
 
 
