@@ -170,8 +170,10 @@ select
 	, to_char(last_analyzed,'yyyy-mm-dd hh24:mi:ss') last_analyzed
 	, stale_stats
 from dba_tab_statistics s
-join tables t on t.object_owner = s.owner
+left join tables t on t.object_owner = s.owner
 	and t.object_name = s.table_name
+where s.owner = t.object_owner
+	and s.table_name = t.object_name
 union all
 select 
 	sql_id
@@ -189,8 +191,10 @@ select
 	, to_char(last_analyzed,'yyyy-mm-dd hh24:mi:ss') last_analyzed
 	, stale_stats
 from dba_ind_statistics s
-join indexes i on i.object_owner = s.owner
+left join indexes i on i.object_owner = s.owner
 	and i.object_name = s.index_name
+where s.owner = i.object_owner
+	and s.index_name = i.object_name
 order by sql_id
 	, owner
 	, table_name
