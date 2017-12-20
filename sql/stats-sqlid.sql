@@ -15,7 +15,7 @@
 -- do not use AWR
 --    @stats-sqlid.sql cyw0c6qyrvsdd N
 -- use AWR
---    @stats-sqlid.sql cyw0c6qyrvsdd D
+--    @stats-sqlid.sql cyw0c6qyrvsdd Y
 
 
 @clears
