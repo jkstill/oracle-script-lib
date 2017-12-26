@@ -7,6 +7,12 @@
 
 -- UndoSpace = (UR * UPS * DBS) + (DBS * 24)
 -- UndoRetention = ( UndoSpace - ( DBS * 24 )) / ( UPS * DBS )
+--
+-- testing however shows this estimate to be overly optimistic
+-- testing with this query 
+-- select count(*) from dba_tables as of TIMESTAMP (SYSTIMESTAMP - INTERVAL '20' hour)
+-- shows the actual available undo is very close to undo_retention, which in this case as 64800
+-- the und0_retention was set to 64800 (18 hrs) , and the query would work at up to 20 hrs
 
 col retention_seconds format 999,999,999,999
 
