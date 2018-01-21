@@ -118,7 +118,7 @@ with objects as (
 			from v$sql_plan
 			where sql_id = :v_sql_id
 			and object_owner is not null
-			and object_type in ('TABLE','INDEX')
+			and object_type in ('TABLE','INDEX','INDEX (UNIQUE)','INDEX (CLUSTER)','CLUSTER','TABLE (FIXED)')
 			&s_diag_pack union all
 			&s_diag_pack select 
 				&s_diag_pack sql_id
@@ -137,7 +137,7 @@ with objects as (
 			&s_diag_pack from dba_hist_sql_plan
 			&s_diag_pack where sql_id = :v_sql_id
 			&s_diag_pack and object_owner is not null
-			&s_diag_pack and object_type in ('TABLE','INDEX')
+			&s_diag_pack and object_type in ('TABLE','INDEX','INDEX (UNIQUE)','INDEX (CLUSTER)','CLUSTER','TABLE (FIXED)')
 		)
 	)
 	group by
@@ -149,10 +149,10 @@ with objects as (
 		, partition_stop
 ),
 indexes as (
-	select * from objects where object_type = 'INDEX'
+	select * from objects where object_type in ('INDEX','INDEX (UNIQUE)','INDEX (CLUSTER)')
 ),
 tables as (
-	select * from objects where object_type = 'TABLE'
+	select * from objects where object_type in ('TABLE','CLUSTER','TABLE (FIXED)')
 )
 select 
 	sql_id
@@ -170,10 +170,8 @@ select
 	, to_char(last_analyzed,'yyyy-mm-dd hh24:mi:ss') last_analyzed
 	, stale_stats
 from dba_tab_statistics s
-left join tables t on t.object_owner = s.owner
+ join tables t on t.object_owner = s.owner
 	and t.object_name = s.table_name
-where s.owner = t.object_owner
-	and s.table_name = t.object_name
 union all
 select 
 	sql_id
@@ -191,10 +189,8 @@ select
 	, to_char(last_analyzed,'yyyy-mm-dd hh24:mi:ss') last_analyzed
 	, stale_stats
 from dba_ind_statistics s
-left join indexes i on i.object_owner = s.owner
+ join indexes i on i.object_owner = s.owner
 	and i.object_name = s.index_name
-where s.owner = i.object_owner
-	and s.index_name = i.object_name
 order by sql_id
 	, owner
 	, table_name
