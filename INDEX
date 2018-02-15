@@ -114,6 +114,7 @@ IO:
 
 EVENTS:
 
+@my-events.sql: display session stats
 @set_events.sql: various methods of generating trace and dump info with events
 @sysevent_begin.sql: Beginning snapshot of system events
 @sysevent_end.sql: Ending snapshot of system events
@@ -304,6 +305,7 @@ DATABASE STATISTICS - DBMS_STATS - OPTIMIZER:
 @dbms_stats_report.sql: HTML report of dbms_stats activity
 @dup-system-stats.sql: Generate PL/SQL to duplicate system statistics to another database
 @gather_table_stats.sql: gather stats on a tables specified in table_list.sql
+@get_system_stats.sql: display Oracle OS statistics
 @global-prefs.sql: display global dbms_stats prefs
 @get_prefs.sql: show stats prefs for a schema
 @get_stats_job.sql: get name of stored procedure used for autotask stats job - 10g+, maybe 9i

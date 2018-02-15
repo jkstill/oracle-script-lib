@@ -116,6 +116,7 @@
 </pre>
 <h3>EVENTS:</h3>
 <pre>
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/my-events.sql'>my-events.sql</a> - display session stats
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/set_events.sql'>set_events.sql</a> - various methods of generating trace and dump info with events
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sysevent_begin.sql'>sysevent_begin.sql</a> - Beginning snapshot of system events
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sysevent_end.sql'>sysevent_end.sql</a> - Ending snapshot of system events
@@ -306,6 +307,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dbms_stats_report.sql'>dbms_stats_report.sql</a> - HTML report of dbms_stats activity
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dup-system-stats.sql'>dup-system-stats.sql</a> - Generate PL/SQL to duplicate system statistics to another database
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gather_table_stats.sql'>gather_table_stats.sql</a> - gather stats on a tables specified in table_list.sql
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get_system_stats.sql'>get_system_stats.sql</a> - display Oracle OS statistics
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/global-prefs.sql'>global-prefs.sql</a> - display global dbms_stats prefs
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get_prefs.sql'>get_prefs.sql</a> - show stats prefs for a schema
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get_stats_job.sql'>get_stats_job.sql</a> - get name of stored procedure used for autotask stats job - 10g+, maybe 9i
