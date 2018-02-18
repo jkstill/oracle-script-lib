@@ -517,6 +517,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/asm_diskgroup_attributes.sql'>asm_diskgroup_attributes.sql</a> - show diskgroup attributes
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/asm_diskgroup_templates.sql'>asm_diskgroup_templates.sql</a> - show diskgroup template values
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/asm_failgroup_members.sql'>asm_failgroup_members.sql</a> - show diskgroups by failgroup and members
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/asm_extent_distribution.sql'>asm_extent_distribution.sql</a> - show extent distribution across disks
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/asm_files.sql'>asm_files.sql</a> - show files in ASM
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/asm_files_path.sql'>asm_files_path.sql</a> - show files in ASM with full path
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/asm_partners.sql'>asm_partners.sql</a> - show ASM disk partners - must be run from ASM instance

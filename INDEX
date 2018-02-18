@@ -514,6 +514,7 @@ ASM:
 @asm_diskgroup_attributes.sql: show diskgroup attributes
 @asm_diskgroup_templates.sql: show diskgroup template values
 @asm_failgroup_members.sql: show diskgroups by failgroup and members
+@asm_extent_distribution.sql: show extent distribution across disks
 @asm_files.sql: show files in ASM
 @asm_files_path.sql: show files in ASM with full path
 @asm_partners.sql: show ASM disk partners - must be run from ASM instance
