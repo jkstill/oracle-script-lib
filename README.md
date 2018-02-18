@@ -509,6 +509,7 @@
 </pre>
 <h3>ASM:</h3>
 <pre>
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/asm_copyblock.sql'>asm_copyblock.sql</a> - copy ASM blocks to an datafile format file
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/asm_disks.sql'>asm_disks.sql</a> - show ASM disks
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/asm_disk_errors.sql'>asm_disk_errors.sql</a> - show ASM disk errors
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/asm_disk_stats.sql'>asm_disk_stats.sql</a> - show ASM disk statistics

@@ -506,6 +506,7 @@ STORAGE:
 
 ASM:
 
+@asm_copyblock.sql: copy ASM blocks to an datafile format file
 @asm_disks.sql: show ASM disks
 @asm_disk_errors.sql: show ASM disk errors
 @asm_disk_stats.sql: show ASM disk statistics
