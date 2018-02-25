@@ -5,18 +5,21 @@
 
 col dg_num format 9999 head 'DG#'
 col disk_num format 99999 head 'DISK#'
-col asmfile_num format 99999 head 'ASM|FILE#'
+col asmfile_num format 9999999 head 'ASM|FILE#'
 
 set linesize 100
+set pagesize 100
+
+spool asm_extent_multi_au.log
 
 select
-        GROUP_KFDAT DG_NUM
-        , NUMBER_KFDAT DISK_NUM
-        , FNUM_KFDAT asmfile_num
-        , XNUM_KFDAT asmfile_ext_num
-        , count(AUNUM_KFDAT) asm_au_count
-        --, AUNUM_KFDAT asm_au_num
+        au.GROUP_KFDAT DG_NUM
+        , au.NUMBER_KFDAT DISK_NUM
+        , au.FNUM_KFDAT asmfile_num
+        , au.XNUM_KFDAT asmfile_ext_num
+        , count(au.V_KFDAT) asm_au_count -- allocated AU
 from X$KFDAT au
+where au.V_KFDAT = 'V' -- allocated AU: see MOS ORA-15041 DURING REBALANCE OR ADD DISK WHEN PLENTY OF SPACE EXISTS (Doc ID 473271.1)
 group by GROUP_KFDAT
         , NUMBER_KFDAT
         , FNUM_KFDAT
@@ -25,4 +28,5 @@ having count(*) > 1
 order by 1,2,3
 /
 
+spool off
 
