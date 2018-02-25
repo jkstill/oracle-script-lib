@@ -20,6 +20,7 @@ select
         , count(au.V_KFDAT) asm_au_count -- allocated AU
 from X$KFDAT au
 where au.V_KFDAT = 'V' -- allocated AU: see MOS ORA-15041 DURING REBALANCE OR ADD DISK WHEN PLENTY OF SPACE EXISTS (Doc ID 473271.1)
+	and au.FNUM_KFDAT > 0
 group by GROUP_KFDAT
         , NUMBER_KFDAT
         , FNUM_KFDAT
