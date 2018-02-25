@@ -520,6 +520,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/asm_extent_distribution.sql'>asm_extent_distribution.sql</a> - show extent distribution across disks
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/asm_files.sql'>asm_files.sql</a> - show files in ASM
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/asm_files_path.sql'>asm_files_path.sql</a> - show files in ASM with full path
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/asm_extent_multi_au.sql'>asm_extent_multi_au.sql</a> - show asm file extents that have AU count GT 1
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/asm_partners.sql'>asm_partners.sql</a> - show ASM disk partners - must be run from ASM instance
 </pre>
 <h3>DRCP: Database Resident Connection Pooling</h3>

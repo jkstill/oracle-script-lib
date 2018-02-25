@@ -517,6 +517,7 @@ ASM:
 @asm_extent_distribution.sql: show extent distribution across disks
 @asm_files.sql: show files in ASM
 @asm_files_path.sql: show files in ASM with full path
+@asm_extent_multi_au.sql: show asm file extents that have AU count GT 1
 @asm_partners.sql: show ASM disk partners - must be run from ASM instance
 
 DRCP: Database Resident Connection Pooling
