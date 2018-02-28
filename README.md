@@ -184,10 +184,11 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_RAC_defined.sql'>awr_RAC_defined.sql</a> - Run a non-interactive AWR report on RAC
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_blockers.sql'>awr_blockers.sql</a> - historic blocking aggregated by sql_id
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_bracket_baseline.sql'>awr_bracket_baseline.sql</a> - create a named and self expiring AWR baseline based on event time
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_display_baselines.sql'>awr_display_baselines.sql</a> - display AWR baselines
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_bracket_snaps.sql'>awr_bracket_snaps.sql</a> - get snap_id values for a pair of days
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_create_snapshot.sql'>awr_create_snapshot.sql</a> - create an AWR snapshot
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_defined.sql'>awr_defined.sql</a> - Run a non-interactive AWR report
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_display_baselines.sql'>awr_display_baselines.sql</a> - display AWR baselines
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_drop_baseline.sql'>awr_drop_baseline.sql</a> - drop an AWR baseline
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_file_io_times.sql'>awr_file_io_times.sql</a> - Historical IO times on ASM files
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_get_snapshots.sql'>awr_get_snapshots.sql</a> - Get AWR snapshots for a date range
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_itl_waits_10g.sql'>awr_itl_waits_10g.sql</a> - find ITL waits in 10g
