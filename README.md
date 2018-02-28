@@ -183,12 +183,8 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-trans-counts.sql'>awr-trans-counts.sql</a> - show summary of user commits, rollbacks and log sync writes by day
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_RAC_defined.sql'>awr_RAC_defined.sql</a> - Run a non-interactive AWR report on RAC
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_blockers.sql'>awr_blockers.sql</a> - historic blocking aggregated by sql_id
-</pre>
-<h3>awr_bracket_baseline.sql: create a named and self expiring AWR baseline based on event time</h3>
-<pre>
-</pre>
-<h3>awr_display_baselines.sql: display AWR baselines</h3>
-<pre>
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_bracket_baseline.sql'>awr_bracket_baseline.sql</a> - create a named and self expiring AWR baseline based on event time
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_display_baselines.sql'>awr_display_baselines.sql</a> - display AWR baselines
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_bracket_snaps.sql'>awr_bracket_snaps.sql</a> - get snap_id values for a pair of days
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_create_snapshot.sql'>awr_create_snapshot.sql</a> - create an AWR snapshot
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr_defined.sql'>awr_defined.sql</a> - Run a non-interactive AWR report

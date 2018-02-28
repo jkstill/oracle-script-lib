@@ -180,8 +180,8 @@ AWR/ASH:
 @awr-trans-counts.sql: show summary of user commits, rollbacks and log sync writes by day
 @awr_RAC_defined.sql: Run a non-interactive AWR report on RAC
 @awr_blockers.sql: historic blocking aggregated by sql_id
-awr_bracket_baseline.sql: create a named and self expiring AWR baseline based on event time
-awr_display_baselines.sql: display AWR baselines
+@awr_bracket_baseline.sql: create a named and self expiring AWR baseline based on event time
+@awr_display_baselines.sql: display AWR baselines
 @awr_bracket_snaps.sql: get snap_id values for a pair of days
 @awr_create_snapshot.sql: create an AWR snapshot
 @awr_defined.sql: Run a non-interactive AWR report
