@@ -310,6 +310,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dbms_stats_report.sql'>dbms_stats_report.sql</a> - HTML report of dbms_stats activity
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dup-system-stats.sql'>dup-system-stats.sql</a> - Generate PL/SQL to duplicate system statistics to another database
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gather_table_stats.sql'>gather_table_stats.sql</a> - gather stats on a tables specified in table_list.sql
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gather_system_stats_iteratively.sql'>gather_system_stats_iteratively.sql</a> - gather OS stats every 10 minutes for 24 hours
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get_system_stats.sql'>get_system_stats.sql</a> - display Oracle OS statistics
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/global-prefs.sql'>global-prefs.sql</a> - display global dbms_stats prefs
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get_prefs.sql'>get_prefs.sql</a> - show stats prefs for a schema
@@ -324,6 +325,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/locked_stats.sql'>locked_stats.sql</a> - show tables and indexes with locked statistics
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/logsetup.sql'>logsetup.sql</a> - called by some scripts to create a log - create logs dir first
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ndv.sql'>ndv.sql</a> - show NDV for a table
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/os-stats-avgs.sql'>os-stats-avgs.sql</a> - averages of OS IO stats - trying to reduce SAN cache effect
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/partstats.sql'>partstats.sql</a> - Show basic stats info on table and partitions
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/partstats_sum.sql'>partstats_sum.sql</a> - Summary of partition stats
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sampled_size.sql'>sampled_size.sql</a> - show sample size used to collect stats

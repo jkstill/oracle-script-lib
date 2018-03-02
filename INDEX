@@ -308,6 +308,7 @@ DATABASE STATISTICS - DBMS_STATS - OPTIMIZER:
 @dbms_stats_report.sql: HTML report of dbms_stats activity
 @dup-system-stats.sql: Generate PL/SQL to duplicate system statistics to another database
 @gather_table_stats.sql: gather stats on a tables specified in table_list.sql
+@gather_system_stats_iteratively.sql: gather OS stats every 10 minutes for 24 hours
 @get_system_stats.sql: display Oracle OS statistics
 @global-prefs.sql: display global dbms_stats prefs
 @get_prefs.sql: show stats prefs for a schema
@@ -322,6 +323,7 @@ DATABASE STATISTICS - DBMS_STATS - OPTIMIZER:
 @locked_stats.sql: show tables and indexes with locked statistics
 @logsetup.sql: called by some scripts to create a log - create logs dir first
 @ndv.sql: show NDV for a table
+@os-stats-avgs.sql: averages of OS IO stats - trying to reduce SAN cache effect
 @partstats.sql: Show basic stats info on table and partitions
 @partstats_sum.sql: Summary of partition stats
 @sampled_size.sql:  show sample size used to collect stats
