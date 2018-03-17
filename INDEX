@@ -376,6 +376,7 @@ timezone specific:
 INSTANCE and/or DATABASE:
 
 @average_active_sessions.sql: show average active sessions - does not use ASH
+@archive_log_hist_matrix.sql: show matrix of archive log switch activity for 2 weeks
 @archived_log_sums.sql: show rolling total of archive logs for N days
 @archived_log_dest.sql: show archived log destination and status for active destinations
 @bct_status.sql: show status of block change tracking file
