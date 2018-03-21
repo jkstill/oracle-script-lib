@@ -1,5 +1,5 @@
 
--- showplan9i.sql
+-- showplan_last.sql
 -- works with 9.2+
 
 SET PAUSE OFF

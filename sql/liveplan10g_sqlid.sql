@@ -1,5 +1,5 @@
 
---liveplan10g_hash.sql
+--liveplan10g_sqlid.sql
 -- this is for 10g and later
 -- see liveplan_10g.sql
 
