@@ -540,6 +540,7 @@ DRCP: Database Resident Connection Pooling
 
 DATES: Dates and Date Math
 
+@between-trunc-demo.sql: demo of using dates and timestamps with BETWEEN or similar so that indexes can be used
 @date_math.sql: how to get the minutes between to dates of the same day
 @date_math_2.sql: how to get the minutes between to dates of the same day
 @date_math_3.sql: cause a job to run at exactly 00:30 or 12:30, regardless of the last time it started

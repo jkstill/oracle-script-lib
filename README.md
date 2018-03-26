@@ -543,6 +543,7 @@
 </pre>
 <h3>DATES: Dates and Date Math</h3>
 <pre>
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/between-trunc-demo.sql'>between-trunc-demo.sql</a> - demo of using dates and timestamps with BETWEEN or similar so that indexes can be used
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/date_math.sql'>date_math.sql</a> - how to get the minutes between to dates of the same day
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/date_math_2.sql'>date_math_2.sql</a> - how to get the minutes between to dates of the same day
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/date_math_3.sql'>date_math_3.sql</a> - cause a job to run at exactly 00
