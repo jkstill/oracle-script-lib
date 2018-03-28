@@ -549,6 +549,8 @@ DATES: Dates and Date Math
 @job_submit.sql: controlling run_time of dbms_jobs
 @e2ts.sql: Convert epoch value to oracle timestamp
 @e2ts-hires.sql: Convert epoch value to oracle timestamp
+@timestamp-trunc.sql: demonstrates how to truncate a timestamp to remove the time portion
+@timestamp-types.sql: simple demo of timestamp data types via dump()
 @ts2e.sql: Convert oracle timestamp to epoch value
 @ts2e-hires.sql: Convert oracle timestamp to epoch value
 

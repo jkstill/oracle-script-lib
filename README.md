@@ -552,6 +552,8 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/job_submit.sql'>job_submit.sql</a> - controlling run_time of dbms_jobs
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/e2ts.sql'>e2ts.sql</a> - Convert epoch value to oracle timestamp
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/e2ts-hires.sql'>e2ts-hires.sql</a> - Convert epoch value to oracle timestamp
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/timestamp-trunc.sql'>timestamp-trunc.sql</a> - demonstrates how to truncate a timestamp to remove the time portion
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/timestamp-types.sql'>timestamp-types.sql</a> - simple demo of timestamp data types via dump()
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ts2e.sql'>ts2e.sql</a> - Convert oracle timestamp to epoch value
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ts2e-hires.sql'>ts2e-hires.sql</a> - Convert oracle timestamp to epoch value
 </pre>
