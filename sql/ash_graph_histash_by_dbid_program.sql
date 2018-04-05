@@ -1,4 +1,9 @@
 
+
+-- ashmasters - https://github.com/khailey/ashmasters
+-- Kyle Hailey
+
+
 /*
    ASH graph from dba_hist_active_sess_history no v$active_session_history
    input DBID and PROGRAM

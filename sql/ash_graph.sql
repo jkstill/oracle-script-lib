@@ -1,5 +1,8 @@
 
 
+-- ashmasters - https://github.com/khailey/ashmasters
+-- Kyle Hailey
+
 Def v_secs=3600 --  bucket size
 Def v_bars=5 -- size of one AAS in characters
 Def v_graph=80

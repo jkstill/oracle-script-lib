@@ -1,4 +1,12 @@
+
+-- ashmasters - https://github.com/khailey/ashmasters
+-- Kyle Hailey
+
 set linesize 150
+set pagesize 100
+set verify off echo off term on head on feed on
+
+
 /*
    ASH graph from v$active_session_history and dba_hist_active_sess_history 
    no filter no DBID
