@@ -294,6 +294,7 @@ EXECUTION_PLAN:
 
 PL/SQL:
 
+@bulk-collect-1.sql: demo of fetch .. bulk collect into
 @raise_error.sql: raise any error in the database
 @get_table_lock.sql:  runs a tight loop trying to acquire lock on table - use on busy systems to get the lock required - DO NOT LEAVE TABLE LOCKED!
 @sqlplus_return_code.sql: examples of exiting SQLPlus with an error code
