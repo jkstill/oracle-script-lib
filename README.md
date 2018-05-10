@@ -62,6 +62,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_fk_from-11.2.sql'>gen_fk_from-11.2.sql</a> - generate existing foreign key constraings from data dictionary
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_fk_to-11.1.sql'>gen_fk_to-11.1.sql</a> - generate existing foreign key constraings from data dictionary
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_fk_to-11.2.sql'>gen_fk_to-11.2.sql</a> - generate existing foreign key constraings from data dictionary
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_data_with_recursion.sql'>gen_data_with_recursion.sql</a> - use a recursive subfactored query to generate rows
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_list_data_with_dual.sql'>gen_list_data_with_dual.sql</a> - generating test data with dual
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_list_data_without_dual.sql'>gen_list_data_without_dual.sql</a> - generating test data without dual - 10g+
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/set_events.sql'>set_events.sql</a> - various methods to set events, including per sql_id
@@ -384,6 +385,8 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/archived_log_sums.sql'>archived_log_sums.sql</a> - show rolling total of archive logs for N days
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/archived_log_dest.sql'>archived_log_dest.sql</a> - show archived log destination and status for active destinations
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/bct_status.sql'>bct_status.sql</a> - show status of block change tracking file
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/colcomm.sql'>colcomm.sql</a> - show columns in common between a set of tables in a CSV list
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/csv-split.sql'>csv-split.sql</a> - Demo of using recursive subfactored query to split CSV list from sqlplus command line
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/iot_segments.sql'>iot_segments.sql</a> - show segments for IOT objects. These are actually index segments
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/db_corrupt.sql'>db_corrupt.sql</a> - report on corrupt database blocks and objects
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dba_dependencies.sql'>dba_dependencies.sql</a> - find all dependencies for owner/object
@@ -460,6 +463,8 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showsrc.sql'>showsrc.sql</a> - show source of PL/SQL stored objects
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show-x-dollar-tables.sql'>show-x-dollar-tables.sql</a> - list of all x$tables
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-version-counts.sql'>sql-version-counts.sql</a> - top 10 count of versions of SQL_ID
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/tabcols.sql'>tabcols.sql</a> - list of columns in alpha order for owner and table_name
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/tabidx.sql'>tabidx.sql</a> - show indexes and columns for owner and table_name
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/plsql_called_objects.sql'>plsql_called_objects.sql</a> - Shows entry PL/SQL object and current PL/SQL object for a session
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/rbs_no_optimal.sql'>rbs_no_optimal.sql</a> - Set all rollback segments to have no OPTIMAL size
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/rbs_optimal.sql'>rbs_optimal.sql</a> - Set all rollback segments to have an OPTIMAL size of 2xInitial

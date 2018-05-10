@@ -59,6 +59,7 @@ RDBMS UTILITIES:
 @gen_fk_from-11.2.sql: generate existing foreign key constraings from data dictionary
 @gen_fk_to-11.1.sql: generate existing foreign key constraings from data dictionary
 @gen_fk_to-11.2.sql: generate existing foreign key constraings from data dictionary
+@gen_data_with_recursion.sql: use a recursive subfactored query to generate rows
 @gen_list_data_with_dual.sql: generating test data with dual
 @gen_list_data_without_dual.sql: generating test data without dual - 10g+
 @set_events.sql: various methods to set events, including per sql_id
@@ -381,6 +382,8 @@ INSTANCE and/or DATABASE:
 @archived_log_sums.sql: show rolling total of archive logs for N days
 @archived_log_dest.sql: show archived log destination and status for active destinations
 @bct_status.sql: show status of block change tracking file
+@colcomm.sql: show columns in common between a set of tables in a CSV list
+@csv-split.sql: Demo of using recursive subfactored query to split CSV list from sqlplus command line
 @iot_segments.sql: show segments for IOT objects. These are actually index segments
 @db_corrupt.sql: report on corrupt database blocks and objects
 @dba_dependencies.sql: find all dependencies for owner/object
@@ -457,6 +460,8 @@ INSTANCE and/or DATABASE:
 @showsrc.sql: show source of PL/SQL stored objects
 @show-x-dollar-tables.sql: list of all x$tables
 @sql-version-counts.sql: top 10 count of versions of SQL_ID
+@tabcols.sql: list of columns in alpha order for owner and table_name
+@tabidx.sql: show indexes and columns for owner and table_name
 @plsql_called_objects.sql: Shows entry PL/SQL object and current PL/SQL object for a session
 @rbs_no_optimal.sql: Set all rollback segments to have no OPTIMAL size
 @rbs_optimal.sql: Set all rollback segments to have an OPTIMAL size of 2xInitial
