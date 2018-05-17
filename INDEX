@@ -206,6 +206,9 @@ AWR/ASH:
 @rowlock-sqlid-counts.sql: count of rowlock enq by sqlid
 @rowlock-sqlid-hist.sql: count of rowlock enq by sqlid - full outer join on snapshot
 @session-history.sql: history of sessions from dba_hist_active_sess_history
+@sql-count-ash.sql: count of number rows in ASH per SQL_ID
+@sql-exe-events-ash.sql: show events per execution of SQL_ID in ASH
+@sql-exe-events-awr.sql: show events per execution of SQL_ID in AWR
 @sql-exe-times-ash.sql: stats and histograms of exucution times for a SQL_ID
 @sql-exe-times-awr.sql: stats and histograms of exucution times for a SQL_ID for past 30 days
 @sql-plans.sql: Show plans used by a selected SQL for a date and time range
