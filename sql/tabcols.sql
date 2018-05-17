@@ -41,7 +41,7 @@ select tc.column_name
 	when tc.data_type in ('VARCHAR2','CHAR','VARCHAR') then
 		'('||tc.data_length||')'
 	when tc.data_type in ('BINARY_DOUBLE','NUMBER','FLOAT','INTEGER','BINARY_FLOAT') then
-		'('||tc.data_precision||','||nvl(tc.data_scale,0)||')'
+		'('||nvl(tc.data_precision,38)||','||nvl(tc.data_scale,0)||')'
 	else '('||to_char(data_length)||')'
 	end data_type_size
 	, decode(nullable,'Y','NULL','NOT NULL') nullable
