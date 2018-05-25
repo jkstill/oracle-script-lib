@@ -43,6 +43,12 @@ col person_type format a20
 col name format a30
 col value format a60
 
-col name_col_plus_show_param format a40
-col value_col_plus_show_param format a40
+-- show paramater/spparameter settings
+
+column   sid_col_plus_show_spparam      on      format    a8   heading sid
+column   value_col_plus_show_spparam    on      format   a28   heading value
+column   name_col_plus_show_spparam     on      format   a29   heading name
+column   value_col_plus_show_param      on      format   a30   heading value
+column   name_col_plus_show_param       on      format   a36   heading name
+
 
