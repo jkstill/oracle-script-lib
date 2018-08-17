@@ -7,7 +7,7 @@
 -- eg. @sesswaitu 'USSP'
 -- if username not passed, it will ask for it
 	
-set line 190 feed on pause off echo off
+set line 190 feed on pause off echo off verify off
 set trimspool on
 
 clear col
@@ -60,7 +60,7 @@ where s.username is not null
 	and s.username like upper('&uusername')
 	-- skip sqlnet idle session messages
 	--and e.event not like '%message%client'
-	and s.wait_class != 'Idle'
+	--and s.wait_class != 'Idle'
 	and e.state not like 'WAITED%'
 order by s.username, upper(e.event)
 /
