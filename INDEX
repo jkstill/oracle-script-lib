@@ -59,6 +59,7 @@ RDBMS UTILITIES:
 @gen_fk_from-11.2.sql: generate existing foreign key constraings from data dictionary
 @gen_fk_to-11.1.sql: generate existing foreign key constraings from data dictionary
 @gen_fk_to-11.2.sql: generate existing foreign key constraings from data dictionary
+@gen_data_with_recursion.sql: use a recursive subfactored query to generate rows
 @gen_list_data_with_dual.sql: generating test data with dual
 @gen_list_data_without_dual.sql: generating test data without dual - 10g+
 @set_events.sql: various methods to set events, including per sql_id
@@ -114,6 +115,7 @@ IO:
 
 EVENTS:
 
+@my-events.sql: display session stats
 @set_events.sql: various methods of generating trace and dump info with events
 @sysevent_begin.sql: Beginning snapshot of system events
 @sysevent_end.sql: Ending snapshot of system events
@@ -179,9 +181,12 @@ AWR/ASH:
 @awr-trans-counts.sql: show summary of user commits, rollbacks and log sync writes by day
 @awr_RAC_defined.sql: Run a non-interactive AWR report on RAC
 @awr_blockers.sql: historic blocking aggregated by sql_id
+@awr_bracket_baseline.sql: create a named and self expiring AWR baseline based on event time
 @awr_bracket_snaps.sql: get snap_id values for a pair of days
 @awr_create_snapshot.sql: create an AWR snapshot
 @awr_defined.sql: Run a non-interactive AWR report
+@awr_display_baselines.sql: display AWR baselines
+@awr_drop_baseline.sql: drop an AWR baseline
 @awr_file_io_times.sql: Historical IO times on ASM files
 @awr_get_snapshots.sql: Get AWR snapshots for a date range
 @awr_itl_waits_10g.sql: find ITL waits in 10g
@@ -201,8 +206,15 @@ AWR/ASH:
 @rowlock-sqlid-counts.sql: count of rowlock enq by sqlid
 @rowlock-sqlid-hist.sql: count of rowlock enq by sqlid - full outer join on snapshot
 @session-history.sql: history of sessions from dba_hist_active_sess_history
+@sql-count-ash.sql: count of number rows in ASH per SQL_ID
+@sql-exe-events-ash.sql: show events per execution of SQL_ID in ASH
+@sql-exe-events-awr.sql: show events per execution of SQL_ID in AWR
+@sql-exe-times-ash.sql: stats and histograms of exucution times for a SQL_ID
+@sql-exe-times-awr.sql: stats and histograms of exucution times for a SQL_ID for past 30 days
 @sql-plans.sql: Show plans used by a selected SQL for a date and time range
 @sysmetric-history.sql: pivot to CSV for several metrics in dba_hist_sysmetric_history
+@top10-sql-ash.sql: get top (by count) sql statements from ASH
+@top10-sql-awr.sql: get top (by count) sql statements from AWR for past 30 days
 @wsqlmon.sql: Provide SQL-Monitor like report from AWR - based on Tanel Poder script for ASH
 
 STATSPACK:
@@ -277,6 +289,7 @@ EXECUTION_PLAN:
 @showplan72.sql: show execution plans for oracle 7.2
 @showplan73.sql: show execution plans for oracle 7.2+
 @showplan9i.sql: show execution plans for oracle 9i+
+@showplan_awr.sql: show execution plans from AWR
 @showplan_last.sql: show execution plan for most recently executed cursor in current session
 @gen_bind_vars.sql: gather bind values from v$sql_bind and generate SQL
 @gen_bind_vars_awr.sql: gather bind values from dba_hist_sqltext and generate SQL
@@ -285,6 +298,7 @@ EXECUTION_PLAN:
 
 PL/SQL:
 
+@bulk-collect-1.sql: demo of fetch .. bulk collect into
 @raise_error.sql: raise any error in the database
 @get_table_lock.sql:  runs a tight loop trying to acquire lock on table - use on busy systems to get the lock required - DO NOT LEAVE TABLE LOCKED!
 @sqlplus_return_code.sql: examples of exiting SQLPlus with an error code
@@ -299,6 +313,8 @@ DATABASE STATISTICS - DBMS_STATS - OPTIMIZER:
 @dbms_stats_report.sql: HTML report of dbms_stats activity
 @dup-system-stats.sql: Generate PL/SQL to duplicate system statistics to another database
 @gather_table_stats.sql: gather stats on a tables specified in table_list.sql
+@gather_system_stats_iteratively.sql: gather OS stats every 10 minutes for 24 hours
+@get_system_stats.sql: display Oracle OS statistics
 @global-prefs.sql: display global dbms_stats prefs
 @get_prefs.sql: show stats prefs for a schema
 @get_stats_job.sql: get name of stored procedure used for autotask stats job - 10g+, maybe 9i
@@ -312,6 +328,7 @@ DATABASE STATISTICS - DBMS_STATS - OPTIMIZER:
 @locked_stats.sql: show tables and indexes with locked statistics
 @logsetup.sql: called by some scripts to create a log - create logs dir first
 @ndv.sql: show NDV for a table
+@os-stats-avgs.sql: averages of OS IO stats - trying to reduce SAN cache effect
 @partstats.sql: Show basic stats info on table and partitions
 @partstats_sum.sql: Summary of partition stats
 @sampled_size.sql:  show sample size used to collect stats
@@ -325,6 +342,7 @@ DATABASE STATISTICS - DBMS_STATS - OPTIMIZER:
 @stats_config.sql: set the schema name for some stats scripts
 @stats_mod.sql:  show stats being gathered by gather_table_stats.sql
 @stats_prefs.sql: show dbms_stats preferences
+@stats-sqlid.sql: show basic stats infor for tables and indexes associated with a SQL_ID
 @stats_trace.sql: show how to trace dbms_stats - comments only
 @stats_trace_test.sql: show that settings to trace stats are not persistent
 @stats_wait.sql: show waits on stats collection
@@ -363,9 +381,12 @@ timezone specific:
 INSTANCE and/or DATABASE:
 
 @average_active_sessions.sql: show average active sessions - does not use ASH
+@archived_log_hist_matrix.sql: show matrix of archive log switch activity for 2 weeks
 @archived_log_sums.sql: show rolling total of archive logs for N days
 @archived_log_dest.sql: show archived log destination and status for active destinations
 @bct_status.sql: show status of block change tracking file
+@colcomm.sql: show columns in common between a set of tables in a CSV list
+@csv-split.sql: Demo of using recursive subfactored query to split CSV list from sqlplus command line
 @iot_segments.sql: show segments for IOT objects. These are actually index segments
 @db_corrupt.sql: report on corrupt database blocks and objects
 @dba_dependencies.sql: find all dependencies for owner/object
@@ -392,10 +413,14 @@ INSTANCE and/or DATABASE:
 @kglh-growth-awr.sql: check AWR for unbounded growth of shared pool memory structures
 @la8.sql: Shows last analyzed dates for database objects . 8.0+
 @la.sql: Shows last analyzed dates for database objects . 7.3
+@login.sql: set prompt and editor on login
 @log-switch-histogram.sql: Display a histogram of redo log switch times
 @loghistory_8.sql: show archive logs with time between switches
 @loghist-csv.sql: dump history of archive logs (with timing) to CSV
-@oracle-naming-inconsistencies.sql:  highlight some of the inconsistencies oracle data dictionary column names
+@oracle-exclude-demo.sql: demonstrate the use of oracle-exclude-inline.sql
+@oracle-exclude-inline.sql: inline version of oracle-exclude-schema.sql
+@oracle-exclude-schema.sql: show schemas owned by Oracle and are frequently excluded from queries
+@oracle-naming-inconsistencies.sql: highlight some of the inconsistencies oracle data dictionary column names
 @pivot.sql: Simple demo of PIVOT
 @purge_cursors.sql: purge a list of SQL cursors from shared_pool - 10g+ see Oracle Note 457309.1
 @reserved-words.sql: List reserved words from v$reserved_words
@@ -438,6 +463,8 @@ INSTANCE and/or DATABASE:
 @showsrc.sql: show source of PL/SQL stored objects
 @show-x-dollar-tables.sql: list of all x$tables
 @sql-version-counts.sql: top 10 count of versions of SQL_ID
+@tabcols.sql: list of columns in alpha order for owner and table_name
+@tabidx.sql: show indexes and columns for owner and table_name
 @plsql_called_objects.sql: Shows entry PL/SQL object and current PL/SQL object for a session
 @rbs_no_optimal.sql: Set all rollback segments to have no OPTIMAL size
 @rbs_optimal.sql: Set all rollback segments to have an OPTIMAL size of 2xInitial
@@ -455,6 +482,8 @@ INSTANCE and/or DATABASE:
 @reverse_role_lookup.sql: Find all users granted a role
 @undo-active.sql:  Show active undo blocks - RAC aware
 @undo-active-12c.sql:  Show active undo blocks in 12c - RAC aware
+@undo-mon-fast.sql: monitor undo from v$fast_start_transactions - useful for when a proccess/session has been killed
+@undo-mon-trans.sql: monitor rollback for transactions
 @wait_chains.sql: Troubleshooting Database Contention With V$Wait_Chains (Doc ID 1428210.1)
 
 SNAPSHOTS and MATERIALIZED_VIEWS:
@@ -494,14 +523,19 @@ STORAGE:
 
 ASM:
 
+@asm_copyblock.sql: copy ASM blocks to an datafile format file
 @asm_disks.sql: show ASM disks
 @asm_disk_errors.sql: show ASM disk errors
 @asm_disk_stats.sql: show ASM disk statistics
 @asm_diskgroups.sql: show diskgroups
 @asm_diskgroup_attributes.sql: show diskgroup attributes
 @asm_diskgroup_templates.sql: show diskgroup template values
+@asm_failgroup_members.sql: show diskgroups by failgroup and members
+@asm_extent_distribution.sql: show extent distribution across disks
 @asm_files.sql: show files in ASM
 @asm_files_path.sql: show files in ASM with full path
+@asm_extent_multi_au.sql: show asm file extents that have AU count GT 1
+@asm_partners.sql: show ASM disk partners - must be run from ASM instance
 
 DRCP: Database Resident Connection Pooling
 
@@ -517,6 +551,7 @@ DRCP: Database Resident Connection Pooling
 
 DATES: Dates and Date Math
 
+@between-trunc-demo.sql: demo of using dates and timestamps with BETWEEN or similar so that indexes can be used
 @date_math.sql: how to get the minutes between to dates of the same day
 @date_math_2.sql: how to get the minutes between to dates of the same day
 @date_math_3.sql: cause a job to run at exactly 00:30 or 12:30, regardless of the last time it started
@@ -525,6 +560,8 @@ DATES: Dates and Date Math
 @job_submit.sql: controlling run_time of dbms_jobs
 @e2ts.sql: Convert epoch value to oracle timestamp
 @e2ts-hires.sql: Convert epoch value to oracle timestamp
+@timestamp-trunc.sql: demonstrates how to truncate a timestamp to remove the time portion
+@timestamp-types.sql: simple demo of timestamp data types via dump()
 @ts2e.sql: Convert oracle timestamp to epoch value
 @ts2e-hires.sql: Convert oracle timestamp to epoch value
 
@@ -551,9 +588,12 @@ METRICS: Metrics reported by oracle - v$sysmetric, v$sysmetric_history ...
 @os-load.sql: OS Load as reported by oracle for past hour
 
 
-
 12c: Scripts that are specific to Oracle 12c
 @show_container.sql: display the current container database name
+
+XML: Scripts for use with XML and or XMLDB
+
+@xmldb-status.sql: check status of XMLDB
 
 #################
 

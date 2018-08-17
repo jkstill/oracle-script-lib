@@ -5,7 +5,9 @@
 
 @clears
 set line 200
+set pagesize 100
 
+col pctdone format a7
 col opname format a20
 col sofar format 99999999
 col totalwork format 9999999999999
@@ -25,6 +27,7 @@ select
 	--, target_desc
 	, sofar
 	, totalwork
+	, to_char((sofar / totalwork) * 100,'90.0')||'%' pctdone
 	, units
 	, substr('00'||to_char(trunc(time_remaining/60)),-2,2) 
 		|| ':' 

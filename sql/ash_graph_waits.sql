@@ -1,4 +1,8 @@
 
+
+-- ashmasters - https://github.com/khailey/ashmasters
+-- Kyle Hailey
+
 /*
    ASH graph from v$active_session_history no filter by DBID nor time 
    don't use dba_hist_active_sess_history ,
