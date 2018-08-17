@@ -11,7 +11,7 @@
 @get_date_range
 
 -- or just specify it here
---@get_date_range '2016-10-26 10:00:00' '2016-10-26 16:00:00'
+--@get_date_range '2018-07-01 00:00:00' '2018-07-12 08:00:00'
 
 @clears 
 
@@ -55,6 +55,7 @@ data as (
 		END AS p1
 		, h.sql_id	
 	from dba_hist_active_sess_history h
+	where h.sql_id is not null
 ),
 agg_data as (
 select  distinct
