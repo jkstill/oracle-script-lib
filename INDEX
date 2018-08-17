@@ -10,6 +10,7 @@ LIB ADMIN:
 BACKUP and RECOVERY:
 @rman-bkup-status.sql: Status of backups
 @rman-bkup-details.sql: Details for a backup set
+@rman-recovery-scn.sql: determine minimum restore and recover SCN values
 
 PARALLEL PROCESSING:
 

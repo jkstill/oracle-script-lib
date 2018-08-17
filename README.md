@@ -15,6 +15,7 @@
 <pre>
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/rman-bkup-status.sql'>rman-bkup-status.sql</a> - Status of backups
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/rman-bkup-details.sql'>rman-bkup-details.sql</a> - Details for a backup set
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/rman-recovery-scn.sql'>rman-recovery-scn.sql</a> - determine minimum restore and recover SCN values
 </pre>
 <h3>PARALLEL PROCESSING:</h3>
 <pre>
