@@ -178,3 +178,62 @@ Execution Statistics
 ```
 
 
+# rman-chk-syntax.sh
+
+Use this script to check the syntax of RMAN commands or scripts
+
+No connection is made to any database
+
+## Commands on the Linux command line
+
+```bash
+
+>  rman-chk-syntax.sh "restore database from tag='RMAN_2018-09_14:30' validate header"
+RMAN CMD: restore database from tag='RMAN_2018-09_14:30' validate header
+
+Recovery Manager: Release 12.1.0.2.0 - Production on Fri Aug 17 09:46:04 2018
+
+Copyright (c) 1982, 2014, Oracle and/or its affiliates.  All rights reserved.
+
+RMAN>
+RMAN>
+The command has no syntax errors
+
+RMAN>
+RMAN>
+
+Recovery Manager complete.
+
+```
+
+## Commands from an RMAN script
+
+```bash
+>  cat lvl_1.rman
+
+run {
+allocate channel ch1 device type 'sbt' PARMS="SBT_LIBRARY=oracle.disksbt,BLKSIZE=131072,ENV=(BACKUP_DIR=/mnt/lestrade/nfs1/ts10_backups)";
+allocate channel ch2 device type 'sbt' PARMS="SBT_LIBRARY=oracle.disksbt,BLKSIZE=131072,ENV=(BACKUP_DIR=/mnt/lestrade/nfs1/ts10_backups)";
+allocate channel ch3 device type 'sbt' PARMS="SBT_LIBRARY=oracle.disksbt,BLKSIZE=131072,ENV=(BACKUP_DIR=/mnt/lestrade/nfs1/ts10_backups)";
+backup incremental level=1 format '%d_T%T_db_s%s_p%p_t%t' database filesperset 4 TAG LVL_1_BCT_2008_02_25_21_52;
+backup format '%d_T%T_arch_s%s_p%p_t%t' archivelog all filesperset 4 TAG LVL_1_BCT_2008_02_25_21_52 delete input;
+}
+
+jkstill@poirot ~/oracle/oracle-script-lib/bin $
+>  rman-chk-syntax.sh < lvl_1.rman
+
+Recovery Manager: Release 12.1.0.2.0 - Production on Fri Aug 17 09:48:23 2018
+
+Copyright (c) 1982, 2014, Oracle and/or its affiliates.  All rights reserved.
+
+RMAN> 2> 3> 4> 5> 6> 7>
+The command has no syntax errors
+
+RMAN>
+
+Recovery Manager complete.
+```
+
+
+
+
