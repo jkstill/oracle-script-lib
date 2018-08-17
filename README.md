@@ -210,6 +210,8 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/rowlock-sqlid-hist.sql'>rowlock-sqlid-hist.sql</a> - count of rowlock enq by sqlid - full outer join on snapshot
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/session-history.sql'>session-history.sql</a> - history of sessions from dba_hist_active_sess_history
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-count-ash.sql'>sql-count-ash.sql</a> - count of number rows in ASH per SQL_ID
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-counts-fms.sql'>sql-counts-fms.sql</a> - get sql_id where there are 2+ sql_id per force_matching signature from ASH/AWR
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-counts.sql'>sql-counts.sql</a> - simple count of SQL_ID from ASH/ASH
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-exe-events-ash.sql'>sql-exe-events-ash.sql</a> - show events per execution of SQL_ID in ASH
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-exe-events-awr.sql'>sql-exe-events-awr.sql</a> - show events per execution of SQL_ID in AWR
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-exe-times-ash.sql'>sql-exe-times-ash.sql</a> - stats and histograms of exucution times for a SQL_ID

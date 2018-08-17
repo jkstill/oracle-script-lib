@@ -207,6 +207,8 @@ AWR/ASH:
 @rowlock-sqlid-hist.sql: count of rowlock enq by sqlid - full outer join on snapshot
 @session-history.sql: history of sessions from dba_hist_active_sess_history
 @sql-count-ash.sql: count of number rows in ASH per SQL_ID
+@sql-counts-fms.sql: get sql_id where there are 2+ sql_id per force_matching signature from ASH/AWR
+@sql-counts.sql: simple count of SQL_ID from ASH/ASH
 @sql-exe-events-ash.sql: show events per execution of SQL_ID in ASH
 @sql-exe-events-awr.sql: show events per execution of SQL_ID in AWR
 @sql-exe-times-ash.sql: stats and histograms of exucution times for a SQL_ID
