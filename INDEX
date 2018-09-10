@@ -3,6 +3,8 @@ TUNING: scripts to aid with tuning
 
 @profile_from_awr.sql: create a SQL Profile from plan in AWR
 
+APEX: Anything to do with Apex
+@apex-version.sql: Get the version of Apex.  For CDB/PDB, run from both.
 
 LIB ADMIN:
 @distribution.sh: the script that builds the linux tar and windows zips files
@@ -10,7 +12,8 @@ LIB ADMIN:
 BACKUP and RECOVERY:
 @rman-bkup-status.sql: Status of backups
 @rman-bkup-details.sql: Details for a backup set
-@rman-recovery-scn.sql: determine minimum restore and recover SCN values
+@rman-recovery-scn.sql: determine the SCN from which the database must be restored and recovered 
+@rman-recovery-min-scn.sql: determine minimum restore and recover SCN values
 
 PARALLEL PROCESSING:
 

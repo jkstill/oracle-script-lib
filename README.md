@@ -7,6 +7,10 @@
 <pre>
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/profile_from_awr.sql'>profile_from_awr.sql</a> - create a SQL Profile from plan in AWR
 </pre>
+<h3>APEX: Anything to do with Apex</h3>
+<pre>
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/apex-version.sql'>apex-version.sql</a> - Get the version of Apex. For CDB/PDB, run from both.
+</pre>
 <h3>LIB ADMIN:</h3>
 <pre>
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/distribution.sh'>distribution.sh</a> - the script that builds the linux tar and windows zips files
@@ -15,7 +19,8 @@
 <pre>
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/rman-bkup-status.sql'>rman-bkup-status.sql</a> - Status of backups
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/rman-bkup-details.sql'>rman-bkup-details.sql</a> - Details for a backup set
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/rman-recovery-scn.sql'>rman-recovery-scn.sql</a> - determine minimum restore and recover SCN values
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/rman-recovery-scn.sql'>rman-recovery-scn.sql</a> - determine the SCN from which the database must be restored and recovered
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/rman-recovery-min-scn.sql'>rman-recovery-min-scn.sql</a> - determine minimum restore and recover SCN values
 </pre>
 <h3>PARALLEL PROCESSING:</h3>
 <pre>
