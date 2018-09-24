@@ -339,6 +339,7 @@ DATABASE STATISTICS - DBMS_STATS - OPTIMIZER:
 @partstats_sum.sql: Summary of partition stats
 @sampled_size.sql:  show sample size used to collect stats
 @sampled_size_details.sql:  show sample size used to collect stats
+@session-cursor-metrics.sql: show histograms for open and cached cursors
 @set_avg_stats.sql: set average stats on empty partitions - uses table_list.sql
 @set_table_prefs.sql:  set table preferences - uses table_list.sql
 @show_os_stats.sql: Show stats from v$aux_stats$

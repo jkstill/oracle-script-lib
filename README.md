@@ -343,6 +343,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/partstats_sum.sql'>partstats_sum.sql</a> - Summary of partition stats
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sampled_size.sql'>sampled_size.sql</a> - show sample size used to collect stats
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sampled_size_details.sql'>sampled_size_details.sql</a> - show sample size used to collect stats
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/session-cursor-metrics.sql'>session-cursor-metrics.sql</a> - show histograms for open and cached cursors
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/set_avg_stats.sql'>set_avg_stats.sql</a> - set average stats on empty partitions - uses table_list.sql
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/set_table_prefs.sql'>set_table_prefs.sql</a> - set table preferences - uses table_list.sql
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show_os_stats.sql'>show_os_stats.sql</a> - Show stats from v$aux_stats$
