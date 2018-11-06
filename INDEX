@@ -177,6 +177,7 @@ AWR/ASH:
 @awr-cpu-stats.sql: Report on sar like CPU stats from AWR
 @awr-export.sql: export AWR - useful for pre-migration work
 @awr-get-retention.sql: Display AWR retention and interval
+@awr-hist-model-top10.sql: Show Top 10 Snapshots based on DB Time + DB CPU from DBA_HIST_SYS_TIME_MODEL
 @awr-itl-waits.sql: find ITL waits
 @awr-resource-limit.sql: history of processes and sessions from dba_hist_resource_limit
 @awr-set-retention.sql: Example of setting AWR retention and interval
