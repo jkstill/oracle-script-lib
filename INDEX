@@ -51,27 +51,16 @@ SUPPORTING SCRIPTS:
 
 RDBMS UTILITIES:
 
+@10046.sql: Set event 10046 in a session
+@10046_off.sql: Stop event 10046 in a session
 @block_decode.sql: find which object a block belongs to
 @bootstrap_objects.sql: report objects from sys.bootstrap$ that may not be modified
 @cluster-factor.sql: get the clustering factor for all indexes on a table
 @cores.sql: report the number of CPU cores from v$osstat - may be subject to hyperthreading
 @dual_data_gen.sql: generate many rows from dual - uses a lot of memory for large number of rows
 @dual_data_gen-low-mem.sql: generate many rows without using extra PGA
-@dump.sql: Dump a table to a CSV file, generate SQL Loader parameter and control files.
-@find-index-sql.sql: find SQL where an index has been used - uses AWR
-@gen_fk_from-11.1.sql: generate existing foreign key constraings from data dictionary
-@gen_fk_from-11.2.sql: generate existing foreign key constraings from data dictionary
-@gen_fk_to-11.1.sql: generate existing foreign key constraings from data dictionary
-@gen_fk_to-11.2.sql: generate existing foreign key constraings from data dictionary
-@gen_data_with_recursion.sql: use a recursive subfactored query to generate rows
-@gen_list_data_with_dual.sql: generating test data with dual
-@gen_list_data_without_dual.sql: generating test data without dual - 10g+
-@set_events.sql: various methods to set events, including per sql_id
-@10046.sql: Set event 10046 in a session
-@10046_off.sql: Stop event 10046 in a session
-@troff.sql: Turn off SQL tracing for all sessions of an account
-@tron.sql: Turn on SQL tracing for all sessions of an account
-@oradebug_doc.sql: dump the documentation for oradebug
+@dbms_log.sql: use sys.dbms_log to write to log and trace files - 11.2.0.4+
+@dbms_system_undoc_calls.sql: some undocumented dbms_system calls - how to write to alert.log
 @dumptrace_off.sql: Turn on SQL_trace in a session
 @dumptrace_on.sql: Turn off SQL_trace in a session
 @dumptracem_off.sql: Turn on SQL_trace for all sessions for a user
@@ -79,9 +68,21 @@ RDBMS UTILITIES:
 @dup_role.sql: Generate SQL script to duplicate a database role
 @dup_role_users.sql: Generate SQL script to duplicate all users of a role
 @dup_user.sql: Generate SQL script to duplicate a database user
-@user_ddl.sql: Generate SQL script to duplicate a database user using DBMS_METADATA
+@dump.sql: Dump a table to a CSV file, generate SQL Loader parameter and control files.
+@find-index-sql.sql: find SQL where an index has been used - uses AWR
+@gen_data_with_recursion.sql: use a recursive subfactored query to generate rows
+@gen_fk_from-11.1.sql: generate existing foreign key constraings from data dictionary
+@gen_fk_from-11.2.sql: generate existing foreign key constraings from data dictionary
+@gen_fk_to-11.1.sql: generate existing foreign key constraings from data dictionary
+@gen_fk_to-11.2.sql: generate existing foreign key constraings from data dictionary
+@gen_list_data_with_dual.sql: generating test data with dual
+@gen_list_data_without_dual.sql: generating test data without dual - 10g+
 @hwm-df.sql: Find the high water mark for each datafile and determine how much each file can be shrunk
-@dbms_system_undoc_calls.sql: some undocumented dbms_system calls - how to write to alert.log
+@oradebug_doc.sql: dump the documentation for oradebug
+@print_table_2.sql: Tom Kytes print_table, but as an anonymous block
+@pt.sql: similar to Tom Kytes print_table, but no stored procedure required and better quoting
+@q_quote.sql: demo for the q[] quoting mechanism in SQL - 10g+ I think
+@set_events.sql: various methods to set events, including per sql_id
 @show_event_messages.sql: List events 1000-10999
 @spacemap.sql: create a map of segments and free space
 @spacemap_rpt.sql: report on spacemap created by spacemap.sql
@@ -89,10 +90,10 @@ RDBMS UTILITIES:
 @spacemap_sum_rpt.sql: report on space summary table created by spacemap_sum.sql
 @sqlid-trace.sql: set 10046 or 10053 trace per sqlid regardless of session
 @sql-command-types.sql: list all sql available commands 
+@troff.sql: Turn off SQL tracing for all sessions of an account
+@tron.sql: Turn on SQL tracing for all sessions of an account
 @table_ddl.sql: generate DDL for owner.table, with indexes, constraints, etc
-@print_table_2.sql: Tom Kytes print_table, but as an anonymous block
-@pt.sql: similar to Tom Kytes print_table, but no stored procedure required and better quoting
-@q_quote.sql: demo for the q[] quoting mechanism in SQL - 10g+ I think
+@user_ddl.sql: Generate SQL script to duplicate a database user using DBMS_METADATA
 
 
 TEMPORARY SEGMENTS/SORTS:

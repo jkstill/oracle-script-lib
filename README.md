@@ -56,27 +56,16 @@
 </pre>
 <h3>RDBMS UTILITIES:</h3>
 <pre>
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/10046.sql'>10046.sql</a> - Set event 10046 in a session
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/10046_off.sql'>10046_off.sql</a> - Stop event 10046 in a session
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/block_decode.sql'>block_decode.sql</a> - find which object a block belongs to
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/bootstrap_objects.sql'>bootstrap_objects.sql</a> - report objects from sys.bootstrap$ that may not be modified
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/cluster-factor.sql'>cluster-factor.sql</a> - get the clustering factor for all indexes on a table
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/cores.sql'>cores.sql</a> - report the number of CPU cores from v$osstat - may be subject to hyperthreading
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dual_data_gen.sql'>dual_data_gen.sql</a> - generate many rows from dual - uses a lot of memory for large number of rows
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dual_data_gen-low-mem.sql'>dual_data_gen-low-mem.sql</a> - generate many rows without using extra PGA
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dump.sql'>dump.sql</a> - Dump a table to a CSV file, generate SQL Loader parameter and control files.
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/find-index-sql.sql'>find-index-sql.sql</a> - find SQL where an index has been used - uses AWR
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_fk_from-11.1.sql'>gen_fk_from-11.1.sql</a> - generate existing foreign key constraings from data dictionary
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_fk_from-11.2.sql'>gen_fk_from-11.2.sql</a> - generate existing foreign key constraings from data dictionary
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_fk_to-11.1.sql'>gen_fk_to-11.1.sql</a> - generate existing foreign key constraings from data dictionary
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_fk_to-11.2.sql'>gen_fk_to-11.2.sql</a> - generate existing foreign key constraings from data dictionary
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_data_with_recursion.sql'>gen_data_with_recursion.sql</a> - use a recursive subfactored query to generate rows
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_list_data_with_dual.sql'>gen_list_data_with_dual.sql</a> - generating test data with dual
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_list_data_without_dual.sql'>gen_list_data_without_dual.sql</a> - generating test data without dual - 10g+
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/set_events.sql'>set_events.sql</a> - various methods to set events, including per sql_id
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/10046.sql'>10046.sql</a> - Set event 10046 in a session
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/10046_off.sql'>10046_off.sql</a> - Stop event 10046 in a session
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/troff.sql'>troff.sql</a> - Turn off SQL tracing for all sessions of an account
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/tron.sql'>tron.sql</a> - Turn on SQL tracing for all sessions of an account
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/oradebug_doc.sql'>oradebug_doc.sql</a> - dump the documentation for oradebug
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dbms_log.sql'>dbms_log.sql</a> - use sys.dbms_log to write to log and trace files - 11.2.0.4+
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dbms_system_undoc_calls.sql'>dbms_system_undoc_calls.sql</a> - some undocumented dbms_system calls - how to write to alert.log
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dumptrace_off.sql'>dumptrace_off.sql</a> - Turn on SQL_trace in a session
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dumptrace_on.sql'>dumptrace_on.sql</a> - Turn off SQL_trace in a session
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dumptracem_off.sql'>dumptracem_off.sql</a> - Turn on SQL_trace for all sessions for a user
@@ -84,9 +73,21 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dup_role.sql'>dup_role.sql</a> - Generate SQL script to duplicate a database role
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dup_role_users.sql'>dup_role_users.sql</a> - Generate SQL script to duplicate all users of a role
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dup_user.sql'>dup_user.sql</a> - Generate SQL script to duplicate a database user
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/user_ddl.sql'>user_ddl.sql</a> - Generate SQL script to duplicate a database user using DBMS_METADATA
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dump.sql'>dump.sql</a> - Dump a table to a CSV file, generate SQL Loader parameter and control files.
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/find-index-sql.sql'>find-index-sql.sql</a> - find SQL where an index has been used - uses AWR
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_data_with_recursion.sql'>gen_data_with_recursion.sql</a> - use a recursive subfactored query to generate rows
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_fk_from-11.1.sql'>gen_fk_from-11.1.sql</a> - generate existing foreign key constraings from data dictionary
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_fk_from-11.2.sql'>gen_fk_from-11.2.sql</a> - generate existing foreign key constraings from data dictionary
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_fk_to-11.1.sql'>gen_fk_to-11.1.sql</a> - generate existing foreign key constraings from data dictionary
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_fk_to-11.2.sql'>gen_fk_to-11.2.sql</a> - generate existing foreign key constraings from data dictionary
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_list_data_with_dual.sql'>gen_list_data_with_dual.sql</a> - generating test data with dual
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_list_data_without_dual.sql'>gen_list_data_without_dual.sql</a> - generating test data without dual - 10g+
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/hwm-df.sql'>hwm-df.sql</a> - Find the high water mark for each datafile and determine how much each file can be shrunk
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dbms_system_undoc_calls.sql'>dbms_system_undoc_calls.sql</a> - some undocumented dbms_system calls - how to write to alert.log
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/oradebug_doc.sql'>oradebug_doc.sql</a> - dump the documentation for oradebug
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/print_table_2.sql'>print_table_2.sql</a> - Tom Kytes print_table, but as an anonymous block
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pt.sql'>pt.sql</a> - similar to Tom Kytes print_table, but no stored procedure required and better quoting
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/q_quote.sql'>q_quote.sql</a> - demo for the q[] quoting mechanism in SQL - 10g+ I think
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/set_events.sql'>set_events.sql</a> - various methods to set events, including per sql_id
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show_event_messages.sql'>show_event_messages.sql</a> - List events 1000-10999
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/spacemap.sql'>spacemap.sql</a> - create a map of segments and free space
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/spacemap_rpt.sql'>spacemap_rpt.sql</a> - report on spacemap created by spacemap.sql
@@ -94,10 +95,10 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/spacemap_sum_rpt.sql'>spacemap_sum_rpt.sql</a> - report on space summary table created by spacemap_sum.sql
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sqlid-trace.sql'>sqlid-trace.sql</a> - set 10046 or 10053 trace per sqlid regardless of session
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-command-types.sql'>sql-command-types.sql</a> - list all sql available commands
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/troff.sql'>troff.sql</a> - Turn off SQL tracing for all sessions of an account
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/tron.sql'>tron.sql</a> - Turn on SQL tracing for all sessions of an account
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/table_ddl.sql'>table_ddl.sql</a> - generate DDL for owner.table, with indexes, constraints, etc
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/print_table_2.sql'>print_table_2.sql</a> - Tom Kytes print_table, but as an anonymous block
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pt.sql'>pt.sql</a> - similar to Tom Kytes print_table, but no stored procedure required and better quoting
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/q_quote.sql'>q_quote.sql</a> - demo for the q[] quoting mechanism in SQL - 10g+ I think
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/user_ddl.sql'>user_ddl.sql</a> - Generate SQL script to duplicate a database user using DBMS_METADATA
 </pre>
 <h3>TEMPORARY SEGMENTS/SORTS:</h3>
 <pre>
