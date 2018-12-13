@@ -36,8 +36,6 @@ SUPPORTING SCRIPTS:
 @opcodes.sql: list of SQL opcodes for use in 10g-. See cpu-busy.sql
 @oversion_minor.sql: get the XX.xx version of oracle and store in &v_oversion_minor
 @oversion_major.sql: get the XX version of oracle and store in &v_oversion_major
-@timestamp_to_millisecond.sql: convert timestamp to millisecond demo
-@timestamp-diff-seconds.sql: convert the difference between 2 timestamps to seconds. Preserves fractional seconds
 @ttitle.sql: set title and width
 @title.sql: set title and width
 @title80.sql:  set title and width to 80
@@ -569,6 +567,9 @@ DATES: Dates and Date Math
 @job_submit.sql: controlling run_time of dbms_jobs
 @e2ts.sql: Convert epoch value to oracle timestamp
 @e2ts-hires.sql: Convert epoch value to oracle timestamp
+@timestamp_to_millisecond.sql: convert timestamp to millisecond demo
+@timestamp-day-boundaries.sql: determine the beginning and ending timestamps for a day in SQL and PL/SQL
+@timestamp-diff-seconds.sql: convert the difference between 2 timestamps to seconds. Preserves fractional seconds
 @timestamp-trunc.sql: demonstrates how to truncate a timestamp to remove the time portion
 @timestamp-types.sql: simple demo of timestamp data types via dump()
 @ts2e.sql: Convert oracle timestamp to epoch value

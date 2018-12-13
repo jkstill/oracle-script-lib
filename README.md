@@ -43,8 +43,6 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/opcodes.sql'>opcodes.sql</a> - list of SQL opcodes for use in 10g-. See cpu-busy.sql
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/oversion_minor.sql'>oversion_minor.sql</a> - get the XX.xx version of oracle and store in &v_oversion_minor
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/oversion_major.sql'>oversion_major.sql</a> - get the XX version of oracle and store in &v_oversion_major
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/timestamp_to_millisecond.sql'>timestamp_to_millisecond.sql</a> - convert timestamp to millisecond demo
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/timestamp-diff-seconds.sql'>timestamp-diff-seconds.sql</a> - convert the difference between 2 timestamps to seconds. Preserves fractional seconds
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ttitle.sql'>ttitle.sql</a> - set title and width
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/title.sql'>title.sql</a> - set title and width
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/title80.sql'>title80.sql</a> - set title and width to 80
@@ -574,6 +572,9 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/job_submit.sql'>job_submit.sql</a> - controlling run_time of dbms_jobs
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/e2ts.sql'>e2ts.sql</a> - Convert epoch value to oracle timestamp
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/e2ts-hires.sql'>e2ts-hires.sql</a> - Convert epoch value to oracle timestamp
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/timestamp_to_millisecond.sql'>timestamp_to_millisecond.sql</a> - convert timestamp to millisecond demo
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/timestamp-day-boundaries.sql'>timestamp-day-boundaries.sql</a> - determine the beginning and ending timestamps for a day in SQL and PL/SQL
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/timestamp-diff-seconds.sql'>timestamp-diff-seconds.sql</a> - convert the difference between 2 timestamps to seconds. Preserves fractional seconds
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/timestamp-trunc.sql'>timestamp-trunc.sql</a> - demonstrates how to truncate a timestamp to remove the time portion
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/timestamp-types.sql'>timestamp-types.sql</a> - simple demo of timestamp data types via dump()
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ts2e.sql'>ts2e.sql</a> - Convert oracle timestamp to epoch value
