@@ -16,11 +16,11 @@ select
 	, cast(
 		trunc(
 			systimestamp 
-			+ numtodsinterval(to_char('1'),'DAY')  
+			+ numtodsinterval('1','DAY')  
 		) 
 		as timestamp
 	) 
-	- numtodsinterval(to_char('.000000001'),'SECOND') 
+	- numtodsinterval('.000000001','SECOND') 
 	day_end
 from dual
 /
@@ -41,11 +41,11 @@ begin
 	e := 	cast(
 				trunc(
 					systimestamp
-					+ numtodsinterval(to_char('1'),'DAY')
+					+ numtodsinterval('1','DAY')
 				)
 				as timestamp
 			)	- numtodsinterval( i_days_back ,'DAY')
-				- numtodsinterval(to_char('.000001'),'SECOND');
+				- numtodsinterval('.000001','SECOND');
 	dbms_output.put_line('Begin: ' || to_char(b));
 	dbms_output.put_line('  End: ' || to_char(e));
 end;
