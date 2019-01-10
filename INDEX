@@ -225,7 +225,6 @@ AWR/ASH:
 
 STATSPACK:
 
-
 @statspack-tables.txt: not a script - just a description of statspack tables
 @snapNmin.sql: start level 7 snapshot, sleep 2 minutes, complete snapshot and create report
 @sp_current.sql: get data associated with latest snapshot
@@ -305,13 +304,15 @@ EXECUTION_PLAN:
 PL/SQL:
 
 @bulk-collect-1.sql: demo of fetch .. bulk collect into
-@raise_error.sql: raise any error in the database
+@dbms_output-abstracted.sql: abstracted procedures and functions for dbms_output
 @get_table_lock.sql:  runs a tight loop trying to acquire lock on table - use on busy systems to get the lock required - DO NOT LEAVE TABLE LOCKED!
+@raise_error.sql: raise any error in the database
 @sqlplus_return_code.sql: examples of exiting SQLPlus with an error code
 @sqlplus_return_code_2.sql: more examples of exiting SQLPlus with an error cod
 @user_exit.sql: an example of exiting sqlplus if the current user is not the one expected
 
 DATABASE STATISTICS - DBMS_STATS - OPTIMIZER:
+
 @chk4incremental.sql: check to see if incremental stats were gathered for a table
 @cursor-counts.sql: simple report on cursors with count of child cursors
 @cursor-invalidation-reasons.sql: show reasons for cursor invalidation from v$sql_shared_cursor
