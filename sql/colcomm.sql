@@ -3,7 +3,7 @@
 -- find common columns between a set of tables
 -- Jared Still still@pythian.com jkstill@gmail.com
 -- no spaces allowed
--- @colcom owner1,tab1,owner2.tab2,...
+-- @colcom owner1.tab1,owner2.tab2,...
 
 col u_list new_value u_list noprint
 
@@ -71,18 +71,17 @@ select
 	--, tabs.table_name
 	tc.column_name
 	, count(*) occurrences
-	, listagg(dt.table_name,', ') within group (order by dt.table_name) tab_list
+	, listagg(dt.object_name,', ') within group (order by dt.object_name) tab_list
 from tabs
-	, dba_tables dt
+	, dba_objects dt
 	, dba_tab_columns tc
 where dt.owner = tabs.table_owner
-	and dt.table_name = tabs.table_name
+	and dt.object_name = tabs.table_name
 	and tc.owner = dt.owner
-	and tc.table_name = dt.table_name
+	and tc.table_name = dt.object_name
+	and dt.object_type in ('TABLE','VIEW')
 group by column_name
 	having count(*) > 1
 order by column_name
 /
-
-
 
