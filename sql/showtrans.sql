@@ -1,8 +1,9 @@
 
 
 @clears
-set line 140
+set line 200
  
+col sql_id format a13
 col osuser format a8 heading 'O/S|User' 
 col username format a10 heading 'Oracle|Userid' 
 col sid format 9999 head 'SID'
@@ -16,12 +17,14 @@ col log_io format 9,999,999,999 head 'Logical|IO Blks'
 col phy_io format 9,999,999,999 head 'Physical|IO Blks'
 col txt format a30 heading 'Current|Statement' word  
 col rollback_status format a5 head 'RB|Status'
+col command_name format a20 head 'Command|Name'
  
 --spool showtrans.txt
  
 select s.osuser
 	,s.username
 	,s.sid
+	,c.command_name
 	,r.segment_name
 	,t.space
 	,t.recursive
@@ -37,14 +40,17 @@ select s.osuser
 	,t.used_urec
 	,t.log_io
 	,t.phy_io
+	,s.sql_id
 	,substr(sa.sql_text,1,200) txt
 from v$session s,
 	v$transaction t,
 	dba_rollback_segs r,
-	v$sql sa
+	v$sql sa,
+	v$sqlcommand c
 where s.saddr=t.ses_addr
 and   t.xidusn=r.segment_id(+)
 and   s.sql_address=sa.address(+)
+and  s.command = c.command_type
 /
 --spool off 
  
