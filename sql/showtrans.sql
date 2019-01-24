@@ -2,6 +2,8 @@
 
 @clears
 set line 200
+set pagesize 100
+set tab off
  
 col sql_id format a13
 col osuser format a8 heading 'O/S|User' 
