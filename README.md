@@ -318,6 +318,7 @@
 <h3>DATABASE STATISTICS - DBMS_STATS - OPTIMIZER:</h3>
 <pre>
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/chk4incremental.sql'>chk4incremental.sql</a> - check to see if incremental stats were gathered for a table
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/cursor-check.sql'>cursor-check.sql</a> - some detail on open cursors per session
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/cursor-counts.sql'>cursor-counts.sql</a> - simple report on cursors with count of child cursors
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/cursor-invalidation-reasons.sql'>cursor-invalidation-reasons.sql</a> - show reasons for cursor invalidation from v$sql_shared_cursor
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dbms_stats_get_prefs.sql'>dbms_stats_get_prefs.sql</a> - get stats prefs per table and indexes

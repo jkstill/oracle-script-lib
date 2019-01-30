@@ -314,6 +314,7 @@ PL/SQL:
 DATABASE STATISTICS - DBMS_STATS - OPTIMIZER:
 
 @chk4incremental.sql: check to see if incremental stats were gathered for a table
+@cursor-check.sql: some detail on open cursors per session
 @cursor-counts.sql: simple report on cursors with count of child cursors
 @cursor-invalidation-reasons.sql: show reasons for cursor invalidation from v$sql_shared_cursor
 @dbms_stats_get_prefs.sql: get stats prefs per table and indexes
