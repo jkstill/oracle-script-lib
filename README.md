@@ -157,8 +157,6 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dba_kgllock.sql'>dba_kgllock.sql</a> - show waiters/blockers on library cache locks.
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/libcachepin_waits.sql'>libcachepin_waits.sql</a> - if there are waits on Library Cache Pin in v$session_wait this script will show what the waits are for, and which session is causing them
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/mystat.sql'>mystat.sql</a> - query v$mystat
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/snapper.sql'>snapper.sql</a> - Tanel Poder script extraordinaire
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/snapper4.sql'>snapper4.sql</a> - Tanel Poder script extraordinaire - version 4
 </pre>
 <h3>AWR/ASH:</h3>
 <pre>
