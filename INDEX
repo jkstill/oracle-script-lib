@@ -153,8 +153,6 @@ WAITS/LOCKS/LATCHES and PERFORMANCE:
 @dba_kgllock.sql: show waiters/blockers on library cache locks.
 @libcachepin_waits.sql: if there are waits on Library Cache Pin in v$session_wait this script will show what the waits are for, and which session is causing them
 @mystat.sql: query v$mystat
-@snapper.sql: Tanel Poder script extraordinaire
-@snapper4.sql: Tanel Poder script extraordinaire - version 4
 
 AWR/ASH:
 @aas-calc.sql: dump calculated AAS to CSV file
