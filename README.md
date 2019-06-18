@@ -276,6 +276,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/check_events.sql'>check_events.sql</a> - Determine if any events are set in database
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getallparm.sql'>getallparm.sql</a> - get parameters including hidden
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getparm.sql'>getparm.sql</a> - get parameters
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/parm-hist-diff.sql'>parm-hist-diff.sql</a> - show difference in parameters from AWR
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showallparm.sql'>showallparm.sql</a> - Show all database parameters, including .hidden. parameters
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showparm.sql'>showparm.sql</a> - Show database parameters
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showparmchanges.sql'>showparmchanges.sql</a> - show parameters that have changed - uses AWR
@@ -363,6 +364,10 @@
 </pre>
 <h3>AUTOTASK and SCHEDULER:</h3>
 <pre>
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/autotask_auto_stats_disable.sql'>autotask_auto_stats_disable.sql</a> - disable automatic stats gathering
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/autotask_auto_stats_enable.sql'>autotask_auto_stats_enable.sql</a> - enable automatic stats gathering
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/autotask_auto_tasks_disable.sql'>autotask_auto_tasks_disable.sql</a> - disable all autotasks
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/autotask_auto_tasks_enable.sql'>autotask_auto_tasks_enable.sql</a> - enable all autotasks
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/autotask_client_attributes.sql'>autotask_client_attributes.sql</a> - call dbms_auto_task_admin.get_client_attributes
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/autotask_client_history.sql'>autotask_client_history.sql</a> - show dba_autotask_client_history
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/autotask_client_job.sql'>autotask_client_job.sql</a> - show dba_autotask_client_job

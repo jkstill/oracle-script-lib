@@ -272,6 +272,7 @@ PARAMETERS:
 @check_events.sql: Determine if any events are set in database
 @getallparm.sql:  get parameters including hidden
 @getparm.sql: get parameters
+@parm-hist-diff.sql: show difference in parameters from AWR
 @showallparm.sql: Show all database parameters, including .hidden. parameters
 @showparm.sql: Show database parameters
 @showparmchanges.sql: show parameters that have changed - uses AWR
@@ -359,6 +360,11 @@ DATABASE STATISTICS - DBMS_STATS - OPTIMIZER:
 
 
 AUTOTASK and SCHEDULER:
+
+@autotask_auto_stats_disable.sql: disable automatic stats gathering
+@autotask_auto_stats_enable.sql: enable automatic stats gathering
+@autotask_auto_tasks_disable.sql: disable all autotasks
+@autotask_auto_tasks_enable.sql: enable all autotasks
 @autotask_client_attributes.sql: call dbms_auto_task_admin.get_client_attributes
 @autotask_client_history.sql: show dba_autotask_client_history
 @autotask_client_job.sql: show dba_autotask_client_job
