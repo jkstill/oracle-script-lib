@@ -53,6 +53,6 @@ select
 	, repeat_interval
 	, state
 from DBA_SCHEDULER_JOBS
-where owner = user
+--where owner = user
 order by owner
 /

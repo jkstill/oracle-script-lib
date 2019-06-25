@@ -43,8 +43,8 @@ SUPPORTING SCRIPTS:
 @nls_date_format.sql: set custom date and time formats, several options available at runtime
 @nls_time_format.sql: set custom (fixed) date and time formats
 @spool_example.sql: 
+@scott.sql: create the scott tables
 @sql_trick_1.sql: demonstrates a very useful technique for conditionally executing SQL
-
 
 
 RDBMS UTILITIES:
@@ -379,7 +379,6 @@ AUTOTASK and SCHEDULER:
 @autotask_window_hist.sql: show dba_autotask_window_history
 @dba_sched_jobs.sql: show dba_scheduler_jobs
 @dba_sched_jobs_hist.sql: show scheduler jobs history
-@disable_resource_manager.sql: the right method to disable the resource manager
 @opthist.sql: show values of dba_stats prefs from the source table
 @schedcols.sql: col commands for scripts
 @scheduler_programs.sql: show dba_scheduler_programs
@@ -389,6 +388,20 @@ timezone specific:
 @tz_set.sql: set the nls_timezone_tz_format for autotask scripts
 @get_sched_tz.sql: get the default timezone for the scheduler
 @set_sess_tz.sql: set session timezone the same as scheduler default timezone
+
+RESOURCE MANAGER:
+
+@disable_resource_manager.sql: the correct method to disable the resource manager
+@resmgr-columns.sql: configure report columns
+@resmgr-consumer-groups.sql: show consumer groups
+@resmgr-group-privs.sql: show group privs
+@resmgr-plan-directives.sql: show resource manager plan directives
+@resmgr-resource-plans.sql: show resource manager plans
+@resmgr-setup.sql: set pagesize and linesizes
+@resmgr-user-consumer-groups.sql: show consumer group per user
+@resmgr-waits-pdb.sql: show resmgr waits per pdb
+@resmgr-waits.sql: show resmgr waits 
+@resmgr-who.sql: show resmgr waits per user
 
 
 INSTANCE and/or DATABASE:
@@ -604,7 +617,11 @@ METRICS: Metrics reported by oracle - v$sysmetric, v$sysmetric_history ...
 @os-load.sql: OS Load as reported by oracle for past hour
 
 
-12c: Scripts that are specific to Oracle 12c
+CDB-PDB: Scripts that are specific to Container and Pluggable databases
+
+@pdb-modifiable-params-dump.sql: Dump the parameters from v$system_parameter on the CDB
+@cdb_sched_jobs.sql: show all scheduler jobs from CDB Root Level
+
 @show_container.sql: display the current container database name
 
 XML: Scripts for use with XML and or XMLDB
