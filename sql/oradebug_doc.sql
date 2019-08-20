@@ -14,6 +14,7 @@ prompt   ########################
 prompt   ## name 
 prompt   ########################
 -- DIAG
+oradebug doc event
 oradebug doc event name
 oradebug doc event name trace
 oradebug doc event name disable_dde_action
