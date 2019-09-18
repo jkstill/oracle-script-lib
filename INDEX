@@ -69,12 +69,13 @@ RDBMS UTILITIES:
 @dump.sql: Dump a table to a CSV file, generate SQL Loader parameter and control files.
 @find-index-sql.sql: find SQL where an index has been used - uses AWR
 @gen_data_with_recursion.sql: use a recursive subfactored query to generate rows
-@gen_fk_from-11.1.sql: generate existing foreign key constraings from data dictionary
-@gen_fk_from-11.2.sql: generate existing foreign key constraings from data dictionary
-@gen_fk_to-11.1.sql: generate existing foreign key constraings from data dictionary
-@gen_fk_to-11.2.sql: generate existing foreign key constraings from data dictionary
+@gen_fk_from-11.1.sql: generate existing foreign key constraints from data dictionary
+@gen_fk_from-11.2.sql: generate existing foreign key constraints from data dictionary
+@gen_fk_to-11.1.sql: generate existing foreign key constraints from data dictionary
+@gen_fk_to-11.2.sql: generate existing foreign key constraints from data dictionary
 @gen_list_data_with_dual.sql: generating test data with dual
 @gen_list_data_without_dual.sql: generating test data without dual - 10g+
+@hash-function.sql: create a PL/SQL package 'hash' containing digest functions using dbms_crypto
 @hwm-df.sql: Find the high water mark for each datafile and determine how much each file can be shrunk
 @oradebug_doc.sql: dump the documentation for oradebug
 @print_table_2.sql: Tom Kytes print_table, but as an anonymous block

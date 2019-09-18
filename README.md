@@ -75,12 +75,13 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dump.sql'>dump.sql</a> - Dump a table to a CSV file, generate SQL Loader parameter and control files.
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/find-index-sql.sql'>find-index-sql.sql</a> - find SQL where an index has been used - uses AWR
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_data_with_recursion.sql'>gen_data_with_recursion.sql</a> - use a recursive subfactored query to generate rows
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_fk_from-11.1.sql'>gen_fk_from-11.1.sql</a> - generate existing foreign key constraings from data dictionary
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_fk_from-11.2.sql'>gen_fk_from-11.2.sql</a> - generate existing foreign key constraings from data dictionary
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_fk_to-11.1.sql'>gen_fk_to-11.1.sql</a> - generate existing foreign key constraings from data dictionary
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_fk_to-11.2.sql'>gen_fk_to-11.2.sql</a> - generate existing foreign key constraings from data dictionary
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_fk_from-11.1.sql'>gen_fk_from-11.1.sql</a> - generate existing foreign key constraints from data dictionary
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_fk_from-11.2.sql'>gen_fk_from-11.2.sql</a> - generate existing foreign key constraints from data dictionary
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_fk_to-11.1.sql'>gen_fk_to-11.1.sql</a> - generate existing foreign key constraints from data dictionary
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_fk_to-11.2.sql'>gen_fk_to-11.2.sql</a> - generate existing foreign key constraints from data dictionary
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_list_data_with_dual.sql'>gen_list_data_with_dual.sql</a> - generating test data with dual
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_list_data_without_dual.sql'>gen_list_data_without_dual.sql</a> - generating test data without dual - 10g+
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/hash-function.sql'>hash-function.sql</a> - create a PL/SQL package 'hash' containing digest functions using dbms_crypto
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/hwm-df.sql'>hwm-df.sql</a> - Find the high water mark for each datafile and determine how much each file can be shrunk
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/oradebug_doc.sql'>oradebug_doc.sql</a> - dump the documentation for oradebug
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/print_table_2.sql'>print_table_2.sql</a> - Tom Kytes print_table, but as an anonymous block
