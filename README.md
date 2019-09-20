@@ -284,7 +284,9 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showparmchanges.sql'>showparmchanges.sql</a> - show parameters that have changed - uses AWR
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showparmdrvr.sql'>showparmdrvr.sql</a> - Performs the query for getparm.sql and showparm.sql
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showallparm73drvr.sql'>showallparm73drvr.sql</a> - Performs the query for getallparm.sql and showallparm.sql
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showallparm12c-drvr.sql'>showallparm12c-drvr.sql</a> - 12c update for all parms
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/parms_dump_csv.sql'>parms_dump_csv.sql</a> - Dump all parameters to CSV file
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/parms_dump_12c_csv.sql'>parms_dump_12c_csv.sql</a> - Dump all 12c parameters to CSV file
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sys_context.sql'>sys_context.sql</a> - Demo of getting oracle environment settings with sys_context function
 </pre>
 <h3>EXECUTION_PLAN:</h3>
@@ -498,6 +500,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/tabcols.sql'>tabcols.sql</a> - list of columns in alpha order for owner and table_name
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/tabidx.sql'>tabidx.sql</a> - show indexes and columns for owner and table_name
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/plsql_called_objects.sql'>plsql_called_objects.sql</a> - Shows entry PL/SQL object and current PL/SQL object for a session
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/plsql-init.sql'>plsql-init.sql</a> - example initialization for PL/SQL flags
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/rbs_no_optimal.sql'>rbs_no_optimal.sql</a> - Set all rollback segments to have no OPTIMAL size
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/rbs_optimal.sql'>rbs_optimal.sql</a> - Set all rollback segments to have an OPTIMAL size of 2xInitial
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/rbs_shrink.sql'>rbs_shrink.sql</a> - Shrink all rollback segments to OPTIMAL

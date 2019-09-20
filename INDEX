@@ -279,7 +279,9 @@ PARAMETERS:
 @showparmchanges.sql: show parameters that have changed - uses AWR
 @showparmdrvr.sql: Performs the query for getparm.sql and showparm.sql
 @showallparm73drvr.sql: Performs the query for getallparm.sql and showallparm.sql
+@showallparm12c-drvr.sql: 12c update for all parms
 @parms_dump_csv.sql: Dump all parameters to CSV file
+@parms_dump_12c_csv.sql: Dump all 12c parameters to CSV file
 @sys_context.sql: Demo of getting oracle environment settings with sys_context function
 
 EXECUTION_PLAN:
@@ -493,6 +495,7 @@ INSTANCE and/or DATABASE:
 @tabcols.sql: list of columns in alpha order for owner and table_name
 @tabidx.sql: show indexes and columns for owner and table_name
 @plsql_called_objects.sql: Shows entry PL/SQL object and current PL/SQL object for a session
+@plsql-init.sql: example initialization for PL/SQL flags
 @rbs_no_optimal.sql: Set all rollback segments to have no OPTIMAL size
 @rbs_optimal.sql: Set all rollback segments to have an OPTIMAL size of 2xInitial
 @rbs_shrink.sql: Shrink all rollback segments to OPTIMAL
