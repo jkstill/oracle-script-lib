@@ -55,6 +55,7 @@ blockers as (
 		max(blkr.snap_id) over (partition by blkr.session_id, blkr.session_serial#) snap_id
 		, max(blkr.sample_id) over (partition by blkr.session_id, blkr.session_serial#) sample_id
 		, max(blkr.sample_time) over (partition by blkr.session_id, blkr.session_serial#) sample_time
+		, blkr.session_id
 		, blkr.session_serial#
 		, blkr.session_state
 		-- NULL for top level blockers
