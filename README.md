@@ -313,6 +313,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/bulk-collect-1.sql'>bulk-collect-1.sql</a> - demo of fetch .. bulk collect into
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dbms_output-abstracted.sql'>dbms_output-abstracted.sql</a> - abstracted procedures and functions for dbms_output
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get_table_lock.sql'>get_table_lock.sql</a> - runs a tight loop trying to acquire lock on table - use on busy systems to get the lock required - DO NOT LEAVE TABLE LOCKED!
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/package-error.sql'>package-error.sql</a> - show the source lines for a PL/SQL error
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/raise_error.sql'>raise_error.sql</a> - raise any error in the database
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sqlplus_return_code.sql'>sqlplus_return_code.sql</a> - examples of exiting SQLPlus with an error code
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sqlplus_return_code_2.sql'>sqlplus_return_code_2.sql</a> - more examples of exiting SQLPlus with an error cod
