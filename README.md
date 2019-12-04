@@ -276,6 +276,7 @@
 <h3>PARAMETERS:</h3>
 <pre>
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/check_events.sql'>check_events.sql</a> - Determine if any events are set in database
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get-alert-log-location.sql'>get-alert-log-location.sql</a> - return the filename for the text based alert log file
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getallparm.sql'>getallparm.sql</a> - get parameters including hidden
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getparm.sql'>getparm.sql</a> - get parameters
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/parm-hist-diff.sql'>parm-hist-diff.sql</a> - show difference in parameters from AWR
@@ -608,6 +609,7 @@
 <h3>MEMORY: Memory Settings and/or Advisors</h3>
 <pre>
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/db_cache_advice.sql'>db_cache_advice.sql</a> - run db cache advisor
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/mem-leak-detect.sql'>mem-leak-detect.sql</a> - discover sessions that may be leaking memory
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/mem-subpool-mgt.sql'>mem-subpool-mgt.sql</a> - parameters used to manage memory subpools - requires SYSDBA
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ora-4031-info-shared-pool.sql'>ora-4031-info-shared-pool.sql</a> - displays several memory related configuration settings
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pgacols.sql'>pgacols.sql</a> - column formatting

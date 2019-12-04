@@ -271,6 +271,7 @@ USERS LOGGED ON:
 PARAMETERS:
 
 @check_events.sql: Determine if any events are set in database
+@get-alert-log-location.sql: return the filename for the text based alert log file
 @getallparm.sql:  get parameters including hidden
 @getparm.sql: get parameters
 @parm-hist-diff.sql: show difference in parameters from AWR
@@ -603,6 +604,7 @@ DATES: Dates and Date Math
 MEMORY: Memory Settings and/or Advisors
 
 @db_cache_advice.sql: run db cache advisor
+@mem-leak-detect.sql: discover sessions that may be leaking memory
 @mem-subpool-mgt.sql: parameters used to manage memory subpools - requires SYSDBA
 @ora-4031-info-shared-pool.sql: displays several memory related configuration settings
 @pgacols.sql: column formatting
