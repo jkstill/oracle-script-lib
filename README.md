@@ -421,6 +421,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/archived_log_sums.sql'>archived_log_sums.sql</a> - show rolling total of archive logs for N days
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/archived_log_dest.sql'>archived_log_dest.sql</a> - show archived log destination and status for active destinations
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/bct_status.sql'>bct_status.sql</a> - show status of block change tracking file
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/blocker-tree.sql'>blocker-tree.sql</a> - show tree of blocked sessions
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/colcomm.sql'>colcomm.sql</a> - show columns in common between a set of tables in a CSV list
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/csv-split.sql'>csv-split.sql</a> - Demo of using recursive subfactored query to split CSV list from sqlplus command line
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/csv-split-2.sql'>csv-split-2.sql</a> - Demo of using regular expressions to conver a CSV list to rows - both SQL and PL/SQL
