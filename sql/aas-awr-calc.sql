@@ -55,6 +55,7 @@ select
 	|| ',' || elapsed_seconds
 	|| ',' || aas
 from data
+order by begin_time, instance_number
 --where rownum <= 20
 /
 
