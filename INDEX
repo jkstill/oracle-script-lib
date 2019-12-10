@@ -1,4 +1,6 @@
 
+
+
 TUNING: scripts to aid with tuning
 
 @profile_from_awr.sql: create a SQL Profile from plan in AWR
@@ -156,8 +158,10 @@ WAITS/LOCKS/LATCHES and PERFORMANCE:
 @mystat.sql: query v$mystat
 
 AWR/ASH:
-@aas-calc.sql: dump calculated AAS to CSV file
-@aas-std.sql: dump AAS to CSV file
+@aas.sql: get AAS (average active sessions) from gv$sysmetric
+@aas-awr-calc.sql: dump AAS calculated from AWR to CSV file
+@aas-ash-calc.sql: report AAS calculated from ASH
+@aas-std.sql: dump AAS from dba_hist_sysmetric_history to CSV file
 @aas_hist_metrics.sql: get average active sessions along with CPU metrics
 @aas_history.sql: get history of Average Active Sessions
 @ash-blocker-waits.sql: find top level blockers in ASH

@@ -162,8 +162,10 @@
 </pre>
 <h3>AWR/ASH:</h3>
 <pre>
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/aas-calc.sql'>aas-calc.sql</a> - dump calculated AAS to CSV file
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/aas-std.sql'>aas-std.sql</a> - dump AAS to CSV file
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/aas.sql'>aas.sql</a> - get AAS (average active sessions) from gv$sysmetric
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/aas-awr-calc.sql'>aas-awr-calc.sql</a> - dump AAS calculated from AWR to CSV file
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/aas-ash-calc.sql'>aas-ash-calc.sql</a> - report AAS calculated from ASH
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/aas-std.sql'>aas-std.sql</a> - dump AAS from dba_hist_sysmetric_history to CSV file
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/aas_hist_metrics.sql'>aas_hist_metrics.sql</a> - get average active sessions along with CPU metrics
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/aas_history.sql'>aas_history.sql</a> - get history of Average Active Sessions
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash-blocker-waits.sql'>ash-blocker-waits.sql</a> - find top level blockers in ASH
