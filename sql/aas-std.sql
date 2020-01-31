@@ -35,4 +35,5 @@ spool off
 set term on
 @clears
 
+--test
 
