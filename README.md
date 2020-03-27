@@ -119,6 +119,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/io_tbs.sql'>io_tbs.sql</a> - Shows snapshot of IO stats based on io_begin and io_end
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/lfsdiag.sql'>lfsdiag.sql</a> - diagnose logfile sync
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ioweight.sql'>ioweight.sql</a> - Show IO per tablespace order by weight
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/redo-rate.sql'>redo-rate.sql</a> - show real time redo rates at the db level
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showtrans.sql'>showtrans.sql</a> - Show current transactions with IO
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/trans_per_hour.sql'>trans_per_hour.sql</a> - Transactions per hour with statistics per xaction
 </pre>

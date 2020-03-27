@@ -116,6 +116,7 @@ IO:
 @io_tbs.sql: Shows snapshot of IO stats based on io_begin and io_end
 @lfsdiag.sql: diagnose logfile sync
 @ioweight.sql: Show IO per tablespace order by weight
+@redo-rate.sql: show real time redo rates at the db level
 @showtrans.sql: Show current transactions with IO
 @trans_per_hour.sql: Transactions per hour with statistics per xaction
 
