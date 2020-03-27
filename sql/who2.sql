@@ -33,17 +33,18 @@ col username heading 'USERNAME' format a10
 col sessions heading 'SESSIONS'
 col sid heading 'SID' format 99999
 col status heading 'STATUS' format a10
-col machine format a10 head 'MACHINE'
+col machine format a20 head 'MACHINE'
 col client_program format a20 head 'CLIENT PROGRAM'
 col server_program format a20 head 'SERVER PROGRAM'
 col spid format a5 head 'SRVR|PID'
 col serial# format 99999 head 'SERIAL#'
-col client_process format 999999 head 'CLIENT|PID'
+col client_process format a12 head 'CLIENT|PID'
 col osuser format a10
 col logon_time format a17 head 'LOGON TIME'
 col idle_time format a11 head 'IDLE TIME'
 col ppid format 99999 head 'PID'
-col sql_id format a14 head 'SQL ID'
+col sql_id format a13 head 'SQL ID'
+col block_changes format 99,999,999 head 'BLOCK|CHANGES'
 
 set recsep off term on pause off verify off echo off
 set line 200
@@ -60,12 +61,13 @@ select
 	&&v_10gopts s.sql_id,
 	p.pid ppid,
 	s.status,
+	i.block_changes,
 	s.machine,
 	s.osuser,
+	p.spid spid,
 	substr(s.program,1,20) client_program,
 	s.process client_process,
-	substr(p.program,1,20) server_program,
-	p.spid spid,
+	--substr(p.program,1,20) server_program,
 	to_char(logon_time, 'mm/dd/yy hh24:mi:ss') logon_time,
 	-- idle time
 	-- days added to hours
@@ -78,8 +80,9 @@ select
 	substr('0'||trunc(mod(mod(LAST_CALL_ET,86400),3600)/60),-2,2) || ':' ||
 	--seconds
 	substr('0'||mod(mod(mod(LAST_CALL_ET,86400),3600),60),-2,2)  idle_time
-from v$session s, v$process p
+from v$session s, v$process p, v$sess_io i
 where s.username is not null
+	and s.sid = i.sid
 	-- use outer join to show sniped sessions in
 	-- v$session that don't have an OS process
 	and p.addr(+) = s.paddr
