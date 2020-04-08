@@ -3,6 +3,7 @@
 --
 -- get the server OS Pid for the current session
 -- Jared Still jkstill@gmail.com still@pythian.com
+col username format a20
 
 select
 	s.username,

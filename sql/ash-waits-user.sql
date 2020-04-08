@@ -11,11 +11,11 @@
 
  examples:
 
- @ash-waits-user SCOTT '2016-03-16 16:52' '2016-03-16 17:21'
+ @ash-waits-user SCOTT '2016-03-16 16:52:00' '2016-03-16 17:21:00'
 
- @ash-waits-user SCOTT BEGIN '2016-03-16 17:21'
+ @ash-waits-user SCOTT BEGIN '2016-03-16 17:21:00'
 
- @ash-waits-user SCOTT '2016-03-16 16:52' END
+ @ash-waits-user SCOTT '2016-03-16 16:52:00' END
 
  @ash-waits-user SCOTT BEGIN END
 
@@ -40,7 +40,7 @@ col snap_begin_time new_value snap_begin_time noprint
 col snap_end_time new_value snap_end_time noprint
 
 col wait_seconds format 999,999 head 'WAIT|SECONDS'
-col pct_elapsed format 99.9 head 'PERCENT|ELAPSED'
+col pct_elapsed format a10 head 'PERCENT|ELAPSED'
 
 prompt 
 prompt Target User: 
@@ -102,14 +102,14 @@ begin
 	between
 		decode('&&snap_begin_time',
 			'BEGIN',
-			to_timestamp('1900-01-01 00:01','yyyy-mm-dd hh24:mi'),
-			to_timestamp('&&snap_begin_time','yyyy-mm-dd hh24:mi')
+			to_timestamp('1900-01-01 00:00:00','yyyy-mm-dd hh24:mi:ss'),
+			to_timestamp('&&snap_begin_time','yyyy-mm-dd hh24:mi:ss')
 		)
 		AND
 		decode('&&snap_end_time',
 			'END',
-			to_timestamp('4000-12-31 23:59','yyyy-mm-dd hh24:mi'),
-			to_timestamp('&&snap_end_time','yyyy-mm-dd hh24:mi')
+			to_timestamp('4000-12-31 23:59:00','yyyy-mm-dd hh24:mi:ss'),
+			to_timestamp('&&snap_end_time','yyyy-mm-dd hh24:mi:ss')
 		);
 
 	:v_wall_seconds := 

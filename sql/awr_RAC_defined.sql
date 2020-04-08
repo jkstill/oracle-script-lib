@@ -10,7 +10,7 @@ define  begin_snap   = 10;
 define  end_snap     = 11;
 define  report_type  = 'html';
 define  instance_numbers_or_ALL = 'ALL'
-define  report_name  =  awrrpt_RAC_&&begin_snap._&&end_snap..html
+define  report_name  =  awrrpt_RAC_&&begin_snap._&&end_snap..&&report_type
 
 @?/rdbms/admin/awrgrpti
 

@@ -3,6 +3,8 @@
 
 -- from Connor McDonald
 -- http://www.oracledba.co.uk/tips/plsql_alert_log.htm
+-- 
+-- see also dbms_log.sql
 
 -- write to the alert log and/or trace file
 

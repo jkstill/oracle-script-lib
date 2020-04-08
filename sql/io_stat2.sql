@@ -16,7 +16,7 @@ set verify off echo off line 100
 set trimspool on
 col name format a20
 col rw_ratio format 99999.9 head 'R/W|RATIO'
---col drive noprint
+--col disk noprint
 col stime new_value start_time noprint
 col etime new_value end_time noprint
 col sectime new_value seconds noprint
@@ -43,13 +43,13 @@ set feed on term on
 ttitle 'Filesystem I/O report for &dbname' skip 'Start Time:  &start_time' skip 'End Time  :  &end_time' skip 'Seconds: &seconds' skip 2
 
 break on report
-compute sum of rdtot on drive
-compute sum of wrtot on drive
+compute sum of rdtot on disk
+compute sum of wrtot on disk
 compute sum of rdtot on report
 compute sum of wrtot on report
-compute sum of rpsecond on drive
-compute sum of wpsecond on drive
-compute sum of iopsecond on drive
+compute sum of rpsecond on disk
+compute sum of wpsecond on disk
+compute sum of iopsecond on disk
 compute sum of rpsecond on report
 compute sum of wpsecond on report
 compute sum of iopsecond on report
@@ -60,7 +60,8 @@ col wpsecond format 9999.99 head 'WRT|PER|SEC'
 col iopsecond format 9999.99 head 'IOS|PER|SEC'
 
 select
-	io.drive
+	io.inst_id
+	, io.disk
 	, sum(io.rdtot) rdtot
 	, sum(io.wrtot) wrtot
 	, sum(io.rpsecond) rpsecond
@@ -75,7 +76,8 @@ select
 	) rw_ratio
 from (
 	SELECT
-		b.drive drive,
+		b.inst_id,
+		b.disk disk,
 		substr(b.NAME,instr(b.name,'/',-1)+1) name,
 		e.blockreads - b.blockreads rdtot,
 		e.blockwrites - b.blockwrites wrtot,
@@ -94,12 +96,13 @@ from (
 		e.blockwrites e_blockwrites,
 		b.blockwrites b_blockwrites
 	FROM   io_end e, io_begin b
-	WHERE  b.file# = e.file# and b.global_name = e.global_name
+	WHERE b.inst_id = e.inst_id
+		and b.file# = e.file# and b.global_name = e.global_name
 	-- only show active files
 	and ( ( e.blockreads-b.blockreads != 0 ) or ( e.blockwrites-b.blockwrites != 0 ) )
 ) io
-GROUP BY drive
-ORDER BY drive
+GROUP BY inst_id, disk
+ORDER BY inst_id, disk
 /
 
 ttitle off

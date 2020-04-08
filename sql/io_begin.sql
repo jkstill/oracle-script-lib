@@ -2,10 +2,13 @@
 clear col
 
 
-drop table io_begin;
+-- must truncate GTT before dropping
+truncate table io_begin;
+drop table io_begin purge;
 
-create table io_begin( 
-	drive varchar2(12),
+create global temporary table io_begin( 
+	inst_id number,
+	disk varchar2(16),
 	name varchar2(60),
 	file# number,
 	blockreads number(12,0),
@@ -16,19 +19,21 @@ create table io_begin(
 	io_date date,
 	global_name varchar2(40)
 )
-storage( initial 10k next 10k pctincrease 0)
+on commit preserve rows
+--storage( initial 10k next 10k pctincrease 0)
 /
 
-insert into io_begin( drive, name, file#, blockreads, blockwrites, writetime, readtime, ratio, io_date, global_name)
+insert into io_begin( inst_id, disk, name, file#, blockreads, blockwrites, writetime, readtime, ratio, io_date, global_name)
 SELECT 
 	--if there is a '/' in the name, then it's unix
-	substr(
+	df.inst_id
+	, substr(
 		name,1,
 		decode( instr(name,'/'),
-			0,1,  -- Win32: get the drive letter
-			12    -- Unix: 12 is the length of the column
+			0,1,  -- Win32: get the disk letter
+			16    -- Unix: 16 is the length of the column
 		)
-	) drive
+	) disk
 	, substr(NAME,1,60) name
 	, df.file#
 	, PHYBLKRD blockreads
@@ -38,8 +43,9 @@ SELECT
 	, round((phyblkrd / decode(phyblkwrt,0,1,phyblkwrt)),2) ratio
 	, sysdate
 	, substr(global_name,1,instr(global_name,'.')-1) global_name
-FROM   V$DBFILE DF, V$FILESTAT FS, global_name g
-WHERE  DF.FILE#=FS.FILE#
+FROM   GV$DBFILE DF, GV$FILESTAT FS, global_name g
+WHERE  FS.INST_ID = DF.INST_ID
+	AND DF.FILE#=FS.FILE#
 /
 
 commit;

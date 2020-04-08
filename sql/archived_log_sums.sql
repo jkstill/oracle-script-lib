@@ -8,7 +8,7 @@
 
 col  num_days new_value num_days noprint
 
-set feed on term on echo off
+set feed on term on echo off tab off
 
 prompt
 prompt report how much space N days of archive logs consume
@@ -18,7 +18,7 @@ prompt the first (N-1) days of the report are inaccurate
 prompt 
 
 prompt Calculate archive log sums for how many days? :
-set term off feed off
+set term off feed off 
 select '&1' num_days from dual;
 set term on feed on
 
@@ -26,6 +26,9 @@ col log_date format a20 head 'LOG DATE'
 col bytes format 99,999,999,999,999
 col bytes_today format 99,999,999,999,999
 col bytes_Nday format 99,999,999,999,999
+
+set pagesize 100
+ste linesize 200 trimspool on
 
 -- for repeated use a temp table of archive logs
 -- is *much* faster

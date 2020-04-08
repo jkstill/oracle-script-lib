@@ -2,11 +2,12 @@
 -- show server event messages
 -- courtesy Julian Dyke
 
-set serveroutput on size 1000000
+set serveroutput on 
+
 DECLARE
-	err_msg VARCHAR2(120);
+	err_msg VARCHAR2(1024);
 BEGIN
-	dbms_output.enable (1000000);
+	dbms_output.enable (null);
 	FOR err_num IN 10000..10999
 	LOOP
 		err_msg := SQLERRM (-err_num);
