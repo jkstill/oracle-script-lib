@@ -77,6 +77,12 @@ RDBMS UTILITIES:
 @gen_fk_to-11.2.sql: generate existing foreign key constraints from data dictionary
 @gen_list_data_with_dual.sql: generating test data with dual
 @gen_list_data_without_dual.sql: generating test data without dual - 10g+
+@gethostname.sql: get the hostname into substitution variable uhostname
+@getinstance.sql: get the instance name into substitution variable uinstance
+@getinstanceowner.sql: get the instance owner into substitution variable uinstanceowner
+@getpid.sql: get the session PID into substitution variable upid
+@gettracefile.sql: copy the current sessions tracefile from the host
+@gettrcname.sql: get the name of the current sessions tracefile into substitution variable utracefile
 @hash-function.sql: create a PL/SQL package 'hash' containing digest functions using dbms_crypto
 @hwm-df.sql: Find the high water mark for each datafile and determine how much each file can be shrunk
 @oradebug_doc.sql: dump the documentation for oradebug

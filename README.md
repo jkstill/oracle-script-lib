@@ -81,6 +81,12 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_fk_to-11.2.sql'>gen_fk_to-11.2.sql</a> - generate existing foreign key constraints from data dictionary
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_list_data_with_dual.sql'>gen_list_data_with_dual.sql</a> - generating test data with dual
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_list_data_without_dual.sql'>gen_list_data_without_dual.sql</a> - generating test data without dual - 10g+
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gethostname.sql'>gethostname.sql</a> - get the hostname into substitution variable uhostname
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getinstance.sql'>getinstance.sql</a> - get the instance name into substitution variable uinstance
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getinstanceowner.sql'>getinstanceowner.sql</a> - get the instance owner into substitution variable uinstanceowner
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getpid.sql'>getpid.sql</a> - get the session PID into substitution variable upid
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gettracefile.sql'>gettracefile.sql</a> - copy the current sessions tracefile from the host
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gettrcname.sql'>gettrcname.sql</a> - get the name of the current sessions tracefile into substitution variable utracefile
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/hash-function.sql'>hash-function.sql</a> - create a PL/SQL package 'hash' containing digest functions using dbms_crypto
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/hwm-df.sql'>hwm-df.sql</a> - Find the high water mark for each datafile and determine how much each file can be shrunk
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/oradebug_doc.sql'>oradebug_doc.sql</a> - dump the documentation for oradebug
