@@ -6,7 +6,7 @@ clear col
 set line 110
 col stat new_value statname noprint
 column value format   a50
-column name format   a25
+column name format   a35
 column isses_modifiable head 'SESS|MOD?' format a4
 column issys_modifiable head 'SYS|MOD?' format a4
 column isdefault head 'DEF|VAL?' format a4
