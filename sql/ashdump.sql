@@ -42,10 +42,26 @@ to 'v$active_session_history' to 'ashdump'
 
 */
 
+col filename format a100
+
+set echo off pause off tab off verify off
+
+prompt ASH Dump of how many minutes?: 
+
+set term off feed off echo off pause off tab off
+
+col v_ash_minutes new_value v_ash_minutes noprint
+
+select &1 v_ash_minutes from dual;
+
+set term on feed on echo on
 
 oradebug setmypid
-oradebug dump ashdump 10
-select value from v$diag_info where name = 'Default Trace File';
+oradebug dump ashdump &v_ash_minutes
+
+set echo off
+
+select value filename from v$diag_info where name = 'Default Trace File';
 
 
 
