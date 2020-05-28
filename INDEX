@@ -319,6 +319,7 @@ EXECUTION_PLAN:
 
 PL/SQL:
 
+@build-record.sql: generate a PL/SQL record type based on table columns
 @bulk-collect-1.sql: demo of fetch .. bulk collect into
 @dbms_output-abstracted.sql: abstracted procedures and functions for dbms_output
 @get_table_lock.sql:  runs a tight loop trying to acquire lock on table - use on busy systems to get the lock required - DO NOT LEAVE TABLE LOCKED!
