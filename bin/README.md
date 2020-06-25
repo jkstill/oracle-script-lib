@@ -234,6 +234,85 @@ RMAN>
 Recovery Manager complete.
 ```
 
+# get-alert-logs.sh
+
+Retrieve the most recent 20k lines of the alert log from all instances.
+
+The script is RAC aware, and will detect the instance on up to 4 nodes.
+
+The script must be run on each node separately.
+
+The files are place in the ./logs directory.
+
+Contents of oratab:
+
+```text
++ASM1:/u01/app/19.0.0/grid:N
+ohome:/u01/app/oracle/product/19.0.0/dbhome_1:N
+cdb:/u01/app/oracle/product/19.0.0/dbhome_1:N
+cdb1:/u01/app/oracle/product/19.0.0/dbhome_1:N
+```
+
+```text
+$ ./get-alert-logs.sh
+potential sid: ohome
+   localInst:
+
+Alert log filename not set - is the instance up?
+
+potential sid: cdb
+   localInst: cdb1
+   alert log: /u01/app/oracle/diag/rdbms/cdb/cdb1/trace/alert_cdb1.log
+potential sid: cdb1
+   localInst:
+
+Alert log filename not set - is the instance up?
+```
+
+The script will fail on ohome and cdb1, as those do not represent instances, but are there for convenience.
+
+
+# get-lgwr-trace.sh
+
+Retrieve the LGWR trace files per instance.
+
+The files are place in the ./trace directory.
+
+
+The script is RAC aware, and will detect the instance on up to 4 nodes.
+
+The script must be run on each node separately.
+
+Contents of oratab:
+
+```text
++ASM1:/u01/app/19.0.0/grid:N
+ohome:/u01/app/oracle/product/19.0.0/dbhome_1:N
+cdb:/u01/app/oracle/product/19.0.0/dbhome_1:N
+cdb1:/u01/app/oracle/product/19.0.0/dbhome_1:N
+```
+
+The script will fail on ohome and cdb1, as those do not represent instances, but are there for convenience.
+
+```text
+$ ./get-lgwr-trace.sh
+potential sid: ohome
+   localInst:
+
+Tracefile not set - is the instance up?
+
+potential sid: cdb
+   localInst: cdb1
+   tracefile: /u01/app/oracle/diag/rdbms/cdb/cdb1/trace/cdb1_lgwr_5988.trc
+potential sid: cdb1
+   localInst:
+
+Tracefile not set - is the instance up?
+```
+
+
+
+
 
 
 
