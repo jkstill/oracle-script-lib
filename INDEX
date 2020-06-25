@@ -181,6 +181,8 @@ AWR/ASH:
 @ash_blocking.sql: get list of row lock blocks - blocked and blockers with SQL_ID
 @ash_cpu_hist.sql: cpu historic usage from dba_hist_sysmetric_history - 12c+
 @ash_log_sync.sql: log sync events
+@ashdump.sql: create an ASH Dump - be sure to read the comments in the script
+@ashdump-summary.sql: example script to view ASHDUMP data
 @ashtop.sql: Tanel Poder script for top ASH events
 @awr-blocker-waits.sql: find top level blockers in AWR
 @awr-cpu-stats.sql: Report on sar like CPU stats from AWR
@@ -317,6 +319,7 @@ EXECUTION_PLAN:
 
 PL/SQL:
 
+@build-record.sql: generate a PL/SQL record type based on table columns
 @bulk-collect-1.sql: demo of fetch .. bulk collect into
 @dbms_output-abstracted.sql: abstracted procedures and functions for dbms_output
 @get_table_lock.sql:  runs a tight loop trying to acquire lock on table - use on busy systems to get the lock required - DO NOT LEAVE TABLE LOCKED!

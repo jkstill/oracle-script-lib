@@ -14,7 +14,9 @@ conn_info as (
 	select distinct inst_id
 		, count(*)  over (partition by inst_id) drcp_connection_count -- includes waiting, active, idle, etc
 	from GV$CPOOL_CONN_INFO
-	order by inst_id
+	where connection_status not in ('NONE','IDLE')
+	--where connection_status not in ('WAITING')
+	--order by inst_id
 ),
 cpool_used as (
 	select ci.inst_id
@@ -23,7 +25,7 @@ cpool_used as (
 		, round(ci.drcp_connection_count / mp.max_pool_count * 100,1 ) cpool_used_pct
 	from max_pools mp
 	cross join conn_info ci
-	order by 1
+	--order by 1
 )
 select inst_id, max_pool_count, drcp_connection_count, cpool_used_pct, :n_cpool_pct_threshold pct_threshold,
 	case 

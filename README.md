@@ -185,6 +185,8 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash_blocking.sql'>ash_blocking.sql</a> - get list of row lock blocks - blocked and blockers with SQL_ID
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash_cpu_hist.sql'>ash_cpu_hist.sql</a> - cpu historic usage from dba_hist_sysmetric_history - 12c+
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash_log_sync.sql'>ash_log_sync.sql</a> - log sync events
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ashdump.sql'>ashdump.sql</a> - create an ASH Dump - be sure to read the comments in the script
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ashdump-summary.sql'>ashdump-summary.sql</a> - example script to view ASHDUMP data
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ashtop.sql'>ashtop.sql</a> - Tanel Poder script for top ASH events
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-blocker-waits.sql'>awr-blocker-waits.sql</a> - find top level blockers in AWR
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-cpu-stats.sql'>awr-cpu-stats.sql</a> - Report on sar like CPU stats from AWR
@@ -320,6 +322,7 @@
 </pre>
 <h3>PL/SQL:</h3>
 <pre>
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/build-record.sql'>build-record.sql</a> - generate a PL/SQL record type based on table columns
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/bulk-collect-1.sql'>bulk-collect-1.sql</a> - demo of fetch .. bulk collect into
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dbms_output-abstracted.sql'>dbms_output-abstracted.sql</a> - abstracted procedures and functions for dbms_output
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get_table_lock.sql'>get_table_lock.sql</a> - runs a tight loop trying to acquire lock on table - use on busy systems to get the lock required - DO NOT LEAVE TABLE LOCKED!
