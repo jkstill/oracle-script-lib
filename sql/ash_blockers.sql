@@ -6,7 +6,7 @@
 
 @clears
 
-@get_date_range
+--@get_date_range
 
 col lockmode format a20
 col event_name format a40 head 'EVENT NAME'
