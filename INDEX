@@ -625,13 +625,16 @@ MEMORY: Memory Settings and/or Advisors
 @pgacols.sql: column formatting
 @pga_advice.sql: run pga cache advisor
 @pga_advice_hist.sql: pga cached advice history
+@pga_advice_selective.sql: reports on pga cache advice only if min_pct gains achieved
 @pga_history_sum.sql: pga cached advice summary
 @pga_history_week.sql: pga history per week
 @pga_workarea_active.sql: show active pga workareas
 @pga_workarea_hist.sql: history of active pga workarea
 @pgastat.sql: PGA stats from gv$pgastat
 @pgastat_hist.sql: PGA stats from dba_hist_pgastat
+@sga_advice_selective.sql: reports on sga cache advice only if min_pct gains achieved
 @shared_pool_advice.sql: shared pool advisor
+@shared_pool_advice_selective.sql: reports on shared pool advice only if min_pct gains achieved
 
 
 METRICS: Metrics reported by oracle - v$sysmetric, v$sysmetric_history ...

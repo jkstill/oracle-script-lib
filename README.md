@@ -628,13 +628,16 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pgacols.sql'>pgacols.sql</a> - column formatting
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pga_advice.sql'>pga_advice.sql</a> - run pga cache advisor
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pga_advice_hist.sql'>pga_advice_hist.sql</a> - pga cached advice history
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pga_advice_selective.sql'>pga_advice_selective.sql</a> - reports on pga cache advice only if min_pct gains achieved
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pga_history_sum.sql'>pga_history_sum.sql</a> - pga cached advice summary
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pga_history_week.sql'>pga_history_week.sql</a> - pga history per week
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pga_workarea_active.sql'>pga_workarea_active.sql</a> - show active pga workareas
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pga_workarea_hist.sql'>pga_workarea_hist.sql</a> - history of active pga workarea
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pgastat.sql'>pgastat.sql</a> - PGA stats from gv$pgastat
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pgastat_hist.sql'>pgastat_hist.sql</a> - PGA stats from dba_hist_pgastat
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sga_advice_selective.sql'>sga_advice_selective.sql</a> - reports on sga cache advice only if min_pct gains achieved
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/shared_pool_advice.sql'>shared_pool_advice.sql</a> - shared pool advisor
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/shared_pool_advice_selective.sql'>shared_pool_advice_selective.sql</a> - reports on shared pool advice only if min_pct gains achieved
 </pre>
 <h3>METRICS: Metrics reported by oracle - v$sysmetric, v$sysmetric_history ...</h3>
 <pre>
