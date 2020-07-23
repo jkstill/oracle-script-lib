@@ -26,7 +26,7 @@ ttitle off
 set feed off term on
 
 -- get db
-select 'Database: ' || substr(global_name,1,instr(global_name,'.')-1) global_name from global_name;
+select 'Database: ' || global_name from global_name;
 -- set the start_time
 select to_char(min(io_date),'mm/dd/yyyy hh24:mi:ss') stime from io_begin;
 -- set the end_time

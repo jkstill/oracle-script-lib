@@ -7,7 +7,7 @@ set feed off verify off
 
 set term off
 -- get db
-select 'Database: ' || substr(global_name,1,instr(global_name,'.')-1) global_name from global_name;
+select 'Database: ' || global_name global_name from global_name;
 -- set the current time
 select to_char(sysdate,'mm/dd/yyyy hh24:mi:ss') stime from dual;
 set term on feed on

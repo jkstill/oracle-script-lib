@@ -42,7 +42,7 @@ SELECT
 	, readtim readtime
 	, round((phyblkrd / decode(phyblkwrt,0,1,phyblkwrt)),2) ratio
 	, sysdate
-	, substr(global_name,1,instr(global_name,'.')-1) global_name
+	, global_name
 FROM   GV$DBFILE DF, GV$FILESTAT FS, global_name g
 WHERE  FS.INST_ID = DF.INST_ID
 	AND DF.FILE#=FS.FILE#
