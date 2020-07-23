@@ -1,3 +1,11 @@
+
+
+col called_object format a40
+col caller_object format a40
+
+set linesize 200 trimspool on
+set pagesize 100
+
 with dep_recurse (
 	owner
 	, name
@@ -22,8 +30,16 @@ with dep_recurse (
 		, 1 as lvl
 		, rownum - 1 as idx
 	FROM dba_dependencies d
-	WHERE d.owner = 'SYS'
-		and d.name in ('DBMS_SHARED_POOL','UTL_TCP','UTL_FILE','UTL_HTTP','UTL_SMTP','UTL_XML')
+	WHERE d.name in (
+		select object_name
+		from dba_objects
+		where owner not in (
+			select name
+			from system.LOGSTDBY$SKIP_SUPPORT
+			where action = 0
+		)
+		and object_type in ('FUNCTION','PACKAGE','PROCEDURE','TYPE','VIEW')
+	)
 	-- anchor member
 	union all
 	-- recursive member
@@ -48,10 +64,21 @@ search depth first by owner set order1 -- display in std heirarchical order
 --search breadth first by owner set order1 -- display in order of levels
 -- distinct:  there may be multiple rows in the anchor member resulting in a partial car
 SELECT  distinct
-	owner ||'.'|| name called_object
-	, referenced_owner ||'.'|| referenced_name caller_object
+	owner ||'.'|| name caller_object
+	, type
+	, referenced_owner ||'.'|| referenced_name called_object
 	, referenced_type
 from dep_recurse dr
 where lvl=1
+and owner not in (
+	select name schema_to_exclude
+	from system.LOGSTDBY$SKIP_SUPPORT
+	where action = 0
+	union all
+	select 'PUBLIC' name from dual
+)
+and referenced_owner || '.' || referenced_name not in ('SYS.STANDARD')
 order by 1,2
 /
+
+
