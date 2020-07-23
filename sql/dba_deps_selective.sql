@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 col called_object format a40
@@ -6,6 +7,8 @@ col caller_object format a40
 set linesize 200 trimspool on
 set pagesize 100
 
+=======
+>>>>>>> 5f6806d60129ba35b598d6f1789a92b0f960df05
 with dep_recurse (
 	owner
 	, name
@@ -30,6 +33,7 @@ with dep_recurse (
 		, 1 as lvl
 		, rownum - 1 as idx
 	FROM dba_dependencies d
+<<<<<<< HEAD
 	WHERE d.name in (
 		select object_name
 		from dba_objects
@@ -40,6 +44,10 @@ with dep_recurse (
 		)
 		and object_type in ('FUNCTION','PACKAGE','PROCEDURE','TYPE','VIEW')
 	)
+=======
+	WHERE d.owner = 'SYS'
+		and d.name in ('DBMS_SHARED_POOL','UTL_TCP','UTL_FILE','UTL_HTTP','UTL_SMTP','UTL_XML')
+>>>>>>> 5f6806d60129ba35b598d6f1789a92b0f960df05
 	-- anchor member
 	union all
 	-- recursive member
@@ -64,6 +72,7 @@ search depth first by owner set order1 -- display in std heirarchical order
 --search breadth first by owner set order1 -- display in order of levels
 -- distinct:  there may be multiple rows in the anchor member resulting in a partial car
 SELECT  distinct
+<<<<<<< HEAD
 	owner ||'.'|| name caller_object
 	, type
 	, referenced_owner ||'.'|| referenced_name called_object
@@ -82,3 +91,12 @@ order by 1,2
 /
 
 
+=======
+	owner ||'.'|| name called_object
+	, referenced_owner ||'.'|| referenced_name caller_object
+	, referenced_type
+from dep_recurse dr
+where lvl=1
+order by 1,2
+/
+>>>>>>> 5f6806d60129ba35b598d6f1789a92b0f960df05
