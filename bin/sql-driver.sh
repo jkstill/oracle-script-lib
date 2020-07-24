@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source /home/pdracdb/working/still/shell/functions.sh
+source /home/oracle/sql-driver/functions.sh
 
 #showInstances
 
@@ -18,4 +18,7 @@ do
 	echo "####	${sids[$instance]} ####"
 	runSQL ${sids[$instance]} ${instances[$instance]} "$sqlScript"
 done
+
+cleanup
+
 

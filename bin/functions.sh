@@ -155,6 +155,21 @@ showInstances () {
 }
 
 
+trapcmds () {
+	typeset SIGTEXT=${1:-'UNKNOWN'}
+	typeset SIGNUM=${2:-1}
+
+	cleanup
+	exit $SIGNUM
+}
+
+catchINT () {
+	trapcmds SIGINT 2
+}
+
+
+trap "catchINT" INT
+
 startup
 getAllInstances
 cleanup
