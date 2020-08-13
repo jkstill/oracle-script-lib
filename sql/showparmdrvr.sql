@@ -3,8 +3,10 @@ set echo off feed on verify off pause off
 
 clear col
 
-set line 110
-col stat new_value statname noprint
+set linesize 110
+set pagesize 100
+
+column stat new_value statname noprint
 column value format   a50
 column name format   a35
 column isses_modifiable head 'SESS|MOD?' format a4
