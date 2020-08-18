@@ -121,6 +121,7 @@ https://www.oracle.com/technetwork/database/multitenant/learn-more/multitenant-s
 
 */
 
+set feedback off term off pause off echo off
 @save-sqlplus-settings
 
 --set serveroutput on size unlimited  format word_wrapped
@@ -148,8 +149,6 @@ col db_name format a15
 col open_mode format a10
 col con_name format a15
 
-prompt Decode()
-
 select 
 	decode(:v_session_container,'-','','--') u_display_pdbs 
 	, decode(:v_session_container,'-','--','') u_do_not_display_pdbs
@@ -161,12 +160,35 @@ alter session set container=cdb$root;
 
 set term on
 
+-- specified '-' on the CLI
+/*
 select 
 	&u_display_pdbs con_id, name pdb_name
 	&u_do_not_display_pdbs dummy
 &u_display_pdbs from v$pdbs order by con_id
 &u_do_not_display_pdbs from dual where 0=1
+union 
+select
+&u_display_pdbs 1 con_id, 'CDB$ROOT' pdb_name
+& u_do_not_display_pdbs 'noop' from dual where 1=0
 /
+*/
+
+--/*
+
+select
+	&u_display_pdbs con_id, name pdb_name
+	&u_do_not_display_pdbs dummy
+&u_display_pdbs from v$pdbs
+&u_do_not_display_pdbs from dual where 0=1
+union
+select
+&u_display_pdbs 1 con_id, 'CDB$ROOT' pdb_name from dual
+& u_do_not_display_pdbs 'noop' from dual where 1=0
+order by 1
+/
+--*/
+
 
 begin
 	&u_display_pdbs dbms_output.put_line('Which PDB?: ');
@@ -242,6 +264,7 @@ col v_pdb_msg format a40
 
 print :v_pdb_msg
 
+
 select 
 	to_number(sys_context('userenv','con_id')) con_id
 	, sys_context('userenv','con_name') con_name
@@ -251,6 +274,7 @@ undef 1
 undef s_session_container
 
 @restore-sqlplus-settings
+set feedback on term on
 @remove-sqlplus-settings
 
 
