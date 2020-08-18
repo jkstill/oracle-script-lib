@@ -1,6 +1,8 @@
 
 
 
+
+
 TUNING: scripts to aid with tuning
 
 @profile_from_awr.sql: create a SQL Profile from plan in AWR
@@ -60,6 +62,7 @@ RDBMS UTILITIES:
 @dual_data_gen.sql: generate many rows from dual - uses a lot of memory for large number of rows
 @dual_data_gen-low-mem.sql: generate many rows without using extra PGA
 @dbms_log.sql: use sys.dbms_log to write to log and trace files - 11.2.0.4+
+@dbms_output-allow-blank-lines.sql: just a demo of how to create blank lines via 'set format wrapped'
 @dbms_system_undoc_calls.sql: some undocumented dbms_system calls - how to write to alert.log
 @dumptrace_off.sql: Turn on SQL_trace in a session
 @dumptrace_on.sql: Turn off SQL_trace in a session
@@ -89,6 +92,9 @@ RDBMS UTILITIES:
 @print_table_2.sql: Tom Kytes print_table, but as an anonymous block
 @pt.sql: similar to Tom Kytes print_table, but no stored procedure required and better quoting
 @q_quote.sql: demo for the q[] quoting mechanism in SQL - 10g+ I think
+@remove-sqlplus-settings.sql: remove the 'store set' temp file
+@restore-sqlplus-settings.sql: restore sqlplus settings from a temp flie
+@save-sqlplus-settings.sql: save sqlplus settings to a temp file
 @set_events.sql: various methods to set events, including per sql_id
 @show_event_messages.sql: List events 1000-10999
 @spacemap.sql: create a map of segments and free space
@@ -471,10 +477,12 @@ INSTANCE and/or DATABASE:
 @pivot.sql: Simple demo of PIVOT
 @purge_cursors.sql: purge a list of SQL cursors from shared_pool - 10g+ see Oracle Note 457309.1
 @reserved-words.sql: List reserved words from v$reserved_words
+@setc.sql: automatically or interactively set 'do alter session set container'
 @sql_spawned_reasons.sql: Show reasons for creating new child of SQL
 @shared-pool-top-sql.sql: show top SQL consumers of shared_pool
 @shared-pool-top-users.sql: show top SCHEMA/USER consumers of shared_pool
 @show_check_cons.sql: Show non-system generated check constraints
+@show-pdbs.sql: Show the con_id and con_name for available PDBs
 @show_data_types.sql: Show non-system column data types
 @show_fk.sql: Show foreign keys for a user
 @showpk.sql: Show all primary keys 

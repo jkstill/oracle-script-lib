@@ -64,6 +64,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dual_data_gen.sql'>dual_data_gen.sql</a> - generate many rows from dual - uses a lot of memory for large number of rows
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dual_data_gen-low-mem.sql'>dual_data_gen-low-mem.sql</a> - generate many rows without using extra PGA
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dbms_log.sql'>dbms_log.sql</a> - use sys.dbms_log to write to log and trace files - 11.2.0.4+
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dbms_output-allow-blank-lines.sql'>dbms_output-allow-blank-lines.sql</a> - just a demo of how to create blank lines via 'set format wrapped'
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dbms_system_undoc_calls.sql'>dbms_system_undoc_calls.sql</a> - some undocumented dbms_system calls - how to write to alert.log
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dumptrace_off.sql'>dumptrace_off.sql</a> - Turn on SQL_trace in a session
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dumptrace_on.sql'>dumptrace_on.sql</a> - Turn off SQL_trace in a session
@@ -93,6 +94,9 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/print_table_2.sql'>print_table_2.sql</a> - Tom Kytes print_table, but as an anonymous block
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pt.sql'>pt.sql</a> - similar to Tom Kytes print_table, but no stored procedure required and better quoting
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/q_quote.sql'>q_quote.sql</a> - demo for the q[] quoting mechanism in SQL - 10g+ I think
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/remove-sqlplus-settings.sql'>remove-sqlplus-settings.sql</a> - remove the 'store set' temp file
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/restore-sqlplus-settings.sql'>restore-sqlplus-settings.sql</a> - restore sqlplus settings from a temp flie
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/save-sqlplus-settings.sql'>save-sqlplus-settings.sql</a> - save sqlplus settings to a temp file
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/set_events.sql'>set_events.sql</a> - various methods to set events, including per sql_id
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show_event_messages.sql'>show_event_messages.sql</a> - List events 1000-10999
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/spacemap.sql'>spacemap.sql</a> - create a map of segments and free space
@@ -474,10 +478,12 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pivot.sql'>pivot.sql</a> - Simple demo of PIVOT
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/purge_cursors.sql'>purge_cursors.sql</a> - purge a list of SQL cursors from shared_pool - 10g+ see Oracle Note 457309.1
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/reserved-words.sql'>reserved-words.sql</a> - List reserved words from v$reserved_words
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/setc.sql'>setc.sql</a> - automatically or interactively set 'do alter session set container'
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql_spawned_reasons.sql'>sql_spawned_reasons.sql</a> - Show reasons for creating new child of SQL
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/shared-pool-top-sql.sql'>shared-pool-top-sql.sql</a> - show top SQL consumers of shared_pool
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/shared-pool-top-users.sql'>shared-pool-top-users.sql</a> - show top SCHEMA/USER consumers of shared_pool
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show_check_cons.sql'>show_check_cons.sql</a> - Show non-system generated check constraints
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show-pdbs.sql'>show-pdbs.sql</a> - Show the con_id and con_name for available PDBs
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show_data_types.sql'>show_data_types.sql</a> - Show non-system column data types
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show_fk.sql'>show_fk.sql</a> - Show foreign keys for a user
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showpk.sql'>showpk.sql</a> - Show all primary keys
