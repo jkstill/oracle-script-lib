@@ -19,5 +19,7 @@ ttitle off
 
 set newpage 1
 
+set tab off
+
 --@@stddate
 
