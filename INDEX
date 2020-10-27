@@ -462,6 +462,7 @@ INSTANCE and/or DATABASE:
 @index-usage-awr.sql: Query AWR to try and determine which indexes are unused
 @all_jobs.sql: Show all scheduled db jobs
 @show_jobs.sql: does the work for dba_jobs.sql and all_jobs.sql
+@supp-log-info.sql: show database supplemental logging parameters
 @kglh-growth.sql: monitor for unbounded growth of shared pool memory structures
 @kglh-growth-awr.sql: check AWR for unbounded growth of shared pool memory structures
 @la8.sql: Shows last analyzed dates for database objects . 8.0+

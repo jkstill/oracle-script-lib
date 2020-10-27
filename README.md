@@ -463,6 +463,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/index-usage-awr.sql'>index-usage-awr.sql</a> - Query AWR to try and determine which indexes are unused
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/all_jobs.sql'>all_jobs.sql</a> - Show all scheduled db jobs
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show_jobs.sql'>show_jobs.sql</a> - does the work for dba_jobs.sql and all_jobs.sql
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/supp-log-info.sql'>supp-log-info.sql</a> - show database supplemental logging parameters
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/kglh-growth.sql'>kglh-growth.sql</a> - monitor for unbounded growth of shared pool memory structures
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/kglh-growth-awr.sql'>kglh-growth-awr.sql</a> - check AWR for unbounded growth of shared pool memory structures
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/la8.sql'>la8.sql</a> - Shows last analyzed dates for database objects . 8.0+
