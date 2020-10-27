@@ -1,4 +1,6 @@
 
+-- show-fk.sql - report foreign key constraints
+
 @clears
 
 col cuser noprint new_value uuser
@@ -8,18 +10,19 @@ select upper('&1') cuser from dual;
 set term on feed on
 
 col owner format a10
-col table_name format a15 head 'TABLE'
+col table_name format a30 head 'TABLE'
 col parent_table format a30 head 'PARENT TABLE'
 col column_name format a30 head 'COLUMN'
-col constraint_name format a15 head 'FK CONSTRAINT'
+col constraint_name format a30 head 'FK CONSTRAINT'
 col position format 999 head 'POS'
 col delete_rule format a11 head 'DELETE RULE'
 
-set line 130
+set linesize 200 trimspool on
+set pagesize 100
 
 break on owner on table_name on constraint_name skip 1
 
-select 
+select
 	col.owner
 	, col.table_name
 	, col.constraint_name
@@ -28,7 +31,7 @@ select
 	, con.parent_table
 	, con.delete_rule
 from (
-	select distinct 
+	select distinct
 		c.owner owner
 		, c.table_name table_name
 		, c.constraint_name constraint_name
@@ -47,5 +50,3 @@ order by 1,2,3,5
 /
 
 undef 1
-
-

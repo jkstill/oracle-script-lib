@@ -484,8 +484,9 @@ INSTANCE and/or DATABASE:
 @show_check_cons.sql: Show non-system generated check constraints
 @show-pdbs.sql: Show the con_id and con_name for available PDBs
 @show_data_types.sql: Show non-system column data types
-@show_fk.sql: Show foreign keys for a user
-@showpk.sql: Show all primary keys 
+@show-fk.sql: Show foreign keys for a user
+@show-pk.sql: Show all primary keys for a user
+@show-uk.sql: Show all unique keys for a user
 @showsga.sql: Show SGA breakdown
 @showuser.sql: Show user info
 @showpriv.sql: Show privileges granted to a role or user

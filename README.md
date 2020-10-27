@@ -485,8 +485,9 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show_check_cons.sql'>show_check_cons.sql</a> - Show non-system generated check constraints
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show-pdbs.sql'>show-pdbs.sql</a> - Show the con_id and con_name for available PDBs
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show_data_types.sql'>show_data_types.sql</a> - Show non-system column data types
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show_fk.sql'>show_fk.sql</a> - Show foreign keys for a user
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showpk.sql'>showpk.sql</a> - Show all primary keys
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show-fk.sql'>show-fk.sql</a> - Show foreign keys for a user
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show-pk.sql'>show-pk.sql</a> - Show all primary keys for a user
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show-uk.sql'>show-uk.sql</a> - Show all unique keys for a user
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showsga.sql'>showsga.sql</a> - Show SGA breakdown
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showuser.sql'>showuser.sql</a> - Show user info
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showpriv.sql'>showpriv.sql</a> - Show privileges granted to a role or user
