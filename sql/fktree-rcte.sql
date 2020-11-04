@@ -16,15 +16,22 @@ Bug 30877518 - ORA-600[qctcte1] From SQL Statement With A With-clause (Doc ID 30
 ====
 
 SYS@ora192rac-scan/pdb4.jks.com AS SYSDBA> @fktc
-from fk_tree d
+from fktree d
 *
 ERROR at line 43:
 ORA-00600: internal error code, arguments: [qctcte1], [0], [], [], [], [], [], [], [], [], [], []
+
+When testing on an 11g database, this query is not returning all the rows expected.
+
+There must be some error I have made in the SQL, but so far I cannot determine what the problem is
+
+If you fix it, please share
 
 */
 
 @clears
 
+col owner format a20
 col parent format a30
 col child format a30
 col table_name format a30
@@ -48,8 +55,10 @@ set term off feed off
 select upper('&1') v_user from dual;
 set term on feed on
 
-with fk_tree (
-	table_name
+
+with fktree (
+	owner
+	, table_name
 	, constraint_name
 	, constraint_type
 	, r_constraint_name
@@ -58,10 +67,11 @@ with fk_tree (
 	, idx
 ) as (
 	select
-		c.table_name
+		c.owner
+		, c.table_name
 		, c.constraint_name
 		, c.constraint_type
-		, c.r_constraint_name
+		, null r_constraint_name
 		, c.delete_rule
 		, 1 as lvl
 		, rownum - 1 as idx
@@ -70,7 +80,8 @@ with fk_tree (
 		and c.constraint_type in ('U','P')
 	union all
 	select
-		c.table_name
+		  c.r_owner
+		, c.table_name
 		, c.constraint_name
 		, c.constraint_type
 		, c.r_constraint_name
@@ -78,21 +89,37 @@ with fk_tree (
 		, fkt.lvl+1 as lvl
 		, fkt.idx+1 as idx
 	from all_constraints c
-	join fk_tree fkt on
-		c.r_constraint_name = fkt.constraint_name
-	where c.owner = '&v_user'
+	join fktree fkt on
+		fkt.constraint_name = c.r_constraint_name 
+		and fkt.owner = c.r_owner
 		and c.constraint_type in ('R')
 )
-search depth first by table_name set order1
+search depth first by table_name set table_order
 select
 	lpad(' ',(lvl-1)*2) || d.table_name table_name
 	, r_constraint_name
 	, constraint_name
 	, delete_rule
-	--, level
-from fk_tree d
-connect by nocycle prior constraint_name = r_constraint_name
-start with constraint_type in ('P','U')
+	, level lvl
+	, idx
+	-- , CONNECT_BY_ISCYCLE -- look up documentation for this
+from fktree d
+--/*
+start with d.table_name in (
+	select table_name
+	from dba_constraints
+	where owner = '&v_user'
+		and constraint_type in ('U','P')
+	minus
+	select table_name
+	from dba_constraints
+	where owner = '&v_user'
+		and constraint_type = 'R'
+)
+--*/
+connect by  prior constraint_name = r_constraint_name
+	--and level <= 5
+order by table_order
 /
 
 undef 1

@@ -4,6 +4,28 @@
 -- Jared Still - Pythian 2020-11-04
 -- jkstill@gmail.com still@pythian.com
 
+/*
+
+This query will not work properly when there are circular references between top level tables
+
+PARENT 
+  CHILD
+    GRANDCHILD
+
+PARENT_2
+  CHILD_2
+    GRANDCHILD_2
+
+If PARENT has a FK that points to PARENT_2, 
+and PARENT_2 has a FK that points to PARENT,
+that is a circular reference.
+
+Besides breaking this script, it is not a good way to 'design' a database
+
+This is why there is a 'nocycle' clause and 'level <= 5' - it prevents endless loops
+*/
+
+
 @clears
 
 col parent format a30
@@ -30,27 +52,40 @@ select upper('&1') v_user from dual;
 set term on feed on
 
 
-with data as
-(
-	select
-		c.table_name
-		, c.constraint_name
-		, c.constraint_type
-		, c.r_constraint_name
-		, c.delete_rule
-	from all_constraints c
-	where c.owner = '&v_user'
-		and c.constraint_type in ('R','U','P')
+
+select 
+	lpad(' ', 2 * (level - 1))||t.table_name table_name
+	, c2.r_constraint_name
+	, c2.constraint_name
+	--, level lvl
+	-- , CONNECT_BY_ISCYCLE -- look up documentation for this 
+from dba_tables t
+join dba_constraints c1
+	on (
+		c1.owner = t.owner 
+		and t.table_name = c1.table_name
+		and c1.constraint_type in ('U', 'P')
+	)
+left join dba_constraints c2
+	on (
+		c2.owner = t.owner
+	   and t.table_name = c2.table_name
+		and c2.constraint_type='R'
+	)
+where t.owner = '&v_user'
+start with t.table_name in (
+	select table_name
+	from dba_constraints
+	where owner = '&v_user'
+		and constraint_type in ('U','P')
+	minus
+	select table_name
+	from dba_constraints
+	where owner = '&v_user'
+		and constraint_type = 'R'
 )
-select
-	lpad(' ',(level-1)*2) || d.table_name table_name
-	, r_constraint_name
-	, constraint_name
-	, delete_rule
-	--, level
-from data d
-connect by nocycle prior constraint_name = r_constraint_name
-start with constraint_type in ('P','U')
+connect by nocycle prior c1.constraint_name = c2.r_constraint_name
+	and level <= 5
 /
 
 undef 1

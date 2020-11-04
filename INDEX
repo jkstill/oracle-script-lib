@@ -455,7 +455,7 @@ INSTANCE and/or DATABASE:
 @findcol.sql: Find a column for a user in the data dictionary
 @fk_hierarchy.sql: Display hierarchy of tables related by Foreign Key (use fktree.sql or fktree-rcte.sql instead)
 @fktree.sql: Display a hierarchy of tables related by Foreign Key
-@fktree-rcte.sql: Display a hierarchy of tables related by Foreign Key (RCTE Version)
+@fktree-rcte.sql: Display a hierarchy of tables related by Foreign Key (RCTE Version - needs work)
 @fra_config.sql: show FRA location and size
 @getsql.sql: call with sql_id to get sql_fulltext
 @incarnations.sql: Show database incarnations
