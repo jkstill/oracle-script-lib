@@ -176,6 +176,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/aas.sql'>aas.sql</a> - get AAS (average active sessions) from gv$sysmetric
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/aas-awr-calc.sql'>aas-awr-calc.sql</a> - dump AAS calculated from AWR to CSV file
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/aas-ash-calc.sql'>aas-ash-calc.sql</a> - report AAS calculated from ASH
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/aas-awr-pdb-calc.sql'>aas-awr-pdb-calc.sql</a> - calculate AAS per PDB from AWR data. Cuz Oracle does not do it.
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/aas-std.sql'>aas-std.sql</a> - dump AAS from dba_hist_sysmetric_history to CSV file
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/aas_hist_metrics.sql'>aas_hist_metrics.sql</a> - get average active sessions along with CPU metrics
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/aas_history.sql'>aas_history.sql</a> - get history of Average Active Sessions
