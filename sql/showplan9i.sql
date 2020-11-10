@@ -11,6 +11,6 @@ clear compute
 
 
 select plan_table_output
-from table(dbms_xplan.display( table_name=>'PLAN_TABLE', statement_id=>'&&1',format=>'ALL'))
+from table(dbms_xplan.display( table_name=>'PLAN_TABLE', statement_id=>'&&1',format=>'ALL ALLSTATS'))
 /
 

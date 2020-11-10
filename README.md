@@ -455,6 +455,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/findobj.sql'>findobj.sql</a> - Find an object in the data dictionary
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/findcol.sql'>findcol.sql</a> - Find a column for a user in the data dictionary
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/fk_hierarchy.sql'>fk_hierarchy.sql</a> - Display hierarchy of tables related by Foreign Key (use fktree.sql or fktree-rcte.sql instead)
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/fk-circular-ref.sql'>fk-circular-ref.sql</a> - Find any examples of tables that reference each other via foeign key
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/fktree.sql'>fktree.sql</a> - Display a hierarchy of tables related by Foreign Key
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/fktree-rcte.sql'>fktree-rcte.sql</a> - Display a hierarchy of tables related by Foreign Key (RCTE Version - needs work)
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/fra_config.sql'>fra_config.sql</a> - show FRA location and size

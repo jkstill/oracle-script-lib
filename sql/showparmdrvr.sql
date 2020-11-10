@@ -3,12 +3,12 @@ set echo off feed on verify off pause off
 
 clear col
 
-set linesize 110
+set linesize 200 trimspool on
 set pagesize 100
 
 column stat new_value statname noprint
 column value format   a50
-column name format   a35
+column name format   a50
 column isses_modifiable head 'SESS|MOD?' format a4
 column issys_modifiable head 'SYS|MOD?' format a4
 column isdefault head 'DEF|VAL?' format a4
