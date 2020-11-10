@@ -21,7 +21,7 @@ col pk format a30
 
 col v_user new_value v_user noprint
 
-prompt Schema for FK Tree? :
+prompt Schema for FK Refs? :
 
 set term off feed off
 select upper('&1') v_user from dual;
