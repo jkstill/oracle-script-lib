@@ -16,7 +16,7 @@ col global_name new_value dbname noprint
 
 
 -- get db
-select 'Database: ' || global_name from global_name;
+select 'Database: ' || global_name global_name from global_name;
 -- set the start_time
 select to_char(begin_time,'mm/dd/yyyy hh24:mi:ss') stime from sysevent_snap;
 -- set the end_time
