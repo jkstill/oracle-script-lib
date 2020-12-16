@@ -10,12 +10,13 @@ create table sysevent_snap (
 create table sysevent_begin
 as
 select
+	inst_id,
 	event,
 	total_waits,
 	total_timeouts,
 	time_waited/100 time_waited,
 	average_wait
-from v$system_event
+from gv$system_event
 -- order by doesn't work < 8i
 --order by time_waited
 /
