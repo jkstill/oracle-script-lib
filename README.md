@@ -189,6 +189,9 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash_blockers_10g.sql'>ash_blockers_10g.sql</a> - find top level blockers in ASH for 10g
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash_blocking.sql'>ash_blocking.sql</a> - get list of row lock blocks - blocked and blockers with SQL_ID
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash_cpu_hist.sql'>ash_cpu_hist.sql</a> - cpu historic usage from dba_hist_sysmetric_history - 12c+
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash-current-waits.sql'>ash-current-waits.sql</a> - find the current top wait events per SQL by class and event
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash-current-waits-by-sql.sql'>ash-current-waits-by-sql.sql</a> - find the current top 20 SQL by execution time per session that occurred in a single session
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash-current-waits-by-sql-event.sql'>ash-current-waits-by-sql-event.sql</a> - find the current top 20 SQL by execution time per event that occurred in a single session
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash_log_sync.sql'>ash_log_sync.sql</a> - log sync events
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ashdump.sql'>ashdump.sql</a> - create an ASH Dump - be sure to read the comments in the script
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ashdump-summary.sql'>ashdump-summary.sql</a> - example script to view ASHDUMP data
