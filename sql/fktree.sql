@@ -1,92 +1,75 @@
 
 -- fktree.sql
--- Create a tree of tables based on FK relations
--- Jared Still - Pythian 2020-11-04
--- jkstill@gmail.com still@pythian.com
-
-/*
-
-This query will not work properly when there are circular references between top level tables
-
-PARENT 
-  CHILD
-    GRANDCHILD
-
-PARENT_2
-  CHILD_2
-    GRANDCHILD_2
-
-If PARENT has a FK that points to PARENT_2, 
-and PARENT_2 has a FK that points to PARENT,
-that is a circular reference.
-
-Besides breaking this script, it is not a good way to 'design' a database
-
-This is why there is a 'nocycle' clause and 'level <= 5' - it prevents endless loops
-*/
-
+-- prototype SQL
+-- find the tree of tables linked by FK
+-- get the constraint names so we know how to find the columns
+-- to use when looking for orphaned rows, and disparities in rows 
+-- between the same tables on separate servers
 
 @clears
 
-col parent format a30
-col child format a30
+-- example: call with @fktree SCHEMA TABLE_NAME
+
+@@get-schema-name &1
+@@get-table-name &2
+
 col table_name format a30
-col parent_pk_name format a30
 col constraint_name format a30
 col r_constraint_name format a30
-
-col constraint_type format a30
-col child format a30
-col child_fk_name format a30
-col r_parent_pk_name format a30
 
 set linesize 200 trimspool on
 set pagesize 100
 
-col v_user new_value v_user noprint
-
-prompt Schema for FK Tree? :
-
-set term off feed off
-select upper('&1') v_user from dual;
-set term on feed on
-
-
-
-select 
-	lpad(' ', 2 * (level - 1))||t.table_name table_name
-	, c2.r_constraint_name
-	, c2.constraint_name
-	--, level lvl
-	-- , CONNECT_BY_ISCYCLE -- look up documentation for this 
-from dba_tables t
-join dba_constraints c1
-	on (
-		c1.owner = t.owner 
-		and t.table_name = c1.table_name
-		and c1.constraint_type in ('U', 'P')
+with fks as  (
+	select c1.table_name
+		, c1.constraint_name
+		, c2.r_constraint_name
+	from  dba_constraints c1
+	left join dba_constraints c2
+		on (
+			c2.owner = c1.owner
+	   	and c2.table_name = c1.table_name
+			and c2.constraint_type='R'
+		)
+		and c1.constraint_type in ('U','P')
+	where c1.owner = '&schema_name'
+	and c2.r_constraint_name is not null
+),
+pks as (
+	select c1.table_name, c1.constraint_name, null r_constraint_name
+	from dba_constraints c1
+	where c1.constraint_name in (
+		select r_constraint_name
+		from fks
 	)
-left join dba_constraints c2
-	on (
-		c2.owner = t.owner
-	   and t.table_name = c2.table_name
-		and c2.constraint_type='R'
-	)
-where t.owner = '&v_user'
-start with t.table_name in (
-	select table_name
-	from dba_constraints
-	where owner = '&v_user'
-		and constraint_type in ('U','P')
-	minus
-	select table_name
-	from dba_constraints
-	where owner = '&v_user'
-		and constraint_type = 'R'
+	and c1.owner = '&schema_name'
+),
+all_data as (
+	select
+		table_name
+		, constraint_name
+		, r_constraint_name
+	from fks
+	union 
+	select 
+		table_name
+		, constraint_name
+		, r_constraint_name
+	from pks
 )
-connect by nocycle prior c1.constraint_name = c2.r_constraint_name
-	and level <= 5
+select  distinct
+	lpad(' ', 2 * (level - 1))|| table_name table_name
+	, constraint_name
+	, r_constraint_name
+	, level
+from all_data
+start with table_name = '&u_table_name'
+connect by nocycle prior constraint_name = r_constraint_name
+ and level <=5 
+--order by level
 /
 
-undef 1
+
+undef 1 2
+
 

@@ -37,6 +37,8 @@ SUPPORTING SCRIPTS:
 @columns.sql: several sqlplus column settings
 @enqueue-bitand.sql: Demonstrate how to decode v$session.p1 values for enqueue waits
 @get_date_range.sql: get begin and end date, put in vars - also date format var
+@get-schema-name.sql: prompt for schema name - schema name can be passed as a parameter
+@get-table-name.sql: prompt for table name - table name can be passed as a parameter
 @opcodes.sql: list of SQL opcodes for use in 10g-. See cpu-busy.sql
 @oversion_minor.sql: get the XX.xx version of oracle and store in &v_oversion_minor
 @oversion_major.sql: get the XX version of oracle and store in &v_oversion_major
@@ -459,8 +461,8 @@ INSTANCE and/or DATABASE:
 @findcol.sql: Find a column for a user in the data dictionary
 @fk_hierarchy.sql: Display hierarchy of tables related by Foreign Key (use fktree.sql or fktree-rcte.sql instead)
 @fk-circular-ref.sql: Find any examples of tables that reference each other via foeign key
-@fktree.sql: Display a hierarchy of tables related by Foreign Key
-@fktree-rcte.sql: Display a hierarchy of tables related by Foreign Key (RCTE Version - needs work)
+@fktree.sql: Display a hierarchy of tables related by Foreign Key (new script - old one broken)
+@fktree-rcte.sql: Display a hierarchy of tables related by Foreign Key (RCTE Version - needs work - still broken)
 @fra_config.sql: show FRA location and size
 @getsql.sql: call with sql_id to get sql_fulltext
 @incarnations.sql: Show database incarnations

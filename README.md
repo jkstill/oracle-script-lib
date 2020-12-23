@@ -40,6 +40,8 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/columns.sql'>columns.sql</a> - several sqlplus column settings
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/enqueue-bitand.sql'>enqueue-bitand.sql</a> - Demonstrate how to decode v$session.p1 values for enqueue waits
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get_date_range.sql'>get_date_range.sql</a> - get begin and end date, put in vars - also date format var
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get-schema-name.sql'>get-schema-name.sql</a> - prompt for schema name - schema name can be passed as a parameter
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get-table-name.sql'>get-table-name.sql</a> - prompt for table name - table name can be passed as a parameter
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/opcodes.sql'>opcodes.sql</a> - list of SQL opcodes for use in 10g-. See cpu-busy.sql
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/oversion_minor.sql'>oversion_minor.sql</a> - get the XX.xx version of oracle and store in &v_oversion_minor
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/oversion_major.sql'>oversion_major.sql</a> - get the XX version of oracle and store in &v_oversion_major
@@ -460,8 +462,8 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/findcol.sql'>findcol.sql</a> - Find a column for a user in the data dictionary
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/fk_hierarchy.sql'>fk_hierarchy.sql</a> - Display hierarchy of tables related by Foreign Key (use fktree.sql or fktree-rcte.sql instead)
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/fk-circular-ref.sql'>fk-circular-ref.sql</a> - Find any examples of tables that reference each other via foeign key
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/fktree.sql'>fktree.sql</a> - Display a hierarchy of tables related by Foreign Key
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/fktree-rcte.sql'>fktree-rcte.sql</a> - Display a hierarchy of tables related by Foreign Key (RCTE Version - needs work)
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/fktree.sql'>fktree.sql</a> - Display a hierarchy of tables related by Foreign Key (new script - old one broken)
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/fktree-rcte.sql'>fktree-rcte.sql</a> - Display a hierarchy of tables related by Foreign Key (RCTE Version - needs work - still broken)
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/fra_config.sql'>fra_config.sql</a> - show FRA location and size
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getsql.sql'>getsql.sql</a> - call with sql_id to get sql_fulltext
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/incarnations.sql'>incarnations.sql</a> - Show database incarnations
