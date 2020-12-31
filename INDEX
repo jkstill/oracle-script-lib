@@ -97,6 +97,7 @@ RDBMS UTILITIES:
 @remove-sqlplus-settings.sql: remove the 'store set' temp file
 @restore-sqlplus-settings.sql: restore sqlplus settings from a temp flie
 @save-sqlplus-settings.sql: save sqlplus settings to a temp file
+@set-default-profile-unlimited.sql: Used to elimnate password timeouts in test databases
 @set_events.sql: various methods to set events, including per sql_id
 @show_event_messages.sql: List events 1000-10999
 @spacemap.sql: create a map of segments and free space

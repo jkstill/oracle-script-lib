@@ -99,6 +99,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/remove-sqlplus-settings.sql'>remove-sqlplus-settings.sql</a> - remove the 'store set' temp file
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/restore-sqlplus-settings.sql'>restore-sqlplus-settings.sql</a> - restore sqlplus settings from a temp flie
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/save-sqlplus-settings.sql'>save-sqlplus-settings.sql</a> - save sqlplus settings to a temp file
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/set-default-profile-unlimited.sql'>set-default-profile-unlimited.sql</a> - Used to elimnate password timeouts in test databases
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/set_events.sql'>set_events.sql</a> - various methods to set events, including per sql_id
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show_event_messages.sql'>show_event_messages.sql</a> - List events 1000-10999
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/spacemap.sql'>spacemap.sql</a> - create a map of segments and free space
