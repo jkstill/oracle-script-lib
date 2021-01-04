@@ -459,6 +459,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/database_properties.sql'>database_properties.sql</a> - show properties from database_properties
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dbms_application.sql'>dbms_application.sql</a> - example of dbms_applicatoin_info usage
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/default_tablespace.sql'>default_tablespace.sql</a> - show default tablespace properties 10g+
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dml-log-errors-test.sql'>dml-log-errors-test.sql</a> - demo of INSERT INTO Log Table, with Reject Limit
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/findobj.sql'>findobj.sql</a> - Find an object in the data dictionary
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/findcol.sql'>findcol.sql</a> - Find a column for a user in the data dictionary
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/fk_hierarchy.sql'>fk_hierarchy.sql</a> - Display hierarchy of tables related by Foreign Key (use fktree.sql or fktree-rcte.sql instead)

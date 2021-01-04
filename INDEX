@@ -458,6 +458,7 @@ INSTANCE and/or DATABASE:
 @database_properties.sql: show properties from database_properties
 @dbms_application.sql: example of dbms_applicatoin_info usage
 @default_tablespace.sql: show default tablespace properties 10g+
+@dml-log-errors-test.sql: demo of INSERT INTO Log Table, with Reject Limit
 @findobj.sql: Find an object in the data dictionary
 @findcol.sql: Find a column for a user in the data dictionary
 @fk_hierarchy.sql: Display hierarchy of tables related by Foreign Key (use fktree.sql or fktree-rcte.sql instead)
