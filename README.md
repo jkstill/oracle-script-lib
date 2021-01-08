@@ -183,6 +183,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/aas-std.sql'>aas-std.sql</a> - dump AAS from dba_hist_sysmetric_history to CSV file
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/aas_hist_metrics.sql'>aas_hist_metrics.sql</a> - get average active sessions along with CPU metrics
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/aas_history.sql'>aas_history.sql</a> - get history of Average Active Sessions
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash-all-events-5-pct.sql'>ash-all-events-5-pct.sql</a> - show events per SQL where the event consumes > 5% of db time for the execution of that SQL
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash-blocker-waits.sql'>ash-blocker-waits.sql</a> - find top level blockers in ASH
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash-events.sql'>ash-events.sql</a> - simple filtered query on ASH events for a SQL_ID
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash-sessions.sql'>ash-sessions.sql</a> - frequency of sessions for a user
@@ -195,6 +196,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash-current-waits.sql'>ash-current-waits.sql</a> - find the current top wait events per SQL by class and event
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash-current-waits-by-sql.sql'>ash-current-waits-by-sql.sql</a> - find the current top 20 SQL by execution time per session that occurred in a single session
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash-current-waits-by-sql-event.sql'>ash-current-waits-by-sql-event.sql</a> - find the current top 20 SQL by execution time per event that occurred in a single session
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash-sqlid-event-window.sql'>ash-sqlid-event-window.sql</a> - show top SQL within window of time, such as from 1 minute before to 1 minute after the top of each hour
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash_log_sync.sql'>ash_log_sync.sql</a> - log sync events
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ashdump.sql'>ashdump.sql</a> - create an ASH Dump - be sure to read the comments in the script
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ashdump-summary.sql'>ashdump-summary.sql</a> - example script to view ASHDUMP data

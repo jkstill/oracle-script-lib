@@ -181,6 +181,7 @@ AWR/ASH:
 @aas-std.sql: dump AAS from dba_hist_sysmetric_history to CSV file
 @aas_hist_metrics.sql: get average active sessions along with CPU metrics
 @aas_history.sql: get history of Average Active Sessions
+@ash-all-events-5-pct.sql: show events per SQL where the event consumes > 5% of db time for the execution of that SQL
 @ash-blocker-waits.sql: find top level blockers in ASH
 @ash-events.sql: simple filtered query on ASH events for a SQL_ID
 @ash-sessions.sql: frequency of sessions for a user
@@ -193,6 +194,7 @@ AWR/ASH:
 @ash-current-waits.sql: find the current top wait events per SQL by class and event
 @ash-current-waits-by-sql.sql: find the current top 20 SQL by execution time per session that occurred in a single session
 @ash-current-waits-by-sql-event.sql: find the current top 20 SQL by execution time per event that occurred in a single session
+@ash-sqlid-event-window.sql: show top SQL within window of time, such as from 1 minute before to 1 minute after the top of each hour
 @ash_log_sync.sql: log sync events
 @ashdump.sql: create an ASH Dump - be sure to read the comments in the script
 @ashdump-summary.sql: example script to view ASHDUMP data
