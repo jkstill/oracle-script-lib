@@ -32,8 +32,16 @@ with raw_data as (
 		and sql_id is not null
 ), summarized as(
 	select distinct inst_id, sql_exec_start,	session_id, session_serial#, sql_exec_id,	 sql_id, event
-		,count(*) over ( partition by inst_id, session_id, session_serial#, sql_exec_id, sql_exec_start, sql_id, event order by inst_id ) event_count
-		,count(*) over ( partition by inst_id, session_id, session_serial#, sql_exec_id, sql_exec_start, sql_id order by inst_id ) event_sum
+		,count(*) 
+			over (
+				partition by inst_id, session_id, session_serial#, sql_exec_id, sql_exec_start, sql_id, event
+				order by inst_id, session_id, session_serial#,sql_id
+			) event_count
+		,count(*) 
+			over (
+				partition by inst_id, session_id, session_serial#, sql_exec_id, sql_exec_start, sql_id
+				order by inst_id, session_id, session_serial#,sql_id
+			) event_sum
 	from raw_data
 ), rpt_data as (
 	select inst_id
