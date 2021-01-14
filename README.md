@@ -5,6 +5,7 @@
 </pre>
 <h3>TUNING: scripts to aid with tuning</h3>
 <pre>
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dbms-sqltune-sqlid.sql'>dbms-sqltune-sqlid.sql</a> - call with SQL_ID, create and execute a tuning task, run the report
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/profile_from_awr.sql'>profile_from_awr.sql</a> - create a SQL Profile from plan in AWR
 </pre>
 <h3>APEX: Anything to do with Apex</h3>
@@ -340,6 +341,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dbms_output-abstracted.sql'>dbms_output-abstracted.sql</a> - abstracted procedures and functions for dbms_output
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get_table_lock.sql'>get_table_lock.sql</a> - runs a tight loop trying to acquire lock on table - use on busy systems to get the lock required - DO NOT LEAVE TABLE LOCKED!
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/package-error.sql'>package-error.sql</a> - show the source lines for a PL/SQL error
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/plsql-return-bool-from-sql.sql'>plsql-return-bool-from-sql.sql</a> - demo of returning a boolean from a function when based on a numeric value
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/raise_error.sql'>raise_error.sql</a> - raise any error in the database
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sqlplus_return_code.sql'>sqlplus_return_code.sql</a> - examples of exiting SQLPlus with an error code
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sqlplus_return_code_2.sql'>sqlplus_return_code_2.sql</a> - more examples of exiting SQLPlus with an error cod

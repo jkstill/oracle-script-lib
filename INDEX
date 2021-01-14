@@ -1,10 +1,8 @@
 
 
-
-
-
 TUNING: scripts to aid with tuning
 
+@dbms-sqltune-sqlid.sql: call with SQL_ID, create and execute a tuning task, run the report
 @profile_from_awr.sql: create a SQL Profile from plan in AWR
 
 APEX: Anything to do with Apex
@@ -339,6 +337,7 @@ PL/SQL:
 @dbms_output-abstracted.sql: abstracted procedures and functions for dbms_output
 @get_table_lock.sql:  runs a tight loop trying to acquire lock on table - use on busy systems to get the lock required - DO NOT LEAVE TABLE LOCKED!
 @package-error.sql: show the source lines for a PL/SQL error
+@plsql-return-bool-from-sql.sql: demo of returning a boolean from a function when based on a numeric value
 @raise_error.sql: raise any error in the database
 @sqlplus_return_code.sql: examples of exiting SQLPlus with an error code
 @sqlplus_return_code_2.sql: more examples of exiting SQLPlus with an error cod

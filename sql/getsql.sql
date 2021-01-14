@@ -32,6 +32,7 @@ select
 &ash_mode from v$sqlstats
 &awr_mode from dba_hist_sqltext
 where sql_id = '&&u_sqlid'
+  and rownum < 2
 /
 
 
