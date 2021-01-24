@@ -310,9 +310,76 @@ potential sid: cdb1
 Tracefile not set - is the instance up?
 ```
 
+# memory sizes
 
+Getting size of the bytes of memory actually allocated to a process is always tricky.
 
+Some memory is shared, such as shown in `ipcs -m`.
 
+There are other types of shared memory as well, such as that used by shared libraries.
 
+These scripts attempt to determine how much memory is allocated to a process. 
+
+The results on Oracle Linux 6 seem reasonable, but YMMV.
+
+Both will likely require root access.
+
+## memsz.sh
+
+```text
+# ./memsz.sh 4774
+16351232
+```
+
+Or in verbose mode:
+```text
+# MSZ_VERBOSE=Y ./memsz.sh  4774
+172f9000 - 172aa000 =  323584
+18ece000 - 18e07000 =  815104
+7ff46df51000 - 7ff46dcf1000 =  2490368
+7ff46e3e1000 - 7ff46e0f1000 =  3080192
+7ff46e4b1000 - 7ff46e491000 =  131072
+7ff46ed29000 - 7ff46eb11000 =  2195456
+7ff46ee0a000 - 7ff46ed79000 =  593920
+7ff46ee8a000 - 7ff46ee7a000 =  65536
+7ff46eeea000 - 7ff46eeba000 =  196608
+7ff46efba000 - 7ff46eeea000 =  851968
+7ff46f03a000 - 7ff46efba000 =  524288
+7ff46f24a000 - 7ff46f245000 =  20480
+7ff46f964000 - 7ff46f764000 =  2097152
+7ff46fb77000 - 7ff46fb71000 =  24576
+7ff470366000 - 7ff470361000 =  20480
+7ff47057f000 - 7ff47057d000 =  8192
+7ff470799000 - 7ff470797000 =  8192
+7ff4709b5000 - 7ff4709b1000 =  16384
+7ff471334000 - 7ff471331000 =  12288
+7ff471596000 - 7ff471594000 =  8192
+7ff472231000 - 7ff472230000 =  4096
+7ff473110000 - 7ff47310b000 =  20480
+7ff473fee000 - 7ff473fed000 =  4096
+7ff4745fc000 - 7ff474422000 =  1941504
+7ff474614000 - 7ff474611000 =  12288
+7ff474617000 - 7ff474616000 =  4096
+7ffc6a820000 - 7ffc6a749000 =  880640
+
+Total Memory allocated for 4774: 16351232 Bytes
+```
+
+## memsz-all.sh
+
+Sum the amount of private memory for all of a users processes:
+
+```text
+# ./memsz-all.sh  oracle
+PID 4313: 115994624
+PID 4399: 5763072
+PID 4401: 5767168
+...
+PID 12582: 9719808
+PID 15902: 14594048
+PID 32612: 48971776
+
+Total Private Memory allocated for User: oracle 1647730688 Bytes
+```
 
 
