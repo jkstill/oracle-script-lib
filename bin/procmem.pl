@@ -52,15 +52,13 @@ usage(1) unless $PID;
 
   The --include-HTB | --no-include-HTB option may not work as you expect.
 
-  I find that some HugeTables in Linux 7, 4.14.35-1902.5.2.2.el7uek.x86_64, do not have the Flag set.
+  I find that some HugeTables in Linux 7, 4.14.35-1902.5.2.2.el7uek.x86_64, do not always have the Flag set.
 
   Try this command - if any HugeTables appear, it would seem the HUGE flag is not set in /page/kpageflags
 
     procmem.pl --pid PID  --all-mem --no-include-HTB --verbose
-
-  Or even possibly, it is a bug in this script.
-
-  Reading the flags is working correctly though on many entries.
+  
+  Maybe the HUGE flag is for THP only? (Transparent Huge Pages)
 
 =back
 =cut
@@ -103,14 +101,18 @@ while (my $line=<$mapsFH>) {
 	next unless $data; # last line in maps will fail
 
 	# page frame number
-
-	my $pfn = $data & 0x7FFFFFFFFFFFFF;
+	my $pfn = $data & ((1 << 55) - 1);
 
 	my $pgCount = pageCount($pgCountFH,$pfn);
 
 	next unless $showAllMem || $pgCount == 1;
 
-	my @flags = getFlags($pmFH,$pfn);
+	my @flags = getFlags($pgFlagsFH,$pfn);
+
+=head detect HugePages
+
+ In theory, this should work:
+
 	if ( $showAllMem ) {
 		if ( ! $includeHTB ) {
 			if ( grep(/^HUGE$/,@flags) ) {
@@ -119,6 +121,21 @@ while (my $line=<$mapsFH>) {
 		}
 	}
 
+ But, I find that known HugePages do not always seem to be marked as HUGE by the flags
+
+ So, memory not shown as 'Present' will not be included, unless the --all-mem flag is used
+
+=cut
+
+	my ($isPresent,$memCategory) = memCategory($data);
+	chomp $memCategory;
+
+	if ( ! $showAllMem ) {
+		next unless $isPresent;
+	}
+
+	push @memSegments, $memSize; # in K-Bytes
+
 	if ($verbose) {
 		print "line: $line\n";
 		printf("pfn: %08X\n",$pfn);
@@ -126,14 +143,7 @@ while (my $line=<$mapsFH>) {
 		printf("data:  %064b\n",$data);
 		print "flags: " . join(' - ', sort @flags ) . "\n" if @flags;
 		printf("pgCount: %08X\n",$pgCount);
-	}
-
-	push @memSegments, $memSize;  # in K-Bytes
-
-	my $memCategory = memCategory($data);
-	chomp $memCategory;
-
-	if ($verbose) {
+		print 'IsPresent: ' . ($isPresent ? 'Y' : 'N') . "\n";
 		print "$memCategory\n";
 		print "=================\n";
 	}
@@ -179,12 +189,17 @@ sub getFlags {
 		die "seek failed in kpageflags - $!\n";
 	}
 
-	if ( ! $fh->sysread($t, 8) ) {
+	if ( ! $fh->read($t, 8) ) {
 		die "sysread on kpageflags failed - $!\n";
 	}
 
 	my @flags;
 	my $flags = unpack("q", $t);
+
+	if ($verbose) {
+		printf("flags-raw: %064b\n", $flags);
+		printf("flags-hex: %08X\n", $flags);
+	}
 
 	for (my $i = 0; $kflags[$i]; $i++) {
 		if ($flags & (1 << $i)) {
@@ -200,9 +215,11 @@ sub memCategory {
 	my $data = shift;
 
 	my $category;
+	my $isPresent = ($data & (1 << 63)) != 0;
 
 	if ( $data & (1<<63) ) {
 		$category = "Memory Resident\n";
+
 	} elsif ( $data & (1<<62) )  {
 		$category = "Memory Swapped\n";
 	} elsif ( $data & (1<<61) )  {
@@ -215,7 +232,7 @@ sub memCategory {
 		$category = "Memory type not yet categorized \n";
 	}
 
-	return $category;
+	return ($isPresent,$category);
 }
 
 
