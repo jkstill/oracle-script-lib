@@ -31,6 +31,12 @@ verbose () {
 
   The permissions of rw-p exclude the libraries
 
+  This shows the mapped memory regions for the process, which is not the same as RAM that is currently in use.
+
+  map proc: see RSS, smaps
+  map pmap: see -X
+  
+
 COMMENT
 
 totalMem=0

@@ -320,11 +320,22 @@ There are other types of shared memory as well, such as that used by shared libr
 
 These scripts attempt to determine how much memory is allocated to a process. 
 
+This is not the same as the amount of memory that is currently in use by the process.
+
+That would be the Resident Set Size, also known as RSS.
+
+Check the man pages for proc and pmap for more info on that.
+
 The results on Oracle Linux 6 seem reasonable, but YMMV.
 
 Both will likely require root access.
 
+
 ## memsz.sh
+
+This script attempts to determine memory usage for a single PID.
+
+The `procmem.pl` script is likely more accurate.
 
 ```text
 # ./memsz.sh 4774
@@ -381,5 +392,71 @@ PID 32612: 48971776
 
 Total Private Memory allocated for User: oracle 1647730688 Bytes
 ```
+
+## procmem.pl
+
+This script parses the /proc/PID/pagemap file, and sums the memory used where the pages in question are referenced only by that PID.
+
+Any shared memory is excluded by default.
+
+`perldoc procmem.pl` and `procmem.pl --help` for usage.
+
+Examples:
+
+```text
+# ./procmem.pl --pid 24422  
+68144K
+```
+Verbose:
+
+```text
+# 
+# ./procmem.pl --pid 24422  --verbose
+
+line: 1724c000-172aa000 rw-p 16c4c000 08:11 211023021                          /u01/app/oracle/product/19.0.0/dbhome_1/bin/oracle
+pfn: 001538CC
+memSize: 376K
+data:  1000000110000000000000000000000000000000000101010011100011001100
+pgCount: 00000001
+Memory Resident
+=================
+line: 172aa000-172f9000 rw-p 00000000 00:00 0 
+pfn: 00000000
+memSize: 316K
+data:  0000000010000000000000000000000000000000000000000000000000000000
+pgCount: 00000001
+Page Table Entry: soft-dirty
+=================
+line: 17af1000-17b3d000 rw-p 00000000 00:00 0                                  [heap]
+pfn: 0014C0B8
+memSize: 304K
+data:  1000000110000000000000000000000000000000000101001100000010111000
+pgCount: 00000001
+Memory Resident
+
+...
+
+=================
+line: 7ffe00b1a000-7ffe00ba5000 rw-p 00000000 00:00 0                          [stack]
+pfn: 0009D6CB
+memSize: 556K
+data:  1000000110000000000000000000000000000000000010011101011011001011
+flags: ACTIVE - ANON - BUDDY - COMPOUND_HEAD - ERROR - HUGE - HWPOISON - LOCKED - NOPAGE - SLAB - SWAPBACKED - UNEVICTABLE - UPTODATE
+pgCount: 00000001
+Memory Resident
+=================
+line: 7ffe00bc4000-7ffe00bc7000 r--p 00000000 00:00 0                          [vvar]
+pfn: 00000000
+memSize: 12K
+data:  0000000010000000000000000000000000000000000000000000000000000000
+pgCount: 00000001
+Page Table Entry: soft-dirty
+=================
+Mem Used: 68144K
+```
+
+
+
+
 
 
