@@ -95,12 +95,16 @@ my @memSegments=();
 while (my $line=<$mapsFH>) {
 	chomp $line;
 
+	#next unless $line =~ /rw/;
+
 	my @els = split(/\s+/,$line);
 
 	my ($memSize,$data) = readPgMap($pmFH, $els[0]);  # first element is address range. eg: 0xFF00-0xFFFF
 	next unless $data; # last line in maps will fail
 
 	# page frame number
+
+	#my $pfn = $data & 0x7FFFFFFFFFFFFF;
 	my $pfn = $data & ((1 << 55) - 1);
 
 	my $pgCount = pageCount($pgCountFH,$pfn);
@@ -144,7 +148,7 @@ while (my $line=<$mapsFH>) {
 		print "flags: " . join(' - ', sort @flags ) . "\n" if @flags;
 		printf("pgCount: %08X\n",$pgCount);
 		print 'IsPresent: ' . ($isPresent ? 'Y' : 'N') . "\n";
-		print "$memCategory\n";
+		print "categories: $memCategory\n";
 		print "=================\n";
 	}
 
@@ -214,22 +218,20 @@ sub getFlags {
 sub memCategory {
 	my $data = shift;
 
-	my $category;
+	my @categories;
 	my $isPresent = ($data & (1 << 63)) != 0;
 
-	if ( $data & (1<<63) ) {
-		$category = "Memory Resident\n";
+	if ( $data & (1<<63) ) { push @categories,"Memory Resident"; }
+	if ( $data & (1<<62) )  { push @categories , "Memory Swapped"; }
+	if ( $data & (1<<61) )  { push @categories , "Memory is file page or shared-anon";}
+	if ( $data & (1<<56) )  { push @categories , "Exclusively Mapped";}
+	if ( $data & (1<<55) )  { push @categories , "Page Table Entry: soft-dirty";}
 
-	} elsif ( $data & (1<<62) )  {
-		$category = "Memory Swapped\n";
-	} elsif ( $data & (1<<61) )  {
-		$category = "Memory is file page or shared-anon\n";
-	} elsif ( $data & (1<<56) )  {
-		$category = "Exclusively Mapped\n";
-	} elsif ( $data & (1<<55) )  {
-		$category = "Page Table Entry: soft-dirty\n";
+	my $category='';
+	if ( scalar @categories ) {
+		$category = join(' - ', @categories);
 	} else {
-		$category = "Memory type not yet categorized \n";
+		$category = "Memory type not yet categorized";
 	}
 
 	return ($isPresent,$category);
