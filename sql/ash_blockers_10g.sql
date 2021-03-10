@@ -4,6 +4,36 @@
 -- still@pythian.com
 -- jkstill@gmail.com
 
+/*
+
+As seen in an AWR report for 'Top Event P1/P2/P3 Values'
+
+Event	                     % Event P1, P2, P3 Values	               % Activity  Parameter 1 Parameter 2   Parameter 3
+enq: TX - index contention	22.52	  "1415053316","19529734","1548062"	1.65 	      name|mode   usn<<16|slot   sequence
+
+P1 of 1415053316 is a mode 4 ITL wait
+P1 of 1415053318 is a mode 6 ITL wait
+
+This can be seen from the binary representation of these values
+
+Mode 4
+1415053316
+0x54580004
+1010100010110000000000000000100
+
+$  perl -e 'print 1415053316 & 0xFFFF, "\n"'
+4
+
+Mode 6
+1415053318
+0x54580006
+1010100010110000000000000000110
+
+$  perl -e 'print 1415053318 & 0xFFFF, "\n"'
+6
+
+*/
+
 @clears
 
 @get_date_range
