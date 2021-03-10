@@ -66,6 +66,8 @@
 -- alter system set events 'sql_trace[SQL:02hnhu3dv424q] plan_stat=all_executions,wait=true,bind=false';
 -- alter system set events 'sql_trace[SQL:0ug54s8cg41up] plan_stat=all_executions,wait=true,bind=false';
 
+-- alter system set events 'sql_trace[SQL:0ug54s8cg41up]plan_stat=all_executions,wait=true,bind=false; name processstate level 2, lifetime 5';
+
 -- each must be turned off explicitly
 
 -- alter system set events 'sql_trace[SQL:015msjdtwmf65] off';
