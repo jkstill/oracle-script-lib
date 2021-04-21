@@ -144,7 +144,8 @@ while (my $line=<$mapsFH>) {
 		print "line: $line\n";
 		printf("pfn: %08X\n",$pfn);
 		print "memSize: ${memSize}K\n";
-		printf("data:  %064b\n",$data);
+		#printf("mask:      %s\n", ((1<<63)-1) );
+		printf("data:      %064b\n",$data & ((1<<63)-1) );
 		print "flags: " . join(' - ', sort @flags ) . "\n" if @flags;
 		printf("pgCount: %08X\n",$pgCount);
 		print 'IsPresent: ' . ($isPresent ? 'Y' : 'N') . "\n";
@@ -205,7 +206,7 @@ sub getFlags {
 		printf("flags-hex: %08X\n", $flags);
 	}
 
-	for (my $i = 0; $kflags[$i]; $i++) {
+	for (my $i = 0; $i <= $#kflags; $i++) {
 		if ($flags & (1 << $i)) {
 			# kflags is global
 			push @flags, $kflags[$i];
