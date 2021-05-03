@@ -556,6 +556,7 @@ INSTANCE and/or DATABASE:
 @undo-active-12c.sql:  Show active undo blocks in 12c - RAC aware
 @undo-mon-fast.sql: monitor undo from v$fast_start_transactions - useful for when a proccess/session has been killed
 @undo-mon-trans.sql: monitor rollback for transactions
+@unrevorable-files.sql: report of files that are unrecoverable, likely due to nologging inserts
 @wait_chains.sql: Troubleshooting Database Contention With V$Wait_Chains (Doc ID 1428210.1)
 
 SNAPSHOTS and MATERIALIZED_VIEWS:

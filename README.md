@@ -560,6 +560,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/undo-active-12c.sql'>undo-active-12c.sql</a> - Show active undo blocks in 12c - RAC aware
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/undo-mon-fast.sql'>undo-mon-fast.sql</a> - monitor undo from v$fast_start_transactions - useful for when a proccess/session has been killed
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/undo-mon-trans.sql'>undo-mon-trans.sql</a> - monitor rollback for transactions
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/unrevorable-files.sql'>unrevorable-files.sql</a> - report of files that are unrecoverable, likely due to nologging inserts
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/wait_chains.sql'>wait_chains.sql</a> - Troubleshooting Database Contention With V$Wait_Chains (Doc ID 1428210.1)
 </pre>
 <h3>SNAPSHOTS and MATERIALIZED_VIEWS:</h3>
