@@ -205,6 +205,7 @@ AWR/ASH:
 @awr-itl-waits.sql: find ITL waits
 @awr-resource-limit.sql: history of processes and sessions from dba_hist_resource_limit
 @awr-set-retention.sql: Example of setting AWR retention and interval
+@awr-top-5-events.sql: similar to awr-top-events.sql.  reports on past 7 days, shows pct of time used
 @awr-top-events.sql: get the top events from AWR per instance for a date range
 @awr-top-sqlid-events.sql: get the top events from AWR per instance and SQL_ID for a date range
 @awr-trans-counts.sql: show summary of user commits, rollbacks and log sync writes by day
