@@ -29,6 +29,7 @@ SUPPORTING SCRIPTS:
 
 @ascii.sql: generate a simple ascii table
 @bad-date.sql:  Oracle believes there is a year zero
+@bitwalk.sql: discover which bits are set in a bitmap column
 @clears.sql: clear sqlplus settings
 @clear_for_spool.sql: set sqlplus for spooling output without headers,etc
 @colors.sql: define values for sqlprompt colors

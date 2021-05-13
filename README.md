@@ -35,6 +35,7 @@
 <pre>
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ascii.sql'>ascii.sql</a> - generate a simple ascii table
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/bad-date.sql'>bad-date.sql</a> - Oracle believes there is a year zero
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/bitwalk.sql'>bitwalk.sql</a> - discover which bits are set in a bitmap column
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/clears.sql'>clears.sql</a> - clear sqlplus settings
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/clear_for_spool.sql'>clear_for_spool.sql</a> - set sqlplus for spooling output without headers,etc
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/colors.sql'>colors.sql</a> - define values for sqlprompt colors
