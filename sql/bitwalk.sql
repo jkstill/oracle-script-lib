@@ -14,6 +14,10 @@
 
 */
 
+col bit format 999 head 'BIT'
+col mask format 9999999999999999999 head 'MASK'
+col bitset format a7 head 'BITSET'
+
 with data as (
 	select flags
 	from container$
@@ -25,13 +29,13 @@ select flags
 	, power(2,level -1) mask
 	--, bitand(flags, (power(2,level -1))) masked_value
 from data
-connect by level <= 38
+connect by level <= 64
 order by level
 )
 select
 	bit
-	, mask
 	, decode( bitand(flags, mask), 0, 'NOT SET', '    SET'  )  bitset
+	, mask
 from masked
 /
 
