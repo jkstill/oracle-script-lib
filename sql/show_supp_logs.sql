@@ -21,6 +21,13 @@
  POSITION                                                                                                                   NUMBER
  LOGGING_PROPERTY            
 
+
+-- contents of gg_env.sql
+
+define v_rep_schema='SOE'
+----------------------------
+
+
 */
 
 @@gg_env
