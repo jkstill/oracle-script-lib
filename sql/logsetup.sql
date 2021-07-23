@@ -1,4 +1,7 @@
 
+-- logsetup.sql
+-- called by other scripts for logfile setup
+
 set term off feed off echo off
 
 col v_loggedname new_value v_loggedname noprint
