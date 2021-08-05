@@ -287,6 +287,7 @@
 <h3>USERS LOGGED ON:</h3>
 <pre>
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get-curr-ospid.sql'>get-curr-ospid.sql</a> - get the server PID for your current session
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/idle-sessions-histogram.sql'>idle-sessions-histogram.sql</a> - show histogram of idle users in 10 second buckets
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/who.sql'>who.sql</a> - summary of users logged on
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/who2.sql'>who2.sql</a> - detailed info of users logged on
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/who2s.sql'>who2s.sql</a> - shortened version of who2.sql which is called by some scripts
