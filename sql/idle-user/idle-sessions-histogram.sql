@@ -13,11 +13,12 @@ def i_bucket_size=10
 def i_bucket_count=30
 
 -- change value below to '--' for regular report, '' for CSV
-def CSVOUT=''
+def CSVOUT='--'
 
 col u_which_format noprint new_value u_which_format
 col u_which_clears noprint new_value u_which_clears
 
+set term off
 select decode('&CSVOUT','--','rpt_format','csv_format') u_which_format from dual;
 select decode('&CSVOUT','--','clears.sql','clear_for_spool.sql') u_which_clears from dual;
 
@@ -28,6 +29,8 @@ break on report
 compute sum of idle_count on report
 
 col username format a20
+
+set term on
 
 with buckets as (
 	select &i_bucket_size * (level-1) bucket_size
