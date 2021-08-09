@@ -23,14 +23,14 @@ begin
 	--/*
 	:begin_snap_id := statspack.snap(
 		i_snap_level => 7,
-		i_ucomment => 'bcove high load - begin time ' || to_char(sysdate,'yyyy-mm-dd hh24:mi:ss')
+		i_ucomment => 'high load - begin time ' || to_char(sysdate,'yyyy-mm-dd hh24:mi:ss')
 	);
 
 	dbms_lock.sleep(sleep_time);
 
 	:end_snap_id := statspack.snap(
 		i_snap_level => 7,
-		i_ucomment => 'bcove high load - end time ' || to_char(sysdate,'yyyy-mm-dd hh24:mi:ss')
+		i_ucomment => 'cove high load - end time ' || to_char(sysdate,'yyyy-mm-dd hh24:mi:ss')
 	);
 	--*/
 
@@ -49,7 +49,7 @@ select :end_snap_id end_snap from dual;
 select instance_number inst_num from v$instance;
 select dbid from v$database;
 
-select 'bcove_sp_high_load_'
+select 'sp_high_load_'
 		  || lower(host_name)
 		  || '_' || instance_name
 		  || '_' || to_char(sysdate,'yyyy-mm-dd_hh24-mi-ss')
