@@ -675,7 +675,7 @@ CDB-PDB: Scripts that are specific to Container and Pluggable databases
 
 @pdb-modifiable-params-dump.sql: Dump the parameters from v$system_parameter on the CDB
 @cdb_sched_jobs.sql: show all scheduler jobs from CDB Root Level
-
+@pdb-violations.sql: show sqlpatch violations for PDBs
 @show_container.sql: display the current container database name
 
 XML: Scripts for use with XML and or XMLDB
