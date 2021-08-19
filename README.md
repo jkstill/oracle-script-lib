@@ -498,6 +498,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/oracle-naming-inconsistencies.sql'>oracle-naming-inconsistencies.sql</a> - highlight some of the inconsistencies oracle data dictionary column names
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pivot.sql'>pivot.sql</a> - Simple demo of PIVOT
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/purge_cursors.sql'>purge_cursors.sql</a> - purge a list of SQL cursors from shared_pool - 10g+ see Oracle Note 457309.1
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/redo-log-mirrors.sql'>redo-log-mirrors.sql</a> - show log groups with mirror sides identified. Experimental, and requires sysdba access.
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/reserved-words.sql'>reserved-words.sql</a> - List reserved words from v$reserved_words
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/setc.sql'>setc.sql</a> - automatically or interactively set 'do alter session set container'
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql_spawned_reasons.sql'>sql_spawned_reasons.sql</a> - Show reasons for creating new child of SQL

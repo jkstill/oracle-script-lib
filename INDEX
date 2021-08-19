@@ -494,6 +494,7 @@ INSTANCE and/or DATABASE:
 @oracle-naming-inconsistencies.sql: highlight some of the inconsistencies oracle data dictionary column names
 @pivot.sql: Simple demo of PIVOT
 @purge_cursors.sql: purge a list of SQL cursors from shared_pool - 10g+ see Oracle Note 457309.1
+@redo-log-mirrors.sql: show log groups with mirror sides identified. Experimental, and requires sysdba access.
 @reserved-words.sql: List reserved words from v$reserved_words
 @setc.sql: automatically or interactively set 'do alter session set container'
 @sql_spawned_reasons.sql: Show reasons for creating new child of SQL
