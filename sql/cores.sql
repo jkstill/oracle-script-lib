@@ -5,7 +5,9 @@
 
 col value format 9999
 
-select stat_name, value
-from v$osstat
-where osstat_id in (16,17)
+select inst_id,stat_name, value
+from gv$osstat
+where stat_name in ('NUM_CPU_CORES','NUM_CPU_SOCKETS')
+order by inst_id, stat_name
 /
+
