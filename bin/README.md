@@ -455,6 +455,54 @@ Page Table Entry: soft-dirty
 Mem Used: 68144K
 ```
 
+## sga-smallpage-detector.pl
+
+This script will detect Oracle SGA segments that are not using HugePages.
+
+It works by getting the pid and sid of all the ora_pmon_<SID> processes
+
+Then the memory segment maps are captured from /proc/PID/smaps
+
+If the segment is over a few megabytes in size, and the KernelPageSize for the segment is < 2M, then a warning is printed
+
+sample output
+
+```text
+     ##############################
+     PID: 161290 SID: cdb01
+     shmid: 1272971277
+       segment size: 20971520
+       kernelPageSize: 2097152
+     shmid: 1273233429
+	skipping due to small segment size
+     shmid: 1273167891
+       segment size: 115343360
+       kernelPageSize: 2097152
+     shmid: 1273069584
+       segment size: 48184164352
+       kernelPageSize: 2097152
+     ##############################
+     PID: 161729 SID: cdb02
+     shmid: 1273561128
+       segment size: 20971520
+       kernelPageSize: 2097152
+     shmid: 1273823280
+       segment size: 67108864
+       kernelPageSize: 2097152
+     shmid: 1274052663
+	skipping due to small segment size
+     shmid: 1274019894
+       segment size: 48234496
+       kernelPageSize: 2097152
+     shmid: 1273921587
+       segment size: 21340618752
+       kernelPageSize: 4096
+     !!! sid: cdb02 pid: 161729 shmid: 1273921587 is not using HugePages !!!
+
+```
+
+
+
 
 
 

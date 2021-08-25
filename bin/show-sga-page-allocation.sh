@@ -2,7 +2,7 @@
 #!/usr/bin/env bash
 
 # match to ipcs -m
-# flush this out so that it can be easily seen if an SGA is not 100% mapped in hugepages
+# prototype - see Perl script sga-smallpage-detector.pl
 
 notice () {
 
