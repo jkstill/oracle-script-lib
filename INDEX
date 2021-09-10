@@ -183,6 +183,7 @@ AWR/ASH:
 @ash-all-events-5-pct.sql: show events per SQL where the event consumes > 5% of db time for the execution of that SQL
 @ash-blocker-waits.sql: find top level blockers in ASH
 @ash-events.sql: simple filtered query on ASH events for a SQL_ID
+@ash-itl-waits.sql: show recent ITL waits
 @ash-sessions.sql: frequency of sessions for a user
 @ash-snapshot-define-begin-end.sql: example of how to bracket snap_id
 @ash-waits-user.sql: summarize ASH all wait time for a user
@@ -194,6 +195,7 @@ AWR/ASH:
 @ash-current-waits-by-sql.sql: find the current top 20 SQL by execution time per session that occurred in a single session
 @ash-current-waits-by-sql-event.sql: find the current top 20 SQL by execution time per event that occurred in a single session
 @ash-sqlid-event-window.sql: show top SQL within window of time, such as from 1 minute before to 1 minute after the top of each hour
+@ash-top-events.sql: top 10 report of waits in ASH - per instance and cluster
 @ash_log_sync.sql: log sync events
 @ashdump.sql: create an ASH Dump - be sure to read the comments in the script
 @ashdump-summary.sql: example script to view ASHDUMP data
