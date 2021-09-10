@@ -38,7 +38,7 @@ col client_program format a20 head 'CLIENT PROGRAM'
 col server_program format a20 head 'SERVER PROGRAM'
 col spid format a5 head 'SRVR|PID'
 col serial# format 99999 head 'SERIAL#'
-col client_process format a12 head 'CLIENT|PID'
+col client_process format a13 head 'CLIENT|PID'
 col osuser format a10
 col logon_time format a17 head 'LOGON TIME'
 col idle_time format a11 head 'IDLE TIME'
