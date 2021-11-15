@@ -1,7 +1,7 @@
 
 -- sql-exe-events-ash.sql
--- Jared Still still@pythian.com jkstill@gmail.com
--- Pythian 2018
+-- Jared Still  jkstill@gmail.com
+--  2018
 
 @clears
 

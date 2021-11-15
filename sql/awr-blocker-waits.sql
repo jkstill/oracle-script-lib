@@ -2,7 +2,7 @@
 -- awr-blocker-waits.sql
 -- like ash-blocker-waits.sql, but for AWR
 -- show historic blockers and SQL_ID
--- still@pythian.com
+-- 
 -- 2017-01-07
 --
 -- the blocking session may not be in AWR

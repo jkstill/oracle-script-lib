@@ -1,7 +1,7 @@
 
 -- undo-mon-fast.sql
 -- Jared Still
--- 2018 Pythian still@pythian.com jkstill@gmail.com
+-- 2018   jkstill@gmail.com
 --
 -- monitor from v$fast_start_transactions
 -- this is useful for when a proccess/session has been killed

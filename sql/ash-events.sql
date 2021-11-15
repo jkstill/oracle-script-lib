@@ -3,7 +3,7 @@
 -- get ash events for a sql_id within a time range
 -- sql_id and range currently hardcoded
 --
--- Jared Still 2017-11-08  still@pythian.com jkstill@gmail.com
+-- Jared Still 2017-11-08   jkstill@gmail.com
 
 var v_sql_id varchar2(13)
 

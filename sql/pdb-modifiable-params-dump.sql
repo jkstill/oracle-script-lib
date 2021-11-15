@@ -1,6 +1,6 @@
 
 -- pdb-modifiable-params-dump.sql
--- Jared Still - Pythian
+-- Jared Still - 
 
 set pause off
 set echo off

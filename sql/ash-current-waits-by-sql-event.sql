@@ -2,7 +2,7 @@
 -- ash-current-waits-by-sql-event.sql
 -- find the current top 20 SQL by execution time per event 
 -- that occurred in a single session
--- Jared Still - still@pythian.com jkstill@gmail.com
+-- Jared Still -  jkstill@gmail.com
 
 set pause off echo off
 set feed on term on

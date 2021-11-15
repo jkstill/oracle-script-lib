@@ -2,11 +2,11 @@
 --
 -- 
 --
--- Author: Jared Still - still@pythian.com, jkstill@gmail.com
+-- Author: Jared Still - , jkstill@gmail.com
 --
 -- Changelog: 
 --
--- 2017-04-17 17:09:01 - Jared Still  still@pythian.com - script added to repo
+-- 2017-04-17 17:09:01 - Jared Still   - script added to repo
 --
 
 col mem_disk_sort_ratio format 999.99

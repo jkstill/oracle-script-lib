@@ -1,6 +1,6 @@
 -- index-usage-awr.sql
 -- jared still 2016-12-07
--- still@pythian.com jkstill@gmail.com
+--  jkstill@gmail.com
 --
 -- not definitive, dependent on AWR data
 -- the more AWR data, the better.

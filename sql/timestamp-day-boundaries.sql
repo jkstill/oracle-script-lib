@@ -1,7 +1,7 @@
 
 -- timestamp-day-boundaries.sql
--- Jared Still still@pythian.com jkstill@gmail.com
--- Pythian 2018
+-- Jared Still  jkstill@gmail.com
+--  2018
 -- 
 -- get the beginning and end of the current day as timestamp 
 -- SQLPlus can manage 9 decimal places as of 12.2

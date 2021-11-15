@@ -1,8 +1,8 @@
 
 -- between-trunc-demo.sql
 -- Jared Still
--- still@pythian.com jkstill@gmail.com
--- Pythian 2018
+--  jkstill@gmail.com
+--  2018
 --
 /*
 

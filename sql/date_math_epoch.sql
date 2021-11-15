@@ -4,7 +4,7 @@
 -- convert current timestamp to epoch (UTC)
 -- convert epoch to timestamp
 -- Jared Still - 2017-05-16
--- still@pythian.com  jkstill@gmail.com
+--   jkstill@gmail.com
 --
 
 col u_epoch new_value u_epoch head 'epoch'

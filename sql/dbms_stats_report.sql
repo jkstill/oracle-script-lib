@@ -1,6 +1,6 @@
 
 -- dbms_stats_report.sql
--- Jared Still still@pythian.com jkstill@gmail.com
+-- Jared Still  jkstill@gmail.com
 -- report on dbms_stats operations 
 -- requires 12c+
 

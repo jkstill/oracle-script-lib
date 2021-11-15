@@ -1,7 +1,7 @@
 
 -- ash-all-events-5-pct.sql
 -- Jared Still 2021
--- jkstill@gmail.com still@pythian.com
+-- jkstill@gmail.com 
 -- pct_of_db_time column refers to the % of time 
 -- each event consumed for the duration of the sql execution
 

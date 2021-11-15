@@ -3,7 +3,7 @@
 -- cross tab of cpu history
 -- only useful in 12c+ as previous versions did not save the stats
 -- 2015-11-18 Jared Still
--- still@pythian.com
+-- 
 -- jkstill@gmail.com
 
 set pagesize 60

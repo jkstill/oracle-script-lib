@@ -2,7 +2,7 @@
 
 -- sql-exe-times-ash.sql
 -- call with sql_id
--- Jared Still - Pythian - still@pythian.com jkstill@gmail.com
+-- Jared Still -  -  jkstill@gmail.com
 -- 2017-11-21
 -- Jared Still - 2017-11-22
 -- was going about getting execution times all wrong 

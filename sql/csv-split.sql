@@ -1,7 +1,7 @@
 
 -- csv-split.sql
 -- split list of CSV on the command line to values
--- Jared Still still@pythian.com jkstill@gmail.com
+-- Jared Still  jkstill@gmail.com
 --
 -- requires a list of at least two elements
 -- spaces are not allowed

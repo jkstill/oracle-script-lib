@@ -1,7 +1,7 @@
 
 -- set-default-profile-unlimited.sql
 -- useful for test databases
--- Jared Still 2020-12-30 jkstill@gmail.com still@pythian.com
+-- Jared Still 2020-12-30 jkstill@gmail.com 
 
 begin
 

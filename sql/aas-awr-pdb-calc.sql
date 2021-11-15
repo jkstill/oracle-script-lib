@@ -2,8 +2,8 @@
 -- aas-awr-pdb-calc.sql
 -- calculate AAS for PDBs from AWR
 -- 
--- Jared Still 2020-11-10 Pythian
--- jkstill@gmail.com still@pythian.com
+-- Jared Still 2020-11-10 
+-- jkstill@gmail.com 
 --
 -- Note: Using SAMPLE_TIME/SAMPLE_ID rather than SNAP_ID, as SAMPLE_TIME is more granular
 -- I have just been waiting for an opportunity to use 'granular'  ;)

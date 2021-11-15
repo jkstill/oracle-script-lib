@@ -1,7 +1,7 @@
 
 -- aas_hist_metrics.sql
 -- jared still - 2015-07-16
--- still@pythian.com
+-- 
 -- jkstill@gmail.com
 
 set pause off

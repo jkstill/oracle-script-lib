@@ -1,7 +1,7 @@
 
 -- undo-mon-trans.sql
 -- Jared Still
--- 2018 Pythian still@pythian.com jkstill@gmail.com
+-- 2018   jkstill@gmail.com
 
 -- monitor rollback for transactions
 -- see undo-mon-fast.sql to monitor rollback for killed sessions

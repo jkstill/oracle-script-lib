@@ -1,7 +1,7 @@
 
 -- colcomm.sql
 -- find common columns between a set of tables
--- Jared Still still@pythian.com jkstill@gmail.com
+-- Jared Still  jkstill@gmail.com
 -- no spaces allowed
 -- @colcom owner1.tab1,owner2.tab2,...
 

@@ -1,7 +1,7 @@
 
 -- get_table_lock.sql
 -- Jared Still
--- still@pythian.com
+-- 
 
 
 -- run a PL/SQL loop looking for a table lock

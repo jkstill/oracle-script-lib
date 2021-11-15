@@ -2,8 +2,8 @@
 
 -- os-load.sql
 -- System load for the previous hour as reported by Oracle
--- Pythian - Jared Still
--- still@pythian.com jkstill@gmail.com
+--  - Jared Still
+--  jkstill@gmail.com
 
 col os_load format 999.99
 col begin_time format a20

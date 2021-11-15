@@ -1,7 +1,7 @@
 
 -- awr-top-sqlid-events.sql
 -- get top 5 events per AWR snapshot, per sql_id
--- Jared Still still@pythian.com jkstill@gmail.com
+-- Jared Still  jkstill@gmail.com
 --
 -- 2016-11-02 jkstill - added enqueue decode
 

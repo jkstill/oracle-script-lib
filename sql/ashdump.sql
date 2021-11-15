@@ -1,7 +1,7 @@
 
 -- ashdump.sql
--- Jared Still - Pythian 
--- still@pythian.com jkstill@gmail.com
+-- Jared Still -  
+--  jkstill@gmail.com
 --
 -- see the example 'ashdump-summary.sql' for viewing the data
 

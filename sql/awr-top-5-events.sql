@@ -1,6 +1,6 @@
 
 -- awr-top-5-events.sql
--- Jared Still - jkstill@gmail.com still@pythian.com
+-- Jared Still - jkstill@gmail.com 
 -- report on the top 5 events (including CPU - excluding idle)
 -- just to see where db is spending time
 -- output to CSV

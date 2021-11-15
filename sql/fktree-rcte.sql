@@ -2,8 +2,8 @@
 -- fktree-rcte.sql
 -- Create a tree of tables based on FK relations
 -- This is the RCTE (Recursive Common Table Expression) version
--- Jared Still - Pythian 2020-11-04
--- jkstill@gmail.com still@pythian.com
+-- Jared Still -  2020-11-04
+-- jkstill@gmail.com 
 
 
 /*

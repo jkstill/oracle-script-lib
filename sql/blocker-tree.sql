@@ -1,7 +1,7 @@
 
 
 -- blocker-tree.sql
--- Jared Still still@pythian.com jkstill@gmail.com
+-- Jared Still  jkstill@gmail.com
 -- show tree of blocked sessions and blockers
 -- 
 

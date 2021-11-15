@@ -1,7 +1,7 @@
 
 -- ash-blocker-waits.sql
 -- show current blockers and SQL_ID
--- still@pythian.com
+-- 
 -- 2017-01-07
 
 clear col 

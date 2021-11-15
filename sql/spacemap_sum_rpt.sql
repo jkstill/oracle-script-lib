@@ -2,7 +2,7 @@
 -- spacemap_sum_rpt.sql
 -- jared still
 -- jkstill@gmail.com
--- still@pythian.com
+-- 
 --
 -- report on freespace_map_sum
 -- see spacemap2.sql

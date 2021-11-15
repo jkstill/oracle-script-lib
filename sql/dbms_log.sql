@@ -1,7 +1,7 @@
 
 -- dbms_log.sql
 -- Jared Still
--- Pythian 2018 still@pythian.com jkstill@gmail.com
+--  2018  jkstill@gmail.com
 --
 -- the alert_log fucntions from sys.dbms_system.ksdwrt are now available in dbms_log, available since 11.2.0.4
 -- as reported by Jonathan Lewis

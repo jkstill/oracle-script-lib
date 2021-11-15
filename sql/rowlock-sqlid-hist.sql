@@ -2,7 +2,7 @@
 -- rowlock-sqlid-hist.sql
 -- CSV output counts of rowlock enq per sqlid
 -- like rowlock-sqlid-counts.sql, but does full outer join on dba_hist
--- Jared Still still@pythian.com jkstill@gmail.com
+-- Jared Still  jkstill@gmail.com
 
 -- requires https://github.com/jkstill/oracle-script-lib/blob/master/get_date_range.sql
 

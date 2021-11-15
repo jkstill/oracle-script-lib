@@ -1,7 +1,7 @@
 
 -- asm_disk_errors.sql
 -- 2016-05-17
--- Jared Still - still@pythian.com jkstill@gmail.com
+-- Jared Still -  jkstill@gmail.com
 
 set linesize 200 trimspool on
 

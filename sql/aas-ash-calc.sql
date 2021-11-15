@@ -1,7 +1,7 @@
 
 -- aas-ash-calc.sql
--- Jared Still still@pythian.com jkstill@gmail.com
--- 2019 Pythian
+-- Jared Still  jkstill@gmail.com
+-- 2019 
 -- calculate AAS from ASH data
 -- gv$sysmetric history records this data (aas.sql)
 -- under test conditions the sysmetric values seemed low

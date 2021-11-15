@@ -1,8 +1,8 @@
 
 -- stats-sqlid.sql
 -- get stats info for all objects used in a SQL_ID
--- Jared Still - Pythian 2017
--- still@pythian.com jkstill@gmail.com
+-- Jared Still -  2017
+--  jkstill@gmail.com
 --
 -- the plan_hash_values are shown as an aggregate.
 -- this may be misleading, as the object on that line may not actually appear in that plan.

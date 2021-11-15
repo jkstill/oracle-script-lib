@@ -1,7 +1,7 @@
 
 -- ashdump-summary.sql
--- Jared Still - Pythian
--- still@pythian.com jkstill@gmail.com
+-- Jared Still - 
+--  jkstill@gmail.com
 --
 -- this example is focused on finding blocked sessions
 -- 

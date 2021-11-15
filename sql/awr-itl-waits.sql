@@ -1,7 +1,7 @@
 
 -- awr_blocker_waits.sql
 -- Jared Still
--- still@pythian.com
+-- 
 -- jkstill@gmail.com
 
 -- find out what blocking sessions are waiting on

@@ -2,7 +2,7 @@
 -- find-index-sql.sql
 -- find SQL where an index has been used
 -- parameters currently hardcoded
--- Jared Still still@pythian.com jkstill@gmail.com
+-- Jared Still  jkstill@gmail.com
 -- 2017-11-01
 
 def v_index_owner='SCOTT'

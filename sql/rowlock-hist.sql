@@ -1,7 +1,7 @@
 
 -- rowlock-hist.sql
 -- get top 5 events per AWR snapshot, per instance
--- Jared Still still@pythian.com jkstill@gmail.com
+-- Jared Still  jkstill@gmail.com
 
 -- requires https://github.com/jkstill/oracle-script-lib/blob/master/get_date_range.sql
 
