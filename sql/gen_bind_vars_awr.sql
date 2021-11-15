@@ -1,7 +1,7 @@
 
 -- gen_bind_vars_awr.sql
 --
--- jared still 2017-08-28 - jkstill@gmail.com, still@pythian.com
+-- jared still 2017-08-28 - jkstill@gmail.com, 
 -- copied from gen_bind_vars.sql and modified for AWR
 -- given a SQL_ID get the SQL and bind variables
 -- create a sqlplus script to run them

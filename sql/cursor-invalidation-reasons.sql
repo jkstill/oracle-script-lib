@@ -3,7 +3,7 @@
 -- show why cursors have been invalidated
 -- Jared Still
 -- jkstill@gmail.com
--- still@pythian.com
+-- 
 -- 2015-08-22
 --
 -- 2017-11-02 jkstill - see v-dollar-sql_shared_cursor-bug.txt for an issue with v$sql_shared_cursor 

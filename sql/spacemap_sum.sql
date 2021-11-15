@@ -2,7 +2,7 @@
 -- spacemap_sum.sql
 -- jared still
 -- jkstill@gmail.com
--- still@pythian.com
+-- 
 --
 -- creates a summary table of the freespace_map table
 -- must run spacemap.sql first

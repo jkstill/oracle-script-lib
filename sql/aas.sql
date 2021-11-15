@@ -1,7 +1,7 @@
 
 -- aas.sql
--- Jared Still still@pythian.com jkstill@gmail.com
--- 2019 Pythian
+-- Jared Still  jkstill@gmail.com
+-- 2019 
 -- average active sessions as reported by sysmetric_history
 -- see also aas-ash-calc.sql
 

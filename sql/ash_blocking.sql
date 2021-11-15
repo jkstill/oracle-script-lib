@@ -1,7 +1,7 @@
 
 -- ash_blocking.sql
 -- show recent blockers and SQL_ID
--- still@pythian.com
+-- 
 -- 2013-09-09
 
 clear col 

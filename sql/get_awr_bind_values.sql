@@ -1,7 +1,7 @@
 
 -- get_awr_bind_values.sql
 -- 10g+
--- Jared Still still@pythian.com jkstill@gmail.com
+-- Jared Still  jkstill@gmail.com
 -- 2016-12-19
 
 col username format a15

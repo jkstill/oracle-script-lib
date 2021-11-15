@@ -1,6 +1,6 @@
 
 -- ash-sqlid-event-window.sql
--- Jared Still 2021 jkstill@gmail.com still@pythian.com
+-- Jared Still 2021 jkstill@gmail.com 
 --
 -- get all SQL running within a certain time each hour
 -- in this case it is a 2 minutes window at the top of the hour

@@ -1,7 +1,7 @@
 
 -- undo-active-12c.sql
--- Jared Still -  Pythian
--- still@pythiancom jkstill@gmail.com
+-- Jared Still -  
+--  jkstill@gmail.com
 
 select to_char(s.end_time,'yyyy-mm-dd hh24:mi:ss') end_time, t.con_id, s.inst_id, s.undotsn, t.name, sum(activeblks)
 from gv$undostat s

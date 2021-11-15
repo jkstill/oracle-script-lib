@@ -2,7 +2,7 @@
 -- sp_resource_limit.sql
 -- Jared Still 2017-08-25
 -- jkstill@gmail.com
--- still@pythian.com
+-- 
 
 
 set linesize 200 trimspool on

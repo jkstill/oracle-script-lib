@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 # Jared Still
-# still@pythian.com jkstill@gmail.com
-# Pythian 2020
+# jkstill@gmail.com
 
 getInstance () {
 

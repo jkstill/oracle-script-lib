@@ -2,7 +2,7 @@
 -- ascii.sql
 -- generate a simple ascii table
 -- 0-9, A-Z, a-z
--- Jared Still 2016-11-04 still@pythian.com jkstill@gmail.com
+-- Jared Still 2016-11-04  jkstill@gmail.com
 -- 
 
 select level dec, to_char(level,'XX') hex, chr(level) chr

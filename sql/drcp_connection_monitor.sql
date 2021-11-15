@@ -1,6 +1,6 @@
 
 -- drcp_connection_monitor.sql
--- Jared Still still@pythian.com
+-- Jared Still 
 -- 
 
 var n_cpool_pct_threshold number

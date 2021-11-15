@@ -1,8 +1,8 @@
 
 -- fktree.sql
 -- Create a tree of tables based on FK relations
--- Jared Still - Pythian 2020-11-04
--- jkstill@gmail.com still@pythian.com
+-- Jared Still 
+-- jkstill@gmail.com
 
 /*
 

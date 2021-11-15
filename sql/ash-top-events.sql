@@ -1,7 +1,7 @@
 
 -- ash-top-events.sql
 -- Jared Still
--- still@pythian.com
+-- 
 -- jkstill@gmail.com
 
 

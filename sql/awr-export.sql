@@ -1,7 +1,7 @@
 
 -- awr-export.sql
 -- as per Simon Pane
--- https://www.pythian.com/blog/author/pane/
+-- https://www..com/blog/author/pane/
 -- simple yet effective
 -- output is expdp dump file - requires an appropriate Oracle DIRECTORY object
 

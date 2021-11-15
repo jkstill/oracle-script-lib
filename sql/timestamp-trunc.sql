@@ -1,7 +1,7 @@
 
 -- timestamp-trunc.sql
 -- Jared Still
--- still@pythian.com jkstill@gmail.com
+--  jkstill@gmail.com
 
 -- there is no function available to truncate a timestamp 
 -- so that the time portion is removed, returning a timestamp

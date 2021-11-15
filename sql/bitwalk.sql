@@ -1,7 +1,7 @@
 
 -- bitwalk.sql
 -- Jared Still 2021
--- jkstill@gmail.com still@pythian.com
+-- jkstill@gmail.com 
 
 /*
 

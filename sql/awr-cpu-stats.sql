@@ -2,7 +2,7 @@
 -- awr-cpu-stats.sql
 -- show load over time
 -- useful when sar is not available
--- Jared Still - jkstill@gmail.com still@pythian.com
+-- Jared Still - jkstill@gmail.com 
 
 col begin_interval_time format a30
 col previous_time format a30

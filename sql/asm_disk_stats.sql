@@ -1,7 +1,7 @@
 
 -- asm_disk_stats.sql
 -- 2016-05-17
--- Jared Still - still@pythian.com jkstill@gmail.com
+-- Jared Still -  jkstill@gmail.com
 
 
 set term off feed off verify off

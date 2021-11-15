@@ -1,6 +1,6 @@
 
 -- stat.sql
--- Timur Akhmadeev - akhmadeev@pythian.com
+-- Timur Akhmadeev - akhmadeev@.com
 --
 -- @stat table_name
 -- or

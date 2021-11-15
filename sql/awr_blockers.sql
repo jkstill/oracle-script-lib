@@ -2,7 +2,7 @@
 -- awr_blockers.sql
 -- show historic blocking , sql_id and whether mode 4 (ITL) or mode 6 (rowlock)
 -- Jared Still
--- still@pythian.com
+-- 
 -- jkstill@gmail.com
 
 /*

@@ -1,6 +1,6 @@
 
 -- archived_log_hist_matrix.sql
--- acquired from Patricia Shea @ Pythian
+-- acquired from Patricia Shea @ 
 
 /*
  values of 0 are normal at the beginning and as there is likely no data

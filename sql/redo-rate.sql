@@ -1,8 +1,8 @@
 
 -- redo-rate.sql
 -- show real time redo rates
--- Jared Still still@pythian.com jkstill@gmail.com
--- Pythian 2020
+-- Jared Still  jkstill@gmail.com
+--  2020
 -- 
 
 col metric_unit format a30

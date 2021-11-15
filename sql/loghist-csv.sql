@@ -1,6 +1,6 @@
 
 -- loghist-csv.sql
--- Jared Still still@pythian.com jkstill@gmail.com
+-- Jared Still  jkstill@gmail.com
 -- dump archive log history, with timing, to CSV
 
 

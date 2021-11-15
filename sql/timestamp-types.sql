@@ -1,7 +1,7 @@
 
 -- timestamp-types.sql
 -- Jared Still
--- still@pythian.com jkstill@gmail.com
+--  jkstill@gmail.com
 
 
 /*

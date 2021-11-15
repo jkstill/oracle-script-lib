@@ -1,7 +1,7 @@
 
 -- index-correlate.sql
 -- find indexes that appear in a list of plan_hash values
--- Jared Still still@pythian.com jkstill@gmail.com
+-- Jared Still  jkstill@gmail.com
 -- 2016-12-13 
 
 set pagesize 60
