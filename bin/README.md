@@ -501,6 +501,30 @@ sample output
 
 ```
 
+# network
+
+## sqlnet-io-rates.pl
+
+Get the rates of network IO from v$sesstat
+
+```text
+$ ./sqlnet-io-rates.pl -database orcl -username jkstill -password XXX -iterations 30 -interval-seconds 5
+timestamp,elapsed,schema,client roundtrips,dblink roundtrips,bytes from client,bytes from dblink,bytes to client,bytes to dblink
+2021-11-16 00:33:30,5.007873,SCOTT,7,0,3850,0,4830,0
+2021-11-16 00:33:30,5.007873,SOE,144,0,17060,0,8104,0
+2021-11-16 00:33:30,5.007873,SYS,0,0,0,0,0,0
+2021-11-16 00:33:30,5.007873,SYSRAC,0,0,0,0,0,0
+2021-11-16 00:33:35,5.008368,SCOTT,7,0,3850,0,52719,0
+2021-11-16 00:33:35,5.008368,SOE,130,0,14947,0,7194,0
+2021-11-16 00:33:35,5.008368,SYS,0,0,0,0,0,0
+2021-11-16 00:33:35,5.008368,SYSRAC,0,0,0,0,0,0
+2021-11-16 00:33:40,5.007935,SCOTT,13,0,4612,0,122745,0
+2021-11-16 00:33:40,5.007935,SOE,171,0,20839,0,9296,0
+2021-11-16 00:33:40,5.007935,SYS,0,0,0,0,0,0
+2021-11-16 00:33:40,5.007935,SYSRAC,0,0,0,0,0,0
+
+
+```
 
 
 
