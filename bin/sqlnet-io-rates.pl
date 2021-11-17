@@ -115,12 +115,12 @@ my @hdrColumns=qw{timestamp elapsed schema};
 
 # use some shorter names for the columns
 my %hdrSubs = (
-	'SQL*Net roundtrips to/from client'			=> 'client roundtrips',
-	'SQL*Net roundtrips to/from dblink'			=> 'dblink roundtrips',
-	'bytes received via SQL*Net from client'	=> 'bytes from client',
-	'bytes received via SQL*Net from dblink'	=> 'bytes from dblink',
-	'bytes sent via SQL*Net to client'			=> 'bytes to client',
-	'bytes sent via SQL*Net to dblink'			=> 'bytes to dblink',
+	'SQL*Net roundtrips to/from client'			=> 'client_roundtrips',
+	'SQL*Net roundtrips to/from dblink'			=> 'dblink_roundtrips',
+	'bytes received via SQL*Net from client'	=> 'bytes_from_client',
+	'bytes received via SQL*Net from dblink'	=> 'bytes_from_dblink',
+	'bytes sent via SQL*Net to client'			=> 'bytes_to_client',
+	'bytes sent via SQL*Net to dblink'			=> 'bytes_to_dblink',
 );
 
 my $maxMetricEl = scalar(keys %hdrSubs) -1;
@@ -137,7 +137,7 @@ $sql = q{select
    sess.username, sess.sid, sess.serial#,
    name.name name,
    stat.value value
-from v$sesstat stat, v$statname name, v$session sess
+from gv$sesstat stat, v$statname name, v$session sess
 where
    stat.sid = sess.sid
    and sess.username is not null
