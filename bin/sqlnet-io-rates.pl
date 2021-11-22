@@ -11,6 +11,7 @@ use Getopt::Long;
 use Data::Dumper;
 use POSIX qw(strftime);
 use Time::HiRes( qw{tv_interval gettimeofday});
+use sigtrap qw(handler trapCtlC INT QUIT);
 
 my %optctl = ();
 
@@ -166,6 +167,8 @@ warn sprintf("Exe Time: %$secondsFormat\n",$exeTime) if $showExeTime;
 my %dataPrev=(); my %dataCurr=();
 while(my @ary = $sth->fetchrow_array) {
 	#print join(',',@ary) . "\n";
+	# first hash key: username
+	# second hash key: session_id + serial#
 	push @{$dataPrev{$ary[0]}->{"$ary[1]:$ary[2]"}}, $ary[4]; # sid:serial, value
 }
 
@@ -195,7 +198,28 @@ for (my $i=0; $i<$iterations; $i++) {
 
 	my %dataDiff=();
 	foreach my $schema ( keys %dataCurr ) {
-		next unless exists $dataPrev{$schema};
+
+=head1 Data Manipulation
+
+ This is not correct
+ If the key does not exist in the previous set of data
+ It should be added to the time, as it is all new usage
+
+ Conceptually it looks like this
+
+ if (exists $dataPrev{$schema} ) {
+ 	get a diff of the time from previous
+ } else {
+ 	just include the full value 
+ }
+	
+
+ For keys that do not already exist, it is accomplished by adding a fake key, with value of zero
+ The math bit then just subtracts 0 from the current value
+
+=cut 
+
+		#next unless exists $dataPrev{$schema};
 
 		# compare SID:SERIAL keys
 		# when calculating diffs, only use those from prev that are still logged on
@@ -208,8 +232,11 @@ for (my $i=0; $i<$iterations; $i++) {
 		#my @prevKeys = map { $_ if exists $dataPrev{$schema}{$_}} keys %{$dataCurr{$schema}};
 		my @prevKeys = ();
 		foreach my $key (@currKeys) {
-			if (exists $dataPrev{$schema}{$key}) {
+			if (! exists $dataPrev{$schema}{$key}) {
 				push @prevKeys, $key;
+				# create a set of zero value metrics  for sessions that started after the previous interval time
+				# this way, the full value of sqlnet io bytes will be counted for the interval, for this session
+				map { push @{$dataPrev{$schema}{$key}}, 0 } (0..$maxMetricEl) ;
 			}
 		}
 		#print "schema: $schema: " . '@prevKeys: ' . Dumper(\@prevKeys);
@@ -265,7 +292,23 @@ sub parseMetrics {
 	my @prevMetrics=();
 	foreach my $sidSerial ( @{$keysToUse} ) {
 		#print "sidSerial: $sidSerial\n";
-		my @workMetrics = @{$metricsHash->{"$sidSerial"}};
+		my @workMetrics= ();
+		eval { @workMetrics = @{$metricsHash->{"$sidSerial"}}; };
+
+		# there was a bug that caused a completely empty set of values
+		# to be created when a session began after the previous interval and before the current one
+		# this trap is still here in the even the bug as not truly eradicated
+		# 
+		if ($@) {
+
+			warn "error in parseMetrics()\n";
+			warn 'SID-SERIAL: ' . "$sidSerial\n";
+			warn '$metricsHash: ' . Dumper($metricsHash);
+			warn '$keysToUse ' . Dumper($keysToUse);
+
+			#die;
+
+		}
 		foreach my $el ( 0 .. $#workMetrics ) {
 			$prevMetrics[$el] += $workMetrics[$el];
 		}
@@ -337,3 +380,9 @@ sub getTimestamp {
 	return strftime "%Y-%m-%d %H:%M:%S", localtime;
 }
 
+sub trapCtlC {
+
+	$dbh->disconnect;
+	die;
+
+}
