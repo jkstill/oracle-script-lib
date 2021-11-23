@@ -24,6 +24,7 @@ my $iterations=0;
 my $intervalSeconds=60;
 my $showExeTime=0;
 my $secondsFormat='04.6f';
+my $warnings=0;
 
 Getopt::Long::GetOptions(
 	\%optctl,
@@ -35,9 +36,22 @@ Getopt::Long::GetOptions(
 	"interval-seconds=i" => \$intervalSeconds,
 	"show-exe-time!" => \$showExeTime,
 	"sysdba!",
+	"warnings!"  => \$warnings,
 	"local-sysdba!",
 	"sysoper!",
 	"z","h","help");
+
+=head1
+
+if ($warnings) { 
+	warn "warnings: $warnings\n";
+	exit 1;
+} else { 
+	print "warnings: $warnings\n";
+	exit 0;
+}
+
+=cut
 
 $localSysdba=$optctl{'local-sysdba'};
 
@@ -134,15 +148,18 @@ while(my @ary = $sth->fetchrow_array) {
 
 print join(',',@hdrColumns) . "\n";
 
+# this SQL always returns values for each metric name, even if 0
 $sql = q{select
    sess.username, sess.sid, sess.serial#,
    name.name name,
-   stat.value value
-from gv$sesstat stat, v$statname name, v$session sess
+   stat.value value,
+	to_char(sess.logon_time, 'yyyy-mm-dd_hh24-mi-ss') logon_time
+from gv$sesstat stat, v$statname name, gv$session sess
 where
    stat.sid = sess.sid
    and sess.username is not null
    and stat.statistic# = name.statistic#
+	and sess.inst_id = stat.inst_id
    and name in (
       'SQL*Net roundtrips to/from client'
       ,'SQL*Net roundtrips to/from dblink'
@@ -185,7 +202,6 @@ for (my $i=0; $i<$iterations; $i++) {
 	$exeTime = tv_interval($startExeTime, $endExeTime);
 	warn sprintf("Exe Time: %$secondsFormat\n",$exeTime) if $showExeTime;
 
-
 	($endTime) = [gettimeofday];
 	$elapsed = tv_interval($startTime, $endTime);
 
@@ -193,33 +209,15 @@ for (my $i=0; $i<$iterations; $i++) {
 
 	while(my @ary = $sth->fetchrow_array) {
 		#print join(',',@ary) . "\n";
-		push @{$dataCurr{$ary[0]}->{"$ary[1]:$ary[2]"}}, $ary[4]; # sid:serial, value
+		push @{$dataCurr{$ary[0]}->{"$ary[1]:$ary[2]:$ary[5]"}}, $ary[4]; # sid:serial:logon_time, value
 	}
 
+	warn "************************************************************\n";
 	my %dataDiff=();
+
+	warn '****>> %dataCurr: ' . Dumper(\%dataCurr) . "\n";
+
 	foreach my $schema ( keys %dataCurr ) {
-
-=head1 Data Manipulation
-
- This is not correct
- If the key does not exist in the previous set of data
- It should be added to the time, as it is all new usage
-
- Conceptually it looks like this
-
- if (exists $dataPrev{$schema} ) {
- 	get a diff of the time from previous
- } else {
- 	just include the full value 
- }
-	
-
- For keys that do not already exist, it is accomplished by adding a fake key, with value of zero
- The math bit then just subtracts 0 from the current value
-
-=cut 
-
-		#next unless exists $dataPrev{$schema};
 
 		# compare SID:SERIAL keys
 		# when calculating diffs, only use those from prev that are still logged on
@@ -227,49 +225,68 @@ for (my $i=0; $i<$iterations; $i++) {
 
 		my @currKeys = map { $_ } keys %{$dataCurr{$schema}};
 		#print "schema: $schema: " . '@currKeys: ' . Dumper(\@currKeys);
+		warn "schema: $schema: " . '@currKeys: ' . Dumper(\@currKeys);
 
 		# this map is not quite right - the loop works fine
-		#my @prevKeys = map { $_ if exists $dataPrev{$schema}{$_}} keys %{$dataCurr{$schema}};
-		my @prevKeys = ();
 		foreach my $key (@currKeys) {
 			if (! exists $dataPrev{$schema}{$key}) {
-				push @prevKeys, $key;
 				# create a set of zero value metrics  for sessions that started after the previous interval time
 				# this way, the full value of sqlnet io bytes will be counted for the interval, for this session
-				map { push @{$dataPrev{$schema}{$key}}, 0 } (0..$maxMetricEl) ;
+				$dataPrev{$schema}->{$key} = \@emptyMetrics;
 			}
 		}
-		#print "schema: $schema: " . '@prevKeys: ' . Dumper(\@prevKeys);
+		warn "schema: $schema: " . '@currKeys ' . Dumper(\@currKeys);
 
-		my @prevMetrics=parseMetrics(\%{$dataPrev{$schema}}, \@prevKeys);
-		#print '@prevMetrics: ' . Dumper(\@prevMetrics);
+		warn "==== calling parseMetrics() with \@prevMetrics schema: $schema \n";
+		my @prevMetrics=parseMetrics(\%{$dataPrev{$schema}});
+		warn '=== returned @prevMetrics FULL: ' . Dumper(\@prevMetrics);
 		
-		my @currMetrics=parseMetrics(\%{$dataCurr{$schema}}, \@{currKeys});
-		#print '@currMetrics ' . Dumper(\@currMetrics);
+		warn "==== calling parseMetrics() with \@currMetrics schema: $schema \n";
+		my @currMetrics=parseMetrics(\%{$dataCurr{$schema}});
+		warn '=== returned @currMetrics FULL ' . Dumper(\@currMetrics);
 		
+		my $metricsError = 0;
 		foreach my $el ( 0 .. $maxMetricEl ) {
 			#push @{$dataDiff{$schema}}, $metrics[$el] - @{$dataPrev{$schema}}[$el];
 			# if prev not defined, then all sessions for the user logged on during the sleep
 			# if curr is defined, then the final metric == curr
-			#
+			
+			# Note: I do not believe these next two lines with 'defined' are still necessary
 			# if curr not defined, then all sessions for the user logged off during the sleep
 			# if prev is defined, then the final metric negative - 0-prev
 			my $prevMetric = defined $prevMetrics[$el] ? $prevMetrics[$el] : 0;
 			my $currMetric = defined $currMetrics[$el] ? $currMetrics[$el] : 0;
+			#
+
+			if (  $prevMetric > $currMetric ) {
+				$metricsError = 1;
+			}
+
 			push @{$dataDiff{$schema}}, $currMetric - $prevMetric;
 		}
 
+		if ($metricsError) {
+			warn "##########################################\n";
+			warn "## previous metric GT current metric\n";
+			warn "Schema: $schema\n";
+			warn 'Value dump: ' . Dumper($dataDiff{$schema}) . "\n";
+			warn '@prevMetrics: ' . Dumper(\@prevMetrics);
+			warn '@currMetrics ' . Dumper(\@currMetrics);
+		}
+
+
 		# if both prev and curr are empty, there is no data
 		# not sure how this happens
-		if (! defined $dataDiff{$schema} ) {
-			$dataDiff{$schema} = @emptyMetrics;	
-		}
+		#if (! defined $dataDiff{$schema} ) {
+		#$dataDiff{$schema} = @emptyMetrics;	
+		#}
 	}
 
 	# splice in timestamp and elapsed
-	foreach my $schema (keys %dataPrev) {
+	foreach my $schema (keys %dataCurr) {
 		#print "SCHEMA: $schema\n";
 		splice(@{$dataDiff{$schema}},0,0,($timestamp,$elapsed));
+
 	}
 
 	#print 'Diff: ' . Dumper(\%dataDiff);
@@ -286,25 +303,32 @@ $dbh->disconnect;
 # pass hash and keys to use
 #
 sub parseMetrics {
-	my ($metricsHash, $keysToUse) = @_;
+	my ($metricsHash) = @_;
 	#print '$metricsHash: ' . Dumper($metricsHash);
 
+	my @keysToUse = keys %{$metricsHash};
+
 	my @prevMetrics=();
-	foreach my $sidSerial ( @{$keysToUse} ) {
+
+	warn "======== parseMetrics() =============\n";
+	warn '-->> $metricsHash: ' . Dumper($metricsHash) . "\n";
+	warn '-->> @keysToUse ' . Dumper(\@keysToUse) . "\n";
+
+	foreach my $sidSerial ( @keysToUse ) {
 		#print "sidSerial: $sidSerial\n";
 		my @workMetrics= ();
 		eval { @workMetrics = @{$metricsHash->{"$sidSerial"}}; };
 
 		# there was a bug that caused a completely empty set of values
 		# to be created when a session began after the previous interval and before the current one
-		# this trap is still here in the even the bug as not truly eradicated
+		# this trap is still here in the event the bug is not truly eradicated
 		# 
 		if ($@) {
 
 			warn "error in parseMetrics()\n";
 			warn 'SID-SERIAL: ' . "$sidSerial\n";
 			warn '$metricsHash: ' . Dumper($metricsHash);
-			warn '$keysToUse ' . Dumper($keysToUse);
+			warn '@keysToUse ' . Dumper(@keysToUse);
 
 			#die;
 
@@ -313,7 +337,7 @@ sub parseMetrics {
 			$prevMetrics[$el] += $workMetrics[$el];
 		}
 	}
-	#print '@prevMetrics: ' . Dumper(\@prevMetrics);
+	warn '-->> @prevMetrics: ' . Dumper(\@prevMetrics);
 	return @prevMetrics;
 };
 
@@ -335,20 +359,20 @@ sub usage {
 
 usage: $basename
 
-  -database				 target instance
-  -username				 target instance account name
-  -password				 target instance account password
-  -sysdba				 logon as sysdba
-  -sysoper				 logon as sysoper
-  -iterations			 number of iterations
-  -interval-seconds	 seconds per iteration
-  -connection-test	 test the connection and exit
-  -local-sysdba		 logon to local instance as sysdba. ORACLE_SID must be set
+  --database          target instance
+  --username          target instance account name
+  --password          target instance account password
+  --sysdba				 logon as sysdba
+  --sysoper				 logon as sysoper
+  --iterations			 number of iterations
+  --interval-seconds	 seconds per iteration
+  --connection-test	 test the connection and exit
+  --local-sysdba		 logon to local instance as sysdba. ORACLE_SID must be set
 							 the following options will be ignored:
 								-database
 								-username
 								-password
-
+  -warnings           print some warnings to STDERR
   example:
 
   $basename -database dv07 -username scott -password tiger -sysdba
@@ -358,6 +382,7 @@ usage: $basename
 /;
 	exit $exitVal;
 };
+
 
 sub getOraVersion($$$) {
 	my ($dbh,$major,$minor) = @_;
