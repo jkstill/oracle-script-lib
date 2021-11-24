@@ -199,7 +199,6 @@ order by sess.username, name.name};
 $sth = $dbh->prepare($sql);
 
 my ($startExeTime, $endExeTime, $exeTime);
-# get the first execution outside the loop
 
 ($startExeTime) = [gettimeofday];
 $sth->execute;
@@ -207,12 +206,12 @@ $sth->execute;
 $exeTime = tv_interval($startExeTime, $endExeTime);
 warn sprintf("Exe Time: %$secondsFormat\n",$exeTime) if $showExeTime;
 
-# get data in a loop, up to max iterations
 my ($elapsed,$timestamp,$startTime,$endTime);
 ($startTime) = [gettimeofday];
 
 my %dataPrev=(); my %dataCurr=();
 
+# get the first dataset outside the loop
 while(my @ary = $sth->fetchrow_array) {
 	#print join(',',@ary) . "\n";
 	# first hash key: username
@@ -220,7 +219,7 @@ while(my @ary = $sth->fetchrow_array) {
 	push @{$dataPrev{$ary[0]}->{"$ary[1]:$ary[2]"}}, $ary[4]; # sid:serial, value
 }
 
-
+# get data in a loop, up to max iterations
 for (my $i=0; $i<$iterations; $i++) {
 	sleep $intervalSeconds;
 
@@ -250,7 +249,6 @@ for (my $i=0; $i<$iterations; $i++) {
 	foreach my $schema ( keys %dataCurr ) {
 
 		# compare SID:SERIAL keys
-
 		my @currKeys = map { $_ } keys %{$dataCurr{$schema}};
 		#print "schema: $schema: " . '@currKeys: ' . Dumper(\@currKeys);
 		debug( "schema: $schema: " . '@currKeys: ' . Dumper(\@currKeys));
@@ -302,6 +300,8 @@ for (my $i=0; $i<$iterations; $i++) {
 		my @currMetrics=parseMetrics(\%{$dataCurr{$schema}});
 		debug( '=== returned @currMetrics FULL ' . Dumper(\@currMetrics));
 		
+#  this metricError section can be removed when the test run completes without any negative metrics values
+
 		my $metricsError = 0;
 		foreach my $el ( 0 .. $maxMetricEl ) {
 			# if prev not defined, then all sessions for the user logged on during the sleep
@@ -330,12 +330,8 @@ for (my $i=0; $i<$iterations; $i++) {
 			debug( '@currMetrics ' . Dumper(\@currMetrics));
 		}
 
+#  this metricError section can be removed when the test run completes without any negative metrics values
 
-		# if both prev and curr are empty, there is no data
-		# not sure how this happens
-		#if (! defined $dataDiff{$schema} ) {
-		#$dataDiff{$schema} = @emptyMetrics;	
-		#}
 	}
 
 	# splice in timestamp and elapsed
@@ -356,8 +352,8 @@ for (my $i=0; $i<$iterations; $i++) {
 
 $dbh->disconnect;
 
-# pass hash and keys to use
-#
+# pass hash
+# convert rows to columns
 sub parseMetrics {
 	my ($metricsHash) = @_;
 	#print '$metricsHash: ' . Dumper($metricsHash);
