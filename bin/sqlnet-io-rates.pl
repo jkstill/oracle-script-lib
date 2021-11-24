@@ -9,6 +9,9 @@ use FileHandle;
 use DBI;
 use Getopt::Long;
 use Data::Dumper;
+$Data::Dumper::Purity=1;
+$Data::Dumper::Deepcopy=1;
+
 use POSIX qw(strftime);
 use Time::HiRes( qw{tv_interval gettimeofday});
 use sigtrap qw(handler trapCtlC INT QUIT);
@@ -181,7 +184,12 @@ $sth->execute;
 $exeTime = tv_interval($startExeTime, $endExeTime);
 warn sprintf("Exe Time: %$secondsFormat\n",$exeTime) if $showExeTime;
 
+# get data in a loop, up to max iterations
+my ($elapsed,$timestamp,$startTime,$endTime);
+($startTime) = [gettimeofday];
+
 my %dataPrev=(); my %dataCurr=();
+
 while(my @ary = $sth->fetchrow_array) {
 	#print join(',',@ary) . "\n";
 	# first hash key: username
@@ -189,9 +197,6 @@ while(my @ary = $sth->fetchrow_array) {
 	push @{$dataPrev{$ary[0]}->{"$ary[1]:$ary[2]"}}, $ary[4]; # sid:serial, value
 }
 
-# get data in a loop, up to max iterations
-my ($elapsed,$timestamp,$startTime,$endTime);
-($startTime) = [gettimeofday];
 
 for (my $i=0; $i<$iterations; $i++) {
 	sleep $intervalSeconds;
@@ -206,10 +211,12 @@ for (my $i=0; $i<$iterations; $i++) {
 	$elapsed = tv_interval($startTime, $endTime);
 
 	$timestamp = getTimestamp();
+	warn "-->> Timestamp: $timestamp\n";
 
 	while(my @ary = $sth->fetchrow_array) {
 		#print join(',',@ary) . "\n";
-		push @{$dataCurr{$ary[0]}->{"$ary[1]:$ary[2]:$ary[5]"}}, $ary[4]; # sid:serial:logon_time, value
+		#push @{$dataCurr{$ary[0]}->{"$ary[1]:$ary[2]:$ary[5]"}}, $ary[4]; # sid:serial:logon_time, value
+		push @{$dataCurr{$ary[0]}->{"$ary[1]:$ary[2]"}}, $ary[4]; # sid:serial, value
 	}
 
 	warn "************************************************************\n";
@@ -226,16 +233,45 @@ for (my $i=0; $i<$iterations; $i++) {
 		my @currKeys = map { $_ } keys %{$dataCurr{$schema}};
 		#print "schema: $schema: " . '@currKeys: ' . Dumper(\@currKeys);
 		warn "schema: $schema: " . '@currKeys: ' . Dumper(\@currKeys);
+		warn "schema: $schema \%{dataPrev{$schema}} before: " . Dumper(\%{$dataPrev{$schema}}) . "\n";
 
-		# this map is not quite right - the loop works fine
+		my $prevSetsAdded=0;
+		# create a set of zero value metrics  for sessions that started after the previous interval time
+		# this way, the full value of sqlnet io bytes will be counted for the interval, for this session
 		foreach my $key (@currKeys) {
 			if (! exists $dataPrev{$schema}{$key}) {
-				# create a set of zero value metrics  for sessions that started after the previous interval time
-				# this way, the full value of sqlnet io bytes will be counted for the interval, for this session
+				warn "==>> Adding empty set to \$dataPrev{$schema}->{$key}\n";
 				$dataPrev{$schema}->{$key} = \@emptyMetrics;
+				$prevSetsAdded++;
 			}
 		}
-		warn "schema: $schema: " . '@currKeys ' . Dumper(\@currKeys);
+
+		if ( $prevSetsAdded ) {
+			warn "schema: $schema - empty sets added to prev metrics: $prevSetsAdded\n";
+			warn "schema: $schema \%{dataPrev{$schema}}  after " . Dumper(\%{$dataPrev{$schema}}) . "\n";
+		}
+
+		# remove metrics from the previous data set, when they do not appear in the current set
+		# As the session statistics disappeared before we could get the current values, there is no way
+		# to record any metrics from them
+		# this amounts to lost data
+		my @prevKeys = map { $_ } keys %{$dataPrev{$schema}};
+		warn "schema: $schema: " . '@prevKeys: ' . Dumper(\@prevKeys);
+		warn "schema: $schema \%{dataCurr{$schema}} before: " . Dumper(\%{$dataCurr{$schema}}) . "\n";
+
+		my $prevSetsRemoved=0;
+		foreach my $key (@prevKeys) {
+			if (! exists $dataCurr{$schema}{$key}) {
+				warn "==>> Removing set from \$dataCurr{$schema}->{$key}\n";
+				delete $dataPrev{$schema}->{$key};
+				$prevSetsRemoved++;
+			}
+		}
+
+		if ( $prevSetsRemoved ) {
+			warn "schema: $schema - sets removed from prev metrics: $prevSetsRemoved\n";
+			warn "schema: $schema \%{dataPrev{$schema}}  after: " . Dumper(\%{$dataPrev{$schema}}) . "\n";
+		}
 
 		warn "==== calling parseMetrics() with \@prevMetrics schema: $schema \n";
 		my @prevMetrics=parseMetrics(\%{$dataPrev{$schema}});
