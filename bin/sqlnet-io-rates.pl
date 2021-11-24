@@ -3,6 +3,39 @@
 # Jared Still 2021
 # jkstill@gmail.com
 
+
+=head1 sqlnet-io-rates.pl
+
+ Capture SQLNet IO rates per user
+
+ Every interval-seconds, capture the current SQLNet IO data from v$sesstat
+
+ Compare the data to the previous snapshot of the data to derive the amount per session.
+
+ This cannot be completely accurate, as sessions may disconnect between intervals.
+
+  When a session logs off between intervals, we do not know if there was any IO performed, as there is no current data for that session.
+
+  When a session logs on during the interval, we can assume the current data for the session is the amount of IO
+
+  When a session is logged on during both the begin interval time (T1) and the end interval time (T2), then
+  the amount of IO is the T2 data - T1 data.
+
+  USER  SID  T1 LoggedOn T2 LoggedOn T1 Bytes to Client   T2 Bytes to Client  Interval Bytes to Client 
+ =====  ===  =========== =========== ==================   =================   ========================
+  SOE    11     Y          N              100                                      Unknown
+  SOE    12     Y          Y              100                 200                      100
+  SOE    13     N          Y                                  100                      100
+    
+
+  Data is lost when a session disconnects between T1 and T2.
+
+  example:
+
+    ./sqlnet-io-rates.pl  -database oraserver/orcl.jks.com -username scott -password tiger -interval-seconds 60 -iterations 7200
+
+=cut
+
 use warnings;
 use strict;
 use FileHandle;
@@ -27,7 +60,8 @@ my $iterations=0;
 my $intervalSeconds=60;
 my $showExeTime=0;
 my $secondsFormat='04.6f';
-my $warnings=0;
+my $DEBUG=0;
+my $help=0;
 
 Getopt::Long::GetOptions(
 	\%optctl,
@@ -39,24 +73,13 @@ Getopt::Long::GetOptions(
 	"interval-seconds=i" => \$intervalSeconds,
 	"show-exe-time!" => \$showExeTime,
 	"sysdba!",
-	"warnings!"  => \$warnings,
-	"local-sysdba!",
+	"debug!"  => \$DEBUG,
+	"local-sysdba!" => \$localSysdba,
 	"sysoper!",
-	"z","h","help");
+	"z|h|help" => \$help );
 
-=head1
 
-if ($warnings) { 
-	warn "warnings: $warnings\n";
-	exit 1;
-} else { 
-	print "warnings: $warnings\n";
-	exit 0;
-}
-
-=cut
-
-$localSysdba=$optctl{'local-sysdba'};
+usage(0) if $help;
 
 if ($localSysdba) {
 	$username=undef;
@@ -211,7 +234,7 @@ for (my $i=0; $i<$iterations; $i++) {
 	$elapsed = tv_interval($startTime, $endTime);
 
 	$timestamp = getTimestamp();
-	warn "-->> Timestamp: $timestamp\n";
+	debug( "-->> Timestamp: $timestamp\n");
 
 	while(my @ary = $sth->fetchrow_array) {
 		#print join(',',@ary) . "\n";
@@ -219,36 +242,34 @@ for (my $i=0; $i<$iterations; $i++) {
 		push @{$dataCurr{$ary[0]}->{"$ary[1]:$ary[2]"}}, $ary[4]; # sid:serial, value
 	}
 
-	warn "************************************************************\n";
+	debug( "************************************************************\n");
 	my %dataDiff=();
 
-	warn '****>> %dataCurr: ' . Dumper(\%dataCurr) . "\n";
+	debug( '****>> %dataCurr: ' . Dumper(\%dataCurr) . "\n");
 
 	foreach my $schema ( keys %dataCurr ) {
 
 		# compare SID:SERIAL keys
-		# when calculating diffs, only use those from prev that are still logged on
-		# ie. sid:serial that are still in current data
 
 		my @currKeys = map { $_ } keys %{$dataCurr{$schema}};
 		#print "schema: $schema: " . '@currKeys: ' . Dumper(\@currKeys);
-		warn "schema: $schema: " . '@currKeys: ' . Dumper(\@currKeys);
-		warn "schema: $schema \%{dataPrev{$schema}} before: " . Dumper(\%{$dataPrev{$schema}}) . "\n";
+		debug( "schema: $schema: " . '@currKeys: ' . Dumper(\@currKeys));
+		debug( "schema: $schema \%{dataPrev{$schema}} before: " . Dumper(\%{$dataPrev{$schema}}) . "\n");
 
 		my $prevSetsAdded=0;
 		# create a set of zero value metrics  for sessions that started after the previous interval time
 		# this way, the full value of sqlnet io bytes will be counted for the interval, for this session
 		foreach my $key (@currKeys) {
 			if (! exists $dataPrev{$schema}{$key}) {
-				warn "==>> Adding empty set to \$dataPrev{$schema}->{$key}\n";
+				debug( "==>> Adding empty set to \$dataPrev{$schema}->{$key}\n");
 				$dataPrev{$schema}->{$key} = \@emptyMetrics;
 				$prevSetsAdded++;
 			}
 		}
 
 		if ( $prevSetsAdded ) {
-			warn "schema: $schema - empty sets added to prev metrics: $prevSetsAdded\n";
-			warn "schema: $schema \%{dataPrev{$schema}}  after " . Dumper(\%{$dataPrev{$schema}}) . "\n";
+			debug( "schema: $schema - empty sets added to prev metrics: $prevSetsAdded\n");
+			debug( "schema: $schema \%{dataPrev{$schema}}  after " . Dumper(\%{$dataPrev{$schema}}) . "\n");
 		}
 
 		# remove metrics from the previous data set, when they do not appear in the current set
@@ -256,34 +277,33 @@ for (my $i=0; $i<$iterations; $i++) {
 		# to record any metrics from them
 		# this amounts to lost data
 		my @prevKeys = map { $_ } keys %{$dataPrev{$schema}};
-		warn "schema: $schema: " . '@prevKeys: ' . Dumper(\@prevKeys);
-		warn "schema: $schema \%{dataCurr{$schema}} before: " . Dumper(\%{$dataCurr{$schema}}) . "\n";
+		debug( "schema: $schema: " . '@prevKeys: ' . Dumper(\@prevKeys));
+		debug( "schema: $schema \%{dataCurr{$schema}} before: " . Dumper(\%{$dataCurr{$schema}}) . "\n");
 
 		my $prevSetsRemoved=0;
 		foreach my $key (@prevKeys) {
 			if (! exists $dataCurr{$schema}{$key}) {
-				warn "==>> Removing set from \$dataCurr{$schema}->{$key}\n";
+				debug( "==>> Removing set from \$dataCurr{$schema}->{$key}\n");
 				delete $dataPrev{$schema}->{$key};
 				$prevSetsRemoved++;
 			}
 		}
 
 		if ( $prevSetsRemoved ) {
-			warn "schema: $schema - sets removed from prev metrics: $prevSetsRemoved\n";
-			warn "schema: $schema \%{dataPrev{$schema}}  after: " . Dumper(\%{$dataPrev{$schema}}) . "\n";
+			debug( "schema: $schema - sets removed from prev metrics: $prevSetsRemoved\n");
+			debug( "schema: $schema \%{dataPrev{$schema}}  after: " . Dumper(\%{$dataPrev{$schema}}) . "\n");
 		}
 
-		warn "==== calling parseMetrics() with \@prevMetrics schema: $schema \n";
+		debug( "==== calling parseMetrics() with \@prevMetrics schema: $schema \n");
 		my @prevMetrics=parseMetrics(\%{$dataPrev{$schema}});
-		warn '=== returned @prevMetrics FULL: ' . Dumper(\@prevMetrics);
+		debug( '=== returned @prevMetrics FULL: ' . Dumper(\@prevMetrics));
 		
-		warn "==== calling parseMetrics() with \@currMetrics schema: $schema \n";
+		debug( "==== calling parseMetrics() with \@currMetrics schema: $schema \n");
 		my @currMetrics=parseMetrics(\%{$dataCurr{$schema}});
-		warn '=== returned @currMetrics FULL ' . Dumper(\@currMetrics);
+		debug( '=== returned @currMetrics FULL ' . Dumper(\@currMetrics));
 		
 		my $metricsError = 0;
 		foreach my $el ( 0 .. $maxMetricEl ) {
-			#push @{$dataDiff{$schema}}, $metrics[$el] - @{$dataPrev{$schema}}[$el];
 			# if prev not defined, then all sessions for the user logged on during the sleep
 			# if curr is defined, then the final metric == curr
 			
@@ -302,12 +322,12 @@ for (my $i=0; $i<$iterations; $i++) {
 		}
 
 		if ($metricsError) {
-			warn "##########################################\n";
-			warn "## previous metric GT current metric\n";
-			warn "Schema: $schema\n";
-			warn 'Value dump: ' . Dumper($dataDiff{$schema}) . "\n";
-			warn '@prevMetrics: ' . Dumper(\@prevMetrics);
-			warn '@currMetrics ' . Dumper(\@currMetrics);
+			debug( "##########################################\n");
+			debug( "## previous metric GT current metric\n");
+			debug( "Schema: $schema\n");
+			debug( 'Value dump: ' . Dumper($dataDiff{$schema}) . "\n");
+			debug( '@prevMetrics: ' . Dumper(\@prevMetrics));
+			debug( '@currMetrics ' . Dumper(\@currMetrics));
 		}
 
 
@@ -346,9 +366,9 @@ sub parseMetrics {
 
 	my @prevMetrics=();
 
-	warn "======== parseMetrics() =============\n";
-	warn '-->> $metricsHash: ' . Dumper($metricsHash) . "\n";
-	warn '-->> @keysToUse ' . Dumper(\@keysToUse) . "\n";
+	debug( "======== parseMetrics() =============\n");
+	debug( '-->> $metricsHash: ' . Dumper($metricsHash) . "\n");
+	debug( '-->> @keysToUse ' . Dumper(\@keysToUse) . "\n");
 
 	foreach my $sidSerial ( @keysToUse ) {
 		#print "sidSerial: $sidSerial\n";
@@ -361,10 +381,10 @@ sub parseMetrics {
 		# 
 		if ($@) {
 
-			warn "error in parseMetrics()\n";
-			warn 'SID-SERIAL: ' . "$sidSerial\n";
-			warn '$metricsHash: ' . Dumper($metricsHash);
-			warn '@keysToUse ' . Dumper(@keysToUse);
+			debug( "error in parseMetrics()\n");
+			debug( 'SID-SERIAL: ' . "$sidSerial\n");
+			debug( '$metricsHash: ' . Dumper($metricsHash));
+			debug( '@keysToUse ' . Dumper(@keysToUse));
 
 			#die;
 
@@ -373,7 +393,7 @@ sub parseMetrics {
 			$prevMetrics[$el] += $workMetrics[$el];
 		}
 	}
-	warn '-->> @prevMetrics: ' . Dumper(\@prevMetrics);
+	debug( '-->> @prevMetrics: ' . Dumper(\@prevMetrics));
 	return @prevMetrics;
 };
 
@@ -408,12 +428,11 @@ usage: $basename
 								-database
 								-username
 								-password
-  -warnings           print some warnings to STDERR
+  -debug           print debug messages to STDERR
   example:
 
-  $basename -database dv07 -username scott -password tiger -sysdba
 
-  $basename -local-sysdba
+  $basename  -database oraserver\/orcl.abc.com -username scott -password tiger -interval-seconds 60 -iterations 7200
 
 /;
 	exit $exitVal;
@@ -447,3 +466,12 @@ sub trapCtlC {
 	die;
 
 }
+
+sub debug {
+	return unless $DEBUG;
+	my $msg = join(' ', @_);
+
+	warn $msg . "\n";
+	return;
+}
+
