@@ -1,3 +1,7 @@
+
+col username format a15
+col logon_time format a30
+
 select
    sess.username, sess.sid, sess.serial#,
    name.name name,
@@ -17,6 +21,6 @@ where
       ,'bytes sent via SQL*Net to client'
       ,'bytes sent via SQL*Net to dblink'
    )
-and sess.sid = 34 --and sess.serial# = 18799
+--and sess.sid = 34 --and sess.serial# = 18799
 order by sess.username, name.name
 /
