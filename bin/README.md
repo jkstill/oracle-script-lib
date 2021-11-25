@@ -508,7 +508,7 @@ sample output
 Get the rates of network IO from v$sesstat
 
 ```text
-$ ./sqlnet-io-rates.pl -database orcl -username jkstill -password XXX -iterations 30 -interval-seconds 5
+$ ./sqlnet-io-rates.pl -database orcl -username scott -password XXX -iterations 30 -interval-seconds 5
 timestamp,elapsed,schema,client roundtrips,dblink roundtrips,bytes from client,bytes from dblink,bytes to client,bytes to dblink
 2021-11-16 00:33:30,5.007873,SCOTT,7,0,3850,0,4830,0
 2021-11-16 00:33:30,5.007873,SOE,144,0,17060,0,8104,0
