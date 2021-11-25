@@ -300,38 +300,6 @@ for (my $i=0; $i<$iterations; $i++) {
 		my @currMetrics=parseMetrics(\%{$dataCurr{$schema}});
 		debug( '=== returned @currMetrics FULL ' . Dumper(\@currMetrics));
 		
-#  this metricError section can be removed when the test run completes without any negative metrics values
-
-		my $metricsError = 0;
-		foreach my $el ( 0 .. $maxMetricEl ) {
-			# if prev not defined, then all sessions for the user logged on during the sleep
-			# if curr is defined, then the final metric == curr
-			
-			# Note: I do not believe these next two lines with 'defined' are still necessary
-			# if curr not defined, then all sessions for the user logged off during the sleep
-			# if prev is defined, then the final metric negative - 0-prev
-			my $prevMetric = defined $prevMetrics[$el] ? $prevMetrics[$el] : 0;
-			my $currMetric = defined $currMetrics[$el] ? $currMetrics[$el] : 0;
-			#
-
-			if (  $prevMetric > $currMetric ) {
-				$metricsError = 1;
-			}
-
-			push @{$dataDiff{$schema}}, $currMetric - $prevMetric;
-		}
-
-		if ($metricsError) {
-			debug( "##########################################\n");
-			debug( "## previous metric GT current metric\n");
-			debug( "Schema: $schema\n");
-			debug( 'Value dump: ' . Dumper($dataDiff{$schema}) . "\n");
-			debug( '@prevMetrics: ' . Dumper(\@prevMetrics));
-			debug( '@currMetrics ' . Dumper(\@currMetrics));
-		}
-
-#  this metricError section can be removed when the test run completes without any negative metrics values
-
 	}
 
 	# splice in timestamp and elapsed
