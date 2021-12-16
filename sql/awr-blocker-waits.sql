@@ -32,6 +32,7 @@ set echo off heading on feedback on
 set linesize 200 trimspool on
 set pagesize 60
 
+set tab off
 col blocking_sql_id format a12 head 'BLOCKING|SQL_ID'
 col session_id format 999999 head 'SID'
 col event format a40 head 'EVENT'

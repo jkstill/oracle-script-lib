@@ -39,6 +39,7 @@ $  perl -e 'print 1415053318 & 0xFFFF, "\n"'
 
 @get_date_range
 
+set tab off
 -- d_date_format set by get_date_range.sql
 
 with waits as (

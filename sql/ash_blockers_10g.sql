@@ -43,6 +43,7 @@ col event_name format a40 head 'EVENT NAME'
 set line 200 trimspool on
 set pagesize 60
 
+set tab off
 
 -- d_date_format set by get_date_range.sql
 
