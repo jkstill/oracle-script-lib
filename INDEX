@@ -306,6 +306,7 @@ PARAMETERS:
 @getallparm.sql:  get parameters including hidden
 @getparm.sql: get parameters
 @parm-hist-diff.sql: show difference in parameters from AWR
+@parameter-compare.sql: compare parameters between two databases
 @showallparm.sql: Show all database parameters, including .hidden. parameters
 @showparm.sql: Show database parameters
 @showparmchanges.sql: show parameters that have changed - uses AWR

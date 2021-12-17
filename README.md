@@ -310,6 +310,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getallparm.sql'>getallparm.sql</a> - get parameters including hidden
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getparm.sql'>getparm.sql</a> - get parameters
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/parm-hist-diff.sql'>parm-hist-diff.sql</a> - show difference in parameters from AWR
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/parameter-compare.sql'>parameter-compare.sql</a> - compare parameters between two databases
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showallparm.sql'>showallparm.sql</a> - Show all database parameters, including .hidden. parameters
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showparm.sql'>showparm.sql</a> - Show database parameters
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showparmchanges.sql'>showparmchanges.sql</a> - show parameters that have changed - uses AWR
