@@ -25,7 +25,7 @@ This could be enhanced by considering _underscore parameters.
 
 I did not do that, as this was first used on AWS RDS, direct access to the necessary tables is not available
 
-Date is writting to a CSV file, parameter-compare.csv
+Data is written to a CSV file, parameter-compare.csv
 
 */
 
