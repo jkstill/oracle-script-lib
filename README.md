@@ -688,5 +688,11 @@
 <pre>
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/xmldb-status.sql'>xmldb-status.sql</a> - check status of XMLDB
 </pre>
+<h3>X$ Tables: Some reporting on Oracle Internal Tables</h3>
+<pre>
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/x-dollar/xdesc-all.sql'>x-dollar/xdesc-all.sql</a> - generate a report of all X$ tables and columns
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/x-dollar/xdesc.sql'>x-dollar/xdesc.sql</a> - lookup the columns for an X$ table and show relevant info
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/x-dollar/README.md'>x-dollar/README.md</a> - X$ Readme
+</pre>
 </body>
 </html>

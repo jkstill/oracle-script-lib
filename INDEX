@@ -686,6 +686,14 @@ XML: Scripts for use with XML and or XMLDB
 
 @xmldb-status.sql: check status of XMLDB
 
+X$ Tables: Some reporting on Oracle Internal Tables
+
+@x-dollar/xdesc-all.sql: generate a report of all X$ tables and columns
+@x-dollar/xdesc.sql: lookup the columns for an X$ table and show relevant info
+@x-dollar/README.md: X$ Readme
+
+
+
 #################
 
 
