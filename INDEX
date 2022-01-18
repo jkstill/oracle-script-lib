@@ -168,6 +168,7 @@ WAITS/LOCKS/LATCHES and PERFORMANCE:
 @sesswaitu73.sql: sesswaitu for 73
 @sesswaitu10g.sql: sesswaitu for 10g
 @sesswaitu_112.sql: sesswaitu for 11.2
+@snapper.sql: Tanel Poder script extraordinaire
 @dba_kgllock.sql: show waiters/blockers on library cache locks.
 @libcachepin_waits.sql: if there are waits on Library Cache Pin in v$session_wait this script will show what the waits are for, and which session is causing them
 @mystat.sql: query v$mystat

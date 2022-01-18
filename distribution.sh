@@ -22,10 +22,10 @@ done
 
 # no longer getting snapper due to licensing - does not allow public distribution
 # get current version of snapper from Tanel Poder
-#wget http://blog.tanelpoder.com/files/scripts/snapper.sql
+wget http://blog.tanelpoder.com/files/scripts/snapper.sql
 #wget http://blog.tanelpoder.com/files/scripts/snapper4.sql
 # remove old backup copies of snapper that were created by wget - keep one available
-#rm -f snapper.sql.[2-9]
+rm -f snapper.sql.[2-9]
 #rm -f snapper4.sql.[2-9]
 
 
