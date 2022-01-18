@@ -172,6 +172,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sesswaitu73.sql'>sesswaitu73.sql</a> - sesswaitu for 73
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sesswaitu10g.sql'>sesswaitu10g.sql</a> - sesswaitu for 10g
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sesswaitu_112.sql'>sesswaitu_112.sql</a> - sesswaitu for 11.2
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/snapper.sql'>snapper.sql</a> - Tanel Poder script extraordinaire
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dba_kgllock.sql'>dba_kgllock.sql</a> - show waiters/blockers on library cache locks.
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/libcachepin_waits.sql'>libcachepin_waits.sql</a> - if there are waits on Library Cache Pin in v$session_wait this script will show what the waits are for, and which session is causing them
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/mystat.sql'>mystat.sql</a> - query v$mystat
