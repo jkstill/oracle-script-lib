@@ -455,6 +455,7 @@ INSTANCE and/or DATABASE:
 @colcomm.sql: show columns in common between a set of tables in a CSV list
 @csv-split.sql: Demo of using recursive subfactored query to split CSV list from sqlplus command line
 @csv-split-2.sql: Demo of using regular expressions to conver a CSV list to rows - both SQL and PL/SQL
+@csv-split-bind.sql: Demo of passing a comma delimited variable into an IN clause of a SELECT statement
 @iot_segments.sql: show segments for IOT objects. These are actually index segments
 @db_corrupt.sql: report on corrupt database blocks and objects
 @dba_dependencies.sql: find all dependencies for owner/object
