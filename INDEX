@@ -673,6 +673,8 @@ MEMORY: Memory Settings and/or Advisors
 
 METRICS: Metrics reported by oracle - v$sysmetric, v$sysmetric_history ...
 
+@cpu-bucket-histogram.sql: histogram of number of minutes per CPU usage values
+@cpu-minute-histogram.sql: histogram of CPU by minute for a single instance
 @metric-names.sql: detail of metrics reported along with collection intervals
 @os-load.sql: OS Load as reported by oracle for past hour
 

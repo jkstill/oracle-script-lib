@@ -676,6 +676,8 @@
 </pre>
 <h3>METRICS: Metrics reported by oracle - v$sysmetric, v$sysmetric_history ...</h3>
 <pre>
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/cpu-bucket-histogram.sql'>cpu-bucket-histogram.sql</a> - histogram of number of minutes per CPU usage values
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/cpu-minute-histogram.sql'>cpu-minute-histogram.sql</a> - histogram of CPU by minute for a single instance
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/metric-names.sql'>metric-names.sql</a> - detail of metrics reported along with collection intervals
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/os-load.sql'>os-load.sql</a> - OS Load as reported by oracle for past hour
 </pre>
