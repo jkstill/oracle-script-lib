@@ -1,8 +1,9 @@
 
 -- loghist-csv.sql
--- Jared Still  jkstill@gmail.com
+-- Jared Still still@pythian.com jkstill@gmail.com
 -- dump archive log history, with timing, to CSV
 
+-- floor() is used in the SQL due to an odd rounding error that occasionally occurs
 
 set pause off
 set echo off
@@ -39,7 +40,7 @@ with lograw as (
       ,lc.thread#
       ,lc.first_change#
       ,lc.first_time
-      ,lc.first_time - lag(lc.first_time,1) over(order by sequence#) time_since_switch
+		,lc.first_time - lag(lc.first_time,1) over(partition by inst_id,thread# order by sequence#) time_since_switch
    from gv$log_history lc
 ),
 loghist as (
@@ -64,7 +65,7 @@ select
    ||','|| to_char(a.next_time,'yyyy-mm-dd hh24:mi:ss')
    ||','|| h.time_to_switch
    ||','|| to_char(a.completion_time,'yyyy-mm-dd hh24:mi:ss')
-   ||','|| (a.completion_time - a.next_time) * 86400
+   ||','|| floor((a.completion_time - a.next_time) * 86400)
    ||','|| a.blocks * block_size
 from loghist h
    , gv$archived_log a
