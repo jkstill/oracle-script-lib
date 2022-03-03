@@ -99,7 +99,7 @@ select
 	, decode(i.ini_trans,null,t.ini_trans,i.ini_trans) ini_trans
 	, decode(i.max_trans,null,t.max_trans,i.max_trans) max_trans
 from itlwaits w
-dba_objects o on o.object_id  = w.current_obj#
+join dba_objects o on o.object_id  = w.current_obj#
 left outer join dba_indexes i on i.owner = o.owner
 	and i.index_name = o.object_name
 left outer join dba_tables t on t.owner = o.owner
