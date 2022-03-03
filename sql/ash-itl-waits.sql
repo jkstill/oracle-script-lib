@@ -41,9 +41,15 @@ $  perl -e 'print 1415053318 & 0xFFFF, "\n"'
 --@get_date_range
 
 col owner format a15
+col object format a30
+col object_type format a10
 col index_name format a30
+col table_name format a30
 col lockmode format a20
 col event_name format a40 head 'EVENT NAME'
+col sql_id format a13
+col instance_number format 9999 head 'INST'
+
 set line 200 trimspool on
 set pagesize 60
 
@@ -80,21 +86,24 @@ itlwaits as (
 	where w.lockname = 'TX'
 		and lockmode = 4 -- ITL
 		-- in this case just interested in indexes
-		and w.event_name = 'enq: TX - index contention'
+		--and w.event_name = 'enq: TX - index contention'
 	group by w.instance_number, w.event_name, w.sql_id, current_obj#
 )
 select 
 	w.instance_number
 	, w.sql_id
 	, w.itl_wait_count
-	, i.owner
-	, i.index_name
-	, i.ini_trans
-	, i.max_trans
+	, decode(i.owner,null,t.owner,i.owner) owner
+	, o.object_type
+	, decode(i.index_name,null,t.table_name,i.index_name) object
+	, decode(i.ini_trans,null,t.ini_trans,i.ini_trans) ini_trans
+	, decode(i.max_trans,null,t.max_trans,i.max_trans) max_trans
 from itlwaits w
-join dba_objects o on o.object_id  = w.current_obj#
-join dba_indexes i on i.owner = o.owner
+left outer join dba_objects o on o.object_id  = w.current_obj#
+left outer join dba_indexes i on i.owner = o.owner
 	and i.index_name = o.object_name
+left outer join dba_tables t on t.owner = o.owner
+	and t.table_name = o.object_name
 order by w.itl_wait_count
 /
 

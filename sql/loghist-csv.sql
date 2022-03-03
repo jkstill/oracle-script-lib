@@ -25,13 +25,13 @@ set newpage 1
 
 set pages 0 lines 200 term on feed off 
 
-col rpt_name new_value rpt_name
+col rpt_name new_value rpt_name noprint
 
-select 'loghist-' || name || to_char(sysdate,'yyyymmdd-hh24miss') || '.csv' rpt_name from v$database;
+-- output to file controlled from loghist-csv.sh
+--select 'loghist-' || name || to_char(sysdate,'yyyymmdd-hh24miss') || '.csv' rpt_name from v$database;
+--spool &rpt_name
 
-spool &rpt_name
-
-prompt instance, first_time, next_time, time_to_switch, completion_time, arch_write_time, bytes
+prompt instance,thread#,sequence#,first_time,next_time,time_to_switch,completion_time,arch_write_time,bytes
 
 with lograw as (
    select
@@ -60,6 +60,7 @@ select
 )
 select
    h.inst_id
+   ||','|| a.thread#
    ||','|| a.sequence#
    ||','|| to_char(h.first_time,'yyyy-mm-dd hh24:mi:ss')
    ||','|| to_char(a.next_time,'yyyy-mm-dd hh24:mi:ss')
@@ -79,6 +80,6 @@ where a.inst_id = h.inst_id
 order by 1
 /
 
-spool off
+--spool off
 
 

@@ -25,7 +25,7 @@ col username format a10
 col event format a30
 col p1text format a10
 col p1 format 99999999999
-col p2text format a12
+col p2text format a15
 col p2 format 99999999999
 col wait_time format 999999 head 'WAIT|TIME'
 col seconds_in_wait format 999999 head 'SECONDS|IN|WAIT'
@@ -34,6 +34,7 @@ col seq format 999999 head 'SEQ'
 col seconds_waited format 99.9990
 col state format a16
 col wait_time_micro format 99,999,999 head 'WAIT|TIME|MICRO'
+col sql_id format a13
 
 break on username skip 1 on event
 
