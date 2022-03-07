@@ -237,6 +237,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get-binds.sql'>get-binds.sql</a> - get bind values from dba_hist_sqlbind
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getsql-awr.sql'>getsql-awr.sql</a> - call with sql_id to get SQL text from AWR
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/osstat-cpu.sql'>osstat-cpu.sql</a> - dump OS CPU metrics to CSV file
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pdb-awr-enable.sql'>pdb-awr-enable.sql</a> - enable AWR snapshots in a PDB
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/plan-counts-force.sql'>plan-counts-force.sql</a> - count of plans matched with force_matching_signature
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/resize-ops-metric-awr.sql'>resize-ops-metric-awr.sql</a> - Look back through AWR for excessive SGA resize operations before ORA-4031 occurs
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/resize-ops-metric.sql'>resize-ops-metric.sql</a> - Look in gv$memory_resize_ops for excessive SGA resize operations before ORA-4031 occurs
@@ -420,6 +421,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/autotask_task.sql'>autotask_task.sql</a> - show dba_autotask_task
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/autotask_window_clients.sql'>autotask_window_clients.sql</a> - show dba_autotask_window_clients
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/autotask_window_hist.sql'>autotask_window_hist.sql</a> - show dba_autotask_window_history
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/cdb_sched_jobs.sql'>cdb_sched_jobs.sql</a> - show all scheduler jobs from CDB Root Level
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dba_sched_jobs.sql'>dba_sched_jobs.sql</a> - show dba_scheduler_jobs
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dba_sched_jobs_hist.sql'>dba_sched_jobs_hist.sql</a> - show scheduler jobs history
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/opthist.sql'>opthist.sql</a> - show values of dba_stats prefs from the source table
@@ -683,8 +685,9 @@
 </pre>
 <h3>CDB-PDB: Scripts that are specific to Container and Pluggable databases</h3>
 <pre>
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pdb-modifiable-params-dump.sql'>pdb-modifiable-params-dump.sql</a> - Dump the parameters from v$system_parameter on the CDB
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pdb-modifiable-params-dump.sql'>pdb-modifiable-params-dump.sql</a> - Dump the parameters from v$system_parameter that can be modified on a PDB
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/cdb_sched_jobs.sql'>cdb_sched_jobs.sql</a> - show all scheduler jobs from CDB Root Level
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pdb-awr-enable.sql'>pdb-awr-enable.sql</a> - enable AWR snapshots in a PDB
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pdb-violations.sql'>pdb-violations.sql</a> - show sqlpatch violations for PDBs
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show_container.sql'>show_container.sql</a> - display the current container database name
 </pre>

@@ -232,6 +232,7 @@ AWR/ASH:
 @get-binds.sql: get bind values from dba_hist_sqlbind
 @getsql-awr.sql: call with sql_id to get SQL text from AWR
 @osstat-cpu.sql: dump OS CPU metrics to CSV file
+@pdb-awr-enable.sql: enable AWR snapshots in a PDB
 @plan-counts-force.sql: count of plans matched with force_matching_signature
 @resize-ops-metric-awr.sql: Look back through AWR for excessive SGA resize operations before ORA-4031 occurs
 @resize-ops-metric.sql: Look in gv$memory_resize_ops for excessive SGA resize operations before ORA-4031 occurs
@@ -417,6 +418,7 @@ AUTOTASK and SCHEDULER:
 @autotask_task.sql: show dba_autotask_task
 @autotask_window_clients.sql: show dba_autotask_window_clients
 @autotask_window_hist.sql: show dba_autotask_window_history
+@cdb_sched_jobs.sql: show all scheduler jobs from CDB Root Level
 @dba_sched_jobs.sql: show dba_scheduler_jobs
 @dba_sched_jobs_hist.sql: show scheduler jobs history
 @opthist.sql: show values of dba_stats prefs from the source table
@@ -681,8 +683,9 @@ METRICS: Metrics reported by oracle - v$sysmetric, v$sysmetric_history ...
 
 CDB-PDB: Scripts that are specific to Container and Pluggable databases
 
-@pdb-modifiable-params-dump.sql: Dump the parameters from v$system_parameter on the CDB
+@pdb-modifiable-params-dump.sql: Dump the parameters from v$system_parameter that can be modified on a PDB
 @cdb_sched_jobs.sql: show all scheduler jobs from CDB Root Level
+@pdb-awr-enable.sql: enable AWR snapshots in a PDB
 @pdb-violations.sql: show sqlpatch violations for PDBs
 @show_container.sql: display the current container database name
 
