@@ -137,6 +137,7 @@ IO:
 EVENTS:
 
 @my-events.sql: display session stats
+@event-names: display wait_class, name and parameters from v$event_name
 @set_events.sql: various methods of generating trace and dump info with events
 @sysevent_begin.sql: Beginning snapshot of system events
 @sysevent_end.sql: Ending snapshot of system events
@@ -452,6 +453,7 @@ INSTANCE and/or DATABASE:
 @archived_log_hist_matrix.sql: show matrix of archive log switch activity for 2 weeks
 @archived_log_sums.sql: show rolling total of archive logs for N days
 @archived_log_dest.sql: show archived log destination and status for active destinations
+@bct_bufsz.sql: current size of block change tracking buffers
 @bct_status.sql: show status of block change tracking file
 @blocker-tree.sql: show tree of blocked sessions
 @colcomm.sql: show columns in common between a set of tables in a CSV list

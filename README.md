@@ -141,6 +141,7 @@
 <h3>EVENTS:</h3>
 <pre>
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/my-events.sql'>my-events.sql</a> - display session stats
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/event-names'>event-names</a> - display wait_class, name and parameters from v$event_name
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/set_events.sql'>set_events.sql</a> - various methods of generating trace and dump info with events
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sysevent_begin.sql'>sysevent_begin.sql</a> - Beginning snapshot of system events
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sysevent_end.sql'>sysevent_end.sql</a> - Ending snapshot of system events
@@ -456,6 +457,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/archived_log_hist_matrix.sql'>archived_log_hist_matrix.sql</a> - show matrix of archive log switch activity for 2 weeks
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/archived_log_sums.sql'>archived_log_sums.sql</a> - show rolling total of archive logs for N days
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/archived_log_dest.sql'>archived_log_dest.sql</a> - show archived log destination and status for active destinations
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/bct_bufsz.sql'>bct_bufsz.sql</a> - current size of block change tracking buffers
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/bct_status.sql'>bct_status.sql</a> - show status of block change tracking file
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/blocker-tree.sql'>blocker-tree.sql</a> - show tree of blocked sessions
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/colcomm.sql'>colcomm.sql</a> - show columns in common between a set of tables in a CSV list
