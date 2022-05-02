@@ -3,9 +3,12 @@ set pause off
 set echo off
 set timing off
 set trimspool on
-set feed on term on echo off verify off
-set line 80
-set pages 24 head on
+set feed on
+set term on
+set verify off
+set linesize 80
+set pagesize 100
+set head on
 
 clear col
 clear break

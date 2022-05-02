@@ -1,6 +1,6 @@
 
 @@clears
-set line 130
+set line 200 trimspool on
 col USERNAME format a15;
 col TABLESPACE format a15;
 col TMP_SPACE format a10;

@@ -9,7 +9,7 @@ set recsep off
 set verify off
 set pause off echo off
 set trimspool on
-set line 90
+set line 200 trimspool on
 
 col grantee format a10 head 'GRANTEE'
 col privtype heading 'PRIV|TYPE'
