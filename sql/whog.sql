@@ -1,6 +1,6 @@
 
 
--- who2g.sql
+-- whog.sql
 -- jared still
 -- jkstill@gmail.com
 -- show user sessions for all instances
