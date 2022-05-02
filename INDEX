@@ -290,6 +290,7 @@ USERS LOGGED ON:
 @get-curr-ospid.sql: get the server PID for your current session
 @idle-sessions-histogram.sql: show histogram of idle users in 10 second buckets
 @who.sql: summary of users logged on
+@whog.sql: summary of users for all instances, includes pdbs
 @who2.sql: detailed info of users logged on
 @who2s.sql: shortened version of who2.sql which is called by some scripts
 @who2g.sql: detailed info of users logged on - includes all instances and PDB for 12c
