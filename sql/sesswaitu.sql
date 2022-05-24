@@ -33,7 +33,7 @@ col state format a20
 col seq format 999999 head 'SEQ'
 col seconds_waited format 99.9990
 col state format a16
-col wait_time_micro format 99,999,999 head 'WAIT|TIME|MICRO'
+col wait_time_micro format 999,999,999,999 head 'WAIT|TIME|MICRO'
 col sql_id format a13
 
 break on username skip 1 on event

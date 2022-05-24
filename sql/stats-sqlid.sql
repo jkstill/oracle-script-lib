@@ -66,11 +66,12 @@ set pagesize 100
 set linesize 300 trimspool on
 
 col partition_start format a6 head 'PSTART'
+col sql_id format a13
 col partition_stop format a6 head 'PSTOP'
 col owner format a20
-col table_name format a61
-col index_name format a61
-col phv format a44 wrap
+col table_name format a30
+col index_name format a40
+col phv format a43 wrap
 col last_analyzed format a19
 col stale_stats format a3 head 'STL'
 col num_rows format 99,999,999,999
@@ -79,7 +80,7 @@ col partition_position format 999999 head 'PP'
 
 break on sql_id skip 1
 
---spool stats-sqlid.txt
+spool stats-sqlid.txt
 
 with objects as (
 	-- extra inline view is to eliminate duplicates in listagg()
@@ -198,9 +199,9 @@ order by sql_id
 	, partition_position nulls first
 /
 
---spool off
+spool off
 
---ed stats-sqlid.txt
+ed stats-sqlid.txt
 
 undef 1 2
 

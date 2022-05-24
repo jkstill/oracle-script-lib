@@ -20,8 +20,8 @@ begin
 end;
 /
 
-set line 180
-col plan_table_output format a180
+set linesize 220 trimspool on
+col plan_table_output format a220
 
 prompt SQL_ID: sqlidvar
 
