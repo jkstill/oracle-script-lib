@@ -9,10 +9,10 @@
 -- also builds a control file and a parameter file for SQL*LOADER
 --
 -- 08/28/2000 - use defined variables for quotes and commas
--- 
+--
 -- This is the script found in Oracle Note 1050919.6
 -- I wrote it in 1994, and it has been enhanced a few times since then
--- 
+--
 
 
 set trimspool on
@@ -69,7 +69,7 @@ spool ./_dump.sql
 select 'set trimspool on' from dual;
 select 'set termout off pages 0 heading off echo off' from dual;
 select 'set line ' || :linelen from dual;
-select 'spool ' || lower('&dumptable') || '.txt' from dual;
+select 'spool ' || lower(replace('&dumptable$','$','')) || '.txt' from dual;
 
 select 'select' || chr(10) from dual;
 
