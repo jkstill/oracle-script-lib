@@ -589,6 +589,7 @@
 </pre>
 <h3>SECURITY:</h3>
 <pre>
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/audit-actions.sql'>audit-actions.sql</a> - A query of dba_audit_trail
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dba_table_audit_flags.sql'>dba_table_audit_flags.sql</a> - This script creates a SYS view against SYS tables to show all audit flags per object
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show_session_audit.sql'>show_session_audit.sql</a> - select all from session_audit - lots of rows
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getaud.sql'>getaud.sql</a> - generate SQL to reproduce current audit settings
