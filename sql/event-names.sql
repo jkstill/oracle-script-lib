@@ -5,6 +5,8 @@
 
 /*
 
+use with v$session_event, v$system_event
+
 SYSDBA#  select distinct(wait_class) from v$event_name order by 1;
 
 WAIT_CLASS
