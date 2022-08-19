@@ -317,6 +317,7 @@ PARAMETERS:
 @showparmdrvr.sql: Performs the query for getparm.sql and showparm.sql
 @showallparm73drvr.sql: Performs the query for getallparm.sql and showallparm.sql
 @showallparm12c-drvr.sql: 12c update for all parms
+@sys-context-all.sql: display all sys_context values as of 12c
 @parms_dump_csv.sql: Dump all parameters to CSV file
 @parms_dump_12c_csv.sql: Dump all 12c parameters to CSV file
 @sys_context.sql: Demo of getting oracle environment settings with sys_context function
