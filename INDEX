@@ -81,6 +81,7 @@ RDBMS UTILITIES:
 @gen_fk_to-11.2.sql: generate existing foreign key constraints from data dictionary
 @gen_list_data_with_dual.sql: generating test data with dual
 @gen_list_data_without_dual.sql: generating test data without dual - 10g+
+@generate-sql.sql: generate a basic SELECT SQL script for owner and table
 @gethostname.sql: get the hostname into substitution variable uhostname
 @getinstance.sql: get the instance name into substitution variable uinstance
 @getinstanceowner.sql: get the instance owner into substitution variable uinstanceowner
