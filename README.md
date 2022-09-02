@@ -65,6 +65,8 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/bootstrap_objects.sql'>bootstrap_objects.sql</a> - report objects from sys.bootstrap$ that may not be modified
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/cluster-factor.sql'>cluster-factor.sql</a> - get the clustering factor for all indexes on a table
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/cores.sql'>cores.sql</a> - report the number of CPU cores from v$osstat - may be subject to hyperthreading
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dirs.sql'>dirs.sql</a> - show database directories
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dp-filter-types.sql'>dp-filter-types.sql</a> - show the filters available for expdp/impdp
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dual_data_gen.sql'>dual_data_gen.sql</a> - generate many rows from dual - uses a lot of memory for large number of rows
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dual_data_gen-low-mem.sql'>dual_data_gen-low-mem.sql</a> - generate many rows without using extra PGA
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dbms_log.sql'>dbms_log.sql</a> - use sys.dbms_log to write to log and trace files - 11.2.0.4+
@@ -135,6 +137,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/io_tbs.sql'>io_tbs.sql</a> - Shows snapshot of IO stats based on io_begin and io_end
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/lfsdiag.sql'>lfsdiag.sql</a> - diagnose logfile sync
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ioweight.sql'>ioweight.sql</a> - Show IO per tablespace order by weight
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/redo-per-second.sql'>redo-per-second.sql</a> - show min/max redo per second
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/redo-rate.sql'>redo-rate.sql</a> - show real time redo rates at the db level
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showtrans.sql'>showtrans.sql</a> - Show current transactions with IO
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/trans_per_hour.sql'>trans_per_hour.sql</a> - Transactions per hour with statistics per xaction
@@ -166,6 +169,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getstatu2.sql'>getstatu2.sql</a> - Get stats from v$sesstat
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/latch_statsa.sql'>latch_statsa.sql</a> -
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/latch_statss.sql'>latch_statss.sql</a> -
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/segment-statistics.sql'>segment-statistics.sql</a> - show statistics from v$segment_statistics for an object
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sesswait.sql'>sesswait.sql</a> - Show waits from v$session_wait - calls the script linked or copied to sesswaitu.sql
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sesswaitu.sql'>sesswaitu.sql</a> - script called by sesswait.sql - copy or softlink one of the following sesswait scripts
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sesswaitug.sql'>sesswaitug.sql</a> - similar to sesswaitu.sql, but uses gv$ views
@@ -294,6 +298,7 @@
 <pre>
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get-curr-ospid.sql'>get-curr-ospid.sql</a> - get the server PID for your current session
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/idle-sessions-histogram.sql'>idle-sessions-histogram.sql</a> - show histogram of idle users in 10 second buckets
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sess-optimizer-env.sql'>sess-optimizer-env.sql</a> - show the optimizer environment for a session
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/who.sql'>who.sql</a> - summary of users logged on
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/whog.sql'>whog.sql</a> - summary of users for all instances, includes pdbs
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/who2.sql'>who2.sql</a> - detailed info of users logged on
@@ -505,6 +510,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/log-switch-histogram.sql'>log-switch-histogram.sql</a> - Display a histogram of redo log switch times
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/loghistory_8.sql'>loghistory_8.sql</a> - show archive logs with time between switches
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/loghist-csv.sql'>loghist-csv.sql</a> - dump history of archive logs (with timing) to CSV
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/obj-privs.sql'>obj-privs.sql</a> - object privileges granted per object
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/oracle-exclude-demo.sql'>oracle-exclude-demo.sql</a> - demonstrate the use of oracle-exclude-inline.sql
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/oracle-exclude-inline.sql'>oracle-exclude-inline.sql</a> - inline version of oracle-exclude-schema.sql
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/oracle-exclude-schema.sql'>oracle-exclude-schema.sql</a> - show schemas owned by Oracle and are frequently excluded from queries

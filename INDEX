@@ -1,5 +1,4 @@
 
-
 TUNING: scripts to aid with tuning
 
 @dbms-sqltune-sqlid.sql: call with SQL_ID, create and execute a tuning task, run the report
@@ -60,6 +59,8 @@ RDBMS UTILITIES:
 @bootstrap_objects.sql: report objects from sys.bootstrap$ that may not be modified
 @cluster-factor.sql: get the clustering factor for all indexes on a table
 @cores.sql: report the number of CPU cores from v$osstat - may be subject to hyperthreading
+@dirs.sql: show database directories
+@dp-filter-types.sql: show the filters available for expdp/impdp
 @dual_data_gen.sql: generate many rows from dual - uses a lot of memory for large number of rows
 @dual_data_gen-low-mem.sql: generate many rows without using extra PGA
 @dbms_log.sql: use sys.dbms_log to write to log and trace files - 11.2.0.4+
@@ -131,6 +132,7 @@ IO:
 @io_tbs.sql: Shows snapshot of IO stats based on io_begin and io_end
 @lfsdiag.sql: diagnose logfile sync
 @ioweight.sql: Show IO per tablespace order by weight
+@redo-per-second.sql: show min/max redo per second
 @redo-rate.sql: show real time redo rates at the db level
 @showtrans.sql: Show current transactions with IO
 @trans_per_hour.sql: Transactions per hour with statistics per xaction
@@ -162,6 +164,7 @@ WAITS/LOCKS/LATCHES and PERFORMANCE:
 @getstatu2.sql: Get stats from v$sesstat
 @latch_statsa.sql: 
 @latch_statss.sql: 
+@segment-statistics.sql: show statistics from v$segment_statistics for an object
 @sesswait.sql: Show waits from v$session_wait - calls the script linked or copied to sesswaitu.sql
 @sesswaitu.sql: script called by sesswait.sql - copy or softlink one of the following sesswait scripts
 @sesswaitug.sql: similar to sesswaitu.sql, but uses gv$ views
@@ -290,6 +293,7 @@ USERS LOGGED ON:
 
 @get-curr-ospid.sql: get the server PID for your current session
 @idle-sessions-histogram.sql: show histogram of idle users in 10 second buckets
+@sess-optimizer-env.sql: show the optimizer environment for a session
 @who.sql: summary of users logged on
 @whog.sql: summary of users for all instances, includes pdbs
 @who2.sql: detailed info of users logged on
@@ -501,6 +505,7 @@ INSTANCE and/or DATABASE:
 @log-switch-histogram.sql: Display a histogram of redo log switch times
 @loghistory_8.sql: show archive logs with time between switches
 @loghist-csv.sql: dump history of archive logs (with timing) to CSV
+@obj-privs.sql: object privileges granted per object
 @oracle-exclude-demo.sql: demonstrate the use of oracle-exclude-inline.sql
 @oracle-exclude-inline.sql: inline version of oracle-exclude-schema.sql
 @oracle-exclude-schema.sql: show schemas owned by Oracle and are frequently excluded from queries
