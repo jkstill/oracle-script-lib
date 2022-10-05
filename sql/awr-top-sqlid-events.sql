@@ -23,7 +23,7 @@ col p1text format a20
 col p1 format a25
 col p2text format a20
 
-spool aws-top-sqlid-event.log
+spool awr-top-sqlid-event.log
 
 break on begin_interval skip 1
 
@@ -103,4 +103,4 @@ order by begin_interval, event_count desc
 
 spool off
 
-ed aws-top-sqlid-event.log
+ed awr-top-sqlid-event.log
