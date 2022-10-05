@@ -18,10 +18,14 @@
 set linesize 300 trimspool on
 set pagesize 60
 
-col event format a30
+col event format a40
 col p1text format a20
 col p1 format a25
 col p2text format a20
+col begin_interval format a19
+col instance_number format 9999 head 'INST|NUM'
+col sql_id format a13
+col event_rank format 99999 head 'EVENT|RANK'
 
 spool awr-top-sqlid-event.log
 
