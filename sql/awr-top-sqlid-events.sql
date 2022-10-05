@@ -5,7 +5,7 @@
 --
 -- 2016-11-02 jkstill - added enqueue decode
 
--- requires https://github.com/jkstill/oracle-script-lib/blob/master/get_date_range.sql
+-- requires https://github.com/jkstill/oracle-script-lib/blob/master/sql/get_date_range.sql
 
 -- prompt for date range
 @get_date_range
@@ -15,7 +15,7 @@
 
 @clears 
 
-set linesize 200 trimspool on
+set linesize 300 trimspool on
 set pagesize 60
 
 col event format a30
