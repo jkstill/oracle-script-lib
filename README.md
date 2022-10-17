@@ -401,6 +401,8 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show_os_stats_hist.sql'>show_os_stats_hist.sql</a> - Show stats from wri$_optstat_aux_history
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/stale-stats.sql'>stale-stats.sql</a> - Show stats that are stale and at least 7 days old
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/stat.sql'>stat.sql</a> - get stats info for a table - see comments
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/stat-names.sql'>stat-names.sql</a> - show names from v$statname, with aggegrated class descriptions
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/stat-classes.sql'>stat-classes.sql</a> - show the class descriptions for all distinct class values in v$statname
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/stats_config.sql'>stats_config.sql</a> - set the schema name for some stats scripts
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/stats_mod.sql'>stats_mod.sql</a> - show stats being gathered by gather_table_stats.sql
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/stats_prefs.sql'>stats_prefs.sql</a> - show dbms_stats preferences

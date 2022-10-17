@@ -10,7 +10,7 @@ clear break
 clear compute
 
 
-set linesize 250 trimspool on
+set linesize 400 trimspool on
 set pagesize 200
 
 select *

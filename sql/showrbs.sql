@@ -1,18 +1,18 @@
 
-set pagesize 60 line 155
+set pagesize 100 line 200 trimspool on
 --spool rbs.lis
 
 column TABLESPACE format a15;
-column SEG_NAME format a12 head 'NAME';
+column SEG_NAME format a25 head 'NAME';
 column INIT format 999999999;
 column NEXT format 999999999;
 column MIN format 999;
-column MAX format 999;
+column MAX format 99999;
 column STATUS format a8;
 col waits format 999,999
 col gets format 99,999,999
 col shrinks format 99999 head 'SHRINKS'
-col wraps format 9999 head 'WRAPS'
+col wraps format 9,999,999 head 'WRAPS'
 col optsize format 999999999 head 'OPTIMAL'
 col extents format 999 head 'EXT'
 col extends format 99999 head 'EXTNDS'
@@ -40,6 +40,7 @@ select
 	d.status STATUS
 from dba_rollback_segs d, v$rollstat v
 where v.usn(+) = d.segment_id
+	and v.status != 'OFFLINE'
 order by tablespace_name, seg_name
 /
 

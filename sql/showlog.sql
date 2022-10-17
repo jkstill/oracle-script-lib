@@ -1,6 +1,6 @@
 
 @clears
-set line 140
+set line 200 trimspool on
 set pagesize 60
 
 col member format a50 head 'MEMBER'

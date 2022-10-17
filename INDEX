@@ -396,6 +396,8 @@ DATABASE STATISTICS - DBMS_STATS - OPTIMIZER:
 @show_os_stats_hist.sql: Show stats from wri$_optstat_aux_history
 @stale-stats.sql: Show stats that are stale and at least 7 days old
 @stat.sql: get stats info for a table - see comments
+@stat-names.sql: show names from v$statname, with aggegrated class descriptions
+@stat-classes.sql: show the class descriptions for all distinct class values in v$statname
 @stats_config.sql: set the schema name for some stats scripts
 @stats_mod.sql:  show stats being gathered by gather_table_stats.sql
 @stats_prefs.sql: show dbms_stats preferences
