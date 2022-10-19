@@ -11,6 +11,12 @@ https://docs.oracle.com/en/database/oracle/oracle-database/21/refrn/statistics-d
 
 */
 
+col class format 99999
+col name format a70
+col class_names format a80
+
+set pagesize 100
+set linesize 200 trimspool on
 
 with class_values as
 -- generate the stat class numbers and names
