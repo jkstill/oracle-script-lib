@@ -246,6 +246,9 @@ AWR/ASH:
 @rowlock-sqlid-counts.sql: count of rowlock enq by sqlid
 @rowlock-sqlid-hist.sql: count of rowlock enq by sqlid - full outer join on snapshot
 @session-history.sql: history of sessions from dba_hist_active_sess_history
+@sql-cache-mem-user.sql: Show current SQL Cache Memory per user
+@sql-cache-mem.sql: Show current SQL Cache Memory per SQL_ID
+@sql-cache-projections.sql: Project SQL Cache memory for 20% and 50% increase based on current usage
 @sql-count-ash.sql: count of number rows in ASH per SQL_ID
 @sql-counts-fms.sql: get sql_id where there are 2+ sql_id per force_matching signature from ASH/AWR
 @sql-counts.sql: simple count of SQL_ID from ASH/ASH

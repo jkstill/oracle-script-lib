@@ -252,6 +252,9 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/rowlock-sqlid-counts.sql'>rowlock-sqlid-counts.sql</a> - count of rowlock enq by sqlid
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/rowlock-sqlid-hist.sql'>rowlock-sqlid-hist.sql</a> - count of rowlock enq by sqlid - full outer join on snapshot
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/session-history.sql'>session-history.sql</a> - history of sessions from dba_hist_active_sess_history
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-cache-mem-user.sql'>sql-cache-mem-user.sql</a> - Show current SQL Cache Memory per user
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-cache-mem.sql'>sql-cache-mem.sql</a> - Show current SQL Cache Memory per SQL_ID
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-cache-projections.sql'>sql-cache-projections.sql</a> - Project SQL Cache memory for 20% and 50% increase based on current usage
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-count-ash.sql'>sql-count-ash.sql</a> - count of number rows in ASH per SQL_ID
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-counts-fms.sql'>sql-counts-fms.sql</a> - get sql_id where there are 2+ sql_id per force_matching signature from ASH/AWR
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-counts.sql'>sql-counts.sql</a> - simple count of SQL_ID from ASH/ASH
