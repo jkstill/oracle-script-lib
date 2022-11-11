@@ -704,6 +704,7 @@ CDB-PDB: Scripts that are specific to Container and Pluggable databases
 @cdb_sched_jobs.sql: show all scheduler jobs from CDB Root Level
 @pdb-awr-enable.sql: enable AWR snapshots in a PDB
 @pdb-violations.sql: show sqlpatch violations for PDBs
+@setc.sql: automatically or interactively set 'do alter session set container'
 @show_container.sql: display the current container database name
 
 XML: Scripts for use with XML and or XMLDB
