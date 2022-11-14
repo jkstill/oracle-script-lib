@@ -419,6 +419,7 @@
 </pre>
 <h3>AUTOTASK and SCHEDULER:</h3>
 <pre>
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/all_sched_jobs.sql'>all_sched_jobs.sql</a> - show all_scheduler_jobs
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/autotask_auto_stats_disable.sql'>autotask_auto_stats_disable.sql</a> - disable automatic stats gathering
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/autotask_auto_stats_enable.sql'>autotask_auto_stats_enable.sql</a> - enable automatic stats gathering
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/autotask_auto_tasks_disable.sql'>autotask_auto_tasks_disable.sql</a> - disable all autotasks
@@ -700,6 +701,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/cpu-minute-histogram.sql'>cpu-minute-histogram.sql</a> - histogram of CPU by minute for a single instance
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/metric-names.sql'>metric-names.sql</a> - detail of metrics reported along with collection intervals
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/os-load.sql'>os-load.sql</a> - OS Load as reported by oracle for past hour
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sysmetric-cpu-seconds.sql'>sysmetric-cpu-seconds.sql</a> - get CPU seconds per second (maxval) from dba hist sysmetrics
 </pre>
 <h3>CDB-PDB: Scripts that are specific to Container and Pluggable databases</h3>
 <pre>

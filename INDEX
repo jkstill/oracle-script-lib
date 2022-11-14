@@ -415,6 +415,7 @@ DATABASE STATISTICS - DBMS_STATS - OPTIMIZER:
 
 AUTOTASK and SCHEDULER:
 
+@all_sched_jobs.sql: show all_scheduler_jobs
 @autotask_auto_stats_disable.sql: disable automatic stats gathering
 @autotask_auto_stats_enable.sql: enable automatic stats gathering
 @autotask_auto_tasks_disable.sql: disable all autotasks
@@ -696,6 +697,7 @@ METRICS: Metrics reported by oracle - v$sysmetric, v$sysmetric_history ...
 @cpu-minute-histogram.sql: histogram of CPU by minute for a single instance
 @metric-names.sql: detail of metrics reported along with collection intervals
 @os-load.sql: OS Load as reported by oracle for past hour
+@sysmetric-cpu-seconds.sql: get CPU seconds per second (maxval) from dba hist sysmetrics
 
 
 CDB-PDB: Scripts that are specific to Container and Pluggable databases
