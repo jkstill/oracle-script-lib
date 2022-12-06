@@ -1,5 +1,5 @@
 
--- sysmetric-cpu-seconds.sql
+-- sysmetric-cpu-seconds-summary.sql
 -- Jared Still 2022
 
 col snap_id format 9999999
