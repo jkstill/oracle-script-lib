@@ -697,7 +697,8 @@ METRICS: Metrics reported by oracle - v$sysmetric, v$sysmetric_history ...
 @cpu-minute-histogram.sql: histogram of CPU by minute for a single instance
 @metric-names.sql: detail of metrics reported along with collection intervals
 @os-load.sql: OS Load as reported by oracle for past hour
-@sysmetric-cpu-seconds.sql: get CPU seconds per second (maxval) from dba hist sysmetrics
+@sysmetric-cpu-seconds-hist.sql: get CPU seconds per second from dba_hist_sysmetrics_history (all metrics)
+@sysmetric-cpu-seconds-summary.sql: get CPU seconds per second (maxval) from dba hist sysmetrics ("System Metrics Long Duration" only)
 
 
 CDB-PDB: Scripts that are specific to Container and Pluggable databases

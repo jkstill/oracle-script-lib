@@ -701,7 +701,8 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/cpu-minute-histogram.sql'>cpu-minute-histogram.sql</a> - histogram of CPU by minute for a single instance
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/metric-names.sql'>metric-names.sql</a> - detail of metrics reported along with collection intervals
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/os-load.sql'>os-load.sql</a> - OS Load as reported by oracle for past hour
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sysmetric-cpu-seconds.sql'>sysmetric-cpu-seconds.sql</a> - get CPU seconds per second (maxval) from dba hist sysmetrics
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sysmetric-cpu-seconds-hist.sql'>sysmetric-cpu-seconds-hist.sql</a> - get CPU seconds per second from dba_hist_sysmetrics_history (all metrics)
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sysmetric-cpu-seconds-summary.sql'>sysmetric-cpu-seconds-summary.sql</a> - get CPU seconds per second (maxval) from dba hist sysmetrics ("System Metrics Long Duration" only)
 </pre>
 <h3>CDB-PDB: Scripts that are specific to Container and Pluggable databases</h3>
 <pre>

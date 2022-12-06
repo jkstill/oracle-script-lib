@@ -35,17 +35,18 @@ set echo off pause off timing off time off
 set feedback off 
 set pagesize 0
 
-spool cpu-seconds-hist.csv
-prompt snap_id,instance_number,begin_time,end_time,elapsed_seconds,cpu_seconds,sum_squares,sess_id_count
+spool sysmetric-cpu-seconds-summary.csv
+prompt snap_id,instance_number,con_id,begin_time,end_time,elapsed_seconds,cpu_seconds,sum_squares,sess_id_count
 
 with cpu_data as (
 	select
 		snap_id
 		, instance_number
+		, con_id
 		, to_char(begin_time,'yyyy-mm-dd hh24:mi:ss') begin_time
 		, to_char(end_time,'yyyy-mm-dd hh24:mi:ss') end_time
 		, sum_squares
-		, ( end_time - begin_time) * 86400 elapsed_seconds -- these are dates, not timestamps
+		, round(( end_time - begin_time) * 86400,0) elapsed_seconds -- these are dates, not timestamps
 		, maxval / 100 cpu_seconds -- recorded in centiseconds
 		, metric_unit
 	from DBA_HIST_SYSMETRIC_SUMMARY
@@ -54,6 +55,7 @@ with cpu_data as (
 select
 	&use_std d.snap_id
 	&use_std , d.instance_number
+	&use_std , d.con_id
 	&use_std , d.begin_time
 	&use_std , d.end_time
 	&use_std , d.elapsed_seconds
@@ -63,6 +65,7 @@ select
 --
 	&use_csv d.snap_id
 	&use_csv ||','|| d.instance_number
+	&use_csv ||','|| d.con_id
 	&use_csv ||','|| d.begin_time
 	&use_csv ||','|| d.end_time
 	&use_csv ||','|| d.elapsed_seconds
