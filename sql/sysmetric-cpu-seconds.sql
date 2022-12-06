@@ -3,7 +3,7 @@
 -- Jared Still 2022
 
 col snap_id format 9999999
-col instance_number format 9999 'INST'
+col instance_number format 9999 head 'INST'
 col begin_time format a20
 col end_time format a20
 col elapsed_seconds format 99999 head 'ELAPSED|SECONDS'
@@ -20,7 +20,7 @@ def use_csv=''
 
 set term on
 set linesize 200 trimspool on
-title off
+ttitle off
 btitle off
 clear break
 set echo off pause off timing off time off
@@ -34,16 +34,16 @@ set echo off pause off timing off time off
 -- for CSV
 set feedback off 
 set pagesize 0
+
 spool cpu-seconds-hist.csv
 prompt snap_id,instance_number,begin_time,end_time,elapsed_seconds,cpu_seconds,sum_squares,sess_id_count
-
 
 with cpu_data as (
 	select
 		snap_id
 		, instance_number
-		, begin_time
-		, end_time
+		, to_char(begin_time,'yyyy-mm-dd hh24:mi:ss') begin_time
+		, to_char(end_time,'yyyy-mm-dd hh24:mi:ss') end_time
 		, sum_squares
 		, ( end_time - begin_time) * 86400 elapsed_seconds -- these are dates, not timestamps
 		, maxval / 100 cpu_seconds -- recorded in centiseconds
