@@ -2,6 +2,21 @@
 -- sysmetric-cpu-seconds-hist.sql
 -- Jared Still 2022
 
+/*
+
+Starting Oracle 12.2.0.1, changes were made that do not allow populating DBA_HIST_SYSMETRIC_HISTORY in a PDB.
+It will now be necessary to use DBA_HIST_CON_SYSMETRIC_SUMM.
+Currently I do not know in which versoin  DBA_HIST_CON_SYSMETRIC_SUMM is first availalble.
+
+It will probably be necessary to  add some logic for this.
+
+The use of DBA_HIST_SYSMETRIC_HISTORY is found in script in both `./aas` and `./cpu`'
+
+DBA_HIST_SYSMETRIC_SUMMARY Returning No Rows At PDB Level (Doc ID 2871248.1)
+DBA_HIST_SYSMETRIC_HISTORY Does Not Capture All Metrics (Doc ID 2724352.1)
+
+*/
+
 col snap_id format 9999999
 col instance_number format 9999 head 'INST'
 col begin_time format a20

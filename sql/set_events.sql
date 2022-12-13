@@ -29,6 +29,14 @@
 
 -- alter system set events '4020 trace name errorstack level 12, lifetime 5; name processstate level 2, lifetime 5';
 
+-- get a call stack 
+-- alter system set events '4020 trace name callstack level 2, lifetime 5; name processstate level 2, lifetime 5';
+-- alter system set events '4020 trace name callstack level 2, lifetime 5; name errorstack level 12, lifetime 5; name processstate level 2, lifetime 5';
+-- turn it off
+-- turn off each named stack or state
+-- alter system set events '4020 trace name callstack off; name errorstack off; name processstate off';
+
+
 -- #########################################################
 -- ## here's some test code to force the 6502 error and test
 -- ## to see if a trace is dumped
