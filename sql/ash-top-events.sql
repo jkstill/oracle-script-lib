@@ -9,6 +9,8 @@ break on inst_id skip 1
 set linesize 200 trimspool on
 set pagesize 100
 
+def event_rank_limit = 20
+
 spool ash-top-events.log
 
 prompt ==================================
@@ -16,7 +18,7 @@ prompt == ash-top-events.sql
 prompt ==================================
 
 prompt ==================================
-prompt == top 10 ASH by instance
+prompt == top &event_rank_limit ASH by instance
 prompt ==================================
 
 with rawdata as (
@@ -35,7 +37,7 @@ data as (
 			, rank() over (partition by inst_id order by inst_id, event_count desc) as event_rank
 		from rawdata
 	)
-	where event_rank <= 10
+	where event_rank <= &event_rank_limit
 )
 select *
 from data
@@ -43,7 +45,7 @@ from data
 
 
 prompt ==================================
-prompt == top 10 ASH cluster wide
+prompt == top &event_rank_limit ASH cluster wide
 prompt ==================================
 
 with data as (
@@ -55,7 +57,7 @@ with data as (
 )
 select *
 from data
-where rownum <= 10
+where rownum <= &event_rank_limit
 /
 
 spool off
