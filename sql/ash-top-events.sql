@@ -5,13 +5,25 @@
 -- jkstill@gmail.com
 
 
-break on inst_id skip 1
 set linesize 200 trimspool on
 set pagesize 100
 
+-- top N events to show
 def event_rank_limit = 20
 
-spool ash-top-events.log
+-- AWR
+--def data_source=dba_hist_active_sess_history
+--def instance_indicator=instance_number
+
+-- ASH
+def data_source=gv$active_session_history
+def instance_indicator=inst_id
+
+clear break
+break on &instance_indicator skip 1
+
+
+--spool ash-top-events.log
 
 prompt ==================================
 prompt == ash-top-events.sql
@@ -22,19 +34,19 @@ prompt == top &event_rank_limit ASH by instance
 prompt ==================================
 
 with rawdata as (
-   select distinct inst_id, event, count(*) over (partition by inst_id,event order by inst_id, event) event_count
-   from gv$active_session_history
+   select distinct &instance_indicator, event, count(*) over (partition by &instance_indicator,event order by &instance_indicator, event) event_count
+   from &data_source
    where event is not null
       and (event not in ('ges generic event' ))
    order by 3 desc
 ),
 data as (
-	select inst_id, event, event_count
+	select &instance_indicator, event, event_count
 	from (
-		select  inst_id
+		select  &instance_indicator
 			, event
 			, event_count
-			, rank() over (partition by inst_id order by inst_id, event_count desc) as event_rank
+			, rank() over (partition by &instance_indicator order by &instance_indicator, event_count desc) as event_rank
 		from rawdata
 	)
 	where event_rank <= &event_rank_limit
@@ -50,7 +62,7 @@ prompt ==================================
 
 with data as (
 	select distinct event, count(*) over (partition by event) event_count
-	from gv$active_session_history
+	from &data_source
 	where event is not null
 		and (event not in ('ges generic event' ))
 	order by 2 desc
@@ -60,5 +72,5 @@ from data
 where rownum <= &event_rank_limit
 /
 
-spool off
+--spool off
 
