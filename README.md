@@ -675,6 +675,13 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ts2e.sql'>ts2e.sql</a> - Convert oracle timestamp to epoch value
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ts2e-hires.sql'>ts2e-hires.sql</a> - Convert oracle timestamp to epoch value
 </pre>
+<h3>timezone specific:</h3>
+<pre>
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/na-std-timezones.sql'>na-std-timezones.sql</a> - get North America timezones
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/numeric-timezone-abbrev.sql'>numeric-timezone-abbrev.sql</a> - get all timezones with numeric abbreviation
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/timezone-abbrev.sql'>timezone-abbrev.sql</a> - get all timezone abbreviations and offsets
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/timezone-names.sql'>timezone-names.sql</a> - get all timezone abbreviations, names and offsets
+</pre>
 <h3>MEMORY: Memory Settings and/or Advisors</h3>
 <pre>
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/db_cache_advice.sql'>db_cache_advice.sql</a> - run db cache advisor

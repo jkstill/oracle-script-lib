@@ -669,6 +669,12 @@ DATES: Dates and Date Math
 @timestamp-types.sql: simple demo of timestamp data types via dump()
 @ts2e.sql: Convert oracle timestamp to epoch value
 @ts2e-hires.sql: Convert oracle timestamp to epoch value
+timezone specific:
+@na-std-timezones.sql: get North America timezones
+@numeric-timezone-abbrev.sql: get all timezones with numeric abbreviation
+@timezone-abbrev.sql: get all timezone abbreviations and offsets
+@timezone-names.sql: get all timezone abbreviations, names and offsets
+
 
 MEMORY: Memory Settings and/or Advisors
 
