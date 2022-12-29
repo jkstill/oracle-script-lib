@@ -709,12 +709,14 @@ METRICS: Metrics reported by oracle - v$sysmetric, v$sysmetric_history ...
 
 CDB-PDB: Scripts that are specific to Container and Pluggable databases
 
-@pdb-modifiable-params-dump.sql: Dump the parameters from v$system_parameter that can be modified on a PDB
+@cdb-containers-query.sql: Example of using the containers() clause to execute a query across all open PDBs
 @cdb_sched_jobs.sql: show all scheduler jobs from CDB Root Level
 @pdb-awr-enable.sql: enable AWR snapshots in a PDB
+@pdb-modifiable-params-dump.sql: Dump the parameters from v$system_parameter that can be modified on a PDB
 @pdb-violations.sql: show sqlpatch violations for PDBs
-@setc.sql: automatically or interactively set 'do alter session set container'
+@setc.sql: automatically or interactively do 'alter session set container'
 @show_container.sql: display the current container database name
+@show-pdbs.sql: Show the con_id and con_name for available PDBs
 
 XML: Scripts for use with XML and or XMLDB
 

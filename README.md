@@ -713,12 +713,14 @@
 </pre>
 <h3>CDB-PDB: Scripts that are specific to Container and Pluggable databases</h3>
 <pre>
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pdb-modifiable-params-dump.sql'>pdb-modifiable-params-dump.sql</a> - Dump the parameters from v$system_parameter that can be modified on a PDB
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/cdb-containers-query.sql'>cdb-containers-query.sql</a> - Example of using the containers() clause to execute a query across all open PDBs
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/cdb_sched_jobs.sql'>cdb_sched_jobs.sql</a> - show all scheduler jobs from CDB Root Level
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pdb-awr-enable.sql'>pdb-awr-enable.sql</a> - enable AWR snapshots in a PDB
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pdb-modifiable-params-dump.sql'>pdb-modifiable-params-dump.sql</a> - Dump the parameters from v$system_parameter that can be modified on a PDB
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pdb-violations.sql'>pdb-violations.sql</a> - show sqlpatch violations for PDBs
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/setc.sql'>setc.sql</a> - automatically or interactively set 'do alter session set container'
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/setc.sql'>setc.sql</a> - automatically or interactively do 'alter session set container'
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show_container.sql'>show_container.sql</a> - display the current container database name
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show-pdbs.sql'>show-pdbs.sql</a> - Show the con_id and con_name for available PDBs
 </pre>
 <h3>XML: Scripts for use with XML and or XMLDB</h3>
 <pre>
