@@ -5,10 +5,10 @@
 
 clear breaks
 set linesize 200 trimspool on
-sest pagesize 100
+set pagesize 100
 
 col tzname format a10
-col tzabbreb format a10
+col tzabbrev format a10
 col tzoffset format a7
 
 break on tzname skip 1

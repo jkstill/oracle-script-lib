@@ -91,6 +91,7 @@ RDBMS UTILITIES:
 @gettrcname.sql: get the name of the current sessions tracefile into substitution variable utracefile
 @hash-function.sql: create a PL/SQL package 'hash' containing digest functions using dbms_crypto
 @hwm-df.sql: Find the high water mark for each datafile and determine how much each file can be shrunk
+@oracle-data-types.sql: show oracle data types with id# and name
 @oradebug_doc.sql: dump the documentation for oradebug
 @print_table_2.sql: Tom Kytes print_table, but as an anonymous block
 @pt.sql: similar to Tom Kytes print_table, but no stored procedure required and better quoting

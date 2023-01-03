@@ -97,6 +97,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gettrcname.sql'>gettrcname.sql</a> - get the name of the current sessions tracefile into substitution variable utracefile
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/hash-function.sql'>hash-function.sql</a> - create a PL/SQL package 'hash' containing digest functions using dbms_crypto
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/hwm-df.sql'>hwm-df.sql</a> - Find the high water mark for each datafile and determine how much each file can be shrunk
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/oracle-data-types.sql'>oracle-data-types.sql</a> - show oracle data types with id# and name
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/oradebug_doc.sql'>oradebug_doc.sql</a> - dump the documentation for oradebug
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/print_table_2.sql'>print_table_2.sql</a> - Tom Kytes print_table, but as an anonymous block
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pt.sql'>pt.sql</a> - similar to Tom Kytes print_table, but no stored procedure required and better quoting
