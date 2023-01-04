@@ -6,11 +6,13 @@
 -- jkstill at gmail.com
 -- use the sys.odci*list data types
 -- requires 10g+
--- similar to data found in OH/rdbms/admin/cdobj.sql
+-- similar to data found in OH/rdbms/admin/cdobj.sql, dbmsany.sql, dbmstf.sql
 
-col data_type_name format a30 head 'DATA TYPE'
+col data_type_name format a60 head 'DATA TYPE'
 col data_type_id format 99999 head 'DATA|TYPE|ID'
-col date_data format a22
+
+set pagesize 100
+set linesize 200 trimspool on
 
 with data_types as
 (
@@ -53,6 +55,7 @@ with data_types as
 				, 'TIMESTAMP WITH LOCAL TIME ZONE'
 				, 'INTERVAL YEAR TO MONTH'
 				, 'INTERVAL DAY TO SECOND'
+				, 'INTERVAL DAY TO SECOND: AnyData - dbms_types package'
 				, 'PL/SQL RECORD'
 				, 'PL/SQL TABLE'
 				, 'PL/SQL BOOLEAN'
@@ -101,6 +104,7 @@ data_type_id as
 				, 231
 				, 182
 				, 183
+				, 190
 				, 250
 				, 251
 				, 252
