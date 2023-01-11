@@ -161,6 +161,7 @@
 <pre>
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/active_status.sql'>active_status.sql</a> - show which current active sessions are on CPU
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/cpu-killer.sql'>cpu-killer.sql</a> - max out a CPU. Do Not use in production!
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/extproc-sessions.sql'>extproc-sessions.sql</a> - show extproc information when sessions are waiting extproc processes
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/itl_waits.sql'>itl_waits.sql</a> - show itl waits - increase initrans
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/itl_waits_hist.sql'>itl_waits_hist.sql</a> - show itl waits history
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showlatch.sql'>showlatch.sql</a> - Show latches and stats

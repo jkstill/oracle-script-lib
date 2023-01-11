@@ -17,9 +17,9 @@ select *
 --from table(dbms_xplan.display_cursor( null,null,'ALL ALLSTATS LAST'))
 --
 -- show estimated and elapsed timings
-from table(dbms_xplan.display_cursor( null,null,'ALL ALLSTATS LAST'))
+--from table(dbms_xplan.display_cursor( null,null,'ALL ALLSTATS LAST'))
 -- shows outline data - query block names that may be used for hints
---from table(dbms_xplan.display_cursor( null,null,'ADVANCED LAST'))
+from table(dbms_xplan.display_cursor( null,null,'ADVANCED LAST ALLSTATS ALL'))
 --from table(dbms_xplan.display_cursor( null,null,'TYPICAL LAST'))
 /
 
