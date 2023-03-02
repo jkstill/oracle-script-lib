@@ -256,8 +256,10 @@ AWR/ASH:
 @sql-counts.sql: simple count of SQL_ID from ASH/ASH
 @sql-exe-events-ash.sql: show events per execution of SQL_ID in ASH
 @sql-exe-events-awr.sql: show events per execution of SQL_ID in AWR
-@sql-exe-times-ash.sql: stats and histograms of exucution times for a SQL_ID
-@sql-exe-times-awr.sql: stats and histograms of exucution times for a SQL_ID for past 30 days
+@sql-exe-times-ash-rpt.sql: ASH report of execution times for a SQL_ID
+@sql-exe-times-awr-rpt.sql: AWR report of execution times for a SQL_ID
+@sql-exe-times-ash.sql: stats and histograms of execution times for a SQL_ID
+@sql-exe-times-awr.sql: stats and histograms of execution times for a SQL_ID for past 30 days
 @sql-plans.sql: Show plans used by a selected SQL for a date and time range
 @sysmetric-history.sql: pivot to CSV for several metrics in dba_hist_sysmetric_history
 @top10-sql-ash.sql: get top (by count) sql statements from ASH
@@ -495,6 +497,7 @@ INSTANCE and/or DATABASE:
 @fktree.sql: Display a hierarchy of tables related by Foreign Key (new script - old one broken)
 @fktree-rcte.sql: Display a hierarchy of tables related by Foreign Key (RCTE Version - needs work - still broken)
 @fra_config.sql: show FRA location and size
+@get-missing-tablenames.sql: given a list of tables, determine if any are missing
 @getsql.sql: call with sql_id to get sql_fulltext
 @incarnations.sql: Show database incarnations
 @index-col-use-ratios.sql: Show ratio of table columns to columns indexed

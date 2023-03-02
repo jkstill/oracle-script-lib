@@ -12,7 +12,7 @@ col bg_description heading 'BG Description' format a50
 col sessions heading 'SESSIONS'
 col sid heading 'SID' format 99999
 col status heading 'STATUS' format a10
-col machine format a20 head 'MACHINE'
+col machine format a25 head 'MACHINE'
 col client_program format a20 head 'CLIENT PROGRAM'
 col server_program format a20 head 'SERVER PROGRAM'
 col spid format a5 head 'SRVR|PID'

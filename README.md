@@ -262,8 +262,10 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-counts.sql'>sql-counts.sql</a> - simple count of SQL_ID from ASH/ASH
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-exe-events-ash.sql'>sql-exe-events-ash.sql</a> - show events per execution of SQL_ID in ASH
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-exe-events-awr.sql'>sql-exe-events-awr.sql</a> - show events per execution of SQL_ID in AWR
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-exe-times-ash.sql'>sql-exe-times-ash.sql</a> - stats and histograms of exucution times for a SQL_ID
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-exe-times-awr.sql'>sql-exe-times-awr.sql</a> - stats and histograms of exucution times for a SQL_ID for past 30 days
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-exe-times-ash-rpt.sql'>sql-exe-times-ash-rpt.sql</a> - ASH report of execution times for a SQL_ID
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-exe-times-awr-rpt.sql'>sql-exe-times-awr-rpt.sql</a> - AWR report of execution times for a SQL_ID
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-exe-times-ash.sql'>sql-exe-times-ash.sql</a> - stats and histograms of execution times for a SQL_ID
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-exe-times-awr.sql'>sql-exe-times-awr.sql</a> - stats and histograms of execution times for a SQL_ID for past 30 days
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-plans.sql'>sql-plans.sql</a> - Show plans used by a selected SQL for a date and time range
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sysmetric-history.sql'>sysmetric-history.sql</a> - pivot to CSV for several metrics in dba_hist_sysmetric_history
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/top10-sql-ash.sql'>top10-sql-ash.sql</a> - get top (by count) sql statements from ASH
@@ -500,6 +502,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/fktree.sql'>fktree.sql</a> - Display a hierarchy of tables related by Foreign Key (new script - old one broken)
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/fktree-rcte.sql'>fktree-rcte.sql</a> - Display a hierarchy of tables related by Foreign Key (RCTE Version - needs work - still broken)
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/fra_config.sql'>fra_config.sql</a> - show FRA location and size
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get-missing-tablenames.sql'>get-missing-tablenames.sql</a> - given a list of tables, determine if any are missing
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getsql.sql'>getsql.sql</a> - call with sql_id to get sql_fulltext
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/incarnations.sql'>incarnations.sql</a> - Show database incarnations
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/index-col-use-ratios.sql'>index-col-use-ratios.sql</a> - Show ratio of table columns to columns indexed

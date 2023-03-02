@@ -22,6 +22,7 @@ from DBA_SCHEDULER_WINDOWS
 
 
 alter system set resource_manager_plan='' scope=both sid='*';
+alter system set resource_limit = FALSE scope=both sid='*';
 
 begin
 	for orec in (

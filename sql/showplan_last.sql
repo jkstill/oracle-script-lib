@@ -10,6 +10,7 @@ clear break
 clear compute
 
 
+col plan_table_output format a200
 set linesize 400 trimspool on
 set pagesize 200
 

@@ -8,6 +8,8 @@
 set linesize 200 trimspool on
 set pagesize 100
 
+col event format a60
+col event_count format 99,999,999,990
 -- top N events to show
 def event_rank_limit = 20
 

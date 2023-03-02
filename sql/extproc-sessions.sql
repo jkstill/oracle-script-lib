@@ -39,6 +39,10 @@ col sql_id format a13
 col p1text format a15
 col program format a30
 col wait_time_micro format 999,999,999,999
+col starttime format a20
+col state format a15
+col process format a9
+col agent_id format 9999999 head 'AGENT ID'
 
 select
 	s.username username,
