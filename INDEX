@@ -70,6 +70,7 @@ RDBMS UTILITIES:
 @dumptrace_on.sql: Turn off SQL_trace in a session
 @dumptracem_off.sql: Turn on SQL_trace for all sessions for a user
 @dumptracem_on.sql: Turn off SQL_trace for all sessions for a user
+@dup-user-profile.sql: Duplicate a user profile
 @dup_role.sql: Generate SQL script to duplicate a database role
 @dup_role_users.sql: Generate SQL script to duplicate all users of a role
 @dup_user.sql: Generate SQL script to duplicate a database user
