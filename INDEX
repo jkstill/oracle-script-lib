@@ -162,6 +162,7 @@ WAITS/LOCKS/LATCHES and PERFORMANCE:
 @itl_waits_hist.sql: show itl waits history
 @showlatch.sql: Show latches and stats
 @showlock.sql: Show locks in database with waiters and blockers
+@showlock2.sql: Replaces showlock.sql.  Works much better for recent (12c+) Oracle versions
 @getstat.sql: called by getstats.sql
 @getstats.sql: Get stats from v$sysstat
 @getstatu2.sql: Get stats from v$sesstat
@@ -217,6 +218,7 @@ AWR/ASH:
 @awr-itl-waits.sql: find ITL waits
 @awr-resource-limit.sql: history of processes and sessions from dba_hist_resource_limit
 @awr-set-retention.sql: Example of setting AWR retention and interval
+@awr-top-10-daily.sql: list top 10 events per day from AWR
 @awr-top-5-events.sql: similar to awr-top-events.sql.  reports on past 7 days, shows pct of time used
 @awr-top-events.sql: get the top events from AWR per instance for a date range
 @awr-top-sqlid-events.sql: get the top events from AWR per instance and SQL_ID for a date range
@@ -479,6 +481,7 @@ INSTANCE and/or DATABASE:
 @csv-split.sql: Demo of using recursive subfactored query to split CSV list from sqlplus command line
 @csv-split-2.sql: Demo of using regular expressions to conver a CSV list to rows - both SQL and PL/SQL
 @csv-split-bind.sql: Demo of passing a comma delimited variable into an IN clause of a SELECT statement
+@dice-roll.sql: Roll the dice a few times
 @iot_segments.sql: show segments for IOT objects. These are actually index segments
 @db_corrupt.sql: report on corrupt database blocks and objects
 @dba_dependencies.sql: find all dependencies for owner/object
@@ -499,6 +502,7 @@ INSTANCE and/or DATABASE:
 @fktree-rcte.sql: Display a hierarchy of tables related by Foreign Key (RCTE Version - needs work - still broken)
 @fra_config.sql: show FRA location and size
 @get-missing-tablenames.sql: given a list of tables, determine if any are missing
+@getsid.sql: Get current session SID via sys_context()
 @getsql.sql: call with sql_id to get sql_fulltext
 @incarnations.sql: Show database incarnations
 @index-col-use-ratios.sql: Show ratio of table columns to columns indexed
@@ -698,6 +702,7 @@ MEMORY: Memory Settings and/or Advisors
 @pga_workarea_hist.sql: history of active pga workarea
 @pgastat.sql: PGA stats from gv$pgastat
 @pgastat_hist.sql: PGA stats from dba_hist_pgastat
+@process-memory.sql: combined 2 external scripts to get memory report of v$process per session
 @sga_advice_selective.sql: reports on sga cache advice only if min_pct gains achieved
 @shared_pool_advice.sql: shared pool advisor
 @shared_pool_advice_selective.sql: reports on shared pool advice only if min_pct gains achieved

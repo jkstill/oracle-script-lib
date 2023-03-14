@@ -167,6 +167,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/itl_waits_hist.sql'>itl_waits_hist.sql</a> - show itl waits history
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showlatch.sql'>showlatch.sql</a> - Show latches and stats
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showlock.sql'>showlock.sql</a> - Show locks in database with waiters and blockers
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showlock2.sql'>showlock2.sql</a> - Replaces showlock.sql. Works much better for recent (12c+) Oracle versions
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getstat.sql'>getstat.sql</a> - called by getstats.sql
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getstats.sql'>getstats.sql</a> - Get stats from v$sysstat
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getstatu2.sql'>getstatu2.sql</a> - Get stats from v$sesstat
@@ -223,6 +224,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-itl-waits.sql'>awr-itl-waits.sql</a> - find ITL waits
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-resource-limit.sql'>awr-resource-limit.sql</a> - history of processes and sessions from dba_hist_resource_limit
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-set-retention.sql'>awr-set-retention.sql</a> - Example of setting AWR retention and interval
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-top-10-daily.sql'>awr-top-10-daily.sql</a> - list top 10 events per day from AWR
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-top-5-events.sql'>awr-top-5-events.sql</a> - similar to awr-top-events.sql. reports on past 7 days, shows pct of time used
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-top-events.sql'>awr-top-events.sql</a> - get the top events from AWR per instance for a date range
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-top-sqlid-events.sql'>awr-top-sqlid-events.sql</a> - get the top events from AWR per instance and SQL_ID for a date range
@@ -484,6 +486,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/csv-split.sql'>csv-split.sql</a> - Demo of using recursive subfactored query to split CSV list from sqlplus command line
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/csv-split-2.sql'>csv-split-2.sql</a> - Demo of using regular expressions to conver a CSV list to rows - both SQL and PL/SQL
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/csv-split-bind.sql'>csv-split-bind.sql</a> - Demo of passing a comma delimited variable into an IN clause of a SELECT statement
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dice-roll.sql'>dice-roll.sql</a> - Roll the dice a few times
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/iot_segments.sql'>iot_segments.sql</a> - show segments for IOT objects. These are actually index segments
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/db_corrupt.sql'>db_corrupt.sql</a> - report on corrupt database blocks and objects
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dba_dependencies.sql'>dba_dependencies.sql</a> - find all dependencies for owner/object
@@ -504,6 +507,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/fktree-rcte.sql'>fktree-rcte.sql</a> - Display a hierarchy of tables related by Foreign Key (RCTE Version - needs work - still broken)
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/fra_config.sql'>fra_config.sql</a> - show FRA location and size
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get-missing-tablenames.sql'>get-missing-tablenames.sql</a> - given a list of tables, determine if any are missing
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getsid.sql'>getsid.sql</a> - Get current session SID via sys_context()
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getsql.sql'>getsql.sql</a> - call with sql_id to get sql_fulltext
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/incarnations.sql'>incarnations.sql</a> - Show database incarnations
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/index-col-use-ratios.sql'>index-col-use-ratios.sql</a> - Show ratio of table columns to columns indexed
@@ -704,6 +708,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pga_workarea_hist.sql'>pga_workarea_hist.sql</a> - history of active pga workarea
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pgastat.sql'>pgastat.sql</a> - PGA stats from gv$pgastat
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pgastat_hist.sql'>pgastat_hist.sql</a> - PGA stats from dba_hist_pgastat
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/process-memory.sql'>process-memory.sql</a> - combined 2 external scripts to get memory report of v$process per session
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sga_advice_selective.sql'>sga_advice_selective.sql</a> - reports on sga cache advice only if min_pct gains achieved
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/shared_pool_advice.sql'>shared_pool_advice.sql</a> - shared pool advisor
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/shared_pool_advice_selective.sql'>shared_pool_advice_selective.sql</a> - reports on shared pool advice only if min_pct gains achieved
