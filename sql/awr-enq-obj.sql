@@ -60,7 +60,7 @@ select
 			'select * from ' || o.owner || '.' || o.object_name || ' where rowid = ''' ||	 dbms_rowid.rowid_create(1,h.current_obj#,h.current_file#,h.current_block#,h.current_row#) || ''''
 		when o.object_type = 'INDEX' then
 			'alter system dump datafile ' || h.current_file# || ' block ' || h.current_block#
-		else 'Not yet availalble for ' || o.object_type
+		else 'Not yet available for ' || o.object_type
 		end
 	else 'NA'
 	end my_sql
