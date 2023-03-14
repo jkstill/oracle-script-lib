@@ -198,7 +198,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/aas_history.sql'>aas_history.sql</a> - get history of Average Active Sessions
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash-all-events-5-pct.sql'>ash-all-events-5-pct.sql</a> - show events per SQL where the event consumes > 5% of db time for the execution of that SQL
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash-blocker-waits.sql'>ash-blocker-waits.sql</a> - find top level blockers in ASH
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash-enq-obj.sql'>ash-enq-obj.sql</a> - For all enq
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash-enq-obj.sql'>ash-enq-obj.sql</a> - For all enqueue events in ASH, aggregate on block#, generate SQL to Investigate hot blocks
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash-events.sql'>ash-events.sql</a> - simple filtered query on ASH events for a SQL_ID
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash-itl-waits.sql'>ash-itl-waits.sql</a> - show recent ITL waits
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ash-sessions.sql'>ash-sessions.sql</a> - frequency of sessions for a user
@@ -219,7 +219,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ashtop.sql'>ashtop.sql</a> - Tanel Poder script for top ASH events
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-blocker-waits.sql'>awr-blocker-waits.sql</a> - find top level blockers in AWR
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-cpu-stats.sql'>awr-cpu-stats.sql</a> - Report on sar like CPU stats from AWR
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-enq-obj.sql'>awr-enq-obj.sql</a> - For all enq
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-enq-obj.sql'>awr-enq-obj.sql</a> - For all enqueue events in AWR, aggregate on block#, generate SQL to Investigate hot blocks
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-export.sql'>awr-export.sql</a> - export AWR - useful for pre-migration work
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-get-retention.sql'>awr-get-retention.sql</a> - Display AWR retention and interval
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-hist-model-top10.sql'>awr-hist-model-top10.sql</a> - Show Top 10 Snapshots based on DB Time + DB CPU from DBA_HIST_SYS_TIME_MODEL
