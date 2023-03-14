@@ -192,7 +192,7 @@ AWR/ASH:
 @aas_history.sql: get history of Average Active Sessions
 @ash-all-events-5-pct.sql: show events per SQL where the event consumes > 5% of db time for the execution of that SQL
 @ash-blocker-waits.sql: find top level blockers in ASH
-@ash-enq-obj.sql: For all enq: events in ASH, aggregate on block#, generate SQL to Investigate hot blocks
+@ash-enq-obj.sql: For all enqueue events in ASH, aggregate on block#, generate SQL to Investigate hot blocks
 @ash-events.sql: simple filtered query on ASH events for a SQL_ID
 @ash-itl-waits.sql: show recent ITL waits
 @ash-sessions.sql: frequency of sessions for a user
@@ -213,7 +213,7 @@ AWR/ASH:
 @ashtop.sql: Tanel Poder script for top ASH events
 @awr-blocker-waits.sql: find top level blockers in AWR
 @awr-cpu-stats.sql: Report on sar like CPU stats from AWR
-@awr-enq-obj.sql: For all enq: events in AWR, aggregate on block#, generate SQL to Investigate hot blocks
+@awr-enq-obj.sql: For all enqueue events in AWR, aggregate on block#, generate SQL to Investigate hot blocks
 @awr-export.sql: export AWR - useful for pre-migration work
 @awr-get-retention.sql: Display AWR retention and interval
 @awr-hist-model-top10.sql: Show Top 10 Snapshots based on DB Time + DB CPU from DBA_HIST_SYS_TIME_MODEL
