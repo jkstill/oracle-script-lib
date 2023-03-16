@@ -2,6 +2,7 @@
 -- awr-enq-obj.sql
 -- show enqueue objects and sql to find the hot block
 -- Jared Still 2023
+-- currently filtered on enqueue waits
 
 set linesize 250 trimspool on
 set pagesize 100
@@ -11,10 +12,11 @@ col username format a20
 col my_sql format a100
 col sample_time format a25
 col object format a50
-col event format a30
-col row_count format 9,999,999 head 'ROW|COUNT'
+col event format a35
+col row_count format 9,999,999 head 'EVENT|COUNT'
 --col time_waited format a10 head 'SUM|TIME|WAITED'
 col time_waited format a10 head 'MAX|TIME|WAITED'
+col sql_id format a13
 
 with awrdata as (
 	select /*+ no_merge */	distinct
@@ -38,8 +40,8 @@ with awrdata as (
 			end time_waited
 	from dba_hist_active_sess_history
 	--where event = 'enq: IV -	 contention'
-	where event like 'enq: %'
-	and sql_id is not null
+	where sql_id is not null
+	and event like 'enq: %'
 	and sample_time >= cast(trunc(sysdate) - 14 as timestamp)
 )
 select
