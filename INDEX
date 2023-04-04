@@ -187,6 +187,7 @@ AWR/ASH:
 @aas-awr-calc.sql: dump AAS calculated from AWR to CSV file
 @aas-ash-calc.sql: report AAS calculated from ASH
 @aas-awr-pdb-calc.sql: calculate AAS per PDB from AWR data.  Cuz Oracle does not do it.
+@ash-sql-ops.sql: show the db operation per row in ASH for each sql, with elapsed time
 @aas-std.sql: dump AAS from dba_hist_sysmetric_history to CSV file
 @aas_hist_metrics.sql: get average active sessions along with CPU metrics
 @aas_history.sql: get history of Average Active Sessions
