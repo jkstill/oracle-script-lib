@@ -6,6 +6,7 @@
 -- pass the entire SQL to the script
 -- @print_table 'select * from dual'
 -- see http://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:4845523000346615725
+-- Jared Still - 2023 - added sorting of column names
 
 /*
 
@@ -43,6 +44,9 @@ PL/SQL procedure successfully completed.
 
 */
 
+-- a blank string selects sorted/unsorted
+def sorted=''
+def unsorted='--'
 
 prompt
 
@@ -55,6 +59,9 @@ DECLARE
 	l_status		  INTEGER;
 	l_descTbl dbms_sql.desc_tab;
 	l_colCnt NUMBER;
+	type sort_typ is table of integer index by varchar2(30);
+	sort_table sort_typ;
+	s_idx varchar2(50);
 PROCEDURE execute_immediate ( p_sql IN VARCHAR2)
 IS
 BEGIN
@@ -76,6 +83,12 @@ BEGIN
 	execute_immediate ( 'alter session set nls_date_format=''dd-mon-yyyy hh24:mi:ss'' ' ) ;
 	dbms_sql.parse ( l_theCursor, REPLACE ( '&1', '"', '''' ), dbms_sql.native ) ;
 	dbms_sql.describe_columns ( l_theCursor, l_colCnt, l_descTbl ) ;
+
+	FOR i IN 1 .. l_colCnt
+	LOOP
+		sort_table(l_descTbl(i).col_name) := i;
+	END LOOP;
+
 	FOR i IN 1 .. l_colCnt
 	LOOP
 		dbms_sql.define_column ( l_theCursor, i, l_columnValue, 4000 ) ;
@@ -83,12 +96,27 @@ BEGIN
 	l_status	:= dbms_sql.execute ( l_theCursor ) ;
 	WHILE ( dbms_sql.fetch_rows ( l_theCursor ) > 0 )
 	LOOP
-		FOR i IN 1 .. l_colCnt
+		s_idx := sort_table.first;
+		-- unsorted
+		&unsorted FOR i IN 1 .. l_colCnt
+		--sorted
+		&sorted WHILE s_idx IS NOT NULL
 		LOOP
-			dbms_sql.column_value ( l_theCursor, i, l_columnValue ) ;
-			p ( rpad ( l_descTbl ( i ) .col_name, 30 )
-			|| ': '
-			|| l_columnValue);
+			-- unsorted
+			&unsorted dbms_sql.column_value ( l_theCursor, i, l_columnValue ) ;
+			&unsorted p ( rpad ( l_descTbl ( i ).col_name, 30 )
+			&unsorted || ': '
+			&unsorted || l_columnValue);
+			-- unsorted
+
+			-- sorted
+			&sorted dbms_sql.column_value ( l_theCursor, sort_table(s_idx), l_columnValue ) ;
+			&sorted p ( rpad ( l_descTbl ( sort_table(s_idx) ) .col_name, 30 )
+			&sorted || ': '
+			&sorted || l_columnValue);
+			-- sorted
+
+			s_idx := sort_table.next(s_idx);		  
 		END LOOP;
 		dbms_output.put_line ( '-----------------' ) ;
 	END LOOP;
