@@ -7,6 +7,43 @@
 -- @print_table 'select * from dual'
 -- see http://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:4845523000346615725
 
+/*
+
+To simplify quoting, use double quotes for literals.
+
+The PL/SQL will replace the double quotes with single quotes before parsing
+
+SQL#  @print_table_2 'select * from v$archive_dest_status where status != "INACTIVE"'
+
+parse next
+DEST_ID                       : 1
+DEST_NAME                     : LOG_ARCHIVE_DEST_1
+STATUS                        : VALID
+TYPE                          : LOCAL
+DATABASE_MODE                 : OPEN
+RECOVERY_MODE                 : IDLE
+PROTECTION_MODE               : MAXIMUM PERFORMANCE
+DESTINATION                   : +FRA
+STANDBY_LOGFILE_COUNT         : 0
+STANDBY_LOGFILE_ACTIVE        : 0
+ARCHIVED_THREAD#              : 1
+ARCHIVED_SEQ#                 : 6000
+APPLIED_THREAD#               : 0
+APPLIED_SEQ#                  : 0
+ERROR                         :
+SRL                           : NO
+DB_UNIQUE_NAME                : NONE
+SYNCHRONIZATION_STATUS        : CHECK CONFIGURATION
+SYNCHRONIZED                  : NO
+GAP_STATUS                    :
+CON_ID                        : 0
+-----------------
+
+PL/SQL procedure successfully completed.
+
+*/
+
+
 prompt
 
 set feed on
