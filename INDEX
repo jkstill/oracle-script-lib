@@ -717,6 +717,8 @@ METRICS: Metrics reported by oracle - v$sysmetric, v$sysmetric_history ...
 @cpu-minute-histogram.sql: histogram of CPU by minute for a single instance
 @metric-names.sql: detail of metrics reported along with collection intervals
 @os-load.sql: OS Load as reported by oracle for past hour
+@sql-read-write-size.sql: get the read and write sizes per sql where write size > 0
+@sql-read-write-size-sql.sql: get the read and write sizes per sql, with sql_text, where write size > 0
 @sysmetric-cpu-seconds-hist.sql: get CPU seconds per second from dba_hist_sysmetrics_history (all metrics)
 @sysmetric-cpu-seconds-summary.sql: get CPU seconds per second (maxval) from dba hist sysmetrics ("System Metrics Long Duration" only)
 
