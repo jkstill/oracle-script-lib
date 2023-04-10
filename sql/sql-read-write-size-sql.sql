@@ -57,6 +57,9 @@ select
 from sql_info i
 join sql_metrics m on m.&v_signature_match_column = i.&v_signature_match_column
 join v$sqlstats s on s.&v_signature_match_column =  i.&v_signature_match_column
+left outer join v$sqltext t on t.sql_id = s.sql_id
+	and t.piece = 1
+	and t.command_type not in (3,47) -- SELECT and PL/SQL Execute
 order by m.physical_write_bytes 
 /
 
