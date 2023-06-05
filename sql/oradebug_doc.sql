@@ -11,7 +11,7 @@ prompt #############################
 prompt ## oradebug help
 prompt #############################
 
-ordebug help
+oradebug help
 
 prompt
 

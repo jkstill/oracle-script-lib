@@ -23,7 +23,7 @@ set term on feed on
 col sid format 99999
 col username format a10
 col event format a30
-col p1text format a10
+col p1text format a15
 col p1 format 99999999999
 col p2text format a15
 col p2 format 99999999999

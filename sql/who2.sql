@@ -36,7 +36,7 @@ col status heading 'STATUS' format a10
 col machine format a25 head 'MACHINE'
 col client_program format a20 head 'CLIENT PROGRAM'
 col server_program format a20 head 'SERVER PROGRAM'
-col spid format a5 head 'SRVR|PID'
+col spid format a7 head 'SRVR|PID'
 col serial# format 99999 head 'SERIAL#'
 col client_process format a13 head 'CLIENT|PID'
 col osuser format a10
