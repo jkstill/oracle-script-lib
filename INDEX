@@ -113,6 +113,7 @@ RDBMS UTILITIES:
 @tron.sql: Turn on SQL tracing for all sessions of an account
 @table_ddl.sql: generate DDL for owner.table, with indexes, constraints, etc
 @user_ddl.sql: Generate SQL script to duplicate a database user using DBMS_METADATA
+@utl_file-test.sql: Test the use of a database directory and file.
 
 
 TEMPORARY SEGMENTS/SORTS:

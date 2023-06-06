@@ -37,6 +37,7 @@ with data as (
 				'network_protocol', 'nls_calendar', 'nls_currency', 'nls_date_format', 
 				'nls_date_language', 'nls_sort', 'nls_territory', 
 				'oracle_home', 'os_user',
+					--'pid' -- server pid - 21c - why so long?
 				'platform_slash', 'policy_invoker', 'proxy_enterprise_identity', 'proxy_user', 'proxy_userid',
 				'scheduler_job', 'server_host', 'service_name', 'session_default_collation', 'session_edition_id', 
 				'session_edition_name', 'session_user', 'session_userid', 'sessionid', 'sid', 'statementid', 
