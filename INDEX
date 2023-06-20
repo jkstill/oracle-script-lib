@@ -745,6 +745,9 @@ X$ Tables: Some reporting on Oracle Internal Tables
 @x-dollar/xdesc.sql: lookup the columns for an X$ table and show relevant info
 @x-dollar/README.md: X$ Readme
 
+RESULT-CACHE: Scripts for result cane and client result cache
+@crc-stats.sql: statistics for client result cache 
+@table-annotations.sql: show tables annotated with MODE FORCE|MANUAL
 
 
 #################

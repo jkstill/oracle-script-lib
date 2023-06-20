@@ -749,5 +749,10 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/x-dollar/xdesc.sql'>x-dollar/xdesc.sql</a> - lookup the columns for an X$ table and show relevant info
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/x-dollar/README.md'>x-dollar/README.md</a> - X$ Readme
 </pre>
+<h3>RESULT-CACHE: Scripts for result cane and client result cache</h3>
+<pre>
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/crc-stats.sql'>crc-stats.sql</a> - statistics for client result cache
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/table-annotations.sql'>table-annotations.sql</a> - show tables annotated with MODE FORCE|MANUAL
+</pre>
 </body>
 </html>
