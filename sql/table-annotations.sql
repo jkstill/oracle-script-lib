@@ -22,7 +22,5 @@ from dba_tables t
 		and o.object_name = t.table_name
 		and o.object_type = 'TABLE'
 where t.result_cache != 'DEFAULT'
-	--and t.owner='AXIUM'
-	--and t.table_name in ('HOLIDAY','CHAIR')
 order by t.owner, t.table_name
 /
