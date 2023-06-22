@@ -15,7 +15,7 @@ col stale_stats format a3 head 'STL'
 col stattype_locked head lckd format a4
 col num_rows format 999,999,999
 col blocks format 99,999,999
-col clustering_factor format 99,990.90 head 'CLSTR FCTR'
+col clustering_factor format 999,999,990.90 head 'CLSTR FCTR'
 
 set linesize 300 trimspool on
 set pagesize 100
