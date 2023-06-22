@@ -248,6 +248,7 @@ AWR/ASH:
 @osstat-cpu.sql: dump OS CPU metrics to CSV file
 @pdb-awr-enable.sql: enable AWR snapshots in a PDB
 @plan-counts-force.sql: count of plans matched with force_matching_signature
+@plan-stats.sql: compare elapsed execution times per plan for each sql_id
 @resize-ops-metric-awr.sql: Look back through AWR for excessive SGA resize operations before ORA-4031 occurs
 @resize-ops-metric.sql: Look in gv$memory_resize_ops for excessive SGA resize operations before ORA-4031 occurs
 @rowlock-hist.sql: rowlock history

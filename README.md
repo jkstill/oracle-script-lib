@@ -254,6 +254,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/osstat-cpu.sql'>osstat-cpu.sql</a> - dump OS CPU metrics to CSV file
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pdb-awr-enable.sql'>pdb-awr-enable.sql</a> - enable AWR snapshots in a PDB
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/plan-counts-force.sql'>plan-counts-force.sql</a> - count of plans matched with force_matching_signature
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/plan-stats.sql'>plan-stats.sql</a> - compare elapsed execution times per plan for each sql_id
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/resize-ops-metric-awr.sql'>resize-ops-metric-awr.sql</a> - Look back through AWR for excessive SGA resize operations before ORA-4031 occurs
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/resize-ops-metric.sql'>resize-ops-metric.sql</a> - Look in gv$memory_resize_ops for excessive SGA resize operations before ORA-4031 occurs
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/rowlock-hist.sql'>rowlock-hist.sql</a> - rowlock history
