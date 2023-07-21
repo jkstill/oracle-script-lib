@@ -12,8 +12,9 @@ col result_cache format a10 head 'RESULT|CACHE'
 col timestamp format a19
 col created format a19
 col last_ddl_time format a19
+col owner format a15
 
-select t.table_name, t.result_cache
+select t.owner, t.table_name, t.result_cache
 	, to_char(o.created,'yyyy-mm-dd hh24:mi:ss') created
 	, to_char(o.last_ddl_time,'yyyy-mm-dd hh24:mi:ss') last_ddl_time
 	, o.timestamp
