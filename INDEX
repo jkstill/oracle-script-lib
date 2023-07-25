@@ -488,6 +488,8 @@ INSTANCE and/or DATABASE:
 @csv-split-bind.sql: Demo of passing a comma delimited variable into an IN clause of a SELECT statement
 @dice-roll.sql: Roll the dice a few times
 @iot_segments.sql: show segments for IOT objects. These are actually index segments
+@data-growth-db.sql: show growth of database over time
+@data-growth-tbs.sql: show growth of tablespaces over time
 @db_corrupt.sql: report on corrupt database blocks and objects
 @dba_dependencies.sql: find all dependencies for owner/object
 @dba_jobs_running.sql: Show db jobs currently running
