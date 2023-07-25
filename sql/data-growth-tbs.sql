@@ -8,13 +8,6 @@ col used_mb format 9,999,999
 
 clear break
 
-col u_months_back new_value u_months_back noprint
-
---select trunc(min(to_date(rtime,'MM/DD/YYYY HH24:MI:SS')),'YYYY') from dba_hist_tbspc_space_usage;
-set term off feed off
-select round(months_between(sysdate, trunc(min(to_date(rtime,'MM/DD/YYYY HH24:MI:SS')),'YYYY'))+1) u_months_back from dba_hist_tbspc_space_usage;
-set term on feed on
-
 with tsdata as (
    select 
 		t.tablespace_name 
