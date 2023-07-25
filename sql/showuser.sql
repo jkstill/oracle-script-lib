@@ -19,6 +19,8 @@ set term off feed off
 select '&1' cuser from dual;
 set term on feed on
 
+define v_nls_date_format='yyyy-mm-dd hh24:mi:ss'
+
 /*
 
 No direct connection possible
@@ -57,16 +59,16 @@ select
 	username 
 	, default_tablespace TABLESPACE
 	, temporary_tablespace TMP_SPACE
-	, to_char(created,'mm/dd/yyyy hh24:mi:ss') created
+	, to_char(created,'&v_nls_date_format') created
 	, profile
 	&use_12c_feature , proxy_only_connect
 	&use_11g_feature , password_versions
 	&use_11g_feature , authentication_type
 	-- &use_12c_feature , oracle_maintained
-	, to_char(lock_date,'mm/dd/yyyy hh24:mi:ss') lock_date
-	, to_char(expiry_date,'mm/dd/yyyy hh24:mi:ss') expiry_date
+	, to_char(lock_date,'&v_nls_date_format') lock_date
+	, to_char(expiry_date,'&v_nls_date_format') expiry_date
 from dba_users
-where username like upper('&WhichUser%')
+where username like upper('&WhichUser%') escape '\'
 	&use_12c_feature and oracle_maintained != 'Y'
 order by username
 /
