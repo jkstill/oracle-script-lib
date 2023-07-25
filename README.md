@@ -495,6 +495,8 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/iot_segments.sql'>iot_segments.sql</a> - show segments for IOT objects. These are actually index segments
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/data-growth-db.sql'>data-growth-db.sql</a> - show growth of database over time
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/data-growth-tbs.sql'>data-growth-tbs.sql</a> - show growth of tablespaces over time
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/data-growth-db-predict-regr.sql'>data-growth-db-predict-regr.sql</a> - predict future database size to 5 years out
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/data-growth-tbs-predict-regr.sq'>data-growth-tbs-predict-regr.sq</a> - predict future database size to 5 years out, per tablespace
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/db_corrupt.sql'>db_corrupt.sql</a> - report on corrupt database blocks and objects
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dba_dependencies.sql'>dba_dependencies.sql</a> - find all dependencies for owner/object
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dba_jobs_running.sql'>dba_jobs_running.sql</a> - Show db jobs currently running

@@ -490,6 +490,8 @@ INSTANCE and/or DATABASE:
 @iot_segments.sql: show segments for IOT objects. These are actually index segments
 @data-growth-db.sql: show growth of database over time
 @data-growth-tbs.sql: show growth of tablespaces over time
+@data-growth-db-predict-regr.sql: predict future database size to 5 years out
+@data-growth-tbs-predict-regr.sq: predict future database size to 5 years out, per tablespace
 @db_corrupt.sql: report on corrupt database blocks and objects
 @dba_dependencies.sql: find all dependencies for owner/object
 @dba_jobs_running.sql: Show db jobs currently running
