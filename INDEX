@@ -109,6 +109,8 @@ RDBMS UTILITIES:
 @spacemap_sum_rpt.sql: report on space summary table created by spacemap_sum.sql
 @sqlid-trace.sql: set 10046 or 10053 trace per sqlid regardless of session
 @sql-command-types.sql: list all sql available commands 
+@tracefile.sql: get the name of the tracefile for your session
+@tracefile-dump.sql: dumot the tracefile for your session to a local tracefile
 @troff.sql: Turn off SQL tracing for all sessions of an account
 @tron.sql: Turn on SQL tracing for all sessions of an account
 @table_ddl.sql: generate DDL for owner.table, with indexes, constraints, etc

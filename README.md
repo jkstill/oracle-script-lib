@@ -115,6 +115,8 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/spacemap_sum_rpt.sql'>spacemap_sum_rpt.sql</a> - report on space summary table created by spacemap_sum.sql
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sqlid-trace.sql'>sqlid-trace.sql</a> - set 10046 or 10053 trace per sqlid regardless of session
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-command-types.sql'>sql-command-types.sql</a> - list all sql available commands
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/tracefile.sql'>tracefile.sql</a> - get the name of the tracefile for your session
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/tracefile-dump.sql'>tracefile-dump.sql</a> - dumot the tracefile for your session to a local tracefile
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/troff.sql'>troff.sql</a> - Turn off SQL tracing for all sessions of an account
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/tron.sql'>tron.sql</a> - Turn on SQL tracing for all sessions of an account
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/table_ddl.sql'>table_ddl.sql</a> - generate DDL for owner.table, with indexes, constraints, etc
