@@ -248,6 +248,8 @@ AWR/ASH:
 @get-binds.sql: get bind values from dba_hist_sqlbind
 @getsql-awr.sql: call with sql_id to get SQL text from AWR
 @osstat-cpu.sql: dump OS CPU metrics to CSV file
+@osstat-cpu-10g.sql: dump OS CPU metrics to CSV file for 10g
+@osstat-cpu-rpt.sql: report of OS CPU metrics
 @pdb-awr-enable.sql: enable AWR snapshots in a PDB
 @plan-counts-force.sql: count of plans matched with force_matching_signature
 @plan-stats.sql: compare elapsed execution times per plan for each sql_id

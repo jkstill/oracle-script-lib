@@ -254,6 +254,8 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get-binds.sql'>get-binds.sql</a> - get bind values from dba_hist_sqlbind
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getsql-awr.sql'>getsql-awr.sql</a> - call with sql_id to get SQL text from AWR
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/osstat-cpu.sql'>osstat-cpu.sql</a> - dump OS CPU metrics to CSV file
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/osstat-cpu-10g.sql'>osstat-cpu-10g.sql</a> - dump OS CPU metrics to CSV file for 10g
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/osstat-cpu-rpt.sql'>osstat-cpu-rpt.sql</a> - report of OS CPU metrics
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pdb-awr-enable.sql'>pdb-awr-enable.sql</a> - enable AWR snapshots in a PDB
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/plan-counts-force.sql'>plan-counts-force.sql</a> - count of plans matched with force_matching_signature
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/plan-stats.sql'>plan-stats.sql</a> - compare elapsed execution times per plan for each sql_id
