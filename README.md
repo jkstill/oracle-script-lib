@@ -90,6 +90,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_list_data_with_dual.sql'>gen_list_data_with_dual.sql</a> - generating test data with dual
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_list_data_without_dual.sql'>gen_list_data_without_dual.sql</a> - generating test data without dual - 10g+
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/generate-sql.sql'>generate-sql.sql</a> - generate a basic SELECT SQL script for owner and table
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get-schema-size.sql'>get-schema-size.sql</a> - estimate size for export of each non-system schema
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gethostname.sql'>gethostname.sql</a> - get the hostname into substitution variable uhostname
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getinstance.sql'>getinstance.sql</a> - get the instance name into substitution variable uinstance
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getinstanceowner.sql'>getinstanceowner.sql</a> - get the instance owner into substitution variable uinstanceowner
