@@ -95,7 +95,7 @@ undef 1
 
 prompt
 prompt ===========================================================================
-prompt == &&sqlfile..sql contains DDL for tablespaces
+prompt == &&sqlfile..sql contains DDL for user &&username
 prompt ===========================================================================
 prompt
 
