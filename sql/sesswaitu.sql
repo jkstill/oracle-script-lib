@@ -7,8 +7,11 @@
 -- eg. @sesswaitu 'USSP'
 -- if username not passed, it will ask for it
 	
-set line 190 feed on pause off echo off verify off
+set linesize 190 trimspool on
+set feed on pause off echo off verify off
+set pagesize 100
 set trimspool on
+set tab off
 
 clear col
 clear break

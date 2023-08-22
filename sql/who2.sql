@@ -45,9 +45,11 @@ col idle_time format a11 head 'IDLE TIME'
 col ppid format 99999 head 'PID'
 col sql_id format a13 head 'SQL ID'
 col block_changes format 99,999,999 head 'BLOCK|CHANGES'
+col service_name format a20
 
 set recsep off term on pause off verify off echo off
-set line 200
+set linesize 240
+set pagesize 100
 set trimspool on
 
 clear break
@@ -58,6 +60,7 @@ select
 	s.username,
 	s.sid,
 	s.serial#,
+	s.service_name,
 	&&v_10gopts s.sql_id,
 	p.pid ppid,
 	s.status,
