@@ -151,7 +151,8 @@
 <h3>EVENTS:</h3>
 <pre>
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/my-events.sql'>my-events.sql</a> - display session stats
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/event-names'>event-names</a> - display wait_class, name and parameters from v$event_name
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/event-names.sql'>event-names.sql</a> - display wait_class, name and parameters from v$event_name
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/idle-events.sql'>idle-events.sql</a> - show events marked as 'idle'
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/set_events.sql'>set_events.sql</a> - various methods of generating trace and dump info with events
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sysevent_begin.sql'>sysevent_begin.sql</a> - Beginning snapshot of system events
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sysevent_end.sql'>sysevent_end.sql</a> - Ending snapshot of system events

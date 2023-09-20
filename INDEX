@@ -146,7 +146,8 @@ IO:
 EVENTS:
 
 @my-events.sql: display session stats
-@event-names: display wait_class, name and parameters from v$event_name
+@event-names.sql: display wait_class, name and parameters from v$event_name
+@idle-events.sql: show events marked as 'idle'
 @set_events.sql: various methods of generating trace and dump info with events
 @sysevent_begin.sql: Beginning snapshot of system events
 @sysevent_end.sql: Ending snapshot of system events
