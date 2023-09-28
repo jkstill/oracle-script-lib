@@ -29,7 +29,7 @@ col event format a30
 col p1text format a15
 col p1 format 99999999999
 col p2text format a15
-col p2 format 99999999999
+col p2 format 9999999999999999
 col wait_time format 999999 head 'WAIT|TIME'
 col seconds_in_wait format 999999 head 'SECONDS|IN|WAIT'
 col state format a20

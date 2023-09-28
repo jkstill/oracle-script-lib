@@ -15,9 +15,11 @@ select upper('&1') cobject from dual;
 set term on feed on
 
 col object_name format a30
-col owner format a10
+col object_type format a30
+col owner format a15
 col created format a21
 col last_ddl_time format a21
+col status format a10
 
 
 select object_name

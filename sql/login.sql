@@ -3,7 +3,7 @@
 -- just turn it on if needed
 set serveroutput off format wrapped size unlimited
 
-set sqlprompt "_USER'@'_CONNECT_IDENTIFIER _PRIVILEGE> "
+set sqlprompt "_USER'@'_CONNECT_IDENTIFIER _PRIVILEGE% "
 
 define _editor=vi
 

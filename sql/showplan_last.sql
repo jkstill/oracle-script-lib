@@ -5,13 +5,12 @@
 SET PAUSE OFF
 SET VERIFY OFF
 set trimspool on
-set line 500 arraysize 1
+set linesize 500 arraysize 1
 clear break
 clear compute
 
 
-col plan_table_output format a200
-set linesize 400 trimspool on
+col plan_table_output format a500
 set pagesize 200
 
 select *
