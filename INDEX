@@ -337,12 +337,14 @@ PARAMETERS:
 @getparm.sql: get parameters
 @parm-hist-diff.sql: show difference in parameters from AWR
 @parameter-compare.sql: compare parameters between two databases
+@session-parm-diff.sql: show how a sessions setting differ from system settings
 @showallparm.sql: Show all database parameters, including .hidden. parameters
 @showparm.sql: Show database parameters
 @showparmchanges.sql: show parameters that have changed - uses AWR
 @showparmdrvr.sql: Performs the query for getparm.sql and showparm.sql
 @showallparm73drvr.sql: Performs the query for getallparm.sql and showallparm.sql
 @showallparm12c-drvr.sql: 12c update for all parms
+@session-parm-diff.sql: show how a sessions setting differ from system settings
 @sys-context-all.sql: display all sys_context values as of 12c
 @parms_dump_csv.sql: Dump all parameters to CSV file
 @parms_dump_12c_csv.sql: Dump all 12c parameters to CSV file

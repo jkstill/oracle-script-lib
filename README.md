@@ -342,12 +342,14 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getparm.sql'>getparm.sql</a> - get parameters
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/parm-hist-diff.sql'>parm-hist-diff.sql</a> - show difference in parameters from AWR
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/parameter-compare.sql'>parameter-compare.sql</a> - compare parameters between two databases
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/session-parm-diff.sql'>session-parm-diff.sql</a> - show how a sessions setting differ from system settings
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showallparm.sql'>showallparm.sql</a> - Show all database parameters, including .hidden. parameters
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showparm.sql'>showparm.sql</a> - Show database parameters
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showparmchanges.sql'>showparmchanges.sql</a> - show parameters that have changed - uses AWR
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showparmdrvr.sql'>showparmdrvr.sql</a> - Performs the query for getparm.sql and showparm.sql
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showallparm73drvr.sql'>showallparm73drvr.sql</a> - Performs the query for getallparm.sql and showallparm.sql
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showallparm12c-drvr.sql'>showallparm12c-drvr.sql</a> - 12c update for all parms
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/session-parm-diff.sql'>session-parm-diff.sql</a> - show how a sessions setting differ from system settings
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sys-context-all.sql'>sys-context-all.sql</a> - display all sys_context values as of 12c
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/parms_dump_csv.sql'>parms_dump_csv.sql</a> - Dump all parameters to CSV file
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/parms_dump_12c_csv.sql'>parms_dump_12c_csv.sql</a> - Dump all 12c parameters to CSV file
