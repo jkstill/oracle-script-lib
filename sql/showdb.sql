@@ -64,7 +64,7 @@ begin
 	elsif version = 9 or version = 1 then -- this likely will no longer work due to changing substr from 1 to 2 characters
 		sqlcmd := 'select to_char(startup_time,' || '''' || 'mm/dd/yyyy hh24:mi:ss' || '''' || ') into :start_date from v$instance';
 		null;
-	elsif version between 10 and 21  then -- this likely will no longer work due to changing substr from 1 to 2 characters
+	elsif version between 10 and 23  then -- this likely will no longer work due to changing substr from 1 to 2 characters
 		sqlcmd := 'select to_char(startup_time,' || '''' || 'mm/dd/yyyy hh24:mi:ss' || '''' || ') into :start_date from v$instance';
 		null;
 	end if;
