@@ -178,6 +178,8 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getstatu2.sql'>getstatu2.sql</a> - Get stats from v$sesstat
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/latch_statsa.sql'>latch_statsa.sql</a> -
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/latch_statss.sql'>latch_statss.sql</a> -
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/segment-space-statistics.sql'>segment-space-statistics.sql</a> - get changes made per segment - currently set for 'db block changes'
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/segment-space-statistics-hist.sql'>segment-space-statistics-hist.sql</a> - get historical changes made per segment - currently set for 'db block changes'
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/segment-statistics.sql'>segment-statistics.sql</a> - show statistics from v$segment_statistics for an object
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sesswait.sql'>sesswait.sql</a> - Show waits from v$session_wait - calls the script linked or copied to sesswaitu.sql
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sesswaitu.sql'>sesswaitu.sql</a> - script called by sesswait.sql - copy or softlink one of the following sesswait scripts

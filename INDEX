@@ -173,6 +173,8 @@ WAITS/LOCKS/LATCHES and PERFORMANCE:
 @getstatu2.sql: Get stats from v$sesstat
 @latch_statsa.sql: 
 @latch_statss.sql: 
+@segment-space-statistics.sql: get changes made per segment - currently set for 'db block changes'
+@segment-space-statistics-hist.sql: get historical changes made per segment - currently set for 'db block changes'
 @segment-statistics.sql: show statistics from v$segment_statistics for an object
 @sesswait.sql: Show waits from v$session_wait - calls the script linked or copied to sesswaitu.sql
 @sesswaitu.sql: script called by sesswait.sql - copy or softlink one of the following sesswait scripts
