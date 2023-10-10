@@ -338,6 +338,9 @@ PARAMETERS:
 @getallparm.sql:  get parameters including hidden
 @getparm.sql: get parameters
 @parm-hist-diff.sql: show difference in parameters from AWR
+@parms_dump_csv.sql: Dump all parameters to CSV file
+@parms_dump_12c_csv.sql: Dump all 12c parameters to CSV file
+@parms-version-diff.sql: Generate CSV files of parameters - compare version diffs - details in comments
 @parameter-compare.sql: compare parameters between two databases
 @session-parm-diff.sql: show how a sessions setting differ from system settings
 @showallparm.sql: Show all database parameters, including .hidden. parameters
@@ -348,8 +351,6 @@ PARAMETERS:
 @showallparm12c-drvr.sql: 12c update for all parms
 @session-parm-diff.sql: show how a sessions setting differ from system settings
 @sys-context-all.sql: display all sys_context values as of 12c
-@parms_dump_csv.sql: Dump all parameters to CSV file
-@parms_dump_12c_csv.sql: Dump all 12c parameters to CSV file
 @sys_context.sql: Demo of getting oracle environment settings with sys_context function
 
 EXECUTION_PLAN:

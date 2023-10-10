@@ -343,6 +343,9 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getallparm.sql'>getallparm.sql</a> - get parameters including hidden
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getparm.sql'>getparm.sql</a> - get parameters
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/parm-hist-diff.sql'>parm-hist-diff.sql</a> - show difference in parameters from AWR
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/parms_dump_csv.sql'>parms_dump_csv.sql</a> - Dump all parameters to CSV file
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/parms_dump_12c_csv.sql'>parms_dump_12c_csv.sql</a> - Dump all 12c parameters to CSV file
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/parms-version-diff.sql'>parms-version-diff.sql</a> - Generate CSV files of parameters - compare version diffs - details in comments
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/parameter-compare.sql'>parameter-compare.sql</a> - compare parameters between two databases
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/session-parm-diff.sql'>session-parm-diff.sql</a> - show how a sessions setting differ from system settings
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showallparm.sql'>showallparm.sql</a> - Show all database parameters, including .hidden. parameters
@@ -353,8 +356,6 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showallparm12c-drvr.sql'>showallparm12c-drvr.sql</a> - 12c update for all parms
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/session-parm-diff.sql'>session-parm-diff.sql</a> - show how a sessions setting differ from system settings
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sys-context-all.sql'>sys-context-all.sql</a> - display all sys_context values as of 12c
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/parms_dump_csv.sql'>parms_dump_csv.sql</a> - Dump all parameters to CSV file
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/parms_dump_12c_csv.sql'>parms_dump_12c_csv.sql</a> - Dump all 12c parameters to CSV file
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sys_context.sql'>sys_context.sql</a> - Demo of getting oracle environment settings with sys_context function
 </pre>
 <h3>EXECUTION_PLAN:</h3>
