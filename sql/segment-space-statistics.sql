@@ -16,6 +16,8 @@
 
 set linesize 200 trimspool on
 set pagesize 100
+set feed on term on
+set tab off echo off pause off
 
 col owner format a20
 col object_name format a30
@@ -24,6 +26,7 @@ col inst_id format 9999 head 'INST|ID'
 col con_id format 999
 col statistic_name format a30
 col value format 99,999,999,999 head 'VALUE'
+
 
 --break on object_name
 
@@ -76,68 +79,25 @@ users as (
 /*
 -- no blank lines allowed in these comments
 --
--- dbms_stats.gather_dictionary_stats executed on each database
----
-Joining DBA_USERS on 23c frequently performs poorly for this SQL
-poorly as in 2-30 seconds or more when 19c is ~ 0.2 seconds.
-Does not matter if using join or IN select list, it is slow
-A hint and rownum 'trick' take care of all possible use cases (I think)
---
--- both the no_query_transformation hint and the 'rownum > 0' optimizer fakeout are
--- required for this SQL to work properly in 23c
---
--- no_parallel hint added as sometimes this was running parallel, and did not need to be
---
------------------+--------+--------+-------------+-------------+
-                 |        |        |    19c      |    23c      |
-                 | hinted | rownum | performant? | performant? |
------------------+--------+--------+-------------+-------------+
-ALL USERS        |   N    |   N    |     Y       |     N       |
------------------+--------+--------+-------------+-------------+
-ALL USERS        |   Y    |   N    |     Y       |     Y       | 
------------------+--------+--------+-------------+-------------+
-ALL USERS        |   N    |   Y    |     Y       |     N       |
------------------+--------+--------+-------------+-------------+
-ALL USERS        |   Y    |   Y    |     Y       |     Y       |
------------------+--------+--------+-------------+-------------+
-SYS USERS        |   N    |   N    |     Y       |     N       |
------------------+--------+--------+-------------+-------------+
-SYS USERS        |   Y    |   N    |     Y       |     N       |
------------------+--------+--------+-------------+-------------+
-SYS USERS        |   N    |   Y    |     Y       |     N       |
------------------+--------+--------+-------------+-------------+
-SYS USERS        |   Y    |   Y    |     Y       |     Y       |
------------------+--------+--------+-------------+-------------+
-NON-SYS USERS    |   N    |   N    |     Y       |     N       |
------------------+--------+--------+-------------+-------------+
-NON-SYS USERS    |   Y    |   N    |     Y       |     Y       |
------------------+--------+--------+-------------+-------------+
-NON-SYS USERS    |   N    |   Y    |     Y       |     N       |
------------------+--------+--------+-------------+-------------+
-NON-SYS USERS    |   Y    |   Y    |     Y       |     Y       |
------------------+--------+--------+-------------+-------------+
---
--- note: user transactions were run in a PDB of each database so that the internal "tables" (based on x$) would be populated
+-- Joining DBA_USERS on 23c may perform poorly for this SQL, at least has been my experience
+-- poorly as in 2-30 seconds or more when 19c is ~ 0.2 seconds.
+-- If so, then gather data dictionary stats, and that should take care of the problem
+-- ie:  exec dbms_stats.gather_dictionary_stats
 */
---
 	select 
 		/*+ 
 			-- hints in this block may be commented out individually
 			no_parallel
-			no_query_transformation
 			gather_plan_statistics
 			qb_name(users) 
 		*/
 		username
-	-- without the no_query_transformation hint a very poor execution plan is sometimes created in 23c as of 23.3.0.23.09
-	-- particularly if there is no WHERE clause
 	from dba_users
-	where rownum > 0
 	-- comment out both to see all users
 	-- only system user accounts
-	-- where oracle_maintained = 'Y'
+	--where oracle_maintained = 'Y'
 	-- non-system accounts
-	and oracle_maintained = 'N'
+	--where oracle_maintained = 'N'
 ),
 data as (
 	select
