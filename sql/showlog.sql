@@ -1,9 +1,9 @@
 
 @clears
-set line 200 trimspool on
+set line 240 trimspool on
 set pagesize 60
 
-col member format a50 head 'MEMBER'
+col member format a80 head 'MEMBER'
 col group# format 999 head 'GRP'
 col thread# format 999 head 'THR'
 col sequence# format 999999 head 'SEQ'
