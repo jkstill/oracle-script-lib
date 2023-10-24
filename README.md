@@ -283,6 +283,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-exe-times-ash.sql'>sql-exe-times-ash.sql</a> - stats and histograms of execution times for a SQL_ID
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-exe-times-awr.sql'>sql-exe-times-awr.sql</a> - stats and histograms of execution times for a SQL_ID for past 30 days
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-plans.sql'>sql-plans.sql</a> - Show plans used by a selected SQL for a date and time range
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sysmetric-hist-matrix.sql'>sysmetric-hist-matrix.sql</a> - crosstab report of several metrics from dba_hist_sysmetric_history
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sysmetric-history.sql'>sysmetric-history.sql</a> - pivot to CSV for several metrics in dba_hist_sysmetric_history
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/top10-sql-ash.sql'>top10-sql-ash.sql</a> - get top (by count) sql statements from ASH
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/top10-sql-awr.sql'>top10-sql-awr.sql</a> - get top (by count) sql statements from AWR for past 30 days
@@ -738,6 +739,9 @@
 <pre>
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/cpu-bucket-histogram.sql'>cpu-bucket-histogram.sql</a> - histogram of number of minutes per CPU usage values
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/cpu-minute-histogram.sql'>cpu-minute-histogram.sql</a> - histogram of CPU by minute for a single instance
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/metrics-available.sql'>metrics-available.sql</a> - show which metrics are actually being recorded. call with the following 2 scripts
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/metrics-available-awr.sql'>metrics-available-awr.sql</a> - metrics that are recorded in v$sysmtetric_history
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/metrics-available-ash.sql'>metrics-available-ash.sql</a> - metrics that are recorded in dba_hist_sysmetric_history
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/metric-names.sql'>metric-names.sql</a> - detail of metrics reported along with collection intervals
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/os-load.sql'>os-load.sql</a> - OS Load as reported by oracle for past hour
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-read-write-size.sql'>sql-read-write-size.sql</a> - get the read and write sizes per sql where write size > 0
