@@ -489,6 +489,7 @@ RESOURCE MANAGER:
 
 INSTANCE and/or DATABASE:
 
+@all-ini-trans.sql: report on on the IN_TRANS values for all non-system owners
 @average_active_sessions.sql: show average active sessions - does not use ASH
 @archived_log_hist_matrix.sql: show matrix of archive log switch activity for 2 weeks
 @archived_log_sums.sql: show rolling total of archive logs for N days

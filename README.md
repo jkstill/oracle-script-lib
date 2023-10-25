@@ -492,6 +492,7 @@
 </pre>
 <h3>INSTANCE and/or DATABASE:</h3>
 <pre>
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/all-ini-trans.sql'>all-ini-trans.sql</a> - report on on the IN_TRANS values for all non-system owners
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/average_active_sessions.sql'>average_active_sessions.sql</a> - show average active sessions - does not use ASH
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/archived_log_hist_matrix.sql'>archived_log_hist_matrix.sql</a> - show matrix of archive log switch activity for 2 weeks
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/archived_log_sums.sql'>archived_log_sums.sql</a> - show rolling total of archive logs for N days
