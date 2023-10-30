@@ -1,7 +1,7 @@
 
 -- gen_bind_vars_awr.sql
 --
--- jared still 2017-08-28 - jkstill@gmail.com, 
+-- jared still 2017-08-28 - jkstill@gmail.com,
 -- copied from gen_bind_vars.sql and modified for AWR
 -- given a SQL_ID get the SQL and bind variables
 -- create a sqlplus script to run them
@@ -26,8 +26,11 @@
 -- use numtodsinterval() to calculate dates
 -- "select systimestamp - interval '100' day from dual" will cause ORA-01873: the leading precision of the interval is too small
 -- this can be corrected by:
--- "select systimestamp - interval '100' day(3) from dual" 
+-- "select systimestamp - interval '100' day(3) from dual"
 -- use of numtodsinterval() is much cleaner
+-- Jared Still 2023-10-30
+-- at some point oracle added ':' to bind variable names
+-- now necessary to strip them out
 
 
 -- parameters:
@@ -59,7 +62,7 @@ col my_start_days_back new_value my_start_days_back noprint
 col my_end_days_back new_value my_end_days_back noprint
 
 prompt
-prompt SQL_ID: 
+prompt SQL_ID:
 set feed off term off
 select '&1' my_sql_id from dual;
 
@@ -108,8 +111,8 @@ prompt set timing on pause off
 prompt set linesize 200 trimspool on
 
 prompt -- alter session set statistics_level = 'ALL';;
-prompt -- alter session set events '10046 trace name context forever, level 12';;
 prompt -- alter session set tracefile_identifier = '&my_sql_id-TEST';;
+prompt -- alter session set events '10046 trace name context forever, level 12';;
 prompt
 
 
@@ -239,7 +242,7 @@ begin
 
 	--t_sql_id(1) := '6pk8u51cuxykt';
 	t_sql_id(1) := '&&my_sql_id';
-	
+
 	for i in t_sql_id.first ..t_sql_id.last
 	loop
 		--dout('working on ' || t_sql_id(i));
@@ -257,13 +260,17 @@ begin
 			t_bind_names := t_bin_names_empty;
 			for bindnamerec in c_get_bind_names(sqlrec.sql_id)
 			loop
+				if substr(bindnamerec.name,1,1) = ':' then
+					t_bind_names(bindnamerec.position).bind_name := substr(bindnamerec.name,2);
+				else
 					t_bind_names(bindnamerec.position).bind_name := bindnamerec.name;
-					t_bind_names(bindnamerec.position).datatype_string := bindnamerec.datatype_string;
+				end if;
+				t_bind_names(bindnamerec.position).datatype_string := bindnamerec.datatype_string;
 
-					dout('-- ======= bind definitions =============================');
-					dout('-- bind position: ' || bindnamerec.position);
-					dout('-- bind name	 : ' || bindnamerec.name);
-					dout('-- bind datatype: ' || bindnamerec.datatype_string);
+				dout('-- ======= bind definitions =============================');
+				dout('-- bind position: ' || bindnamerec.position);
+				dout('-- bind name	 : ' || bindnamerec.name);
+				dout('-- bind datatype: ' || bindnamerec.datatype_string);
 
 			end loop;
 
@@ -275,18 +282,30 @@ begin
 				--t_binds(bindrec.position).datatype_string := bindrec.datatype_string;
 				--t_binds(bindrec.position).value_string := bindrec.value_string;
 
-				v_bind_key := to_char(bindrec.snap_id) || ':' || to_char(bindrec.position);
+				--v_bind_key := to_char(bindrec.snap_id) || ':' || to_char(bindrec.position);
+				-- jkstill 2023
+				v_bind_key := to_char(bindrec.snap_id) || to_char(bindrec.position);
 
-				t_binds(v_bind_key).bind_name := bindrec.name;
+				dout('-- ======= bind values =============================');
+
+				-- at some point oracle started adding a ':' to the bind name
+				-- we do not want a ': in the bind name
+				if substr(bindrec.name,1,1) = ':' then
+					--dout('	  setting bind name to substr');
+					t_binds(v_bind_key).bind_name := substr(bindrec.name,2);
+				else
+					--dout('	  setting bind name to full name');
+					t_binds(v_bind_key).bind_name := bindrec.name;
+				end if;
+
 				t_binds(v_bind_key).datatype_string := bindrec.datatype_string;
 				t_binds(v_bind_key).value_string := bindrec.value_string;
 
-				dout('-- ======= bind values =============================');
 				dout('-- bind snapid	 : ' || bindrec.snap_id);
 				dout('-- bind position: ' || bindrec.position);
-				dout('-- bind name	  : ' || bindrec.name);
-				dout('-- bind datatype: ' || bindrec.datatype_string);
-				dout('-- value			 : ' || bindrec.value_string);
+				dout('-- bind name	  % ' ||	 t_binds(v_bind_key).bind_name);
+				dout('-- bind datatype: ' || t_binds(v_bind_key).datatype_string);
+				dout('-- value			 : ' || t_binds(v_bind_key).value_string);
 
 			end loop;
 
@@ -294,6 +313,7 @@ begin
 			for i in t_bind_names.first .. t_bind_names.last
 			loop
 				--p('var ' || substr(t_bind_names(i).bind_name,2));
+				dout('-- set bind name	  % ' ||	 t_bind_names(i).bind_name);
 				p('var ' || t_bind_names(i).bind_name);
 				if t_bind_names(i).datatype_string like 'NUMBER%' then
 					pl(' number');
@@ -344,7 +364,7 @@ begin
 
 			-- get the last SQL exe in
 			pl('/');
-			
+
 		end loop;
 	end loop;
 
@@ -369,4 +389,3 @@ prompt
 @clears
 set line 80
 undef 1 2
-
