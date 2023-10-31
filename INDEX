@@ -528,6 +528,7 @@ INSTANCE and/or DATABASE:
 @fra_config.sql: show FRA location and size
 @get-missing-tablenames.sql: given a list of tables, determine if any are missing
 @getsid.sql: Get current session SID via sys_context()
+@get-sql-for-table.sql: get all non DML (easily changed) sql that includes a table
 @getsql.sql: call with sql_id to get sql_fulltext
 @incarnations.sql: Show database incarnations
 @index-col-use-ratios.sql: Show ratio of table columns to columns indexed

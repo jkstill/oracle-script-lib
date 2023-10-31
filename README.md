@@ -531,6 +531,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/fra_config.sql'>fra_config.sql</a> - show FRA location and size
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get-missing-tablenames.sql'>get-missing-tablenames.sql</a> - given a list of tables, determine if any are missing
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getsid.sql'>getsid.sql</a> - Get current session SID via sys_context()
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get-sql-for-table.sql'>get-sql-for-table.sql</a> - get all non DML (easily changed) sql that includes a table
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getsql.sql'>getsql.sql</a> - call with sql_id to get sql_fulltext
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/incarnations.sql'>incarnations.sql</a> - Show database incarnations
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/index-col-use-ratios.sql'>index-col-use-ratios.sql</a> - Show ratio of table columns to columns indexed
