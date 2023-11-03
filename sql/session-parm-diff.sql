@@ -1,6 +1,18 @@
 
 -- session-parm-diff.sql
 -- Jared Still 2023
+-- show which parameter differ from system defaults
+-- note: will not capture 'hidden' parameters, as SYSDBA permissions are required for that
+
+/*
+
+Name                           Session Parameter              System Parameter
+------------------------------ ------------------------------ ------------------------------
+timed_os_statistics            60                             0
+statistics_level               ALL                            TYPICAL
+
+2 rows selected.
+*/
 
 col name format a30 head 'Name'
 col session_parameter format a30 head 'Session Parameter'

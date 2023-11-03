@@ -229,6 +229,7 @@ AWR/ASH:
 @awr-get-retention.sql: Display AWR retention and interval
 @awr-hist-model-top10.sql: Show Top 10 Snapshots based on DB Time + DB CPU from DBA_HIST_SYS_TIME_MODEL
 @awr-itl-waits.sql: find ITL waits
+@awr-itl-wait-hot-blocks.sql: find ITL waits, sum up the top 10 waits per file and block
 @awr-resource-limit.sql: history of processes and sessions from dba_hist_resource_limit
 @awr-set-retention.sql: Example of setting AWR retention and interval
 @awr-top-10-daily.sql: list top 10 events per day from AWR

@@ -233,6 +233,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-get-retention.sql'>awr-get-retention.sql</a> - Display AWR retention and interval
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-hist-model-top10.sql'>awr-hist-model-top10.sql</a> - Show Top 10 Snapshots based on DB Time + DB CPU from DBA_HIST_SYS_TIME_MODEL
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-itl-waits.sql'>awr-itl-waits.sql</a> - find ITL waits
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-itl-wait-hot-blocks.sql'>awr-itl-wait-hot-blocks.sql</a> - find ITL waits, sum up the top 10 waits per file and block
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-resource-limit.sql'>awr-resource-limit.sql</a> - history of processes and sessions from dba_hist_resource_limit
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-set-retention.sql'>awr-set-retention.sql</a> - Example of setting AWR retention and interval
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-top-10-daily.sql'>awr-top-10-daily.sql</a> - list top 10 events per day from AWR
