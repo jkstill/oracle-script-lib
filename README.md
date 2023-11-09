@@ -228,12 +228,12 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ashtop.sql'>ashtop.sql</a> - Tanel Poder script for top ASH events
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-blocker-waits.sql'>awr-blocker-waits.sql</a> - find top level blockers in AWR
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-cpu-stats.sql'>awr-cpu-stats.sql</a> - Report on sar like CPU stats from AWR
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-enq-hot-blocks.sql'>awr-enq-hot-blocks.sql</a> - find TX waits (including ITL) waits, sum up the top 10 waits per file and block
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-enq-obj.sql'>awr-enq-obj.sql</a> - For all enqueue events in AWR, aggregate on block#, generate SQL to Investigate hot blocks
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-export.sql'>awr-export.sql</a> - export AWR - useful for pre-migration work
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-get-retention.sql'>awr-get-retention.sql</a> - Display AWR retention and interval
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-hist-model-top10.sql'>awr-hist-model-top10.sql</a> - Show Top 10 Snapshots based on DB Time + DB CPU from DBA_HIST_SYS_TIME_MODEL
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-itl-waits.sql'>awr-itl-waits.sql</a> - find ITL waits
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-itl-wait-hot-blocks.sql'>awr-itl-wait-hot-blocks.sql</a> - find ITL waits, sum up the top 10 waits per file and block
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-resource-limit.sql'>awr-resource-limit.sql</a> - history of processes and sessions from dba_hist_resource_limit
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-set-retention.sql'>awr-set-retention.sql</a> - Example of setting AWR retention and interval
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/awr-top-10-daily.sql'>awr-top-10-daily.sql</a> - list top 10 events per day from AWR
