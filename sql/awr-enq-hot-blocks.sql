@@ -6,6 +6,19 @@
 
 /*
 
+Yes, summing and averaging TIME_WAITED from ASH/AWR is "wrong"
+
+This is because not all waits are captured in ASH, and AWR is a 10% sample
+
+However, if a significant amount of time appears, I believe it is good to know that.
+
+Just keep in mind that the amount of time is not accurate, it is lower than the real amount of time
+
+*/
+
+
+/*
+
 As seen in an AWR report for 'Top Event P1/P2/P3 Values'
 
 Event								% Event P1, P2, P3 Values						% Activity	Parameter 1 Parameter 2	  Parameter 3
