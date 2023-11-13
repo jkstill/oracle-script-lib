@@ -16,6 +16,10 @@
 --event="4031 trace name errorstack level 3"
 --event="1652 trace name processstate level 10"
 
+-- get a call stack for ORA-00060 Deadlocks
+-- the call stack is added to the trace file generated for deadlocks
+-- I have tested this and did not find it particularly useful
+--alter system set events '10027 trace name context forever, level 4';
 
 -- this syntax will not cause a trace file to be dumped
 -- alter system set events '6502 trace name context forever, level 1';
