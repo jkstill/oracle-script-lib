@@ -64,6 +64,7 @@ col con_id format 999 head 'CON|ID'
 col con_dbid format 99999999999 head 'CON DBID'
 col dbid format 99999999999 head ' DBID'
 col sql_length format 999999 head 'SQL Text|Length'
+col sql_rank format 99999 head 'SQL|Rank'
 
 clear break
 --break on sql_id skip 1 on plan_hash_value
@@ -184,7 +185,8 @@ get_expensive_sql as (
 	order by lios_per_row desc
 )
 select  distinct
-	r.sql_id
+	row_number() over (order by r.lios_per_row desc ) sql_rank
+	, r.sql_id
 	, r.plan_hash_value
 	, r.end_interval_time
 	-- uncomment these if needed
@@ -240,3 +242,4 @@ spool off
 
 set term on
 ed find-expensive-sql.log
+
