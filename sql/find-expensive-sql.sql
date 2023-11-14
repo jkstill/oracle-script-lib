@@ -182,10 +182,13 @@ get_expensive_sql as (
 	-- SQL that is rarely executed, and may be ad hoc
 	-- we are interested in frequently executed SQL that performs poorly
 	where executions >=	to_number(&n_min_sql_executions)
-	order by lios_per_row desc
-)
+	--order by lios_per_row desc
+),
+report as (
 select  distinct
-	row_number() over (order by r.lios_per_row desc ) sql_rank
+	--row_number() over (order by r.lios_per_row desc ) sql_rank
+	--, row_number() over (order by floor(( r.lios_per_row * r.elapsed_time	 / 1e3) * log(dbms_lob.getlength(t.sql_text),10)) desc) sql_rank
+	floor(( r.lios_per_row * r.elapsed_time  / 1e3) * log(dbms_lob.getlength(t.sql_text),10)) sql_cost
 	, r.sql_id
 	, r.plan_hash_value
 	, r.end_interval_time
@@ -205,6 +208,9 @@ select  distinct
 	, r.lios_per_row
 	, cn.command_name
 	, dbms_lob.getlength(t.sql_text) sql_length
+	-- experimental
+	-- look for SQL that is too busy, and has a short SQL text
+	--, floor(r.executions*r.buffer_gets / (r.elapsed_time / r.executions ) / r.lios_per_row / dbms_lob.getlength(t.sql_text)) some_test
 	, get_objects(r.sql_id, r.plan_hash_value) objects
 from rpt_data r
 join (
@@ -235,11 +241,33 @@ join dba_hist_sqlcommand_name cn
 -- on its own, lios_per_row shows the most expensive SQL, but tends to favor single executions
 -- possibley due to ad hoc queries, or seldom run reports
 -- this is why n_min_sql_executions is used in the WITH clause 'get_expensive_sql'
-order by lios_per_row desc
+--order by sql_rank
+)
+select
+	row_number() over (order by r.sql_cost desc ) sql_rank
+	, r.sql_cost
+	, r.sql_id
+	, r.plan_hash_value
+	, r.end_interval_time
+	, r.elapsed_time
+	, r.elapsed_time / r.executions avg_elapsed_time
+	, r.executions
+	, r.fetches
+	, r.buffer_gets
+	, r.rows_processed
+	, r.disk_reads
+	, r.rows_per_exe
+	, r.lios_per_row
+	, r.command_name
+	, r.sql_length
+	, r.objects
+from report r
+where r.sql_cost > 0
+	and rownum <= 100
+order by sql_rank
 /
 
 spool off
 
 set term on
 ed find-expensive-sql.log
-
