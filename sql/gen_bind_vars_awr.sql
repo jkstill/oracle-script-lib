@@ -41,6 +41,7 @@
 -- @gen_bind_vars_awr 'sd3h4987dnwe8' 60 30
 --
 
+def file_prefix='sql'
 
 /*
 
@@ -102,9 +103,9 @@ end;
 
 set serveroutput on size unlimited
 
-spool 'sql-exe-&my_sql_id..sql'
+spool '&file_prefix-exe-&my_sql_id..sql'
 
-prompt spool 'sql-exe-&my_sql_id..log'
+prompt spool '&file_prefix-exe-&my_sql_id..log'
 prompt set echo on
 
 prompt set timing on pause off
@@ -408,7 +409,7 @@ prompt spool off
 spool off
 
 prompt
-prompt SQL in 'sql-exe-&my_sql_id..sql'
+prompt SQL in '&file_prefix-exe-&my_sql_id..sql'
 prompt
 
 @clears
