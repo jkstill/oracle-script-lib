@@ -1,6 +1,9 @@
 
 -- gen_bind_vars_awr.sql
 --
+-- jared still 2023-12-15 - jkstill@gmail.com
+-- changed the SQL that gets bind values - now does a much better job of it
+--
 -- jared still 2017-08-28 - jkstill@gmail.com,
 -- copied from gen_bind_vars.sql and modified for AWR
 -- given a SQL_ID get the SQL and bind variables
@@ -28,9 +31,6 @@
 -- this can be corrected by:
 -- "select systimestamp - interval '100' day(3) from dual"
 -- use of numtodsinterval() is much cleaner
--- Jared Still 2023-10-30
--- at some point oracle added ':' to bind variable names
--- now necessary to strip them out
 
 
 -- parameters:
@@ -112,6 +112,7 @@ prompt set linesize 200 trimspool on
 
 prompt -- alter session set statistics_level = 'ALL';;
 prompt -- alter session set tracefile_identifier = '&my_sql_id-TEST';;
+prompt -- alter session set optimizer_use_invisible_indexes=true;
 prompt -- alter session set events '10046 trace name context forever, level 12';;
 prompt
 
@@ -169,30 +170,50 @@ declare
 	select sql_id, sql_text
 	from second_iteration;
 
+	/* new sql */
+
 	cursor c_get_binds( v_sql_id_in varchar2 )
 	is
-	select distinct
+	with data as (
+	select
 		b.snap_id, b.position
-		-- convert the names of system generated bind variables
-		-- these will be SYS_B_ and just digits such as '1'
 		, case
 			when b.name like ':SYS_B_%' then substr(b.name,6)
 			when regexp_like(b.name,'^:[[:digit:]]') then 'G' || substr(b.name,2)
 			else b.name
 		end name
-	, b.datatype_string, b.value_string, b.last_captured
-	from dba_hist_sqlbind b
+		--, b.value_string
+		--, b.datatype_string
+		, anydata.GETTYPENAME(b.value_anydata) datatype_string
+		-- use the anydata values as they are sometimes more reliable dependent on oracle version
+		, case anydata.GETTYPENAME(b.value_anydata)
+			when 'SYS.VARCHAR' then	 anydata.accessvarchar(b.value_anydata)
+			when 'SYS.VARCHAR2' then anydata.accessvarchar2(b.value_anydata)
+			when 'SYS.CHAR' then anydata.accesschar(b.value_anydata)
+			when 'SYS.DATE' then to_char(anydata.accessdate(b.value_anydata),'yyyy-mm-dd hh24:mi:ss')
+			when 'SYS.TIMESTAMP' then to_char(anydata.accesstimestamp(b.value_anydata),'yyyy-mm-dd hh24:mi:ss')
+			when 'SYS.NUMBER' then to_char(anydata.accessnumber(b.value_anydata))
+		end value_string
+		,	b.last_captured
+	from dba_hist_sqlbind  b
+	join dba_hist_snapshot s on s.instance_number = b.instance_number
+		and s.dbid = b.dbid
+		and b.snap_id = s.snap_id
 	where b.sql_id = v_sql_id_in
-	-- limit amount of data to look at if you like
-	and b.snap_id >= (
-		select max(snap_id)
-		from dba_hist_snapshot
-		--where begin_interval_time >= systimestamp - interval '1' day
-		--where begin_interval_time between (systimestamp - interval '25' day) and (systimestamp - interval '24' day)
-		where begin_interval_time between t_begin_interval and t_end_interval
-			and instance_number =  sys_context('userenv','instance')
+		and begin_interval_time between t_begin_interval and t_end_interval
+		and b.instance_number =	 sys_context('userenv','instance')
+	order by s.begin_interval_time, b.position, b.instance_number
 	)
-	order by snap_id, last_captured, position;
+	select distinct
+		snap_id
+		, position
+		, name
+		, datatype_string
+		, value_string
+		, last_captured
+	from data;
+
+	/* ^^^ new sql ^^^ */
 
 	cursor c_get_bind_names( v_sql_id_in varchar2 )
 	is
@@ -282,9 +303,7 @@ begin
 				--t_binds(bindrec.position).datatype_string := bindrec.datatype_string;
 				--t_binds(bindrec.position).value_string := bindrec.value_string;
 
-				--v_bind_key := to_char(bindrec.snap_id) || ':' || to_char(bindrec.position);
-				-- jkstill 2023
-				v_bind_key := to_char(bindrec.snap_id) || to_char(bindrec.position);
+				v_bind_key := to_char(bindrec.snap_id) || ':' || to_char(bindrec.position);
 
 				dout('-- ======= bind values =============================');
 
@@ -303,6 +322,9 @@ begin
 
 				dout('-- bind snapid	 : ' || bindrec.snap_id);
 				dout('-- bind position: ' || bindrec.position);
+				--dout('-- bind name	  : ' || bindrec.name);
+				--dout('-- bind datatype: ' || bindrec.datatype_string);
+				--dout('-- value			 : ' || bindrec.value_string);
 				dout('-- bind name	  % ' ||	 t_binds(v_bind_key).bind_name);
 				dout('-- bind datatype: ' || t_binds(v_bind_key).datatype_string);
 				dout('-- value			 : ' || t_binds(v_bind_key).value_string);
@@ -342,6 +364,8 @@ begin
 
 				v_snap_id := substr(v_bind_key,1,instr(v_bind_key,':')-1);
 
+				dout('-- v_bind_key: ' || v_bind_key);
+
 				p('exec :' || t_binds(v_bind_key).bind_name || ' := ');
 
 				if t_binds(v_bind_key).datatype_string like 'NUMBER%' then
@@ -374,10 +398,11 @@ end;
 
 prompt
 prompt -- alter session set events '10046 off';;
+prompt -- alter session set optimizer_use_invisible_indexes=false;
 prompt
 prompt -- select value tracefile_name from v$diag_info where name = 'Default Trace File';;
-
 prompt
+
 prompt spool off
 
 spool off
