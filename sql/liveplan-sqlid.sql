@@ -1,8 +1,7 @@
 
---liveplan10g_sqlid.sql
+--liveplan-sqlid.sql
 -- this is for 10g and later
 -- see liveplan_10g.sql
-
 
 @clears
 
@@ -31,14 +30,16 @@ prompt Child Cursors available
 select child_number
 from v$sql_shared_cursor
 where sql_id = :sqlidvar
+	and executions is not null
 order by child_number
 /
 
 
 begin
 	select min(child_number) into :childnumvar
-	from v$sql_shared_cursor
-	where sql_id = :sqlidvar;
+	from v$sql
+	where sql_id = :vsqlid
+	and executions is not null;
 end;
 /
 
@@ -46,8 +47,8 @@ end;
 
 select *
 from TABLE(
-   dbms_xplan.display_cursor(:sqlidvar,:childnumvar,'ALL ALLSTATS LAST')
-   )
+	dbms_xplan.display_cursor(:sqlidvar,:childnumvar,'ALL ALLSTATS LAST')
+	)
 /
 
 
