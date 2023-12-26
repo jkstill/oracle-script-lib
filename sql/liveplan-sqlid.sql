@@ -38,7 +38,7 @@ order by child_number
 begin
 	select min(child_number) into :childnumvar
 	from v$sql
-	where sql_id = :vsqlid
+	where sql_id = :sqlidvar
 	and executions is not null;
 end;
 /
