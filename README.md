@@ -602,6 +602,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showpipes.sql'>showpipes.sql</a> - Show database pipes
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showsrc.sql'>showsrc.sql</a> - show source of PL/SQL stored objects
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show-x-dollar-tables.sql'>show-x-dollar-tables.sql</a> - list of all x$tables
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-patch-report.sql'>sql-patch-report.sql</a> - report on SQL Patches created via dbms_sqldiag
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-version-counts.sql'>sql-version-counts.sql</a> - top 10 count of versions of SQL_ID
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/tabcols.sql'>tabcols.sql</a> - list of columns in alpha order for owner and table_name
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/tabidx.sql'>tabidx.sql</a> - show indexes and columns for owner and table_name

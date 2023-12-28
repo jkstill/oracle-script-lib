@@ -599,6 +599,7 @@ INSTANCE and/or DATABASE:
 @showpipes.sql: Show database pipes
 @showsrc.sql: show source of PL/SQL stored objects
 @show-x-dollar-tables.sql: list of all x$tables
+@sql-patch-report.sql: report on SQL Patches created via dbms_sqldiag
 @sql-version-counts.sql: top 10 count of versions of SQL_ID
 @tabcols.sql: list of columns in alpha order for owner and table_name
 @tabidx.sql: show indexes and columns for owner and table_name
