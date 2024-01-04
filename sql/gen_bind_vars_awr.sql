@@ -396,12 +396,17 @@ begin
 end;
 /
 
-
 prompt
 prompt -- alter session set events '10046 off';;
 prompt -- alter session set optimizer_use_invisible_indexes=false;;
 prompt
-prompt -- select value tracefile_name from v$diag_info where name = 'Default Trace File';;
+prompt col tracefile_name new_value tracefile_name
+prompt
+prompt select value tracefile_name from v$diag_info where name = 'Default Trace File';;
+prompt
+prompt host mkdir -p trace
+set scan off
+prompt host cp -p &tracefile_name trace
 prompt
 
 prompt spool off
@@ -409,9 +414,11 @@ prompt spool off
 spool off
 
 prompt
-prompt SQL in '&file_prefix-exe-&my_sql_id..sql'
+prompt prompt SQL in '&file_prefix-exe-&my_sql_id..sql'
 prompt
+set scan on
 
 @clears
 set line 80
 undef 1 2
+
