@@ -1,6 +1,11 @@
 
 -- gen_bind_vars_awr.sql
 --
+-- jared still 2024-01-04
+-- sqlplus cannot handle bind placeholder names such as :1, :2, etc
+-- now a pl/sql block is being used with 'execute immediate'
+-- this is to that SQL will execute with the original SQL_ID
+--
 -- jared still 2023-12-15 - jkstill@gmail.com
 -- changed the SQL that gets bind values - now does a much better job of it
 --
@@ -42,18 +47,6 @@
 --
 
 def file_prefix='sql'
-
-/*
-
-for this script utl_file is no longer being used.
-The problem is that some SQL is over 2499 characters in length, and it may be stored as one line in the data dictionary
-SQLPlus cannot execute lines that long
-
-Formatting with PL/SQL and keeping the syntax legal was proving more difficult that necessary for this script.
-
-So, spooled output from sqlplus is being used instead.
-
-*/
 
 
 @clears
@@ -105,16 +98,19 @@ set serveroutput on size unlimited
 
 spool '&file_prefix-exe-&my_sql_id..sql'
 
-prompt spool '&file_prefix-exe-&my_sql_id..log'
+prompt
+prompt host mkdir -p logs
+prompt spool 'logs/&file_prefix-exe-&my_sql_id..log'
+
 prompt set echo on
 
 prompt set timing on pause off
 prompt set linesize 200 trimspool on
 
-prompt -- alter session set statistics_level = 'ALL';;
-prompt -- alter session set tracefile_identifier = '&my_sql_id-TEST';;
-prompt -- alter session set optimizer_use_invisible_indexes=true;;
-prompt -- alter session set events '10046 trace name context forever, level 12';;
+prompt --alter session set statistics_level = 'TYPICAL';;
+prompt --alter session set tracefile_identifier = '&my_sql_id-TEST';;
+prompt --alter session set optimizer_use_invisible_indexes=true;;
+prompt --alter session set events '10046 trace name context forever, level 12';;
 prompt
 
 
@@ -157,6 +153,9 @@ declare
 	v_sql clob;
 
 	-- renames system generated bind var names
+	-- renaming the bind place_holders was a mistake, as then the sql_id is not matched
+	-- it was done because :1 is not a legal sqlplus var name
+	-- use a pl/sql block and execute immediate, and leave the names as is
 	cursor c_get_sql( v_sql_id_in varchar2 )
 	is
 	with first_iteration as (
@@ -165,7 +164,8 @@ declare
 		where sql_id = v_sql_id_in
 	),
 	second_iteration as (
-		select sql_id, regexp_replace(sql_text,':([[:digit:]]+)',':G' || '\1' ) sql_text
+		--select sql_id, regexp_replace(sql_text,':([[:digit:]]+)',':G' || '\1' ) sql_text
+		select sql_id, sql_text
 		from first_iteration
 	)
 	select sql_id, sql_text
@@ -332,6 +332,26 @@ begin
 
 			end loop;
 
+			-- output pl/sql block
+			-- this will likely require editing after generation
+			--pl('	');
+			--pl(v_sql);
+			--pl('	');
+
+			pl('declare');
+			pl('	rc number;');
+			pl('begin');
+			pl(q'[	dbms_output.put_line('my_bind: ' || :G1);]');
+			pl(q'[	execute immediate	 q'[]' || v_sql ||  ']'' into rc using :G1;');
+			pl(q'[	dbms_output.put_line('rows: ' || rc);]');
+			pl('exception');
+			pl('when no_data_found then');
+			pl('	rc := 0;');
+			pl(q'[	dbms_output.put_line('rows: ' || rc);]');
+			pl('end;');
+			pl('/');
+
+
 			-- create variable definitions
 			for i in t_bind_names.first .. t_bind_names.last
 			loop
@@ -350,10 +370,6 @@ begin
 					);
 				end if;
 			end loop;
-
-			pl('	');
-			pl(v_sql);
-			pl('	');
 
 			v_bind_key := t_binds.first;
 
@@ -396,17 +412,18 @@ begin
 end;
 /
 
+
 prompt
-prompt -- alter session set events '10046 off';;
-prompt -- alter session set optimizer_use_invisible_indexes=false;;
+prompt --alter session set events '10046 off';;
+prompt --alter session set optimizer_use_invisible_indexes=false;;
 prompt
 prompt col tracefile_name new_value tracefile_name
 prompt
-prompt select value tracefile_name from v$diag_info where name = 'Default Trace File';;
+prompt --select value tracefile_name from v$diag_info where name = 'Default Trace File';;
 prompt
-prompt host mkdir -p trace
+prompt --host mkdir -p trace
 set scan off
-prompt host cp -p &tracefile_name trace
+prompt --host cp -p &tracefile_name trace
 prompt
 
 prompt spool off
@@ -414,11 +431,10 @@ prompt spool off
 spool off
 
 prompt
-prompt prompt SQL in '&file_prefix-exe-&my_sql_id..sql'
+prompt --prompt SQL in '&file_prefix-exe-&my_sql_id..sql'
 prompt
 set scan on
 
 @clears
 set line 80
 undef 1 2
-
