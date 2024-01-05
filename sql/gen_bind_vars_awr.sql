@@ -341,6 +341,25 @@ begin
 			end loop;
 
 
+			-- create variable definitions
+			for i in t_bind_names.first .. t_bind_names.last
+			loop
+				--p('var ' || substr(t_bind_names(i).bind_name,2));
+				dout('-- set bind name	  % ' ||	 t_bind_names(i).bind_name);
+				p('var ' || t_bind_names(i).bind_name);
+				if t_bind_names(i).datatype_string like 'NUMBER%' then
+					pl(' number');
+				else
+					pl(' varchar2(' ||
+						substr(
+							t_bind_names(i).datatype_string,
+							instr(t_bind_names(i).datatype_string,
+							'(')+1,instr(t_bind_names(i).datatype_string,')') - instr(t_bind_names(i).datatype_string,'(')-1
+						) || ')'
+					);
+				end if;
+			end loop;
+
 /*
 
 -- example PL/SQL block with dbms_sql
@@ -365,8 +384,6 @@ when no_data_found then
 end;
 
 */
-
-
 
 			-- output pl/sql block
 			-- the output may require editing after generation
@@ -411,26 +428,6 @@ end;
 			pl('/');
 			pl(chr(9));
 
-
-
-			-- create variable definitions
-			for i in t_bind_names.first .. t_bind_names.last
-			loop
-				--p('var ' || substr(t_bind_names(i).bind_name,2));
-				dout('-- set bind name	  % ' ||	 t_bind_names(i).bind_name);
-				p('var ' || t_bind_names(i).bind_name);
-				if t_bind_names(i).datatype_string like 'NUMBER%' then
-					pl(' number');
-				else
-					pl(' varchar2(' ||
-						substr(
-							t_bind_names(i).datatype_string,
-							instr(t_bind_names(i).datatype_string,
-							'(')+1,instr(t_bind_names(i).datatype_string,')') - instr(t_bind_names(i).datatype_string,'(')-1
-						) || ')'
-					);
-				end if;
-			end loop;
 
 			v_bind_key := t_binds.first;
 
