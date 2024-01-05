@@ -6,6 +6,8 @@
 -- now a pl/sql block is being used with 'execute immediate'
 -- this is to that SQL will execute with the original SQL_ID
 --
+-- converted execute immediate to dbms_sql, as the results were not as expected
+--
 -- jared still 2023-12-15 - jkstill@gmail.com
 -- changed the SQL that gets bind values - now does a much better job of it
 --
@@ -145,7 +147,7 @@ declare
 	t_binds bindtyp;
 	t_binds_empty bindtyp;
 	t_bind_names bindnametyp;
-	t_bin_names_empty bindnametyp;
+	t_bind_names_empty bindnametyp;
 
 	v_bind_key varchar(100);
 	v_snap_id number := 0;
@@ -245,6 +247,12 @@ declare
 		dbms_output.put_line('');
 	end;
 
+	procedure nl
+	is
+	begin
+		dbms_output.new_line;
+	end;
+
 	procedure dout (v_string_in varchar2)
 	is
 	begin
@@ -279,7 +287,7 @@ begin
 			--dout('SQL:' || v_sql);
 
 			-- get bind names into associative array
-			t_bind_names := t_bin_names_empty;
+			t_bind_names := t_bind_names_empty;
 			for bindnamerec in c_get_bind_names(sqlrec.sql_id)
 			loop
 				if substr(bindnamerec.name,1,1) = ':' then
@@ -332,24 +340,77 @@ begin
 
 			end loop;
 
-			-- output pl/sql block
-			-- this will likely require editing after generation
-			--pl('	');
-			--pl(v_sql);
-			--pl('	');
 
+/*
+
+-- example PL/SQL block with dbms_sql
+
+declare
+	cursor_name integer;
+	execReturnStatus integer; -- as per docs, the return value can be ignored for SELECT
+	rc number := 0; -- row count
+	v_sql clob;
+begin
+	cursor_name := dbms_sql.open_cursor;
+	v_sql :=	 q'[SELECT CITY, STATE, NAME, ADDRESS FROM CUSTOMERS WHERE CUST_ID = :B1 AND STATUS = 'A']';
+	dbms_sql.parse(cursor_name, v_sql,	dbms_sql.native);
+	dbms_sql.bind_variable(cursor_name, ':B1', :G1);
+	execReturnStatus := DBMS_SQL.EXECUTE(cursor_name);
+	rc := dbms_sql.fetch_rows(cursor_name);
+	dbms_sql.close_cursor(cursor_name);
+	dbms_output.put_line('rows found: ' || rc);
+exception
+when no_data_found then
+	dbms_output.put_line('no data found: ' ||	 rc);
+end;
+
+*/
+
+
+
+			-- output pl/sql block
+			-- the output may require editing after generation
+
+			pl(chr(9));
 			pl('declare');
-			pl('	rc number;');
+			pl(q'[	cursor_name integer;]');
+			pl(q'[	execReturnStatus integer; -- as per docs, the return value can be ignored for SELECT]');
+			pl(q'[	rc number := 0; -- row count]');
+			pl(q'[	v_sql clob;]');
 			pl('begin');
-			pl(q'[	dbms_output.put_line('my_bind: ' || :G1);]');
-			pl(q'[	execute immediate	 q'[]' || v_sql ||  ']'' into rc using :G1;');
+			pl(q'[	cursor_name := dbms_sql.open_cursor;]');
+			pl(q'[	v_sql :=	 q'[]' || v_sql || ']'';' );
+			pl(q'[	dbms_sql.parse(cursor_name, v_sql,	dbms_sql.native);]');
+
+			--pl(q'[	  -- modify generator code to catch all of the bind value]');
+			--pl(q'[ dbms_sql.bind_variable(cursor_name, ':B1', :B1);]');
+
+
+			-- bind the sql placeholders, if any
+			for i in t_bind_names.first .. t_bind_names.last
+			loop
+
+				dout('-- set bind name	  % ' ||	 t_bind_names(i).bind_name);
+
+				p(
+					q'[	dbms_sql.bind_variable(cursor_name, ]'	 ||
+					''':' || t_bind_names(i).bind_name || ''',' ||
+					':' || t_bind_names(i).bind_name	 || ');'
+				);
+
+			end loop;
+
+			pl(q'[	execReturnStatus := DBMS_SQL.EXECUTE(cursor_name);]');
+			pl(q'[	rc := dbms_sql.fetch_rows(cursor_name);]');
+			pl(q'[	dbms_sql.close_cursor(cursor_name);]');
 			pl(q'[	dbms_output.put_line('rows: ' || rc);]');
 			pl('exception');
 			pl('when no_data_found then');
-			pl('	rc := 0;');
-			pl(q'[	dbms_output.put_line('rows: ' || rc);]');
+			pl(q'[	dbms_output.put_line('no data found: ' || rc);]');
 			pl('end;');
 			pl('/');
+			pl(chr(9));
+
 
 
 			-- create variable definitions
@@ -438,3 +499,4 @@ set scan on
 @clears
 set line 80
 undef 1 2
+
