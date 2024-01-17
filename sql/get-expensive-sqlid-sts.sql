@@ -1,6 +1,9 @@
 
--- find-expensive-sql.sql
--- Jared Still 2023
+-- get-expensive-sqlid-sts.sql
+-- based on find-expensive-sql.sql
+-- create scripts for building sql tuning sets running the advisor
+-- for expensive SQL
+-- Jared Still 2024
 
 /*
 
@@ -39,39 +42,16 @@ def n_min_sql_executions=50
 -- look back how many days in AWR?
 def n_awr_days_back=7
 
-set linesize 300 trimspool on
-set pagesize 100
+@clear_for_spool
 
-col sql_id format a13 head 'SQL ID'
-col end_interval_time format a19 head 'End Interval Time'
-col snap_id format 99999999 head 'Snap ID'
-
-col executions format 999,999,990 head 'Executions'
-col fetches format 999,999,990 head 'Fetches'
-col buffer_gets format 99,999,999,990 head 'Buffer Gets'
-col rows_processed format 999,999,990 head  'Rows Procesed'
-col disk_reads format 999,999,990 head 'Disk Reads'
-col plan_hash_value format 9999999999 head 'Plan|Hash Value'
-col rows_per_exe format 99,999,990.9990 head 'Rows:Exe|Ratio'
-col rows_per_lio format 99,999,999,990.9990 head 'Rows:LIO|Ratio'
-col lios_per_row format 99,999,999,990 head 'LIOs:Row|Ratio'
-col command_name format a6 head 'CMD'
-col elapsed_time format 99,999,990.90 head 'Elapsed|Time'
-col avg_elapsed_time format 99,990.999990 head 'Average|Elapsed|Time'
-col objects format a50 wrapped
-col instance_number format 9999 head 'INST|NUM'
-col con_id format 999 head 'CON|ID'
-col con_dbid format 99999999999 head 'CON DBID'
-col dbid format 99999999999 head ' DBID'
-col sql_length format 999999 head 'SQL Text|Length'
-col sql_rank format 99999 head 'SQL|Rank'
+set linesize 40
 
 clear break
 --break on sql_id skip 1 on plan_hash_value
 
 set term off
 
-spool find-expensive-sql.log
+spool build-sts.sql
 
 with
 function get_objects (sql_id_in varchar2, plan_hash_value_in number) return varchar2
@@ -97,6 +77,23 @@ begin
 
 	return v_objects;
 end;
+sql_to_ignore as (
+	select rownum id, column_value sql_id
+	from (
+		table(
+			sys.odcivarchar2list(
+				'1ya2f4ha0jfjs',
+				'22fm5adgywaxb',
+				'33hp8g942n9ag',
+				'3q26dgcw1p0nj',
+				'659jctjmwr13g',
+				'71a7qrmg41c63',
+				'8quqc1kz3upac',
+				'6um3t0dt5j1j9'
+			)
+		)
+	)
+),
 raw_data as (
 	select
 		st.sql_id
@@ -131,6 +128,7 @@ raw_data as (
 		and s.instance_number = st.instance_number
 		and s.end_interval_time	 >= systimestamp - numtodsinterval(&n_awr_days_back,'DAY')
 		and st.sql_id is not null
+		and st.sql_id not in (select sql_id from sql_to_ignore)
 		and st.parsing_user_id != 0
 ),
 rpt_data as (
@@ -189,6 +187,7 @@ select  distinct
 	--row_number() over (order by r.lios_per_row desc ) sql_rank
 	--, row_number() over (order by floor(( r.lios_per_row * r.elapsed_time	 / 1e3) * log(dbms_lob.getlength(t.sql_text),10)) desc) sql_rank
 	floor(( r.lios_per_row * r.elapsed_time  / 1e3) * log(dbms_lob.getlength(t.sql_text),10)) sql_cost
+	--floor(( r.lios_per_row * r.elapsed_time	 / 1e3) ) sql_cost
 	, r.sql_id
 	, r.plan_hash_value
 	, r.end_interval_time
@@ -233,7 +232,8 @@ join dba_hist_sqlcommand_name cn
 	and cn.con_id = t.con_id
 	and cn.con_dbid = t.con_dbid
 	and cn.command_type = t.command_type
-	and cn.command_name not in ('PL/SQL EXECUTE') -- want to see SQL, not procedures/functions
+	--and cn.command_name not in ('PL/SQL EXECUTE') -- want to see SQL, not procedures/functions
+	and cn.command_name in ('SELECT') -- SELECT only
 -- this will tend to favor expensize SQL returning few rows
 --order by (lios_per_row*elapsed_time) / rows_processed	 desc
 -- this will favor expensive SQL with higher number of executions
@@ -242,36 +242,27 @@ join dba_hist_sqlcommand_name cn
 -- possibley due to ad hoc queries, or seldom run reports
 -- this is why n_min_sql_executions is used in the WITH clause 'get_expensive_sql'
 --order by sql_rank
-)
+),
+sqlids as(
 select
-   -- use this function to order by the calculated cost
-   row_number() over (order by r.sql_cost desc ) sql_rank
-   --
-   -- use the rownum column an leave the ordering up the parent SELECT
-   --rownum sql_rank
-	, r.sql_cost
+	-- use this function to order by the calculated cost
+	--row_number() over (order by r.sql_cost desc ) sql_rank
+	--
+	-- use the rownum column an leave the ordering up the parent SELECT
+   rownum sql_rank
 	, r.sql_id
-	, r.plan_hash_value
-	, r.end_interval_time
-	, r.elapsed_time
-	, r.elapsed_time / r.executions avg_elapsed_time
-	, r.executions
-	, r.fetches
-	, r.buffer_gets
-	, r.rows_processed
-	, r.disk_reads
-	, r.rows_per_exe
-	, r.lios_per_row
-	, r.command_name
-	, r.sql_length
-	, r.objects
 from report r
 where r.sql_cost > 0
 	and rownum <= 100
 order by sql_rank
+)
+select distinct 'prompt ' || sql_id || chr(10), '@dbms-sqltune-sqlid ' || sql_id	 from sqlids where sql_rank <= 20
 /
 
 spool off
 
-set term on
-ed find-expensive-sql.log
+@clears
+
+ed build-sts.sql
+
+

@@ -7,6 +7,7 @@
 <pre>
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dbms-sqltune-sqlid.sql'>dbms-sqltune-sqlid.sql</a> - call with SQL_ID, create and execute a tuning task, run the report
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/find-expensive-sql.sql'>find-expensive-sql.sql</a> - AWR - find expensive SQL in terms of high LIO
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get-expensive-sqlid-sts.sql'>get-expensive-sqlid-sts.sql</a> - AWR - find expensive SQL in terms of high LIO
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/profile_from_awr.sql'>profile_from_awr.sql</a> - create a SQL Profile from plan in AWR
 </pre>
 <h3>APEX: Anything to do with Apex</h3>

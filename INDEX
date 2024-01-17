@@ -3,6 +3,7 @@ TUNING: scripts to aid with tuning
 
 @dbms-sqltune-sqlid.sql: call with SQL_ID, create and execute a tuning task, run the report
 @find-expensive-sql.sql: AWR - find expensive SQL in terms of high LIO:row average
+@get-expensive-sqlid-sts.sql: AWR - find expensive SQL in terms of high LIO:row average and create a sql tuning set sql script.
 @profile_from_awr.sql: create a SQL Profile from plan in AWR
 
 APEX: Anything to do with Apex
