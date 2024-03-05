@@ -281,6 +281,7 @@ AWR/ASH:
 @sql-exe-times-awr-rpt.sql: AWR report of execution times for a SQL_ID
 @sql-exe-times-ash.sql: stats and histograms of execution times for a SQL_ID
 @sql-exe-times-awr.sql: stats and histograms of execution times for a SQL_ID for past 30 days
+@sql-exe-times-awr-histogram.sql: histogram of execution times for a SQL_ID
 @sql-plans.sql: Show plans used by a selected SQL for a date and time range
 @sysmetric-hist-matrix.sql: crosstab report of several metrics from dba_hist_sysmetric_history
 @sysmetric-history.sql: pivot to CSV for several metrics in dba_hist_sysmetric_history
