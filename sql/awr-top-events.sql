@@ -31,7 +31,7 @@ data as (
 			else h.event
 		end event
 	from dba_hist_active_sess_history h
-		and h.event != 'ges generic event' -- see MOS 2638401.1
+	where h.event != 'ges generic event' -- see MOS 2638401.1
 ),
 agg_data as (
 select  distinct
