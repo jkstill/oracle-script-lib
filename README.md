@@ -55,7 +55,8 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/title132.sql'>title132.sql</a> - title and width to 132
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/nls_date_format.sql'>nls_date_format.sql</a> - set custom date and time formats, several options available at runtime
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/nls_time_format.sql'>nls_time_format.sql</a> - set custom (fixed) date and time formats
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/spool_example.sql'>spool_example.sql</a> -
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/spool_example.sql'>spool_example.sql</a> - spool log template
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/spool-example-2.sql'>spool-example-2.sql</a> - another spool template - log file with timestamp
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/scott.sql'>scott.sql</a> - create the scott tables
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql_trick_1.sql'>sql_trick_1.sql</a> - demonstrates a very useful technique for conditionally executing SQL
 </pre>

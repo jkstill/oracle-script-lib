@@ -48,7 +48,8 @@ SUPPORTING SCRIPTS:
 @title132.sql: title and width to 132
 @nls_date_format.sql: set custom date and time formats, several options available at runtime
 @nls_time_format.sql: set custom (fixed) date and time formats
-@spool_example.sql: 
+@spool_example.sql: spool log template
+@spool-example-2.sql: another spool template - log file with timestamp
 @scott.sql: create the scott tables
 @sql_trick_1.sql: demonstrates a very useful technique for conditionally executing SQL
 
