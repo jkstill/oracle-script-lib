@@ -25,6 +25,8 @@ set term on feed on
 
 exec :v_sql_id := '&u_sql_id'
 
+@get_date_range
+
 break on session_id on sql_exec_id skip 1
 
 with blocked as (
