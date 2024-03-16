@@ -22,9 +22,23 @@ prompt SQL_ID:
 
 set feed off term off head off
 select '&1' v_sql_id from dual;
+
+
+col logtime new_value u_logtime noprint
+
+select to_char(sysdate,'yyyy-mm-dd_hh24-mi-ss') logtime from dual;
+
+host mkdir -p logs
+
+col logfile new_value u_logfile noprint
+
+select 'logs/sql-exe-times-awr-rpt_' || '&v_sql_id' || '_' || '&u_logtime' || '.log' logfile from dual;
+
+
 set feed on term on head on
 
-spool sql-exe-times-awr-rpt-&v_sql_id..txt
+spool &u_logfile
+
 
 with data as (
 	select sql_id, sql_exec_id, sql_exec_start,
@@ -33,6 +47,7 @@ with data as (
 		max(sample_time - sql_exec_start) duration
 	from dba_hist_active_sess_history
 	where sql_id = '&v_sql_id'
+		and sql_exec_id is not null
 	group by sql_id, sql_exec_id, sql_exec_start
 	order by sql_exec_start, sql_id, sql_exec_id
 )
@@ -48,5 +63,7 @@ order by 1,2,3
 
 spool off
 
-ed sql-exe-times-awr-rpt-&v_sql_id..txt
+
+prompt log: &u_logfile
+
 

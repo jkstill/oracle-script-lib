@@ -31,6 +31,7 @@ with data as (
 		max(sample_time - sql_exec_start) duration
 	from v$active_session_history
 	where sql_id = '&v_sql_id'
+		and sql_exec_id is not null
 	group by sql_id, sql_exec_id, sql_exec_start
 	order by sql_exec_start, sql_id, sql_exec_id
 )

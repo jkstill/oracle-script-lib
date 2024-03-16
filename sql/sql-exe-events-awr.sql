@@ -27,7 +27,7 @@ exec :v_sql_id := '&u_sql_id'
 
 @get_date_range
 
-break on session_id on sql_exec_id skip 1
+break on session_id  skip 1
 
 with blocked as (
 	select distinct h.instance_number, h.dbid, h.blocking_session, h.blocking_session_serial#,  h.snap_id, h.sample_id, h.sql_id
