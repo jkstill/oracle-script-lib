@@ -1,10 +1,22 @@
 
-TUNING: scripts to aid with tuning
+TUNING: scripts to aid with Tuning and SQL Performance
 
 @dbms-sqltune-sqlid.sql: call with SQL_ID, create and execute a tuning task, run the report
 @find-expensive-sql.sql: AWR - find expensive SQL in terms of high LIO:row average
 @get-expensive-sqlid-sts.sql: AWR - find expensive SQL in terms of high LIO:row average and create a sql tuning set sql script.
 @profile_from_awr.sql: create a SQL Profile from plan in AWR
+
+@sql-performance/sql-buffer-ratios-awr.sql: report on rows returned per execution
+@sql-performance/sql-buffer-ratios.sql: report on buffers:rows ratios
+@sql-performance/sql-exe-times-awr-rpt.pl: a Perl script that generates a report on SQL Execution time
+
+@sql-exe-events-ash.sql: show events per execution of SQL_ID in ASH
+@sql-exe-events-awr.sql: show events per execution of SQL_ID in AWR
+@sql-exe-times-ash-rpt.sql: ASH report of execution times for a SQL_ID
+@sql-exe-times-awr-rpt.sql: AWR report of execution times for a SQL_ID
+@sql-exe-times-ash.sql: stats and histograms of execution times for a SQL_ID
+@sql-exe-times-awr.sql: stats and histograms of execution times for a SQL_ID for past 30 days
+@sql-exe-times-awr-histogram.sql: histogram of execution times for a SQL_ID
 
 APEX: Anything to do with Apex
 @apex-version.sql: Get the version of Apex.  For CDB/PDB, run from both.

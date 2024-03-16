@@ -3,12 +3,22 @@
 <body>
 <pre>
 </pre>
-<h3>TUNING: scripts to aid with tuning</h3>
+<h3>TUNING: scripts to aid with Tuning and SQL Performance</h3>
 <pre>
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dbms-sqltune-sqlid.sql'>dbms-sqltune-sqlid.sql</a> - call with SQL_ID, create and execute a tuning task, run the report
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/find-expensive-sql.sql'>find-expensive-sql.sql</a> - AWR - find expensive SQL in terms of high LIO
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get-expensive-sqlid-sts.sql'>get-expensive-sqlid-sts.sql</a> - AWR - find expensive SQL in terms of high LIO
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/profile_from_awr.sql'>profile_from_awr.sql</a> - create a SQL Profile from plan in AWR
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-performance/sql-buffer-ratios-awr.sql'>sql-performance/sql-buffer-ratios-awr.sql</a> - report on rows returned per execution
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-performance/sql-buffer-ratios.sql'>sql-performance/sql-buffer-ratios.sql</a> - report on buffers
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-performance/sql-exe-times-awr-rpt.pl'>sql-performance/sql-exe-times-awr-rpt.pl</a> - a Perl script that generates a report on SQL Execution time
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-exe-events-ash.sql'>sql-exe-events-ash.sql</a> - show events per execution of SQL_ID in ASH
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-exe-events-awr.sql'>sql-exe-events-awr.sql</a> - show events per execution of SQL_ID in AWR
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-exe-times-ash-rpt.sql'>sql-exe-times-ash-rpt.sql</a> - ASH report of execution times for a SQL_ID
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-exe-times-awr-rpt.sql'>sql-exe-times-awr-rpt.sql</a> - AWR report of execution times for a SQL_ID
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-exe-times-ash.sql'>sql-exe-times-ash.sql</a> - stats and histograms of execution times for a SQL_ID
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-exe-times-awr.sql'>sql-exe-times-awr.sql</a> - stats and histograms of execution times for a SQL_ID for past 30 days
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-exe-times-awr-histogram.sql'>sql-exe-times-awr-histogram.sql</a> - histogram of execution times for a SQL_ID
 </pre>
 <h3>APEX: Anything to do with Apex</h3>
 <pre>
