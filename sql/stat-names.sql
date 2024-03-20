@@ -51,18 +51,20 @@ bitmask as (
 	connect by level <=15
 ), 
 classes as (
-	select class, name
+	select class, stat_id, name
 	from v$statname 
 )
 select 
 	c.class
+	, c.stat_id
 	, c.name
 	, listagg(v.name,',') within group ( order by b.bit) class_names
 from classes c
 	join bitmask b 
 		on bitand(c.class,b.bit) !=0 
 	join class_values v on v.class# = b.bit
-group by class,c.name
-order by class
+where c.name like '%'
+group by c.class,c.stat_id,c.name
+order by class_names,c.name
 /
 

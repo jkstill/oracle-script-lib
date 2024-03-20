@@ -1,4 +1,7 @@
 
+-- metric-names.sql
+-- Jared Still
+
 col os_load format 999.99
 col begin_time format a20
 col metric_name format a45
@@ -14,5 +17,7 @@ select m.metric_name
 	, m.metric_unit
 from v$metricname m
 join v$metricgroup g on g.group_id = m.group_id
-order by m.metric_name, m.group_id
+	and m.metric_name like '%'
+order by m.group_id, m.metric_name
 /
+
