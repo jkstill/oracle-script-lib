@@ -15,6 +15,8 @@ The use of DBA_HIST_SYSMETRIC_HISTORY is found in script in both `./aas` and `./
 DBA_HIST_SYSMETRIC_SUMMARY Returning No Rows At PDB Level (Doc ID 2871248.1)
 DBA_HIST_SYSMETRIC_HISTORY Does Not Capture All Metrics (Doc ID 2724352.1)
 
+this may have changed by 19c, as it does seem to be working in 19.12, but only in the CDB 
+
 */
 
 col snap_id format 9999999
@@ -40,6 +42,7 @@ ttitle off
 btitle off
 clear break
 set echo off pause off timing off time off
+set array 500
 
 -- it is necessary to manually comment out one set of commands, dependent on report type
 
@@ -48,7 +51,7 @@ set echo off pause off timing off time off
 --set feedback on
 
 -- for CSV
-set feedback off 
+set feedback off  term off
 set pagesize 0
 
 spool sysmetric-cpu-seconds-hist.csv
@@ -100,5 +103,7 @@ join (
 /
 
 spool off
+
+set feedback on term on
 
 
