@@ -78,6 +78,7 @@
 -- alter system set events 'sql_trace[SQL:02hnhu3dv424q] plan_stat=all_executions,wait=true,bind=false';
 -- alter system set events 'sql_trace[SQL:0ug54s8cg41up] plan_stat=all_executions,wait=true,bind=false';
 
+-- this version oif setting sql_trace no longer works - attempted in 19.0.3
 -- alter system set events 'sql_trace[SQL:0ug54s8cg41up] plan_stat=all_executions,wait=true,bind=false; name processstate level 2, lifetime 5';
 
 -- each must be turned off explicitly
