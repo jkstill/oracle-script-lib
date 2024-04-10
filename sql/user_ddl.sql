@@ -1,5 +1,7 @@
 
--- schema_ddl.sql
+-- user_ddl.sql
+
+-- see Object types for DBMS_METADATA (Doc ID 207859.1)
 
 @clears
 
