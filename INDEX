@@ -129,6 +129,7 @@ RDBMS UTILITIES:
 @tracefile-dump.sql: dumot the tracefile for your session to a local tracefile
 @troff.sql: Turn off SQL tracing for all sessions of an account
 @tron.sql: Turn on SQL tracing for all sessions of an account
+@oracle-object-types.txt: a text file of the object types recognized by dbms_metadata.get_ddl
 @table_ddl.sql: generate DDL for owner.table, with indexes, constraints, etc
 @user_ddl.sql: Generate SQL script to duplicate a database user using DBMS_METADATA
 @utl_file-test.sql: Test the use of a database directory and file.

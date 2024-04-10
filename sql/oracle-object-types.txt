@@ -1,0 +1,79 @@
+
+from 'Object types for DBMS_METADATA (Doc ID 207859.1)'
+
+ORACLE 9.0.1
+Type Name                       Meaning
+=======================================================================
+ASSOCIATION                     associate statistics
+AUDIT                           audits of SQL statements
+AUDIT_OBJ                       audits of schema objects
+CLUSTER                         clusters
+COMMENT                         comments
+CONSTRAINT                      constraints
+CONTEXT                         application contexts
+DB_LINK                         database links
+DEFAULT_ROLE                    default roles
+DIMENSION                       dimensions
+DIRECTORY                       directories
+FUNCTION                        stored functions
+INDEX                           indexes
+INDEXTYPE                       indextypes
+JAVA_SOURCE                     java sources
+LIBRARY                         external procedure libraries
+MATERIALIZED_VIEW               materialized views
+MATERIALIZED_VIEW_LOG           materialized view logs
+OBJECT_GRANT                    object grants
+OPERATOR                        operators
+OUTLINE                         stored outlines
+PACKAGE                         stored packages
+PACKAGE_SPEC                    package specifications
+PACKAGE_BODY                    package bodies
+PROCEDURE                       stored procedures
+PROFILE                         profiles
+PROXY                           proxy authentications
+REF_CONSTRAINT                  referential constraint
+ROLE                            roles
+ROLE_GRANT                      role grants
+ROLLBACK_SEGMENT                rollback segments
+SEQUENCE                        sequences
+SYNONYM                         synonyms
+SYSTEM_GRANT                    system privilege grants
+TABLE                           tables
+TABLESPACE                      tablespaces
+TABLESPACE_QUOTA                tablespace quotas
+TRIGGER                         triggers
+TRUSTED_DB_LINK                 trusted links
+TYPE                            user-defined types
+TYPE_SPEC                       type specifications
+TYPE_BODY                       type bodies
+USER                            users
+VIEW                            views
+XMLSCHEMA                       XML schema
+
+
+ORACLE 10.1.0
+Type Name                       Meaning
+=======================================================================
+AQ_QUEUE                        queues
+AQ_QUEUE_TABLE                  additional metadata for queue tables
+AQ_TRANSFORM                    transforms
+DATABASE_EXPORT                 all metadata objects in a database
+FGA_POLICY                      fine-grained audit policies
+INDEX_STATISTICS                indextypes
+JOB                             scheduler jobs (Current support scheduled for 11.2 .. See NOTE:567504.1)
+REFRESH_GROUP                   refresh groups
+RESOURCE_COST                   resource cost info
+RLS_CONTEXT                     driving contexts for enforcement of fine-grained access-control policies
+RLS_GROUP                       fine-grained access-control policy groups
+RLS_POLICY                      fine-grained access-control policies
+RMGR_CONSUMER_GROUP             resource consumer groups
+RMGR_INTITIAL_CONSUMER_GROUP    assign initial consumer groups to users
+RMGR_PLAN                       resource plans
+RMGR_PLAN_DIRECTIVE             resource plan directives
+SCHEMA_EXPORT                   sequences
+TABLE_DATA                      metadata describing row data for a table, nested table, or partition
+TABLE_EXPORT                    metadata for a table and its associated objects
+TABLE_STATISTICS                precomputed statistics on tables
+TRANSPORTABLE_EXPORT            metadata for objects in a transportable tablespace set
+
+

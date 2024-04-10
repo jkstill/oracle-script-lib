@@ -133,6 +133,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/tracefile-dump.sql'>tracefile-dump.sql</a> - dumot the tracefile for your session to a local tracefile
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/troff.sql'>troff.sql</a> - Turn off SQL tracing for all sessions of an account
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/tron.sql'>tron.sql</a> - Turn on SQL tracing for all sessions of an account
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/oracle-object-types.txt'>oracle-object-types.txt</a> - a text file of the object types recognized by dbms_metadata.get_ddl
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/table_ddl.sql'>table_ddl.sql</a> - generate DDL for owner.table, with indexes, constraints, etc
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/user_ddl.sql'>user_ddl.sql</a> - Generate SQL script to duplicate a database user using DBMS_METADATA
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/utl_file-test.sql'>utl_file-test.sql</a> - Test the use of a database directory and file.
