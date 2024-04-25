@@ -567,6 +567,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/loghistory_8.sql'>loghistory_8.sql</a> - show archive logs with time between switches
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/loghist-csv.sql'>loghist-csv.sql</a> - dump history of archive logs (with timing) to CSV
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/obj-privs.sql'>obj-privs.sql</a> - object privileges granted per object
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/options.sql'>options.sql</a> - report from v$option
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/oracle-exclude-demo.sql'>oracle-exclude-demo.sql</a> - demonstrate the use of oracle-exclude-inline.sql
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/oracle-exclude-inline.sql'>oracle-exclude-inline.sql</a> - inline version of oracle-exclude-schema.sql
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/oracle-exclude-schema.sql'>oracle-exclude-schema.sql</a> - show schemas owned by Oracle and are frequently excluded from queries
@@ -654,12 +655,26 @@
 </pre>
 <h3>SECURITY:</h3>
 <pre>
+</pre>
+<h3>Legacy Auditing</h3>
+<pre>
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/audit-actions.sql'>audit-actions.sql</a> - A query of dba_audit_trail
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dba_audit_session.sql'>dba_audit_session.sql</a> - Report session audit trail per user
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dba_audit_session_recent.sql'>dba_audit_session_recent.sql</a> - Report session audit trail per user, most recent only
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dba_audit_trail.sql'>dba_audit_trail.sql</a> - Report on full audit trail
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dba_audit_trail_persons.sql'>dba_audit_trail_persons.sql</a> - Report on audit trail per user
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dba_table_audit_flags.sql'>dba_table_audit_flags.sql</a> - This script creates a SYS view against SYS tables to show all audit flags per object
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show_session_audit.sql'>show_session_audit.sql</a> - select all from session_audit - lots of rows
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getaud.sql'>getaud.sql</a> - generate SQL to reproduce current audit settings
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/privmaps.sql'>privmaps.sql</a> - Show all privileges granted to a user, and whether direct or through a role
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/orapwdhash.sql'>orapwdhash.sql</a> - Determine the 10g password hash for username and password. Good for detecting accounts where username = password
+</pre>
+<h3>Unified Auditing</h3>
+<pre>
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/options.sql'>options.sql</a> - report from v$option - check for 'Unified Auditing'
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ua-actions.sql'>ua-actions.sql</a> - All possible Unified Auditing Actions
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ua-policies.sql'>ua-policies.sql</a> - A report of UA policies
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ua-sessions.sql'>ua-sessions.sql</a> - Report on LOGON and LOGOFF auditing
 </pre>
 <h3>STORAGE:</h3>
 <pre>
