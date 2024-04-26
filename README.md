@@ -673,6 +673,7 @@
 <pre>
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/options.sql'>options.sql</a> - report from v$option - check for 'Unified Auditing'
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ua-actions.sql'>ua-actions.sql</a> - All possible Unified Auditing Actions
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ua-audit-log-cleanup-job.sql'>ua-audit-log-cleanup-job.sql</a> - simple example of creating a scheduler job to purge the unified audit trail
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ua-policies.sql'>ua-policies.sql</a> - A report of UA policies
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ua-sessions.sql'>ua-sessions.sql</a> - Report on LOGON and LOGOFF auditing
 </pre>

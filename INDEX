@@ -671,6 +671,7 @@ Unified Auditing
 
 @options.sql: report from v$option - check for 'Unified Auditing'
 @ua-actions.sql: All possible Unified Auditing Actions
+@ua-audit-log-cleanup-job.sql: simple example of creating a scheduler job to purge the unified audit trail
 @ua-policies.sql: A report of UA policies
 @ua-sessions.sql: Report on LOGON and LOGOFF auditing
 
