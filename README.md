@@ -736,6 +736,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/e2ts-hires.sql'>e2ts-hires.sql</a> - Convert epoch value to oracle timestamp
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/timestamp_to_millisecond.sql'>timestamp_to_millisecond.sql</a> - convert timestamp to millisecond demo
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/timestamp-day-boundaries.sql'>timestamp-day-boundaries.sql</a> - determine the beginning and ending timestamps for a day in SQL and PL/SQL
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/timestamp-diff-inline-function.sql'>timestamp-diff-inline-function.sql</a> - convert the difference between 2 timestamps to seconds. Preserves fractional seconds.
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/timestamp-diff-seconds.sql'>timestamp-diff-seconds.sql</a> - convert the difference between 2 timestamps to seconds. Preserves fractional seconds
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/timestamp-trunc.sql'>timestamp-trunc.sql</a> - demonstrates how to truncate a timestamp to remove the time portion
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/timestamp-types.sql'>timestamp-types.sql</a> - simple demo of timestamp data types via dump()

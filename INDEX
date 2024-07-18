@@ -735,6 +735,7 @@ DATES: Dates and Date Math
 @e2ts-hires.sql: Convert epoch value to oracle timestamp
 @timestamp_to_millisecond.sql: convert timestamp to millisecond demo
 @timestamp-day-boundaries.sql: determine the beginning and ending timestamps for a day in SQL and PL/SQL
+@timestamp-diff-inline-function.sql: convert the difference between 2 timestamps to seconds. Preserves fractional seconds.
 @timestamp-diff-seconds.sql: convert the difference between 2 timestamps to seconds. Preserves fractional seconds
 @timestamp-trunc.sql: demonstrates how to truncate a timestamp to remove the time portion
 @timestamp-types.sql: simple demo of timestamp data types via dump()
