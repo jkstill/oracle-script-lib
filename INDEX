@@ -54,6 +54,7 @@ SUPPORTING SCRIPTS:
 @opcodes.sql: list of SQL opcodes for use in 10g-. See cpu-busy.sql
 @oversion_minor.sql: get the XX.xx version of oracle and store in &v_oversion_minor
 @oversion_major.sql: get the XX version of oracle and store in &v_oversion_major
+@pg.sql: set PAGESIZE and LINESIZE. '@pg 100 200'
 @ttitle.sql: set title and width
 @title.sql: set title and width
 @title80.sql:  set title and width to 80

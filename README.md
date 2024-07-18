@@ -59,6 +59,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/opcodes.sql'>opcodes.sql</a> - list of SQL opcodes for use in 10g-. See cpu-busy.sql
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/oversion_minor.sql'>oversion_minor.sql</a> - get the XX.xx version of oracle and store in &v_oversion_minor
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/oversion_major.sql'>oversion_major.sql</a> - get the XX version of oracle and store in &v_oversion_major
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pg.sql'>pg.sql</a> - set PAGESIZE and LINESIZE. '@pg 100 200'
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ttitle.sql'>ttitle.sql</a> - set title and width
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/title.sql'>title.sql</a> - set title and width
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/title80.sql'>title80.sql</a> - set title and width to 80
