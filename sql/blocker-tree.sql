@@ -83,6 +83,7 @@ with blocked as (
 		, h.program
 		, u.username
 		, h.event
+		, max(h.time_waited) over (partition by h.session_id, h.blocking_session, h.program, u.username, h.event) time_waited
 	from dba_hist_active_sess_history h
 	join dba_hist_snapshot s on s.snap_id = h.snap_id
 		and s.instance_number = h.instance_number
@@ -101,7 +102,6 @@ blocked_match as (
 		, h.blocking_session_serial#
 		, h.snap_id
 		, h.sample_id
-		, h.time_waited
 		, h.program
 		, u.username
 	from dba_hist_active_sess_history h
@@ -120,7 +120,7 @@ blockers as (
 		, null blocking_sid
 		, blkr.program
 		, blkr.event
-		--, blkr.time_waited
+		, max(blkr.time_waited) over (partition by u.username, blkr.session_id, blkr.program, blkr.event) time_waited
 	from blocked_match b
 	join dba_hist_active_sess_history blkr
 		on b.snap_id = blkr.snap_id
@@ -133,26 +133,27 @@ blockers as (
 	join dba_users u on u.user_id = blkr.user_id
 ),
 all_data as (
-	select username, sid, blocking_sid, 'Blocker' status, program, event
+	select username, sid, blocking_sid, 'Blocker' status, program, event, time_waited
 	from blockers
 	union all
-	select username, sid, blocking_sid, 'Blocked' status,  program, event
+	select username, sid, blocking_sid, 'Blocked' status,  program, event , time_waited
 	from blocked
-), 
+),
 rpt as (
-	select
-		lpad(' ',(level)*2,' ') || sid sid
-		, username
-		, status
-		, program
-		, event
-		, level lock_depth
-		, connect_by_isleaf isleaf
-		, connect_by_root(sid) sid_root
-		, sys_connect_by_path(sid,'/') lock_path
-	from  all_data
-	connect by nocycle blocking_sid = prior sid
-	start with blocking_sid is null
+select
+	lpad(' ',(level)*2,' ') || sid sid
+	, username
+	, status
+	, program
+	, event
+	, time_waited / power(10,6) wait_seconds
+	, level lock_depth
+	, connect_by_isleaf isleaf
+	, connect_by_root(sid) sid_root
+	, sys_connect_by_path(sid,'/') lock_path
+from  all_data
+connect by nocycle blocking_sid = prior sid
+start with blocking_sid is null
 )
 select
 	sid
@@ -162,10 +163,12 @@ select
 	, event
 	--, lock_depth
 	--, isleaf
+	, wait_seconds
 	, sid_root
 	, lock_path
 from rpt
 --where sid_root = sid  -- blockers only
+--order by username, sid
 /
 
 spool off
