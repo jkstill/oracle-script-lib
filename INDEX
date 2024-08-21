@@ -99,6 +99,7 @@ RDBMS UTILITIES:
 @gen_fk_to-11.2.sql: generate existing foreign key constraints from data dictionary
 @gen_list_data_with_dual.sql: generating test data with dual
 @gen_list_data_without_dual.sql: generating test data without dual - 10g+
+@gen-tbs-ddl.sql: generate tablespace and files for a new tablespace when not using OMF
 @generate-sql.sql: generate a basic SELECT SQL script for owner and table
 @get-schema-size.sql: estimate size for export of each non-system schema
 @gethostname.sql: get the hostname into substitution variable uhostname
