@@ -680,6 +680,7 @@ Unified Auditing
 
 STORAGE:
 
+@block-summary.sql: generate a CSV report of number of blocks per extent. 
 @dfshrink-gen-9i.sql: report of space savings by shrinking datafiles - generate df shrink code
 @dfshrink-gen.sql: generate code to shrink datafiles - improved script for 10g+
 @dbms_space_asa_rpt.sql: Show report from Auto Space Advisor

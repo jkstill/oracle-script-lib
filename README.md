@@ -681,6 +681,7 @@
 </pre>
 <h3>STORAGE:</h3>
 <pre>
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/block-summary.sql'>block-summary.sql</a> - generate a CSV report of number of blocks per extent.
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dfshrink-gen-9i.sql'>dfshrink-gen-9i.sql</a> - report of space savings by shrinking datafiles - generate df shrink code
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dfshrink-gen.sql'>dfshrink-gen.sql</a> - generate code to shrink datafiles - improved script for 10g+
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dbms_space_asa_rpt.sql'>dbms_space_asa_rpt.sql</a> - Show report from Auto Space Advisor
