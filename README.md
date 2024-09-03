@@ -769,6 +769,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pgastat.sql'>pgastat.sql</a> - PGA stats from gv$pgastat
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/pgastat_hist.sql'>pgastat_hist.sql</a> - PGA stats from dba_hist_pgastat
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/process-memory.sql'>process-memory.sql</a> - combined 2 external scripts to get memory report of v$process per session
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/run-advice-scripts.sql'>run-advice-scripts.sql</a> - run the advice scripts and create a log file of the output.
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sga_advice_selective.sql'>sga_advice_selective.sql</a> - reports on sga cache advice only if min_pct gains achieved
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/shared_pool_advice.sql'>shared_pool_advice.sql</a> - shared pool advisor
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/shared_pool_advice_selective.sql'>shared_pool_advice_selective.sql</a> - reports on shared pool advice only if min_pct gains achieved

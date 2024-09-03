@@ -767,6 +767,7 @@ MEMORY: Memory Settings and/or Advisors
 @pgastat.sql: PGA stats from gv$pgastat
 @pgastat_hist.sql: PGA stats from dba_hist_pgastat
 @process-memory.sql: combined 2 external scripts to get memory report of v$process per session
+@run-advice-scripts.sql:  run the advice scripts and create a log file of the output.
 @sga_advice_selective.sql: reports on sga cache advice only if min_pct gains achieved
 @shared_pool_advice.sql: shared pool advisor
 @shared_pool_advice_selective.sql: reports on shared pool advice only if min_pct gains achieved
