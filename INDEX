@@ -48,6 +48,7 @@ SUPPORTING SCRIPTS:
 @colors.sql: define values for sqlprompt colors
 @columns.sql: several sqlplus column settings
 @enqueue-bitand.sql: Demonstrate how to decode v$session.p1 values for enqueue waits
+@legacy-exclude.sql: Exclude certain operations in old versions of Oracle.
 @get_date_range.sql: get begin and end date, put in vars - also date format var
 @get-schema-name.sql: prompt for schema name - schema name can be passed as a parameter
 @get-table-name.sql: prompt for table name - table name can be passed as a parameter

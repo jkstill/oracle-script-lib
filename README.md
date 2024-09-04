@@ -53,6 +53,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/colors.sql'>colors.sql</a> - define values for sqlprompt colors
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/columns.sql'>columns.sql</a> - several sqlplus column settings
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/enqueue-bitand.sql'>enqueue-bitand.sql</a> - Demonstrate how to decode v$session.p1 values for enqueue waits
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/legacy-exclude.sql'>legacy-exclude.sql</a> - Exclude certain operations in old versions of Oracle.
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get_date_range.sql'>get_date_range.sql</a> - get begin and end date, put in vars - also date format var
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get-schema-name.sql'>get-schema-name.sql</a> - prompt for schema name - schema name can be passed as a parameter
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get-table-name.sql'>get-table-name.sql</a> - prompt for table name - table name can be passed as a parameter
