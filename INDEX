@@ -171,6 +171,7 @@ EVENTS:
 @sysevent_begin.sql: Beginning snapshot of system events
 @sysevent_end.sql: Ending snapshot of system events
 @sysevent_rpt.sql: Report on system event snapshots
+@sysevent-top-10.sql: Report top 10 events from v$sysevent
 @sessevent2.sql: Show events from v$session_event
 @sessevent.sql: Show events from v$session_event
 @session_fix.sql: Show fix_control_settings for session
