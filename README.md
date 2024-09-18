@@ -174,7 +174,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sysevent_begin.sql'>sysevent_begin.sql</a> - Beginning snapshot of system events
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sysevent_end.sql'>sysevent_end.sql</a> - Ending snapshot of system events
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sysevent_rpt.sql'>sysevent_rpt.sql</a> - Report on system event snapshots
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sysevent-top-10.sql'>sysevent-top-10.sql</a> - Report top 10 events from v$sysevent
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sysevent-top-10.sql'>sysevent-top-10.sql</a> - Report top 10 events from v$system_event
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sessevent2.sql'>sessevent2.sql</a> - Show events from v$session_event
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sessevent.sql'>sessevent.sql</a> - Show events from v$session_event
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/session_fix.sql'>session_fix.sql</a> - Show fix_control_settings for session
