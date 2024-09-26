@@ -2,6 +2,9 @@
 -- metric-names.sql
 -- Jared Still
 
+set linesize 200 trimspool on
+set pagesize 100
+
 col os_load format 999.99
 col begin_time format a20
 col metric_name format a45

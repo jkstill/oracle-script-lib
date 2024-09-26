@@ -13,6 +13,7 @@ col stime new_value start_time noprint
 col etime new_value end_time noprint
 col sectime new_value seconds noprint
 col global_name new_value dbname noprint
+col wait_class format a20 head 'WAIT CLASS'
 
 
 -- get db
@@ -37,7 +38,7 @@ set trimspool on
 
 
 select
-	b.inst_id,
+	--b.inst_id,
 	b.event,
 	e.total_waits - b.total_waits total_waits,
 	e.total_timeouts - b.total_timeouts  total_timeouts,
@@ -45,14 +46,19 @@ select
 	-- and sysevent_stored. It is stored as centiseconds in v$system_event
 	(e.time_waited - b.time_waited) time_waited,
 	-- the 0.000001 is a fudge factor to prevent division by 0
-	(e.time_waited - b.time_waited) / ((e.total_waits - b.total_waits) + 0.000001 )average_wait
-from sysevent_begin b, sysevent_end e
-where 
+	(e.time_waited - b.time_waited) / ((e.total_waits - b.total_waits) + 0.000001 )average_wait,
+	n.wait_class
+from sysevent_begin b, sysevent_end e, v$event_name n
+where
 	b.inst_id = e.inst_id
 	and b.event = e.event
 	and e.total_waits - b.total_waits > 0
+	and  (e.time_waited - b.time_waited) >= 1
+	and n.name = e.event
+	and n.wait_class not in ('Idle')
 order by time_waited
 /
+
 
 
 ttitle off

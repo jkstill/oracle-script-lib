@@ -16,6 +16,8 @@ col inst_id format 9999 head 'INST'
 col elapsed_seconds format 990.999990 head 'ELAPSED|SECONDS'
 col aas format 990.9 head 'AAS'
 
+@legacy-exclude
+
 with data as (
 	select
 		to_char(h.begin_time,'yyyy-mm-dd hh24:mi:ss') begin_time
@@ -23,6 +25,7 @@ with data as (
 		, (h.end_time - h.begin_time) * 86400  elapsed_seconds
 		, h.inst_id
 		, round(h.value,2) aas
+		&legacy_db , h.con_id
 	from gv$sysmetric_history h
 	where h.metric_name = 'Average Active Sessions'
 	order by h.begin_time
@@ -33,5 +36,6 @@ select
 	, inst_id
 	, elapsed_seconds
 	, aas
+	&legacy_db , con_id
 from data
 /

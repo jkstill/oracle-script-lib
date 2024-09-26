@@ -63,7 +63,7 @@ where s.username is not null
 	and s.sid = e.sid
 	and s.username like upper('&uusername')
 	-- skip sqlnet idle session messages
-	--and e.event not like '%message%client'
+	and e.event not like '%message%client'
 	--and s.wait_class != 'Idle'
 	and e.state not like 'WAITED%'
 order by s.username, upper(e.event)
