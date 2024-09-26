@@ -8,7 +8,7 @@ set linesize 200
 set trimspool on
 
 col name format a40
-col total_waits_fg format 999,999,990
+col total_waits_fg format 99,999,999,999,990
 col time_waited_micro_fg format 9,999,999,999,990.099999
 col time_waited format 99,999,990.099999
 col average_wait_fg format 99,999,990.099999
@@ -25,8 +25,9 @@ with data as (
 	join v$event_name n
 		on n.event_id = e.event_id
 		--and n.wait_class = 'Other'
+		and n.wait_class not in ('Idle')
 		and e.total_waits_fg > 1
-	order by e.time_waited
+	order by e.time_waited_micro_fg desc
 )
 select
 	e.name
@@ -36,7 +37,6 @@ select
 	, e.average_wait_fg
 	, e.wait_class
 from data e
-order by e.time_waited_micro_fg
 fetch first 10 rows only
 /
 
