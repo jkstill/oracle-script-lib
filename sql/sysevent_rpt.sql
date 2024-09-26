@@ -4,11 +4,11 @@ clear break
 clear compute
 
 
-col event format a35 head 'EVENT NAME'
+col event format a50 head 'EVENT NAME'
 col total_waits format 999,999,999 head "TOTAL|WAITS"
 col total_timeouts format 999,999,999 head "TOTAL|TIMEOUTS"
 col time_waited format 999,999,999 head "TIME|WAITED|SECONDS"
-col average_wait format 9999999.99 head "AVG|WAIT"
+col average_wait format 9999999.099999 head "AVG|WAIT"
 col stime new_value start_time noprint
 col etime new_value end_time noprint
 col sectime new_value seconds noprint
@@ -24,24 +24,23 @@ select to_char(begin_time,'mm/dd/yyyy hh24:mi:ss') stime from sysevent_snap;
 select to_char(end_time,'mm/dd/yyyy hh24:mi:ss') etime from sysevent_snap;
 
 -- get the difference in seconds ( end_time - start_time )
-select 
+select
 		round((end_time - begin_time) / ( 1/(24*60*60))) sectime
 from sysevent_snap
 /
 
 ttitle on
-ttitle 'System Event  for &dbname' skip 'Start Time:  &start_time' skip 'End Time  :  &end_time' skip 'Seconds: &seconds' skip 2
+ttitle 'System Event	 for &dbname' skip 'Start Time:	&start_time' skip 'End Time  :  &end_time' skip 'Seconds: &seconds' skip 2
 
 set linesize 150 trimspool on
 set pagesize 100
 set trimspool on
 
-
 select
 	--b.inst_id,
 	b.event,
 	e.total_waits - b.total_waits total_waits,
-	e.total_timeouts - b.total_timeouts  total_timeouts,
+	e.total_timeouts - b.total_timeouts	 total_timeouts,
 	-- time waited already converted to whole seconds by sysevent_begin.sql
 	-- and sysevent_stored. It is stored as centiseconds in v$system_event
 	(e.time_waited - b.time_waited) time_waited,
@@ -62,5 +61,4 @@ order by time_waited
 
 
 ttitle off
-
 
