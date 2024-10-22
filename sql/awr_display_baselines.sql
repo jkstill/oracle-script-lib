@@ -5,7 +5,7 @@ set linesize 200 trimspool on
 set pagesize 60
 set echo off pause off term on head on 
 
-col baseline_name format a50
+col baseline_name format a60
 col baseline_type format a15 head 'BASELINE TYPE'
 col start_snap_id format 99999999 head 'START|SNAP ID'
 col end_snap_id format 99999999 head 'END|SNAP ID'
