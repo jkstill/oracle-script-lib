@@ -2,7 +2,7 @@
 -- cpu-stalled-ratio.sql
 -- Show the ratio of sessions waiting for CPU to sessions on CPU
 -- Jared Still 2024-10-20
--- two WITH clauses are used to get the list of profiles that are in use
+-- two WITH clauses are used to get the list of profiles that are in use,
 -- due to the 12c limitation that listagg(distinct column) does not work 
 -- listagg(distinct column) is allowed in 19c
 
@@ -19,8 +19,22 @@ col "On CPU %" format 999.99
 col profiles_stalled format a60
 col profiles_on_cpu format a60
 
-def period=10
-def period_units='day'
+@defaults
+
+col period_parm new_value period_parm
+col period_units_parm new_value period_units_parm
+
+def period_default=10
+def period_units_default='day'
+
+set feed off term off verify off
+select nvl('&1','&period_default') period_parm from dual;
+select nvl('&2','&period_units_default') period_units_parm from dual;
+set term on
+
+prompt
+prompt Period: &period_parm &period_units_parm
+prompt
 
 with waiting_for_cpu as (
 	select
@@ -28,7 +42,7 @@ with waiting_for_cpu as (
 	from v$active_session_history
 	where event = 'resmgr:cpu quantum'
 		and session_state = 'WAITING'
-		and sample_time > systimestamp - numtodsinterval(&period, '&period_units')
+		and sample_time > systimestamp - numtodsinterval(&period_parm, '&period_units_parm')
 ),
 on_cpu as (
 	select
@@ -36,7 +50,7 @@ on_cpu as (
 		count(*) event_count
 	from v$active_session_history
 	where session_state = 'ON CPU'
-		and sample_time > systimestamp - numtodsinterval(&period, '&period_units')
+		and sample_time > systimestamp - numtodsinterval(&period_parm, '&period_units_parm')
 ),
 profiles_throttled_data as (
 	select
@@ -45,7 +59,7 @@ profiles_throttled_data as (
 	join dba_users u on h.user_id = u.user_id
 	where h.event = 'resmgr:cpu quantum'
 		and h.session_state = 'WAITING'
-		and sample_time > systimestamp - numtodsinterval(&period, '&period_units')
+		and sample_time > systimestamp - numtodsinterval(&period_parm, '&period_units_parm')
 ),
 profiles_throttled as (
 	select
@@ -58,7 +72,7 @@ profile_data as (
 	from v$active_session_history h
 	join dba_users u on h.user_id = u.user_id
 	where session_state = 'ON CPU'
-		and sample_time > systimestamp - numtodsinterval(&period, '&period_units')
+		and sample_time > systimestamp - numtodsinterval(&period_parm, '&period_units_parm')
 ),
 profiles_active as (
 	select
@@ -77,4 +91,11 @@ from waiting_for_cpu w
 , profiles_throttled p
 , profiles_active a
 /
+
+prompt
+
+undef 1 2
+
+set feed on
+
 

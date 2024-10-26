@@ -47,6 +47,8 @@ SUPPORTING SCRIPTS:
 @clear_for_spool.sql: set sqlplus for spooling output without headers,etc
 @colors.sql: define values for sqlprompt colors
 @columns.sql: several sqlplus column settings
+@defaults.sql: set default values for substitution values so they can be set conditionally and checked via nvl()
+@defaults-demo.sql: demo script for defaults.sql
 @enqueue-bitand.sql: Demonstrate how to decode v$session.p1 values for enqueue waits
 @legacy-exclude.sql: Exclude certain operations in old versions of Oracle.
 @get_date_range.sql: get begin and end date, put in vars - also date format var

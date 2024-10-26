@@ -52,6 +52,8 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/clear_for_spool.sql'>clear_for_spool.sql</a> - set sqlplus for spooling output without headers,etc
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/colors.sql'>colors.sql</a> - define values for sqlprompt colors
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/columns.sql'>columns.sql</a> - several sqlplus column settings
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/defaults.sql'>defaults.sql</a> - set default values for substitution values so they can be set conditionally and checked via nvl()
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/defaults-demo.sql'>defaults-demo.sql</a> - demo script for defaults.sql
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/enqueue-bitand.sql'>enqueue-bitand.sql</a> - Demonstrate how to decode v$session.p1 values for enqueue waits
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/legacy-exclude.sql'>legacy-exclude.sql</a> - Exclude certain operations in old versions of Oracle.
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get_date_range.sql'>get_date_range.sql</a> - get begin and end date, put in vars - also date format var
