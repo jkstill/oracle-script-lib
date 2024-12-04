@@ -572,6 +572,8 @@ INSTANCE and/or DATABASE:
 @log-switch-histogram.sql: Display a histogram of redo log switch times
 @loghistory_8.sql: show archive logs with time between switches
 @loghist-csv.sql: dump history of archive logs (with timing) to CSV
+@object-times.sql: create, modify and ? (stime) for objects in a schema
+@object-types.sql: list of obj# and type for all object types used in the database
 @obj-privs.sql: object privileges granted per object
 @options.sql: report from v$option
 @oracle-exclude-demo.sql: demonstrate the use of oracle-exclude-inline.sql

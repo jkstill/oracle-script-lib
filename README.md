@@ -573,6 +573,8 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/log-switch-histogram.sql'>log-switch-histogram.sql</a> - Display a histogram of redo log switch times
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/loghistory_8.sql'>loghistory_8.sql</a> - show archive logs with time between switches
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/loghist-csv.sql'>loghist-csv.sql</a> - dump history of archive logs (with timing) to CSV
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/object-times.sql'>object-times.sql</a> - create, modify and ? (stime) for objects in a schema
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/object-types.sql'>object-types.sql</a> - list of obj# and type for all object types used in the database
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/obj-privs.sql'>obj-privs.sql</a> - object privileges granted per object
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/options.sql'>options.sql</a> - report from v$option
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/oracle-exclude-demo.sql'>oracle-exclude-demo.sql</a> - demonstrate the use of oracle-exclude-inline.sql
