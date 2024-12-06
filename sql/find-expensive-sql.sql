@@ -187,6 +187,7 @@ get_expensive_sql as (
 report as (
 select  distinct
 	--row_number() over (order by r.lios_per_row desc ) sql_rank
+	-- log() favors SQL with a short text, and high LIOs.  ie. these are easier to tune
 	--, row_number() over (order by floor(( r.lios_per_row * r.elapsed_time	 / 1e3) * log(dbms_lob.getlength(t.sql_text),10)) desc) sql_rank
 	floor(( r.lios_per_row * r.elapsed_time  / 1e3) * log(dbms_lob.getlength(t.sql_text),10)) sql_cost
 	, r.sql_id
