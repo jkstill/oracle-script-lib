@@ -627,6 +627,7 @@ INSTANCE and/or DATABASE:
 @show-x-dollar-tables.sql: list of all x$tables
 @sql-patch-report.sql: report on SQL Patches created via dbms_sqldiag
 @sql-version-counts.sql: top 10 count of versions of SQL_ID
+@startup_Date_time.sql: get Last Starstup Date time
 @tabcols.sql: list of columns in alpha order for owner and table_name
 @tabidx.sql: show indexes and columns for owner and table_name
 @plsql_called_objects.sql: Shows entry PL/SQL object and current PL/SQL object for a session
