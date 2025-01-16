@@ -76,6 +76,7 @@ RDBMS UTILITIES:
 @10046_off.sql: Stop event 10046 in a session
 @block_decode.sql: find which object a block belongs to
 @bootstrap_objects.sql: report objects from sys.bootstrap$ that may not be modified
+@cf-size.sql: show the control file size
 @cluster-factor.sql: get the clustering factor for all indexes on a table
 @cores.sql: report the number of CPU cores from v$osstat - may be subject to hyperthreading
 @dirs.sql: show database directories
@@ -183,6 +184,8 @@ EVENTS:
 WAITS/LOCKS/LATCHES and PERFORMANCE:
 
 @active_status.sql: show which current active sessions are on CPU
+@cf-waits.sql: show control file waits
+@concurrency-waits-sqlid.sql:  show concurrency waits from standard v$ views
 @cpu-killer.sql: max out a CPU. Do Not use in production!
 @cpu-stalled-ratio.sql: ratio of ON CPU/resmgr:cpu quantum
 @extproc-sessions.sql: show extproc information when sessions are waiting extproc processes
@@ -252,6 +255,7 @@ AWR/ASH:
 @awr-get-retention.sql: Display AWR retention and interval
 @awr-hist-model-top10.sql: Show Top 10 Snapshots based on DB Time + DB CPU from DBA_HIST_SYS_TIME_MODEL
 @awr-itl-waits.sql: find ITL waits
+@awr-itl-wait-details.sql: ITL waits with details
 @awr-resource-limit.sql: history of processes and sessions from dba_hist_resource_limit
 @awr-set-retention.sql: Example of setting AWR retention and interval
 @awr-top-10-daily.sql: list top 10 events per day from AWR
@@ -271,6 +275,7 @@ AWR/ASH:
 @awr_get_snapshots.sql: Get AWR snapshots for a date range
 @awr_itl_waits_10g.sql: find ITL waits in 10g
 @awr_settings.sql: query the dba_hist_wr_control view
+@concurrency-waits-sqlid.sql: show concurrency waits per sqlid from ASH
 @cpu-busy.sql: Show what SQL Operations were on CPU
 @dba_hist_sys_time_model.sql: example of querying dba_hist_sys_time_model - set your own stat_name
 @dbw-hist.sql: DBWR CPU and Wait time from dba_hist_active_sess_history
@@ -398,6 +403,7 @@ EXECUTION_PLAN:
 @showplan-last.sql: show execution plan for most recently executed cursor in current session
 @gen_bind_vars.sql: gather bind values from v$sql_bind and generate SQL
 @gen_bind_vars_awr.sql: gather bind values from dba_hist_sqltext and generate SQL
+@gen_bind_vars_awr-loop.sql: new version of gen_bind_vars_awr.sql - does not use utl_file
 @get_bind_values.sql:  get the bind values for a sql_id
 @get_awr_bind_values.sql:  get the bind values for a sql_id from AWR
 
@@ -499,6 +505,7 @@ timezone specific:
 
 RESOURCE MANAGER:
 
+@disable-autotasks-resource-mgr.sql: calls scripts to disable resource manager to the extent possible
 @disable_resource_manager.sql: the correct method to disable the resource manager
 @resmgr-columns.sql: configure report columns
 @resmgr-consumer-groups.sql: show consumer groups
@@ -515,41 +522,42 @@ RESOURCE MANAGER:
 INSTANCE and/or DATABASE:
 
 @all-ini-trans.sql: report on on the IN_TRANS values for all non-system owners
-@average_active_sessions.sql: show average active sessions - does not use ASH
+@all_jobs.sql: Show all scheduled db jobs
+@archived_log_dest.sql: show archived log destination and status for active destinations
 @archived_log_hist_matrix.sql: show matrix of archive log switch activity for 2 weeks
 @archived_log_sums.sql: show rolling total of archive logs for N days
-@archived_log_dest.sql: show archived log destination and status for active destinations
+@average_active_sessions.sql: show average active sessions - does not use ASH
 @bct_bufsz.sql: current size of block change tracking buffers
 @bct_status.sql: show status of block change tracking file
 @blocker-tree.sql: show tree of blocked sessions
-@col-diff.sql: compare column_names for two tables
 @colcomm.sql: show columns in common between a set of tables in a CSV list
-@csv-split.sql: Demo of using recursive subfactored query to split CSV list from sqlplus command line
+@col-diff.sql: compare column_names for two tables
 @csv-split-2.sql: Demo of using regular expressions to conver a CSV list to rows - both SQL and PL/SQL
 @csv-split-bind.sql: Demo of passing a comma delimited variable into an IN clause of a SELECT statement
-@dice-roll.sql: Roll the dice a few times
-@iot_segments.sql: show segments for IOT objects. These are actually index segments
-@data-growth-db.sql: show growth of database over time
-@data-growth-tbs.sql: show growth of tablespaces over time
+@csv-split.sql: Demo of using recursive subfactored query to split CSV list from sqlplus command line
+@database_properties.sql: show properties from database_properties
 @data-growth-db-predict-regr.sql: predict future database size to 5 years out
+@data-growth-db.sql: show growth of database over time
 @data-growth-tbs-predict-regr.sql: predict future database size to 5 years out, per tablespace
-@db_corrupt.sql: report on corrupt database blocks and objects
+@data-growth-tbs.sql: show growth of tablespaces over time
 @dba_dependencies.sql: find all dependencies for owner/object
+@dba_feature_usage.sql: report on used features from dba_feature_usage_statistics
 @dba_jobs_running.sql: Show db jobs currently running
 @dba_jobs.sql: Show all scheduled db jobs
-@dba_feature_usage.sql: report on used features from dba_feature_usage_statistics
-@dba-registry.sql: current registered components
+@dba_recyclebin_purge_gen.sql: generate code to purge individual objects from dba_recyclebin
 @dba-registry-history.sql: report on upgrade and PSU history
-@database_properties.sql: show properties from database_properties
+@dba-registry.sql: current registered components
+@db_corrupt.sql: report on corrupt database blocks and objects
 @dbms_application.sql: example of dbms_applicatoin_info usage
 @default_tablespace.sql: show default tablespace properties 10g+
+@dice-roll.sql: Roll the dice a few times
 @dml-log-errors-test.sql: demo of INSERT INTO Log Table, with Reject Limit
-@findobj.sql: Find an object in the data dictionary
 @findcol.sql: Find a column for a user in the data dictionary
-@fk_hierarchy.sql: Display hierarchy of tables related by Foreign Key (use fktree.sql or fktree-rcte.sql instead)
+@findobj.sql: Find an object in the data dictionary
 @fk-circular-ref.sql: Find any examples of tables that reference each other via foeign key
-@fktree.sql: Display a hierarchy of tables related by Foreign Key (new script - old one broken)
+@fk_hierarchy.sql: Display hierarchy of tables related by Foreign Key (use fktree.sql or fktree-rcte.sql instead)
 @fktree-rcte.sql: Display a hierarchy of tables related by Foreign Key (RCTE Version - needs work - still broken)
+@fktree.sql: Display a hierarchy of tables related by Foreign Key (new script - old one broken)
 @fra_config.sql: show FRA location and size
 @get-missing-tablenames.sql: given a list of tables, determine if any are missing
 @getsid.sql: Get current session SID via sys_context()
@@ -559,19 +567,16 @@ INSTANCE and/or DATABASE:
 @index-col-use-ratios.sql: Show ratio of table columns to columns indexed
 @index-correlate.sql: find indexes that appear in a list of plan_hash values
 @index-usage-awr.sql: Query AWR to try and determine which indexes are unused
-@all_jobs.sql: Show all scheduled db jobs
-@show_jobs.sql: does the work for dba_jobs.sql and all_jobs.sql
-@supp-col-info.sql: show column level supplemental logging info for a user
-@supp-db-info.sql: show database supplemental logging parameters
-@supp-tab-info.sql: show table level supplemental logging info for a user
-@kglh-growth.sql: monitor for unbounded growth of shared pool memory structures
+@invalid.sql: Show invalid objects
+@iot_segments.sql: show segments for IOT objects. These are actually index segments
 @kglh-growth-awr.sql: check AWR for unbounded growth of shared pool memory structures
+@kglh-growth.sql: monitor for unbounded growth of shared pool memory structures
 @la8.sql: Shows last analyzed dates for database objects . 8.0+
 @la.sql: Shows last analyzed dates for database objects . 7.3
+@loghist-csv.sql: dump history of archive logs (with timing) to CSV
+@loghistory_8.sql: show archive logs with time between switches
 @login.sql: set prompt and editor on login
 @log-switch-histogram.sql: Display a histogram of redo log switch times
-@loghistory_8.sql: show archive logs with time between switches
-@loghist-csv.sql: dump history of archive logs (with timing) to CSV
 @object-times.sql: create, modify and ? (stime) for objects in a schema
 @object-types.sql: list of obj# and type for all object types used in the database
 @obj-privs.sql: object privileges granted per object
@@ -581,74 +586,83 @@ INSTANCE and/or DATABASE:
 @oracle-exclude-schema.sql: show schemas owned by Oracle and are frequently excluded from queries
 @oracle-naming-inconsistencies.sql: highlight some of the inconsistencies oracle data dictionary column names
 @pivot.sql: Simple demo of PIVOT
-@purge_cursors.sql: purge a list of SQL cursors from shared_pool - 10g+ see Oracle Note 457309.1
-@redo-log-mirrors.sql: show log groups with mirror sides identified. Experimental, and requires sysdba access.
-@reserved-words.sql: List reserved words from v$reserved_words
-@setc.sql: automatically or interactively set 'do alter session set container'
-@sql_spawned_reasons.sql: Show reasons for creating new child of SQL
-@shared-pool-top-sql.sql: show top SQL consumers of shared_pool
-@shared-pool-top-users.sql: show top SCHEMA/USER consumers of shared_pool
-@show_check_cons.sql: Show non-system generated check constraints
-@show-pdbs.sql: Show the con_id and con_name for available PDBs
-@show_data_types.sql: Show non-system column data types
-@show-fk.sql: Show foreign keys for a user
-@show-pk.sql: Show all primary keys for a user
-@show-uk.sql: Show all unique keys for a user
-@showsga.sql: Show SGA breakdown
-@showuser.sql: Show user info
-@showpriv.sql: Show privileges granted to a role or user
-@showrole.sql: Show roles for a grantee
-@showroles.sql: Show all roles and privileges granted
-@showprofile.sql: Show resources for a profile from dba_profiles
-@showrbs.sql: Show RBS and info
-@showrbslock.sql: Show RBS locks
-@showsnapshot_logs.sql: Show snapshot logs
-@showsnapshots.sql: Show snapshots
-@show_supp_logs.sql: Show supplemental logs for replication
-@showdiscon.sql: Show all disabled constraints
-@showdistrg.sql: Show all disabled triggers
-@showlog.sql: Show redo logs
-@show_logon_triggers.sql: Show logon triggers
-@showindex.sql: Show indexes for a user
-@showtab.sql: Show tables for a user
-@showcol.sql: Show column details for OWNER.TABLE
-@invalid.sql: Show invalid objects
-@showinv.sql: soft link to invalid.sql
-@shownls.sql: Show database NLS parameters
-@showview.sql: Show the text for views - opens up view.txt in editor
-@showdblink.sql: Show database links
-@showdis.sql: Show disabled constraints
-@showkey.sql: Show primary and unique keys and unique indexes for a table
-@showmem.sql: Show memory usage per session
-@showobjprivs.sql: Show privileges granted on an owners objects
-@showpin.sql: Show objects pinned in the shared pool
-@showpipes.sql: Show database pipes
-@showsrc.sql: show source of PL/SQL stored objects
-@show-x-dollar-tables.sql: list of all x$tables
-@sql-patch-report.sql: report on SQL Patches created via dbms_sqldiag
-@sql-version-counts.sql: top 10 count of versions of SQL_ID
-@tabcols.sql: list of columns in alpha order for owner and table_name
-@tabidx.sql: show indexes and columns for owner and table_name
 @plsql_called_objects.sql: Shows entry PL/SQL object and current PL/SQL object for a session
 @plsql-init.sql: example initialization for PL/SQL flags
+@privileged-accounts.sql: report on privileged user accounts (have ANY privs)
+@purge_cursors.sql: purge a list of SQL cursors from shared_pool - 10g+ see Oracle Note 457309.1
 @rbs_no_optimal.sql: Set all rollback segments to have no OPTIMAL size
 @rbs_optimal.sql: Set all rollback segments to have an OPTIMAL size of 2xInitial
 @rbs_shrink.sql: Shrink all rollback segments to OPTIMAL
-@uifk.sql: Select from view creatdd in uifk_v.sql
-@uifk_gen.sql: Uses the view created in uifk_v.sql to generate index DDL
-@uifk_v.sql: Creates a view find all unindexed foreign key contraints
-@showdb.sql: show database info
-@show_active_log_dest.sql: show active log dest if available
-@dba_recyclebin_purge_gen.sql: generate code to purge individual objects from dba_recyclebin
+@recompile.sql: Recompile invalid objects.  Still works better than DBMSU_UILITY.COMPILE_SCHEMA
+@redo-log-mirrors.sql: show log groups with mirror sides identified. Experimental, and requires sysdba access.
+@redo-per-hour.sql: report on redo per hour
+@reserved-words.sql: List reserved words from v$reserved_words
 @restricted_session_disable.sql: everyone can login
 @restricted_session_enable.sql: only DBA can login
-@sess_longops.sql: query v$session_longops
-@recompile.sql: Recompile invalid objects.  Still works better than DBMSU_UILITY.COMPILE_SCHEMA
 @reverse_role_lookup.sql: Find all users granted a role
-@undo-active.sql:  Show active undo blocks - RAC aware
+@sess-event-summary.sql: summary report of gv$session_event
+@sess_longops.sql: query v$session_longops
+@setc.sql: automatically or interactively set 'do alter session set container'
+@shared-pool-top-sql.sql: show top SQL consumers of shared_pool
+@shared-pool-top-users.sql: show top SCHEMA/USER consumers of shared_pool
+@show_active_log_dest.sql: show active log dest if available
+@show_check_cons.sql: Show non-system generated check constraints
+@showcol.sql: Show column details for OWNER.TABLE
+@show_data_types.sql: Show non-system column data types
+@showdblink.sql: Show database links
+@showdb.sql: show database info
+@showdiscon.sql: Show all disabled constraints
+@showdis.sql: Show disabled constraints
+@showdistrg.sql: Show all disabled triggers
+@show-fk.sql: Show foreign keys for a user
+@showindex.sql: Show indexes for a user
+@showinv.sql: soft link to invalid.sql
+@show_jobs.sql: does the work for dba_jobs.sql and all_jobs.sql
+@showkey.sql: Show primary and unique keys and unique indexes for a table
+@show_logon_triggers.sql: Show logon triggers
+@showlog.sql: Show redo logs
+@showmem.sql: Show memory usage per session
+@shownls.sql: Show database NLS parameters
+@showobjprivs.sql: Show privileges granted on an owners objects
+@show-pdbs.sql: Show the con_id and con_name for available PDBs
+@showpin.sql: Show objects pinned in the shared pool
+@showpipes.sql: Show database pipes
+@show-pk.sql: Show all primary keys for a user
+@showpriv.sql: Show privileges granted to a role or user
+@showprofile.sql: Show resources for a profile from dba_profiles
+@showrbslock.sql: Show RBS locks
+@showrbs.sql: Show RBS and info
+@showrole.sql: Show roles for a grantee
+@showroles.sql: Show all roles and privileges granted
+@showsga.sql: Show SGA breakdown
+@showsnapshot_logs.sql: Show snapshot logs
+@showsnapshots.sql: Show snapshots
+@showsrc.sql: show source of PL/SQL stored objects
+@show_supp_logs.sql: Show supplemental logs for replication
+@showtab.sql: Show tables for a user
+@show-uk.sql: Show all unique keys for a user
+@showuser.sql: Show user info
+@showview.sql: Show the text for views - opens up view.txt in editor
+@show-x-dollar-tables.sql: list of all x$tables
+@sql-patch-report.sql: report on SQL Patches created via dbms_sqldiag
+@sql_spawned_reasons.sql: Show reasons for creating new child of SQL
+@sql-version-counts.sql: top 10 count of versions of SQL_ID
+@supp-col-info.sql: show column level supplemental logging info for a user
+@supp-db-info.sql: show database supplemental logging parameters
+@supp-tab-info.sql: show table level supplemental logging info for a user
+@tab-info.sql: some info on tables
+@tabcols.sql: list of columns in alpha order for owner and table_name
+@tabidx.sql: show indexes and columns for owner and table_name
+@uifk_gen.sql: Uses the view created in uifk_v.sql to generate index DDL
+@uifk.sql: Select from view creatdd in uifk_v.sql
+@uifk_v.sql: Creates a view find all unindexed foreign key contraints
+@uptime.sql: show db uptime
 @undo-active-12c.sql:  Show active undo blocks in 12c - RAC aware
+@undo-active.sql:  Show active undo blocks - RAC aware
 @undo-mon-fast.sql: monitor undo from v$fast_start_transactions - useful for when a proccess/session has been killed
 @undo-mon-trans.sql: monitor rollback for transactions
+@user-modifiable-all-parms.sql: show all parms modifiable by user sessions - requires sysdba
+@user-modifiable-parms.sql: show user modifiable parameters
 @unrevorable-files.sql: report of files that are unrecoverable, likely due to nologging inserts
 @wait_chains.sql: Troubleshooting Database Contention With V$Wait_Chains (Doc ID 1428210.1)
 
