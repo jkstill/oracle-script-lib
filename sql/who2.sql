@@ -33,21 +33,23 @@ col username heading 'USERNAME' format a10
 col sessions heading 'SESSIONS'
 col sid heading 'SID' format 99999
 col status heading 'STATUS' format a10
-col machine format a20 head 'MACHINE'
+col machine format a25 head 'MACHINE'
 col client_program format a20 head 'CLIENT PROGRAM'
 col server_program format a20 head 'SERVER PROGRAM'
-col spid format a5 head 'SRVR|PID'
+col spid format a7 head 'SRVR|PID'
 col serial# format 99999 head 'SERIAL#'
-col client_process format a12 head 'CLIENT|PID'
+col client_process format a13 head 'CLIENT|PID'
 col osuser format a10
 col logon_time format a17 head 'LOGON TIME'
 col idle_time format a11 head 'IDLE TIME'
 col ppid format 99999 head 'PID'
 col sql_id format a13 head 'SQL ID'
 col block_changes format 99,999,999 head 'BLOCK|CHANGES'
+col service_name format a20
 
 set recsep off term on pause off verify off echo off
-set line 200
+set linesize 240
+set pagesize 100
 set trimspool on
 
 clear break
@@ -58,6 +60,7 @@ select
 	s.username,
 	s.sid,
 	s.serial#,
+	s.service_name,
 	&&v_10gopts s.sql_id,
 	p.pid ppid,
 	s.status,

@@ -1,6 +1,13 @@
 
 -- since I can never seem to remember this simple syntax
 
+set serveroutput on size unlimited
+
+prompt
+prompt
+prompt Index By Demo
+prompt
+prompt
 
 declare
 
@@ -36,4 +43,45 @@ begin
 
 end;
 /
+
+-- sorting an index by table of varchar2 with an associative array
+
+prompt
+prompt
+prompt Sorting an Index By Table
+prompt
+prompt
+
+
+
+declare
+	type string_table is table of varchar2(50) index by binary_integer;
+	my_table string_table;
+
+	type sort_typ is table of integer index by varchar2(50);
+	sort_table sort_typ;
+	s_idx varchar2(50);
+begin
+
+	my_table(1) := 'Apple';
+	my_table(2) := 'Banana';
+	my_table(3) := 'Orange';
+	my_table(4) := 'Kiwi';
+	my_table(5) := 'Grapes';
+  
+	for i in 1 .. my_table.last	
+	loop
+		null;
+		sort_table(my_table(i)) := i;
+	end loop;
+
+	s_idx := sort_table.first;
+	while s_idx is not null
+	loop
+		dbms_output.put_line(sort_table(s_idx) || ' ' || s_idx);
+		s_idx := sort_table.next(s_idx);
+	end loop;
+end;
+/
+
 

@@ -2,8 +2,8 @@
 
 -- awr-trans-counts.sql
 -- see: 'How to Calculate the Number of Transactions in a Database (Doc ID 1292114.1)'
--- Jared Still - still@pythian.com jkstill@gmail.com
--- Pythian 
+-- Jared Still -  jkstill@gmail.com
+--  
 -- 2016-05-18 initial script
 --
 -- also included are redo log synch write waits, as that is the overhead wait caused by commit

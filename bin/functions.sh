@@ -15,6 +15,108 @@ cleanup () {
 	rm -f $pmonFile
 }
 
+
+: << 'SOFT-LINKS'
+
+cat > a
+this is file a
+^D
+
+ln -s a b
+ln -s b c
+ln -s c d
+
+find the original file, a
+
+=== demo code ===
+
+declare myFile=$1
+
+# declare and assignment from a function cannot be done on 
+# a single line if the exit code from the function is to be preserved
+# otherwise the exit code seen is from 'declare'
+declare fileLinkStatus
+fileLinkStatus=$(isSoftLink $myFile)
+declare rc=$?
+
+if [[ $rc -ne 0 ]]; then
+	echo
+	echo rc: $rc
+	echo err getting link status for $myFile
+	echo 
+	exit $rc
+fi
+
+if [[ $fileLinkStatus == 'Y' ]]; then
+	echo -n 'source file: '
+	getLinkSource $myFile
+else
+	echo not a link: $myFile
+fi
+
+
+
+SOFT-LINKS
+
+isSoftLink () {
+
+	local file2chk=$1
+
+	[[ -z $file2chk ]] && {
+		echo 
+		echo isSoftLink: no file passed
+		echo
+		return 1
+	}
+
+	[[ -r $file2chk ]] || { 
+		echo 
+		echo 
+		echo isSoftLink: file not found - $file2chk
+		echo
+		return 1
+	}
+
+	local deref=$(stat -c '%N' $file2chk)
+
+	if [ "'$file2chk'" == "$deref" ]; then
+		echo 'N'
+	else
+		echo 'Y'
+	fi
+
+	return 0
+
+}
+
+# find original file from softlink
+
+getLinkSource () {
+
+	local file2chk=$1
+
+	[[ -z $file2chk ]] && {
+		echo 
+		echo getLinkSource: no file passed
+		echo
+		return 1
+	}
+
+	#echo file2chk: $file2chk
+
+	local parentFile
+
+	while :
+	do
+		parentFile=$(readlink $file2chk 2>/dev/null)
+		[[ -z $parentFile ]] && { echo $file2chk; break; }
+		file2chk=$parentFile
+	done
+
+	return 0
+}
+
+
 getInstance () {
 
 	local pinst=$1

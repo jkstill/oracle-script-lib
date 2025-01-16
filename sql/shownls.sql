@@ -7,7 +7,9 @@ col value format a40
 
 ttitle 'NLS PARAMETERS'
 
-set pagesize 60
+set linesize 200 trimspool on
+set pagesize 100
+
 break on source skip 1
 
 select 'SESSION' source, parameter, value

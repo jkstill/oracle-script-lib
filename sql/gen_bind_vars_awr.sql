@@ -1,7 +1,17 @@
 
 -- gen_bind_vars_awr.sql
 --
--- jared still 2017-08-28 - jkstill@gmail.com, still@pythian.com
+-- jared still 2024-01-04
+-- sqlplus cannot handle bind placeholder names such as :1, :2, etc
+-- now a pl/sql block is being used with 'execute immediate'
+-- this is to that SQL will execute with the original SQL_ID
+--
+-- converted execute immediate to dbms_sql, as the results were not as expected
+--
+-- jared still 2023-12-15 - jkstill@gmail.com
+-- changed the SQL that gets bind values - now does a much better job of it
+--
+-- jared still 2017-08-28 - jkstill@gmail.com,
 -- copied from gen_bind_vars.sql and modified for AWR
 -- given a SQL_ID get the SQL and bind variables
 -- create a sqlplus script to run them
@@ -26,7 +36,7 @@
 -- use numtodsinterval() to calculate dates
 -- "select systimestamp - interval '100' day from dual" will cause ORA-01873: the leading precision of the interval is too small
 -- this can be corrected by:
--- "select systimestamp - interval '100' day(3) from dual" 
+-- "select systimestamp - interval '100' day(3) from dual"
 -- use of numtodsinterval() is much cleaner
 
 
@@ -38,18 +48,7 @@
 -- @gen_bind_vars_awr 'sd3h4987dnwe8' 60 30
 --
 
-
-/*
-
-for this script utl_file is no longer being used.
-The problem is that some SQL is over 2499 characters in length, and it may be stored as one line in the data dictionary
-SQLPlus cannot execute lines that long
-
-Formatting with PL/SQL and keeping the syntax legal was proving more difficult that necessary for this script.
-
-So, spooled output from sqlplus is being used instead.
-
-*/
+def file_prefix='sql'
 
 
 @clears
@@ -59,7 +58,7 @@ col my_start_days_back new_value my_start_days_back noprint
 col my_end_days_back new_value my_end_days_back noprint
 
 prompt
-prompt SQL_ID: 
+prompt SQL_ID:
 set feed off term off
 select '&1' my_sql_id from dual;
 
@@ -99,17 +98,21 @@ end;
 
 set serveroutput on size unlimited
 
-spool 'sql-exe-&my_sql_id..sql'
+spool '&file_prefix-exe-&my_sql_id..sql'
 
-prompt spool 'sql-exe-&my_sql_id..log'
+prompt
+prompt host mkdir -p logs
+prompt spool 'logs/&file_prefix-exe-&my_sql_id..log'
+
 prompt set echo on
 
 prompt set timing on pause off
 prompt set linesize 200 trimspool on
 
-prompt -- alter session set statistics_level = 'ALL';;
-prompt -- alter session set events '10046 trace name context forever, level 12';;
-prompt -- alter session set tracefile_identifier = '&my_sql_id-TEST';;
+prompt --alter session set statistics_level = 'TYPICAL';;
+prompt --alter session set tracefile_identifier = '&my_sql_id-TEST';;
+prompt --alter session set optimizer_use_invisible_indexes=true;;
+prompt --alter session set events '10046 trace name context forever, level 12';;
 prompt
 
 
@@ -144,7 +147,7 @@ declare
 	t_binds bindtyp;
 	t_binds_empty bindtyp;
 	t_bind_names bindnametyp;
-	t_bin_names_empty bindnametyp;
+	t_bind_names_empty bindnametyp;
 
 	v_bind_key varchar(100);
 	v_snap_id number := 0;
@@ -152,6 +155,9 @@ declare
 	v_sql clob;
 
 	-- renames system generated bind var names
+	-- renaming the bind place_holders was a mistake, as then the sql_id is not matched
+	-- it was done because :1 is not a legal sqlplus var name
+	-- use a pl/sql block and execute immediate, and leave the names as is
 	cursor c_get_sql( v_sql_id_in varchar2 )
 	is
 	with first_iteration as (
@@ -160,36 +166,57 @@ declare
 		where sql_id = v_sql_id_in
 	),
 	second_iteration as (
-		select sql_id, regexp_replace(sql_text,':([[:digit:]]+)',':G' || '\1' ) sql_text
+		--select sql_id, regexp_replace(sql_text,':([[:digit:]]+)',':G' || '\1' ) sql_text
+		select sql_id, sql_text
 		from first_iteration
 	)
 	select sql_id, sql_text
 	from second_iteration;
 
+	/* new sql */
+
 	cursor c_get_binds( v_sql_id_in varchar2 )
 	is
-	select distinct
+	with data as (
+	select
 		b.snap_id, b.position
-		-- convert the names of system generated bind variables
-		-- these will be SYS_B_ and just digits such as '1'
 		, case
 			when b.name like ':SYS_B_%' then substr(b.name,6)
 			when regexp_like(b.name,'^:[[:digit:]]') then 'G' || substr(b.name,2)
 			else b.name
 		end name
-	, b.datatype_string, b.value_string, b.last_captured
-	from dba_hist_sqlbind b
+		--, b.value_string
+		--, b.datatype_string
+		, anydata.GETTYPENAME(b.value_anydata) datatype_string
+		-- use the anydata values as they are sometimes more reliable dependent on oracle version
+		, case anydata.GETTYPENAME(b.value_anydata)
+			when 'SYS.VARCHAR' then	 anydata.accessvarchar(b.value_anydata)
+			when 'SYS.VARCHAR2' then anydata.accessvarchar2(b.value_anydata)
+			when 'SYS.CHAR' then anydata.accesschar(b.value_anydata)
+			when 'SYS.DATE' then to_char(anydata.accessdate(b.value_anydata),'yyyy-mm-dd hh24:mi:ss')
+			when 'SYS.TIMESTAMP' then to_char(anydata.accesstimestamp(b.value_anydata),'yyyy-mm-dd hh24:mi:ss')
+			when 'SYS.NUMBER' then to_char(anydata.accessnumber(b.value_anydata))
+		end value_string
+		,	b.last_captured
+	from dba_hist_sqlbind  b
+	join dba_hist_snapshot s on s.instance_number = b.instance_number
+		and s.dbid = b.dbid
+		and b.snap_id = s.snap_id
 	where b.sql_id = v_sql_id_in
-	-- limit amount of data to look at if you like
-	and b.snap_id >= (
-		select max(snap_id)
-		from dba_hist_snapshot
-		--where begin_interval_time >= systimestamp - interval '1' day
-		--where begin_interval_time between (systimestamp - interval '25' day) and (systimestamp - interval '24' day)
-		where begin_interval_time between t_begin_interval and t_end_interval
-			and instance_number =  sys_context('userenv','instance')
+		and begin_interval_time between t_begin_interval and t_end_interval
+		and b.instance_number =	 sys_context('userenv','instance')
+	order by s.begin_interval_time, b.position, b.instance_number
 	)
-	order by snap_id, last_captured, position;
+	select distinct
+		snap_id
+		, position
+		, name
+		, datatype_string
+		, value_string
+		, last_captured
+	from data;
+
+	/* ^^^ new sql ^^^ */
 
 	cursor c_get_bind_names( v_sql_id_in varchar2 )
 	is
@@ -220,6 +247,12 @@ declare
 		dbms_output.put_line('');
 	end;
 
+	procedure nl
+	is
+	begin
+		dbms_output.new_line;
+	end;
+
 	procedure dout (v_string_in varchar2)
 	is
 	begin
@@ -239,7 +272,7 @@ begin
 
 	--t_sql_id(1) := '6pk8u51cuxykt';
 	t_sql_id(1) := '&&my_sql_id';
-	
+
 	for i in t_sql_id.first ..t_sql_id.last
 	loop
 		--dout('working on ' || t_sql_id(i));
@@ -254,16 +287,20 @@ begin
 			--dout('SQL:' || v_sql);
 
 			-- get bind names into associative array
-			t_bind_names := t_bin_names_empty;
+			t_bind_names := t_bind_names_empty;
 			for bindnamerec in c_get_bind_names(sqlrec.sql_id)
 			loop
+				if substr(bindnamerec.name,1,1) = ':' then
+					t_bind_names(bindnamerec.position).bind_name := substr(bindnamerec.name,2);
+				else
 					t_bind_names(bindnamerec.position).bind_name := bindnamerec.name;
-					t_bind_names(bindnamerec.position).datatype_string := bindnamerec.datatype_string;
+				end if;
+				t_bind_names(bindnamerec.position).datatype_string := bindnamerec.datatype_string;
 
-					dout('-- ======= bind definitions =============================');
-					dout('-- bind position: ' || bindnamerec.position);
-					dout('-- bind name	 : ' || bindnamerec.name);
-					dout('-- bind datatype: ' || bindnamerec.datatype_string);
+				dout('-- ======= bind definitions =============================');
+				dout('-- bind position: ' || bindnamerec.position);
+				dout('-- bind name	 : ' || bindnamerec.name);
+				dout('-- bind datatype: ' || bindnamerec.datatype_string);
 
 			end loop;
 
@@ -277,23 +314,38 @@ begin
 
 				v_bind_key := to_char(bindrec.snap_id) || ':' || to_char(bindrec.position);
 
-				t_binds(v_bind_key).bind_name := bindrec.name;
+				dout('-- ======= bind values =============================');
+
+				-- at some point oracle started adding a ':' to the bind name
+				-- we do not want a ': in the bind name
+				if substr(bindrec.name,1,1) = ':' then
+					--dout('	  setting bind name to substr');
+					t_binds(v_bind_key).bind_name := substr(bindrec.name,2);
+				else
+					--dout('	  setting bind name to full name');
+					t_binds(v_bind_key).bind_name := bindrec.name;
+				end if;
+
 				t_binds(v_bind_key).datatype_string := bindrec.datatype_string;
 				t_binds(v_bind_key).value_string := bindrec.value_string;
 
-				dout('-- ======= bind values =============================');
 				dout('-- bind snapid	 : ' || bindrec.snap_id);
 				dout('-- bind position: ' || bindrec.position);
-				dout('-- bind name	  : ' || bindrec.name);
-				dout('-- bind datatype: ' || bindrec.datatype_string);
-				dout('-- value			 : ' || bindrec.value_string);
+				--dout('-- bind name	  : ' || bindrec.name);
+				--dout('-- bind datatype: ' || bindrec.datatype_string);
+				--dout('-- value			 : ' || bindrec.value_string);
+				dout('-- bind name	  % ' ||	 t_binds(v_bind_key).bind_name);
+				dout('-- bind datatype: ' || t_binds(v_bind_key).datatype_string);
+				dout('-- value			 : ' || t_binds(v_bind_key).value_string);
 
 			end loop;
+
 
 			-- create variable definitions
 			for i in t_bind_names.first .. t_bind_names.last
 			loop
 				--p('var ' || substr(t_bind_names(i).bind_name,2));
+				dout('-- set bind name	  % ' ||	 t_bind_names(i).bind_name);
 				p('var ' || t_bind_names(i).bind_name);
 				if t_bind_names(i).datatype_string like 'NUMBER%' then
 					pl(' number');
@@ -308,9 +360,74 @@ begin
 				end if;
 			end loop;
 
-			pl('	');
-			pl(v_sql);
-			pl('	');
+/*
+
+-- example PL/SQL block with dbms_sql
+
+declare
+	cursor_name integer;
+	execReturnStatus integer; -- as per docs, the return value can be ignored for SELECT
+	rc number := 0; -- row count
+	v_sql clob;
+begin
+	cursor_name := dbms_sql.open_cursor;
+	v_sql :=	 q'[SELECT CITY, STATE, NAME, ADDRESS FROM CUSTOMERS WHERE CUST_ID = :B1 AND STATUS = 'A']';
+	dbms_sql.parse(cursor_name, v_sql,	dbms_sql.native);
+	dbms_sql.bind_variable(cursor_name, ':B1', :G1);
+	execReturnStatus := DBMS_SQL.EXECUTE(cursor_name);
+	rc := dbms_sql.fetch_rows(cursor_name);
+	dbms_sql.close_cursor(cursor_name);
+	dbms_output.put_line('rows found: ' || rc);
+exception
+when no_data_found then
+	dbms_output.put_line('no data found: ' ||	 rc);
+end;
+
+*/
+
+			-- output pl/sql block
+			-- the output may require editing after generation
+
+			pl(chr(9));
+			pl('declare');
+			pl(q'[	cursor_name integer;]');
+			pl(q'[	execReturnStatus integer; -- as per docs, the return value can be ignored for SELECT]');
+			pl(q'[	rc number := 0; -- row count]');
+			pl(q'[	v_sql clob;]');
+			pl('begin');
+			pl(q'[	cursor_name := dbms_sql.open_cursor;]');
+			pl(q'[	v_sql :=	 q'[]' || v_sql || ']'';' );
+			pl(q'[	dbms_sql.parse(cursor_name, v_sql,	dbms_sql.native);]');
+
+			--pl(q'[	  -- modify generator code to catch all of the bind value]');
+			--pl(q'[ dbms_sql.bind_variable(cursor_name, ':B1', :B1);]');
+
+
+			-- bind the sql placeholders, if any
+			for i in t_bind_names.first .. t_bind_names.last
+			loop
+
+				dout('-- set bind name	  % ' ||	 t_bind_names(i).bind_name);
+
+				p(
+					q'[	dbms_sql.bind_variable(cursor_name, ]'	 ||
+					''':' || t_bind_names(i).bind_name || ''',' ||
+					':' || t_bind_names(i).bind_name	 || ');'
+				);
+
+			end loop;
+
+			pl(q'[	execReturnStatus := DBMS_SQL.EXECUTE(cursor_name);]');
+			pl(q'[	rc := dbms_sql.fetch_rows(cursor_name);]');
+			pl(q'[	dbms_sql.close_cursor(cursor_name);]');
+			pl(q'[	dbms_output.put_line('rows: ' || rc);]');
+			pl('exception');
+			pl('when no_data_found then');
+			pl(q'[	dbms_output.put_line('no data found: ' || rc);]');
+			pl('end;');
+			pl('/');
+			pl(chr(9));
+
 
 			v_bind_key := t_binds.first;
 
@@ -321,6 +438,8 @@ begin
 			loop
 
 				v_snap_id := substr(v_bind_key,1,instr(v_bind_key,':')-1);
+
+				dout('-- v_bind_key: ' || v_bind_key);
 
 				p('exec :' || t_binds(v_bind_key).bind_name || ' := ');
 
@@ -344,7 +463,7 @@ begin
 
 			-- get the last SQL exe in
 			pl('/');
-			
+
 		end loop;
 	end loop;
 
@@ -353,18 +472,26 @@ end;
 
 
 prompt
-prompt -- alter session set events '10046 off';;
+prompt --alter session set events '10046 off';;
+prompt --alter session set optimizer_use_invisible_indexes=false;;
 prompt
-prompt -- select value tracefile_name from v$diag_info where name = 'Default Trace File';;
+prompt col tracefile_name new_value tracefile_name
+prompt
+prompt --select value tracefile_name from v$diag_info where name = 'Default Trace File';;
+prompt
+prompt --host mkdir -p trace
+set scan off
+prompt --host cp -p &tracefile_name trace
+prompt
 
-prompt
 prompt spool off
 
 spool off
 
 prompt
-prompt SQL in 'sql-exe-&my_sql_id..sql'
+prompt --prompt SQL in '&file_prefix-exe-&my_sql_id..sql'
 prompt
+set scan on
 
 @clears
 set line 80

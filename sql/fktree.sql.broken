@@ -1,0 +1,94 @@
+
+-- fktree.sql
+-- Create a tree of tables based on FK relations
+-- Jared Still 
+-- jkstill@gmail.com
+
+/*
+
+This query will not work properly when there are circular references between top level tables
+
+PARENT 
+  CHILD
+    GRANDCHILD
+
+PARENT_2
+  CHILD_2
+    GRANDCHILD_2
+
+If PARENT has a FK that points to PARENT_2, 
+and PARENT_2 has a FK that points to PARENT,
+that is a circular reference.
+
+   ORA-01436: CONNECT BY loop in user data
+
+Besides breaking this script, it is not a good way to 'design' a database
+
+This is why there is a 'nocycle' clause and 'level <= 5' - it prevents endless loops
+*/
+
+
+@clears
+
+col parent format a30
+col child format a30
+col table_name format a30
+col parent_pk_name format a30
+col constraint_name format a30
+col r_constraint_name format a30
+
+col constraint_type format a30
+col child format a30
+col child_fk_name format a30
+col r_parent_pk_name format a30
+
+set linesize 200 trimspool on
+set pagesize 100
+
+col v_user new_value v_user noprint
+
+prompt Schema for FK Tree? :
+
+set term off feed off
+select upper('&1') v_user from dual;
+set term on feed on
+
+
+
+select 
+	lpad(' ', 2 * (level - 1))||t.table_name table_name
+	, c2.r_constraint_name
+	, c2.constraint_name
+	--, level lvl
+	-- , CONNECT_BY_ISCYCLE -- look up documentation for this 
+from dba_tables t
+join dba_constraints c1
+	on (
+		c1.owner = t.owner 
+		and t.table_name = c1.table_name
+		and c1.constraint_type in ('U', 'P')
+	)
+left join dba_constraints c2
+	on (
+		c2.owner = t.owner
+	   and t.table_name = c2.table_name
+		and c2.constraint_type='R'
+	)
+where t.owner = '&v_user'
+start with t.table_name in (
+	select table_name
+	from dba_constraints
+	where owner = '&v_user'
+		and constraint_type in ('U','P')
+	minus
+	select table_name
+	from dba_constraints
+	where owner = '&v_user'
+		and constraint_type = 'R'
+)
+connect by nocycle prior c1.constraint_name = c2.r_constraint_name
+	and level <= 5
+/
+
+undef 1
+

@@ -5,7 +5,7 @@
 -- it is assumed that index_owner = table_owner
 
 
-@clears
+--@clears
 
 col u_own_name new_value u_own_name noprint
 col u_tab_name new_value u_tab_name noprint
@@ -33,7 +33,7 @@ set feed on head on term on
 
 
 
-select ic.index_name, ic.column_name, i.visibility
+select ic.index_name, ic.column_name, i.ini_trans, i.pct_free, i.visibility
 from dba_ind_columns ic
 	,dba_indexes i
 where	 ic.table_owner = '&u_own_name'

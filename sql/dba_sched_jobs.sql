@@ -4,12 +4,13 @@
 
 @clears
 
-set line 200
+set linesize 300 trimspool on
+set pagesize 100
 
 col start_date format a20
 
-col owner format a10
-col job_name format a20
+col owner format a20
+col job_name format a30
 col program_name format a20
 col enabled format a3 head 'ENA|BLE' 
 col start_date format a21 head 'START DATE'
@@ -17,8 +18,8 @@ col next_run_date format a21 head 'NEXT RUN DATE'
 col last_start_date format a21 head 'LAST START DATE'
 col repeat_interval format a15 head 'REPEAT INTERVAL' word_wrapped
 col last_run_duration format a14 head 'LAST RUN|DURATION|DD:HH:MM:SS' 
-col run_count format 99,999 head 'RUN|COUNT'
-col retry_count format 9999 head 'RETRY|COUNT'
+col run_count format 99,999,999 head 'RUN|COUNT'
+col retry_count format 999999 head 'RETRY|COUNT'
 col max_runs format 999,999 head 'MAX|RUNS'
 col job_action format a15 head 'CODE' word_wrapped
 
@@ -54,5 +55,6 @@ select
 	, state
 from DBA_SCHEDULER_JOBS
 --where owner = user
+where owner != 'SYS'
 order by owner
 /

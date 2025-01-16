@@ -1,0 +1,15 @@
+GV$FIXED_TABLE
+-- kernel query, fixed table
+-- Base table of v$fixed_table, whose object_id (indx of x$kqfta) matches obj# of tab_stats$, 
+-- the table dbms_stats.gather_fixed_objects_stats inserts stats into.
+select inst_id,kqftanam, kqftaobj, 'TABLE', indx, con_id from x$kqfta 
+union all 
+-- kernel query, fixed view
+-- V$ views
+select inst_id,kqfvinam, kqfviobj, 'VIEW', 65537, con_id from x$kqfvi 
+union all 
+-- kernel query, fixed derived table
+-- Contains x$kglcursor, x$kgltable etc. which are based on x$kglob; effectively these are views 
+-- of other x$ tables, but Oracle couldn't call them views because they already had x$kqfvi.
+select inst_id,kqfdtnam, kqfdtobj, 'TABLE', 65537, con_id from x$kqfdt
+

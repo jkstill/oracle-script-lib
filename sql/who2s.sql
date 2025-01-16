@@ -9,7 +9,7 @@ col username heading 'USERNAME' format a10
 col sessions heading 'SESSIONS'
 col sid heading 'SID' format 99999
 col status heading 'STATUS' format a10
-col machine format a10 head 'MACHINE'
+col machine format a30 head 'MACHINE'
 col serial# format 99999 head 'SERIAL#'
 col osuser format a7
 
@@ -23,6 +23,7 @@ break on username skip 1
 select 
 	s.username, 
 	s.sid, 
+	p.pid,
 	s.serial#,
 	s.status, 
 	s.machine, 

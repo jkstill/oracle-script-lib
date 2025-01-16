@@ -22,6 +22,14 @@ from DBA_SCHEDULER_WINDOWS
 
 
 alter system set resource_manager_plan='' scope=both sid='*';
+alter system set resource_limit = FALSE scope=both sid='*';
+
+begin
+  dbms_resource_manager.CLEAR_PENDING_AREA;
+  dbms_resource_manager.switch_plan(''); -- Or '' to disable
+end;
+/
+
 
 begin
 	for orec in (

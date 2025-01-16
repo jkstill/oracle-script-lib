@@ -8,6 +8,8 @@ col table_name format a20
 col col_name format a30
 col comments format a70
 col colformat format a15
+col column_name format a30
+
 set line 140 pause off feed on echo off pages 66 head on verify off
 
 col u_table_name new_value u_table_name noprint

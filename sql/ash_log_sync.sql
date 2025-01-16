@@ -3,6 +3,18 @@ col event format a30
 set linesize 200 trimspool on
 set pagesize 60
 
+/*
+
+Yes, summing and averaging TIME_WAITED from ASH/AWR is "wrong"
+
+This is because not all waits are captured in ASH, and AWR is a 10% sample
+
+However, if a significant amount of time appears, I believe it is good to know that.
+
+Just keep in mind that the amount of time is not accurate, it is lower than the real amount of time
+
+*/
+
 col avg_wait_time format 90.09999
 col wait_time format 9990.09999
 col max_time_waited format 90.09999

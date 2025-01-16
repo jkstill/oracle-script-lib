@@ -1,9 +1,9 @@
 
 -- rowlock-sqlid-counts.sql 
 -- 
--- Jared Still still@pythian.com jkstill@gmail.com
+-- Jared Still  jkstill@gmail.com
 
--- requires https://github.com/jkstill/oracle-script-lib/blob/master/get_date_range.sql
+-- requires https://github.com/jkstill/oracle-script-lib/blob/master/sql/get_date_range.sql
 
 -- prompt for date range
 --@get_date_range 

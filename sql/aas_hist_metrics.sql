@@ -1,8 +1,14 @@
 
 -- aas_hist_metrics.sql
 -- jared still - 2015-07-16
--- still@pythian.com
+-- 
 -- jkstill@gmail.com
+-- works in 19c - but not in PDB - must be CDB
+-- Check number of cores reported and compare to what you know is correct.
+-- Amazon RDS r5d.8xlarge has 32 cores as of 2024-03-25
+-- https://aws.amazon.com/ec2/instance-types/r5/
+-- dba_hist_osstat is reporting 16 cores
+-- if the number of cores is incorrect, the wall_clock time will also be incorect
 
 set pause off
 set echo off
@@ -29,11 +35,12 @@ col instance_number head INST# format 99999
 
 spool aas_hist_metrics.csv
 
-prompt END_TIME,INST#,CORES,WALL_TIME,AAS,HOST_CPU_SEC,DB_CPU_SEC,BG_DB_CPU_SEC,DB_TIME,SYS_TIME
+prompt BEGIN_TIME,END_TIME,INST#,CORES,WALL_TIME,AAS,HOST_CPU_SEC,DB_CPU_SEC,BG_DB_CPU_SEC,DB_TIME,SYS_TIME
 
 with data as (
 	select 
-		to_char(h.end_time,'yyyy-mm-dd hh24:mi:ss') end_time
+		to_char(h.begin_time,'yyyy-mm-dd hh24:mi:ss') begin_time
+		, to_char(h.end_time,'yyyy-mm-dd hh24:mi:ss') end_time
 		, h.instance_number
 		, h.intsize
 		, h.metric_name
@@ -61,7 +68,8 @@ with data as (
 )
 select 
 	/*
-	end_time
+	begin_time
+	, end_time
 	, instance_number
 	, cores
 	, cores * intsize wall_time
@@ -72,7 +80,8 @@ select
 	, db_cpu_sec + bg_db_cpu_sec db_time
 	, host_cpu_sec + db_cpu_sec + bg_db_cpu_sec  sys_time
 	*/
-	end_time
+	begin_time
+	|| ',' || end_time
 	|| ',' || instance_number
 	|| ',' || cores
 	|| ',' || cores * intsize
@@ -83,7 +92,7 @@ select
 	|| ',' || (db_cpu_sec + bg_db_cpu_sec)
 	|| ',' || (host_cpu_sec + db_cpu_sec + bg_db_cpu_sec)
 from (
-	select end_time
+	select begin_time, end_time
 		, metric_name
 		, intsize / 100 intsize
 		, cores

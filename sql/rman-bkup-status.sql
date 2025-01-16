@@ -1,7 +1,7 @@
 
 -- rman-bkup-status.sql
--- Andre Araujo - Pythian 2011
--- https://www.pythian.com/blog/viewing-rma-jobs-status-and-output/
+-- Andre Araujo -  2011
+-- https://www..com/blog/viewing-rma-jobs-status-and-output/
 --
 
 set lines 220 trimspool off

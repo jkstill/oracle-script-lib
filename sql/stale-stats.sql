@@ -1,8 +1,8 @@
 
 -- stale-stats.sql
 -- check for stale statistics
--- Jared Still - Pythian 2017
--- still@pythian.com jkstill@gmail.com
+-- Jared Still -  2017
+--  jkstill@gmail.com
 -- includes partitions and subpartitions
 -- table_name == table_name.partition_name.subpartition_name
 -- index_name == index_name.partition_name.subpartition_name
@@ -15,7 +15,7 @@ col stale_stats format a3 head 'STL'
 col stattype_locked head lckd format a4
 col num_rows format 999,999,999
 col blocks format 99,999,999
-col clustering_factor format 99,990.90 head 'CLSTR FCTR'
+col clustering_factor format 999,999,990.90 head 'CLSTR FCTR'
 
 set linesize 300 trimspool on
 set pagesize 100

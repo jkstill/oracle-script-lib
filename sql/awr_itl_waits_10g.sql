@@ -2,7 +2,7 @@
 -- awr_itl_waits_10g.sql.sql
 -- show historic ITL  Waits
 -- Jared Still
--- still@pythian.com
+-- 
 -- jkstill@gmail.com
 
 @clears

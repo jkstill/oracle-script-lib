@@ -13,6 +13,18 @@
 -- times were the highest. The script will create a file called
 -- lfsdiag_<timestamp>.out in your local directory.
 
+/*
+
+Yes, summing and averaging TIME_WAITED from ASH/AWR is "wrong"
+
+This is because not all waits are captured in ASH, and AWR is a 10% sample
+
+However, if a significant amount of time appears, I believe it is good to know that.
+
+Just keep in mind that the amount of time is not accurate, it is lower than the real amount of time
+
+*/
+
 set echo off
 set feedback off
 column timecol new_value timestamp

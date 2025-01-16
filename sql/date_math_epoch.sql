@@ -4,13 +4,13 @@
 -- convert current timestamp to epoch (UTC)
 -- convert epoch to timestamp
 -- Jared Still - 2017-05-16
--- still@pythian.com  jkstill@gmail.com
+--   jkstill@gmail.com
 --
 
 col u_epoch new_value u_epoch head 'epoch'
 
 -- convert current system timestamp to epoch
--- the first extract could be a constant of 1494892800000
+-- the first extract could be a constant of 1617321600
 select 
 	(
 		(extract(day from(systimestamp - to_timestamp('1970-01-01', 'YYYY-MM-DD'))) * 86400)

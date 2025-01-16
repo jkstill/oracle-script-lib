@@ -1,7 +1,7 @@
 
 -- aas-ash-calc.sql
--- Jared Still still@pythian.com jkstill@gmail.com
--- 2019 Pythian
+-- Jared Still  jkstill@gmail.com
+-- 2019 
 -- calculate AAS from ASH data
 -- gv$sysmetric history records this data (aas.sql)
 -- under test conditions the sysmetric values seemed low
@@ -14,6 +14,7 @@ set echo off pause off term on feed on
 
 col begin_time format a26
 col end_time format a26
+col currtime format a35
 col inst_id format 9999 head 'INST'
 col elapsed_seconds format 990.999990 head 'ELAPSED|SECONDS'
 col aas format 990.9 head 'AAS'
@@ -27,7 +28,7 @@ with snapshots as (
 	from gv$active_session_history
 ),
 ash_data as (
-	select sample_id 
+	select distinct sample_id 
 		, inst_id
 		, sample_time begin_interval_time
 		, lead(sample_time) over (partition by inst_id order by sample_id) end_interval_time
@@ -64,7 +65,7 @@ data as (
 			else db_time / elapsed_seconds 
 			end aas
 		from (
-			select h.sample_id
+			select distinct h.sample_id
 				, h.inst_id
 				, h.begin_interval_time
 				, h.end_interval_time
@@ -86,15 +87,28 @@ data as (
 		)
 		order by 2 desc
 	)
+),
+rpt as (
+	select
+		begin_time
+		, end_time
+		, inst_id
+		, elapsed_seconds
+		, aas
+	from data
+	where begin_time > systimestamp - numtodsinterval('1', 'hour')
+	order by begin_time desc, inst_id
 )
-select
-	begin_time
-	, end_time
-	, inst_id
-	, elapsed_seconds
-	, aas
-from data
-where begin_time > systimestamp - numtodsinterval('1', 'hour')
+--select systimestamp currtime, rpt.*
+select rpt.*
+from rpt
+where rownum <= 20
+/*
+   the following line may be used to get the most recent AAS per instance
+	this assumes no overlap in begin_time between instances
+   otherwise AAS from as single instance may appear more than once in RAC
+*/
+--where rownum <= (select count(*) from gv$instance)
 order by begin_time, inst_id
---where rownum <= 20
 /
+

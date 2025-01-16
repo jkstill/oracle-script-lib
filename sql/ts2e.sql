@@ -3,7 +3,7 @@
 -- convert a timestamp to highres (usec) epoch value 
 -- 
 -- Jared Still 2017-05-16
--- still@pythian.com jkstill@gmail.com
+--  jkstill@gmail.com
 
 
 prompt Convert a timestamp to a lowres (seconds) epoch value 

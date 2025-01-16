@@ -25,6 +25,7 @@ col file_id format 99999 head 'FILE ID'
 col relative_fno format 99999 head 'REL FNO'
 col pct_capacity format 999.99 head 'PCT|FULL'
 col tot_space_growth format 99,999,999 head 'TOTAL SPACE|FOR GROWTH'
+col bigfile format a4 head 'BIG|FILE'
 
 break on tablespace_name skip 1 on report
 compute sum of bytes on tablespace_name
@@ -86,7 +87,8 @@ df as (
 			-- total space available, including autoextend if available
 			(((f.bytes/1048576)-nvl(s.totfree,0)))  / 
 			(decode(f.maxbytes,0,f.bytes-s.totfree,f.maxbytes)/1048576) * 100 
-		pct_capacity
+		pct_capacity,
+		bigfile
 		--f.file_id
 	from dba_data_files f, (
 		select
@@ -119,7 +121,8 @@ tf as (
 			-- total space available, including autoextend if available
 			(((f.bytes/1048576)-nvl(s.totfree,0)))  / 
 			(decode(f.maxbytes,0,f.bytes-s.totfree,f.maxbytes)/1048576) * 100 
-		pct_capacity
+		pct_capacity,
+		bigfile
 		--f.file_id
 	from dba_temp_files f
 		,tempfree s
@@ -141,6 +144,7 @@ select
 	, tf.maxbytes
 	, tf.maxbytes - tf.bytes + tf.totfree tot_space_growth
 	, tf.pct_capacity
+	, tf.bigfile
 from tf
 union all
 select
@@ -156,6 +160,7 @@ select
 	, df.maxbytes
 	, df.maxbytes - df.bytes + df.totfree tot_space_growth
 	, df.pct_capacity
+	, df.bigfile
 from df
 order by 1,2
 /

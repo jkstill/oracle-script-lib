@@ -2,7 +2,7 @@
 -- get-curr-ospid.sql
 --
 -- get the server OS Pid for the current session
--- Jared Still jkstill@gmail.com still@pythian.com
+-- Jared Still jkstill@gmail.com 
 col username format a20
 
 select

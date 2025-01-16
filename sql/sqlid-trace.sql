@@ -8,6 +8,8 @@ def v_sqlid2='xyz789'
 
 -- SQL Trace (10046)
 --alter system set events 'sql_trace [sql:&&v_sqlid] bind=true, wait=true';
+-- "off" for a specific SQL_ID seems to work better than the generic 'sql_trace off' command
+--alter system set events 'sql_trace [sql:&&v_sqlid] off';
 
 -- multiple sqlid
 --alter system set events 'sql_trace [sql:&&v_sqlid|&&v_sqlid2] bind=true, wait=true';

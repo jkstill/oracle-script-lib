@@ -2,5 +2,7 @@
 
 @@clears
 
-set pages 0 lines 200 term on feed off 
+set pagesize 0 linesize 200
+set term on
+set feed off
 

@@ -2,7 +2,7 @@
 -- dbms_space_asa_rpt.sql
 -- report showing recommendations from Automatic Segment Advisor
 -- Jared Still - 2013-06-01
--- still@pythian.com
+-- 
 -- jkstill@gmail.com
 
 -- change to 'TRUE' to show findings only rather than recommendations

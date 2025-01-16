@@ -1,11 +1,11 @@
 
 -- awr-top-sqlid-events.sql
 -- get top 5 events per AWR snapshot, per sql_id
--- Jared Still still@pythian.com jkstill@gmail.com
+-- Jared Still  jkstill@gmail.com
 --
 -- 2016-11-02 jkstill - added enqueue decode
 
--- requires https://github.com/jkstill/oracle-script-lib/blob/master/get_date_range.sql
+-- requires https://github.com/jkstill/oracle-script-lib/blob/master/sql/get_date_range.sql
 
 -- prompt for date range
 @get_date_range
@@ -15,15 +15,19 @@
 
 @clears 
 
-set linesize 200 trimspool on
+set linesize 300 trimspool on
 set pagesize 60
 
-col event format a30
+col event format a40
 col p1text format a20
 col p1 format a25
 col p2text format a20
+col begin_interval format a19
+col instance_number format 9999 head 'INST|NUM'
+col sql_id format a13
+col event_rank format 99999 head 'EVENT|RANK'
 
-spool aws-top-sqlid-event.log
+spool awr-top-sqlid-event.log
 
 break on begin_interval skip 1
 
@@ -103,4 +107,4 @@ order by begin_interval, event_count desc
 
 spool off
 
-ed aws-top-sqlid-event.log
+ed awr-top-sqlid-event.log

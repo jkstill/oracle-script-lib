@@ -28,7 +28,7 @@ col bytes_today format 99,999,999,999,999
 col bytes_Nday format 99,999,999,999,999
 
 set pagesize 100
-ste linesize 200 trimspool on
+set linesize 200 trimspool on
 
 -- for repeated use a temp table of archive logs
 -- is *much* faster

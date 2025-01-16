@@ -67,8 +67,8 @@ awr_bind_data as (
 ), 
 v_bind_data as (
 	select
-		to_timestamp(b.last_captured) begin_interval_time
-	, b.inst_id instance_number
+		b.last_captured begin_interval_time
+		, b.inst_id instance_number
 		, b.position
 		, b.name
 		--, b.value_string

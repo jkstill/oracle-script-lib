@@ -3,7 +3,7 @@
 -- cursor-counts.sql
 -- simple count of shared cursors
 --
--- Jared Still 2017-11-08  still@pythian.com jkstill@gmail.com
+-- Jared Still 2017-11-08   jkstill@gmail.com
 
 
 select distinct sql_id

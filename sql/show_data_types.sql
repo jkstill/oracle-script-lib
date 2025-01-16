@@ -1,6 +1,9 @@
 
 -- show_data_type.sql
 
+col owner format a30
+col data_type format a30
+
 select owner, data_type, data_type_mod, count(*)
 from dba_tab_columns
 -- not a comprehensive list

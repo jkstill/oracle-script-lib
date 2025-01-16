@@ -2,8 +2,8 @@
 -- oracle-exclude-schema.sql
 -- show oracle owned schemas in 11g+
 -- these are often excluded for some queries, exports, etc
--- Pythian 2017
--- Jared Still still@pythian.com jkstill@gmail.com
+--  2017
+-- Jared Still  jkstill@gmail.com
 -- see oracle-exclude-inline.sql for sql that can be included via @@
 -- 
 
