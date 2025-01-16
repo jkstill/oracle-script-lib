@@ -1,7 +1,7 @@
 
 -- rman-bkup-details.sql
--- Andre Araujo - Pythian 2011
--- https://www.pythian.com/blog/viewing-rma-jobs-status-and-output/
+-- Andre Araujo -  2011
+-- https://www..com/blog/viewing-rma-jobs-status-and-output/
 --
 -- first run rman-bkup-status.sql 
 -- use the session_recid and session_stamp values to run this report.

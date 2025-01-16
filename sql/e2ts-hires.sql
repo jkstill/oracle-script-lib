@@ -4,7 +4,7 @@
 -- convert a highres (usec) epoch value to a timestamp
 --  very little different from e2ts.sql - need to consolidate
 -- Jared Still 2017-05-16
--- still@pythian.com jkstill@gmail.com
+--  jkstill@gmail.com
 
 prompt Convert a highres epoch value with microseconds to a timestamp with time zone
 prompt

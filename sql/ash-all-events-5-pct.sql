@@ -1,7 +1,7 @@
 
 -- ash-all-events-5-pct.sql
 -- Jared Still 2021
--- jkstill@gmail.com still@pythian.com
+-- jkstill@gmail.com 
 -- pct_of_db_time column refers to the % of time 
 -- each event consumed for the duration of the sql execution
 
@@ -20,6 +20,7 @@ with raw_data as (
 		,count(*) over ( partition by inst_id, event ) event_count
 		,count(*) over ( partition by inst_id order by inst_id ) event_sum
 	from raw_data
+	where event not in ('ges generic event')
 ), rpt_data as (
 	select inst_id
 		, event
@@ -34,7 +35,8 @@ select inst_id
 	, event_sum
 	, pct_of_db_time
 from rpt_data
-where	 pct_of_db_time >5
+where	pct_of_db_time >5
+or event = 'ON CPU'
 order by event_count
 /
 

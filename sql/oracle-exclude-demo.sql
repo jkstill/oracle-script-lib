@@ -1,8 +1,8 @@
 
 -- oracle-exclude-demo.sql
 -- demo of using oracle-exclude-inline.sql in 11g+
--- Pythian 2017
--- Jared Still still@pythian.com jkstill@gmail.com
+--  2017
+-- Jared Still  jkstill@gmail.com
 
 with
 @oracle-exclude-inline

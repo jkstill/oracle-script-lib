@@ -1,6 +1,6 @@
 -- sysmetric-history.sql
 -- Jared Still - 2015-10-21
--- still@pythian.com
+-- 
 -- jkstill@gmail.com
 
 col vinstance new_value vinstance

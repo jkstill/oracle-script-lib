@@ -1,5 +1,5 @@
 
--- liveplan_hash.sql
+-- liveplan-9i-hash.sql
 -- show hash value and SQL for currently used
 -- sql for a session
 -- use hash values as input to liveplan.sql

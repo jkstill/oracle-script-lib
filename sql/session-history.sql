@@ -1,8 +1,8 @@
 
 -- session-history.sql
 -- Jared Still 2015-10-21
--- still@pythian.com
--- jkstill@pythian.com
+-- 
+-- jk
 
 col vinstance new_value vinstance
 select lower(instance_name) vinstance from v$instance;

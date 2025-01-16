@@ -1,7 +1,7 @@
 
 -- set-default-profile-unlimited.sql
 -- useful for test databases
--- Jared Still 2020-12-30 jkstill@gmail.com still@pythian.com
+-- Jared Still 2020-12-30 jkstill@gmail.com 
 
 begin
 
@@ -16,7 +16,9 @@ begin
 					'FAILED_LOGIN_ATTEMPTS',
 					'PASSWORD_LIFE_TIME',
 					'PASSWORD_LOCK_TIME',
-					'PASSWORD_GRACE_TIME'
+					'PASSWORD_GRACE_TIME',
+					'PASSWORD_REUSE_TIME',
+					'PASSWORD_REUSE_MAX'
 				)
 			)
 		)

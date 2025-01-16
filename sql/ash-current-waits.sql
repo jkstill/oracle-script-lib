@@ -1,7 +1,7 @@
 
 -- ash-current-waits.sql
 -- find the current top wait events per SQL by class and event
--- Jared Still - still@pythian.com jkstill@gmail.com
+-- Jared Still -  jkstill@gmail.com
 
 set pause off echo off 
 set feed on term on 

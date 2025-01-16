@@ -1,5 +1,7 @@
 
--- schema_ddl.sql
+-- user_ddl.sql
+
+-- see Object types for DBMS_METADATA (Doc ID 207859.1)
 
 @clears
 
@@ -95,7 +97,7 @@ undef 1
 
 prompt
 prompt ===========================================================================
-prompt == &&sqlfile..sql contains DDL for tablespaces
+prompt == &&sqlfile..sql contains DDL for user &&username
 prompt ===========================================================================
 prompt
 

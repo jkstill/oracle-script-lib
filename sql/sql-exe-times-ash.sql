@@ -2,7 +2,7 @@
 
 -- sql-exe-times-ash.sql
 -- call with sql_id
--- Jared Still - Pythian - still@pythian.com jkstill@gmail.com
+-- Jared Still -  -  jkstill@gmail.com
 -- 2017-11-21
 -- Jared Still - 2017-11-22
 -- was going about getting execution times all wrong 
@@ -51,6 +51,7 @@ with sql_data as (
 		, max(sample_time) over (partition by inst_id, sql_id, session_id, session_serial#, sql_exec_id order by session_id, session_serial#, sql_exec_id) max_sample_time
 	from gv$active_session_history h
 	where sql_id = :v_sql_id
+		and sql_exec_id is not null
 	order by 
 		inst_id
 		, sql_id

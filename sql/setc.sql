@@ -1,7 +1,7 @@
 
 -- setc.sql
 -- set container
--- 2020 Pythian still@pythian.com jkstill@gmail.com
+-- 2020   jkstill@gmail.com
 --
 -- see comments for restrictions on use
 

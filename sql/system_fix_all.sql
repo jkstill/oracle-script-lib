@@ -5,6 +5,8 @@ COLUMN value FORMAT 9999999
 COLUMN sql_feature FORMAT A35
 COLUMN optimizer_feature_enable FORMAT A9
 COLUMN event format 999999
+COLUMN description format a70
+
 
 SELECT *
 FROM   v$system_fix_control

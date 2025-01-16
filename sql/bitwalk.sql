@@ -1,7 +1,7 @@
 
 -- bitwalk.sql
 -- Jared Still 2021
--- jkstill@gmail.com still@pythian.com
+-- jkstill@gmail.com 
 
 /*
 
@@ -16,12 +16,15 @@
 
 col bit format 999 head 'BIT'
 col mask format 9999999999999999999 head 'MASK'
+col hex_mask format a17 head 'HEX MASK'
 col bitset format a7 head 'BITSET'
+
 
 with data as (
 	select flags
+	--select 23299785858490872343 flags
 	from container$
-	where con_id# = 3
+	where con_id# = 1
 ),
 masked as (
 select flags
@@ -36,6 +39,8 @@ select
 	bit
 	, decode( bitand(flags, mask), 0, 'NOT SET', '    SET'  )  bitset
 	, mask
+	, to_char(mask,'0XXXXXXXXXXXXXXX') hex_mask
 from masked
 /
+
 

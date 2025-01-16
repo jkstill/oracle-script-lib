@@ -1,7 +1,7 @@
 
 -- jared still
 -- jkstill@gmail.com
--- still@pythian.com
+-- 
 -- 2013-06-05
 
 col client_name format a40

@@ -1,7 +1,7 @@
 
 -- fk-circular-ref.sql
--- Jared Still - 2020-11-09 - Pythian
--- jkstill@gmail.com still@pythian.com
+-- Jared Still - 2020-11-09 - 
+-- jkstill@gmail.com 
 --
 -- Find circular references where two tables refer to each other via Foreign Key
 --

@@ -1,6 +1,6 @@
 
 -- awr-top-5-events.sql
--- Jared Still - jkstill@gmail.com still@pythian.com
+-- Jared Still - jkstill@gmail.com 
 -- report on the top 5 events (including CPU - excluding idle)
 -- just to see where db is spending time
 -- output to CSV
@@ -9,15 +9,19 @@
 define days_back=7
 define snap_seconds=3600
 
---@clears
---set linesize 200 trimspool on
---set pagesize 100
+@clears
+set linesize 200 trimspool on
+set pagesize 100
+
+col time_source format a30
+
+break on instance_number on sample_time
 
 alter session set nls_date_format = 'yyyy-mm-dd hh24:mi:ss';
 
-@clear_for_spool
+--@clear_for_spool
 
-spool awr-top-5-events.csv
+--spool awr-top-5-events.csv
 
 with cores as (
 	select inst_id, stat_name, value core_count
@@ -73,29 +77,29 @@ ranked as (
 	from aggs
 )
 select 
-	--instance_number
-	--, sample_time
-	--, time_source
-	--, time_used
-	--, to_char(pct_time,'990.9') pct_time
-	--, event_rank
-	--
 	instance_number
-	|| ',' || sample_time
-	|| ',' || time_source
-	|| ',' || time_used
-	|| ',' || to_number(to_char(pct_time,'990.9'))
-	|| ',' || event_rank
+	, sample_time
+	, time_source
+	, time_used
+	, to_char(pct_time,'990.9') pct_time
+	, event_rank
+	--
+	--instance_number
+	--|| ',' || sample_time
+	--|| ',' || time_source
+	--|| ',' || time_used
+	--|| ',' || to_number(to_char(pct_time,'990.9'))
+	--|| ',' || event_rank
 from ranked
 where event_rank <= 5
---order by instance_number, sample_time, event_rank 
-order by 1
+order by instance_number, sample_time, event_rank 
+--order by 1
 
-prompt instance_number,sample_time,time_source,time_used,pct_time,event_rank
+--prompt instance_number,sample_time,time_source,time_used,pct_time,event_rank
 
 /
 
-spool off 
+--spool off 
 
-@clears
+--@clears
 

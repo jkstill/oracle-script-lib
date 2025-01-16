@@ -29,7 +29,7 @@ spool sqltext.txt
 select 
 	&ash_mode sql_fulltext sql_text
 	&awr_mode sql_text
-&ash_mode from v$sqlstats
+&ash_mode from v$sqlarea
 &awr_mode from dba_hist_sqltext
 where sql_id = '&&u_sqlid'
   and rownum < 2

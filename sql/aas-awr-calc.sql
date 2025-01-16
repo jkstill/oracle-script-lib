@@ -63,4 +63,7 @@ spool off
 set term on
 @clears
 
+prompt
+prompt results are in aas-calc.csv
+prompt 
 

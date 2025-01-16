@@ -1,8 +1,8 @@
 
 -- session-cursor-metrics.sql
 -- Jared Still 
--- Pythian 2018
--- still@pythian.com jkstill@gmail.com
+--  2018
+--  jkstill@gmail.com
 
 /*
 

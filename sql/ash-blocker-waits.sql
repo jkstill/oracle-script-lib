@@ -1,7 +1,7 @@
 
 -- ash-blocker-waits.sql
 -- show current blockers and SQL_ID
--- still@pythian.com
+-- 
 -- 2017-01-07
 
 clear col 
@@ -23,6 +23,7 @@ set feed on term on
 set echo off heading on feedback on
 set linesize 200 trimspool on
 set pagesize 60
+set tab off
 
 col blocking_sql_id format a12 head 'BLOCKING|SQL_ID'
 col session_id format 999999 head 'SID'
@@ -32,30 +33,45 @@ col time_waited format 999,999.99 head 'TIME|WAITED|SECONDS'
 
 col sample_time format a25 head 'SAMPLE TIME'
 
+
 with blocked as (
-	select distinct blocking_session, blocking_session_serial#,  sample_id
-	from v$active_session_history
-	--from dba_hist_active_sess_history
-	where blocking_session is not null
-	and  event like '&v_event_filter'
-), 
+	select distinct h.inst_id, h.sample_time, h.sample_id, h.session_id, h.session_serial#, h.blocking_session, h.blocking_session_serial#, h.sql_id, h.event, h.session_state
+	from gv$active_session_history h
+	where h.blocking_session is not null
+	and h.event like '&v_event_filter'
+),
 blockers as (
 	select distinct
-		max(blkr.sample_id) over (partition by blkr.session_id, blkr.session_serial#) sample_id
-		, max(blkr.sample_time) over (partition by blkr.session_id, blkr.session_serial#) sample_time
-		, blkr.session_id
-		, blkr.session_serial#
-		, blkr.session_state
-		, blkr.event
-		--, blkr.time_waited
-	from v$active_session_history blkr 
-	join blocked b on b.blocking_session = blkr.session_id
-		and b.blocking_session_serial# = blkr.session_serial#
-		and blkr.blocking_session is null
+		 max(b.sample_id) over (partition by b.inst_id, b.session_id, b.session_serial#) sample_id
+		, max(b.sample_time) over (partition by b.inst_id, b.session_id, b.session_serial#) sample_time
+		, count(b.sample_time) over (partition by b.inst_id, b.session_id, b.session_serial#) event_count
+		, b.sql_id
+		, b.inst_id
+		, b.session_id
+		, b.blocking_session
+		, b.event
+		, b.session_serial#
+		, b.session_state
+		-- NULL for top level blockers
+		--, b.time_waited
+	from blocked b
+	left outer join gv$active_session_history bl
+		on bl.sample_id = b.sample_id
+		and bl.inst_id = b.inst_id
+		and bl.sql_id = b.sql_id
+		and bl.blocking_session = b.session_id
+		and bl.blocking_session_serial# = b.blocking_session_serial#
 )
-select * 
+select
+	--sample_id
+	sample_time
+	, sql_id
+	, session_id
+	, blocking_session
+	, inst_id
+	, event_count
+	, session_state
+	, event
 from blockers
-order by 1
+order by sample_time, session_id
 /
-		 
-

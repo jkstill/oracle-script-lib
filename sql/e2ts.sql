@@ -3,7 +3,7 @@
 -- convert a lowres (msec) epoch value to a timestamp
 -- 
 -- Jared Still 2017-05-16
--- still@pythian.com jkstill@gmail.com
+--  jkstill@gmail.com
 
 
 prompt Convert a lowres epoch value with seconds to a timestamp with time zone

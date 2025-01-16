@@ -13,7 +13,7 @@ col system_created format a7 head 'SYSTEM|CREATED'
 break on name skip 1
 
 select
-	dg.name
+	dg.name dg_name
 	, da.name attrib_name
 	, da.value attrib_value
 	, da.attribute_index attrib_index

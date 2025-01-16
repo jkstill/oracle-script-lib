@@ -6,6 +6,9 @@
 --
 -- see 10046_off.sql to end tracing
 
+-- be sure to use level 8 if the bind values may contain sensitive data
+-- hard coded SQL may also contain sensitive data
+
 alter session set events '10046 trace name context forever, level 12';
 --sys.dbms_system.set_ev(sid(n), serial(n), 10046, 8, '');
 

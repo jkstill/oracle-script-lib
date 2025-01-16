@@ -1,7 +1,7 @@
 
 -- ts2e-hires.sql
 -- Jared Still 2017-05-16
--- still@pythian.com jkstill@gmail.com
+--  jkstill@gmail.com
 
 
 -- needs work...

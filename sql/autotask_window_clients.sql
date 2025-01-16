@@ -9,7 +9,7 @@ select
 	, optimizer_stats     
 	, segment_advisor      
 	, sql_tune_advisor       
-	, health_monitor   
+	--, health_monitor   
 from 
 dba_autotask_window_clients
 order by window_next_time

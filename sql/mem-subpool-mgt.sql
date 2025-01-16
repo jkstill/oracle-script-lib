@@ -9,6 +9,7 @@
 -- See also:
 -- resize-ops-metric-awr.sql
 -- resize-ops-metric.sql
+-- added pivot query - thanks to Odair Brun, brun@pythian.com
 
 set pagesize 60
 set linesize 200 trimspool on
@@ -104,6 +105,38 @@ select
 from x$ksmss
 group by ksmdsidx
 order by subpool;
+
+prompt
+prompt Pivot of selected values
+prompt
+
+col 1 format 999,999,999,999,999
+col 2 format 999,999,999,999,999
+col 3 format 999,999,999,999,999
+col 4 format 999,999,999,999,999
+col 5 format 999,999,999,999,999
+col 6 format 999,999,999,999,999
+col 7 format 999,999,999,999,999
+
+col v_subpools new_value v_subpools noprint
+
+set term off feed off
+select listagg(ksmdsidx,',') within group(order by ksmdsidx) v_subpools
+from x$ksmss
+where ksmdsidx >0 and ksmssnam='free memory';
+
+set term on feed on
+
+select * from (
+	select ksmdsidx subpool , ksmssnam name, ksmsslen bytes
+	from x$ksmss
+	where ksmssnam='free memory' or ksmsslen > (10*1024*1024)
+)
+pivot (
+	sum(bytes)
+	for subpool in (&v_subpools)
+)
+order by 1;
 
 
 

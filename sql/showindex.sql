@@ -33,7 +33,7 @@ select
 	--a.tablespace_name,
 	b.column_name columnname, 
 	b.column_position columnpos
-from dba_indexes a, dba_ind_columns b
+from all_indexes a, all_ind_columns b
 where  a.table_name = b.table_name
 	and a.index_name = b.index_name
 	and a.owner = upper('&uowner') 

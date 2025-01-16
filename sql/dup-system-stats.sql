@@ -1,7 +1,7 @@
 
 -- dup-system-stats.sql
 -- Jared Still 2017-01-26
--- still@pythian.com
+-- 
 -- jkstill@gmail.com
 -- 
 -- this SQL will generate PL/SQL to copy System Statistics from one database to another

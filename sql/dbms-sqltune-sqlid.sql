@@ -1,6 +1,6 @@
 
 -- dbms-sqltune-sqlid.sql
--- Jared Still jkstill@gmail.com still@pythian.com
+-- Jared Still jkstill@gmail.com 
 --
 -- create a SQL tuning job, execute it, and run the report
 -- rather straightforward.

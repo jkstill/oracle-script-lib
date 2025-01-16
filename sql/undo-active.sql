@@ -1,8 +1,8 @@
 
 
 -- undo-active.sql
--- Jared Still -  Pythian
--- still@pythiancom jkstill@gmail.com
+-- Jared Still -  
+--  jkstill@gmail.com
 
 
 select to_char(s.end_time,'yyyy-mm-dd hh24:mi:ss') end_time, s.inst_id, s.undotsn, t.name, sum(activeblks)

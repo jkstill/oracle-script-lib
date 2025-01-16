@@ -1,7 +1,7 @@
 
 -- sql-exe-events-ash.sql
--- Jared Still still@pythian.com jkstill@gmail.com
--- Pythian 2018
+-- Jared Still  jkstill@gmail.com
+--  2018
 
 @clears
 
@@ -31,6 +31,7 @@ with sql_data as (
 		, nvl(event,'CPU') event
 	from gv$active_session_history h
 	where sql_id = :v_sql_id
+		and sql_exec_id is not null
 	order by
 		inst_id
 		, sql_id

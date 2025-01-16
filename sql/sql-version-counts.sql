@@ -1,7 +1,7 @@
 
 -- sql-version-counts
 -- Oracle 12.1+
--- Jared Still - still@pythian.com jkstill@gmail.com
+-- Jared Still -  jkstill@gmail.com
 -- 2017-01-07
 
 --@clears

@@ -2,7 +2,7 @@
 
 -- dbms_output-abstracted.sql
 -- some abstracted functions and procedures for using dbms_output
--- Jared Still still@pythian.com jkstill@gmail.com
+-- Jared Still  jkstill@gmail.com
 -- Pythisn 2019
 -- these are demonstrated here in an anonymous block, but are really best
 -- used in stored procedures and packages; especially packages

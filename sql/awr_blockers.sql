@@ -2,7 +2,7 @@
 -- awr_blockers.sql
 -- show historic blocking , sql_id and whether mode 4 (ITL) or mode 6 (rowlock)
 -- Jared Still
--- still@pythian.com
+-- 
 -- jkstill@gmail.com
 
 /*
@@ -13,7 +13,7 @@ Event	                     % Event P1, P2, P3 Values	               % Activity  
 enq: TX - index contention	22.52	  "1415053316","19529734","1548062"	1.65 	      name|mode   usn<<16|slot   sequence
 
 P1 of 1415053316 is a mode 4 ITL wait
-P1 of 1415053318 is a mode 6 ITL wait
+P1 of 1415053318 is a mode 6 rowlock wait
 
 This can be seen from the binary representation of these values
 
@@ -39,6 +39,7 @@ $  perl -e 'print 1415053318 & 0xFFFF, "\n"'
 
 @get_date_range
 
+set tab off
 -- d_date_format set by get_date_range.sql
 
 with waits as (

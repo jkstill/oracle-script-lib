@@ -16,6 +16,10 @@
 --event="4031 trace name errorstack level 3"
 --event="1652 trace name processstate level 10"
 
+-- get a call stack for ORA-00060 Deadlocks
+-- the call stack is added to the trace file generated for deadlocks
+-- I have tested this and did not find it particularly useful
+--alter system set events '10027 trace name context forever, level 4';
 
 -- this syntax will not cause a trace file to be dumped
 -- alter system set events '6502 trace name context forever, level 1';
@@ -28,6 +32,14 @@
 -- dump errorstack and processtate for 5 events
 
 -- alter system set events '4020 trace name errorstack level 12, lifetime 5; name processstate level 2, lifetime 5';
+
+-- get a call stack 
+-- alter system set events '4020 trace name callstack level 2, lifetime 5; name processstate level 2, lifetime 5';
+-- alter system set events '4020 trace name callstack level 2, lifetime 5; name errorstack level 12, lifetime 5; name processstate level 2, lifetime 5';
+-- turn it off
+-- turn off each named stack or state
+-- alter system set events '4020 trace name callstack off; name errorstack off; name processstate off';
+
 
 -- #########################################################
 -- ## here's some test code to force the 6502 error and test
@@ -66,7 +78,8 @@
 -- alter system set events 'sql_trace[SQL:02hnhu3dv424q] plan_stat=all_executions,wait=true,bind=false';
 -- alter system set events 'sql_trace[SQL:0ug54s8cg41up] plan_stat=all_executions,wait=true,bind=false';
 
--- alter system set events 'sql_trace[SQL:0ug54s8cg41up]plan_stat=all_executions,wait=true,bind=false; name processstate level 2, lifetime 5';
+-- this version oif setting sql_trace no longer works - attempted in 19.0.3
+-- alter system set events 'sql_trace[SQL:0ug54s8cg41up] plan_stat=all_executions,wait=true,bind=false; name processstate level 2, lifetime 5';
 
 -- each must be turned off explicitly
 

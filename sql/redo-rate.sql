@@ -1,13 +1,13 @@
 
 -- redo-rate.sql
 -- show real time redo rates
--- Jared Still still@pythian.com jkstill@gmail.com
--- Pythian 2020
+-- Jared Still  jkstill@gmail.com
+--  2020
 -- 
 
 col metric_unit format a30
 col metric_name format a30
-
+col value format 999,999,999,999 
 set linesize 200 trimspool on
 set pagesize 100
      

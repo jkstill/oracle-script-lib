@@ -7,10 +7,11 @@
 set line 200
 set pagesize 100
 
+col inst_id format 9999 head 'INST|ID'
 col pctdone format a7
 col opname format a20
-col sofar format 99999999
-col totalwork format 9999999999999
+col sofar format 99,999,999,999,999
+col totalwork format 99,999,999,999,999
 col target format a20
 col target_desc format a10
 col username format a10
@@ -21,7 +22,8 @@ col message format a25
 
 select 
 	-- sid
-	username
+	inst_id
+	, username
 	, opname
 	, target
 	--, target_desc
@@ -43,7 +45,7 @@ select
 	--, sql_address
 	--, sql_hash_value
 	--, qcsid
-from v$session_longops
+from gv$session_longops
 where time_remaining > 0
 order by username
 /

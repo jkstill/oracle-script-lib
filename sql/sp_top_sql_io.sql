@@ -1,7 +1,7 @@
 
 -- sp_top_sql_io.sql
--- Jared Still - Pythian
--- 2017-09-07 still@pythian.com jkstill@gmail.com
+-- Jared Still - 
+-- 2017-09-07  jkstill@gmail.com
 
 -- get top 10 SQL statements based on disk reads
 

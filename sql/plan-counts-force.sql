@@ -2,7 +2,7 @@
 
 -- plan-counts-force.sql
 -- Jared Still 2016-02-21
--- still@pythian.com
+-- 
 -- jkstill@gmail.com
 -- 
 -- find the  number of plans per sql_id using force_matching_signature

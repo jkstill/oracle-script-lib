@@ -455,6 +455,78 @@ Page Table Entry: soft-dirty
 Mem Used: 68144K
 ```
 
+## sga-smallpage-detector.pl
+
+This script will detect Oracle SGA segments that are not using HugePages.
+
+It works by getting the pid and sid of all the ora_pmon_<SID> processes
+
+Then the memory segment maps are captured from /proc/PID/smaps
+
+If the segment is over a few megabytes in size, and the KernelPageSize for the segment is < 2M, then a warning is printed
+
+sample output
+
+```text
+     ##############################
+     PID: 161290 SID: cdb01
+     shmid: 1272971277
+       segment size: 20971520
+       kernelPageSize: 2097152
+     shmid: 1273233429
+	skipping due to small segment size
+     shmid: 1273167891
+       segment size: 115343360
+       kernelPageSize: 2097152
+     shmid: 1273069584
+       segment size: 48184164352
+       kernelPageSize: 2097152
+     ##############################
+     PID: 161729 SID: cdb02
+     shmid: 1273561128
+       segment size: 20971520
+       kernelPageSize: 2097152
+     shmid: 1273823280
+       segment size: 67108864
+       kernelPageSize: 2097152
+     shmid: 1274052663
+	skipping due to small segment size
+     shmid: 1274019894
+       segment size: 48234496
+       kernelPageSize: 2097152
+     shmid: 1273921587
+       segment size: 21340618752
+       kernelPageSize: 4096
+     !!! sid: cdb02 pid: 161729 shmid: 1273921587 is not using HugePages !!!
+
+```
+
+# network
+
+## sqlnet-io-rates.pl
+
+Get the rates of network IO from v$sesstat
+
+```text
+$ ./sqlnet-io-rates.pl -database orcl -username scott -password XXX -iterations 30 -interval-seconds 5
+timestamp,elapsed,schema,client roundtrips,dblink roundtrips,bytes from client,bytes from dblink,bytes to client,bytes to dblink
+2021-11-16 00:33:30,5.007873,SCOTT,7,0,3850,0,4830,0
+2021-11-16 00:33:30,5.007873,SOE,144,0,17060,0,8104,0
+2021-11-16 00:33:30,5.007873,SYS,0,0,0,0,0,0
+2021-11-16 00:33:30,5.007873,SYSRAC,0,0,0,0,0,0
+2021-11-16 00:33:35,5.008368,SCOTT,7,0,3850,0,52719,0
+2021-11-16 00:33:35,5.008368,SOE,130,0,14947,0,7194,0
+2021-11-16 00:33:35,5.008368,SYS,0,0,0,0,0,0
+2021-11-16 00:33:35,5.008368,SYSRAC,0,0,0,0,0,0
+2021-11-16 00:33:40,5.007935,SCOTT,13,0,4612,0,122745,0
+2021-11-16 00:33:40,5.007935,SOE,171,0,20839,0,9296,0
+2021-11-16 00:33:40,5.007935,SYS,0,0,0,0,0,0
+2021-11-16 00:33:40,5.007935,SYSRAC,0,0,0,0,0,0
+
+
+```
+
+
 
 
 

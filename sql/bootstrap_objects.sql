@@ -1,7 +1,7 @@
 
 -- bootstrap_objects.sql
 -- Jared Still
--- pythian
+-- 
 
 -- These are objects required for a warm start, and cannot be modified in any way
 

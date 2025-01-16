@@ -1,12 +1,13 @@
 
 -- showplan_awr.sql
+-- get execution plas for a SQL from AWR
 -- this is for 10g and later
 
 
 @clears
 
 col usql_id new_value usql_id noprint
-prompt SQL_ID Value of SQL from V$SQL:
+prompt SQL_ID Value of SQL from v$sql:
 set echo off term off head off
 select '&1' usql_id from dual;
 set term on head on
@@ -28,7 +29,7 @@ col plan_table_output format a180
 
 select *
 from TABLE(
-   dbms_xplan.display_awr(sql_id => :sqlidvar, format => 'ALL ALLSTATS LAST')
+   dbms_xplan.display_awr(sql_id => :sqlidvar, format => 'ADVANCED ALL ALLSTATS LAST')
    )
 /
 

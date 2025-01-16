@@ -11,7 +11,7 @@ break on owner skip 1 on object_type
 col spoolout new_value spoolfile 
 set verify off
 
-@title 'Invalid Objects' 70
+@title 'Invalid Objects' 200
 
 select owner, object_type, object_name , status
 from dba_objects

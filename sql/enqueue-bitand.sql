@@ -1,6 +1,6 @@
 
 -- enqueue-bitand.sql
--- Jared Still still@pythian.com jkstill@gmail.com
+-- Jared Still  jkstill@gmail.com
 -- 2016-11-03
 --
 

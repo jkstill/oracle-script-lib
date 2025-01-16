@@ -1,6 +1,7 @@
 
 -- setup plscope
-alter session set plscope_settings='IDENTIFIERS:ALL';
+-- STATEMENTS:ALL requires oracle 12.2+
+alter session set plscope_settings='IDENTIFIERS:ALL,STATEMENTS:ALL';
 
 alter session set plsql_optimize_level=2;
 

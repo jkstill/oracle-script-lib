@@ -2,7 +2,7 @@
 -- average_active_sessions_2.sql
 -- current AAS - no ASH required
 -- Jared Still
--- still@pythian.com
+-- 
 -- jkstill@gmail.com
 
 /*

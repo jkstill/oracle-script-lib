@@ -1,6 +1,6 @@
 
 -- privmaps.sql
--- Jared Still - Pythian
+-- Jared Still - 
 -- 2016-06-24
 -- this will show system privileges that are granted through roles
 

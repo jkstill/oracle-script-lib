@@ -3,7 +3,7 @@
 -- get a beginning and ending date for whatever
 -- format for input is YYYY-MM-DD HH24:MI:SS
 -- Jared Still
--- still@pythian.com
+-- 
 -- jkstill@gmail.com
 
 

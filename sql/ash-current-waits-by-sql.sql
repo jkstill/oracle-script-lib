@@ -1,7 +1,7 @@
 
 -- ash-current-waits-by-sql.sql
 -- find the current top 20 SQL by execution time per session that occurred in a single session
--- Jared Still - still@pythian.com jkstill@gmail.com
+-- Jared Still -  jkstill@gmail.com
 
 set pause off echo off
 set feed on term on

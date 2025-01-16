@@ -17,11 +17,15 @@ set term on feed on
 col sid format 999 head 'SID'
 col name format a40
 col valuesum format 9999,999,999,999 head 'SUM OF STAT VALUE'
+col value format 9999,999,999,999 
 col username format a10 head 'USERNAME'
 
 var v_statname varchar2(64)
 
 set feedback off
+
+set linesize 200 trimspool on
+set pagesize 100
 
 begin
 	:v_statname := '&&ustatname';
@@ -37,6 +41,7 @@ from v$mystat stat, v$statname name
 where
 	stat.statistic# = name.statistic#
 	and name.name like '%' || :v_statname || '%'
+and stat.value != 0
 order by name.name
 /
 

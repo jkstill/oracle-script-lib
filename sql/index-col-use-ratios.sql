@@ -1,5 +1,5 @@
 -- index-col-use-ratios.sql
--- Jared Still still@pythian.com jkstill@gmail.com
+-- Jared Still  jkstill@gmail.com
 -- 2016-12-07
 
 set linesize 200 trimspool on
