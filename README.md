@@ -94,6 +94,8 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dumptrace_on.sql'>dumptrace_on.sql</a> - Turn off SQL_trace in a session
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dumptracem_off.sql'>dumptracem_off.sql</a> - Turn on SQL_trace for all sessions for a user
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dumptracem_on.sql'>dumptracem_on.sql</a> - Turn off SQL_trace for all sessions for a user
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/set-tracefile-id-external.sql'>set-tracefile-id-external.sql</a> - script that uses oradebug to set tracefile_identifier for other sessions of a user
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/Dump-Trace-Multi-Session.md'>Dump-Trace-Multi-Session.md</a> - some documentation for dumptracem_[on|off].sql scripts
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dup-user-profile.sql'>dup-user-profile.sql</a> - Duplicate a user profile
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dup_role.sql'>dup_role.sql</a> - Generate SQL script to duplicate a database role
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dup_role_users.sql'>dup_role_users.sql</a> - Generate SQL script to duplicate all users of a role

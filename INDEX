@@ -90,6 +90,8 @@ RDBMS UTILITIES:
 @dumptrace_on.sql: Turn off SQL_trace in a session
 @dumptracem_off.sql: Turn on SQL_trace for all sessions for a user
 @dumptracem_on.sql: Turn off SQL_trace for all sessions for a user
+@set-tracefile-id-external.sql: script that uses oradebug to set tracefile_identifier for other sessions of a user
+@Dump-Trace-Multi-Session.md: some documentation for dumptracem_[on|off].sql scripts
 @dup-user-profile.sql: Duplicate a user profile
 @dup_role.sql: Generate SQL script to duplicate a database role
 @dup_role_users.sql: Generate SQL script to duplicate all users of a role
