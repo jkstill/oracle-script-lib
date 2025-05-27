@@ -48,6 +48,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ascii.sql'>ascii.sql</a> - generate a simple ascii table
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/bad-date.sql'>bad-date.sql</a> - Oracle believes there is a year zero
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/bitwalk.sql'>bitwalk.sql</a> - discover which bits are set in a bitmap column
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/character-sets.sql'>character-sets.sql</a> - show character sets
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/clears.sql'>clears.sql</a> - clear sqlplus settings
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/clear_for_spool.sql'>clear_for_spool.sql</a> - set sqlplus for spooling output without headers,etc
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/colors.sql'>colors.sql</a> - define values for sqlprompt colors
@@ -631,6 +632,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showpin.sql'>showpin.sql</a> - Show objects pinned in the shared pool
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showpipes.sql'>showpipes.sql</a> - Show database pipes
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show-pk.sql'>show-pk.sql</a> - Show all primary keys for a user
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show-pk-with-idx.sql'>show-pk-with-idx.sql</a> - Show primary keys with indexes
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showpriv.sql'>showpriv.sql</a> - Show privileges granted to a role or user
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showprofile.sql'>showprofile.sql</a> - Show resources for a profile from dba_profiles
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showrbslock.sql'>showrbslock.sql</a> - Show RBS locks
@@ -694,7 +696,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/privmaps.sql'>privmaps.sql</a> - Show all privileges granted to a user, and whether direct or through a role
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/orapwdhash.sql'>orapwdhash.sql</a> - Determine the 10g password hash for username and password. Good for detecting accounts where username = password
 </pre>
-<h3>Unified Auditing</h3>
+<h3>UNIFIED AUDITING:</h3>
 <pre>
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/options.sql'>options.sql</a> - report from v$option - check for 'Unified Auditing'
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ua-actions.sql'>ua-actions.sql</a> - All possible Unified Auditing Actions
@@ -806,6 +808,8 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/metrics-available-awr.sql'>metrics-available-awr.sql</a> - metrics that are recorded in v$sysmtetric_history
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/metrics-available-ash.sql'>metrics-available-ash.sql</a> - metrics that are recorded in dba_hist_sysmetric_history
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/metric-names.sql'>metric-names.sql</a> - detail of metrics reported along with collection intervals
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/my-pga-temp.sql'>my-pga-temp.sql</a> - pga usage for session
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/my-redo.sql'>my-redo.sql</a> - redo usage for session
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/os-load.sql'>os-load.sql</a> - OS Load as reported by oracle for past hour
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-read-write-size.sql'>sql-read-write-size.sql</a> - get the read and write sizes per sql where write size > 0
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-read-write-size-sql.sql'>sql-read-write-size-sql.sql</a> - get the read and write sizes per sql, with sql_text, where write size > 0

@@ -43,6 +43,7 @@ SUPPORTING SCRIPTS:
 @ascii.sql: generate a simple ascii table
 @bad-date.sql:  Oracle believes there is a year zero
 @bitwalk.sql: discover which bits are set in a bitmap column
+@character-sets.sql: show character sets
 @clears.sql: clear sqlplus settings
 @clear_for_spool.sql: set sqlplus for spooling output without headers,etc
 @colors.sql: define values for sqlprompt colors
@@ -630,6 +631,7 @@ INSTANCE and/or DATABASE:
 @showpin.sql: Show objects pinned in the shared pool
 @showpipes.sql: Show database pipes
 @show-pk.sql: Show all primary keys for a user
+@show-pk-with-idx.sql: Show primary keys with indexes
 @showpriv.sql: Show privileges granted to a role or user
 @showprofile.sql: Show resources for a profile from dba_profiles
 @showrbslock.sql: Show RBS locks
@@ -692,7 +694,7 @@ Legacy Auditing
 @privmaps.sql: Show all privileges granted to a user, and whether direct or through a role
 @orapwdhash.sql: Determine the 10g password hash for username and password.  Good for detecting accounts where username = password
 
-Unified Auditing
+UNIFIED AUDITING:
 
 @options.sql: report from v$option - check for 'Unified Auditing'
 @ua-actions.sql: All possible Unified Auditing Actions
@@ -805,6 +807,8 @@ METRICS: Metrics reported by oracle - v$sysmetric, v$sysmetric_history ...
 @metrics-available-awr.sql: metrics that are recorded in v$sysmtetric_history
 @metrics-available-ash.sql: metrics that are recorded in dba_hist_sysmetric_history
 @metric-names.sql: detail of metrics reported along with collection intervals
+@my-pga-temp.sql: pga usage for session
+@my-redo.sql: redo usage for session
 @os-load.sql: OS Load as reported by oracle for past hour
 @sql-read-write-size.sql: get the read and write sizes per sql where write size > 0
 @sql-read-write-size-sql.sql: get the read and write sizes per sql, with sql_text, where write size > 0
