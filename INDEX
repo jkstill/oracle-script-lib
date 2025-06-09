@@ -79,6 +79,7 @@ RDBMS UTILITIES:
 @bootstrap_objects.sql: report objects from sys.bootstrap$ that may not be modified
 @cf-size.sql: show the control file size
 @cluster-factor.sql: get the clustering factor for all indexes on a table
+@code-inventory.sql: report on stored code for all users - types and names only
 @cores.sql: report the number of CPU cores from v$osstat - may be subject to hyperthreading
 @dirs.sql: show database directories
 @dp-filter-types.sql: show the filters available for expdp/impdp

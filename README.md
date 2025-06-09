@@ -83,6 +83,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/bootstrap_objects.sql'>bootstrap_objects.sql</a> - report objects from sys.bootstrap$ that may not be modified
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/cf-size.sql'>cf-size.sql</a> - show the control file size
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/cluster-factor.sql'>cluster-factor.sql</a> - get the clustering factor for all indexes on a table
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/code-inventory.sql'>code-inventory.sql</a> - report on stored code for all users - types and names only
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/cores.sql'>cores.sql</a> - report the number of CPU cores from v$osstat - may be subject to hyperthreading
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dirs.sql'>dirs.sql</a> - show database directories
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dp-filter-types.sql'>dp-filter-types.sql</a> - show the filters available for expdp/impdp
