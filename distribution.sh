@@ -63,6 +63,9 @@ zip $ZIPFILE INDEX* *.sql
 rm -f $TMPDIR/INDEX*
 rm -f $TMPDIR/*.sql
 rm -f $TMPDIR/distribution.sh
+rm -f $TMPDIR/x-dollar/*
+rmdir  $TMPDIR/x-dollar
+rm -f $TMPDIR/*
 cd
 rmdir $TMPDIR
 

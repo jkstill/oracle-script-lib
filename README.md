@@ -48,6 +48,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ascii.sql'>ascii.sql</a> - generate a simple ascii table
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/bad-date.sql'>bad-date.sql</a> - Oracle believes there is a year zero
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/bitwalk.sql'>bitwalk.sql</a> - discover which bits are set in a bitmap column
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/character-sets.sql'>character-sets.sql</a> - show character sets
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/clears.sql'>clears.sql</a> - clear sqlplus settings
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/clear_for_spool.sql'>clear_for_spool.sql</a> - set sqlplus for spooling output without headers,etc
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/colors.sql'>colors.sql</a> - define values for sqlprompt colors
@@ -82,6 +83,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/bootstrap_objects.sql'>bootstrap_objects.sql</a> - report objects from sys.bootstrap$ that may not be modified
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/cf-size.sql'>cf-size.sql</a> - show the control file size
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/cluster-factor.sql'>cluster-factor.sql</a> - get the clustering factor for all indexes on a table
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/code-inventory.sql'>code-inventory.sql</a> - report on stored code for all users - types and names only
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/cores.sql'>cores.sql</a> - report the number of CPU cores from v$osstat - may be subject to hyperthreading
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dirs.sql'>dirs.sql</a> - show database directories
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dp-filter-types.sql'>dp-filter-types.sql</a> - show the filters available for expdp/impdp
@@ -94,6 +96,8 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dumptrace_on.sql'>dumptrace_on.sql</a> - Turn off SQL_trace in a session
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dumptracem_off.sql'>dumptracem_off.sql</a> - Turn on SQL_trace for all sessions for a user
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dumptracem_on.sql'>dumptracem_on.sql</a> - Turn off SQL_trace for all sessions for a user
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/set-tracefile-id-external.sql'>set-tracefile-id-external.sql</a> - script that uses oradebug to set tracefile_identifier for other sessions of a user
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/Dump-Trace-Multi-Session.md'>Dump-Trace-Multi-Session.md</a> - some documentation for dumptracem_[on|off].sql scripts
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dup-user-profile.sql'>dup-user-profile.sql</a> - Duplicate a user profile
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dup_role.sql'>dup_role.sql</a> - Generate SQL script to duplicate a database role
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dup_role_users.sql'>dup_role_users.sql</a> - Generate SQL script to duplicate all users of a role
@@ -414,7 +418,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/bulk-collect-1.sql'>bulk-collect-1.sql</a> - demo of fetch .. bulk collect into
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/dbms_output-abstracted.sql'>dbms_output-abstracted.sql</a> - abstracted procedures and functions for dbms_output
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get_table_lock.sql'>get_table_lock.sql</a> - runs a tight loop trying to acquire lock on table - use on busy systems to get the lock required - DO NOT LEAVE TABLE LOCKED!
-<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/package-error.sql'>package-error.sql</a> - show the source lines for a PL/SQL error
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/plsql-error.sql'>plsql-error.sql</a> - show the source lines for a PL/SQL error
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/plsql-return-bool-from-sql.sql'>plsql-return-bool-from-sql.sql</a> - demo of returning a boolean from a function when based on a numeric value
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/raise_error.sql'>raise_error.sql</a> - raise any error in the database
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sqlplus_return_code.sql'>sqlplus_return_code.sql</a> - examples of exiting SQLPlus with an error code
@@ -629,6 +633,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showpin.sql'>showpin.sql</a> - Show objects pinned in the shared pool
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showpipes.sql'>showpipes.sql</a> - Show database pipes
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show-pk.sql'>show-pk.sql</a> - Show all primary keys for a user
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/show-pk-with-idx.sql'>show-pk-with-idx.sql</a> - Show primary keys with indexes
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showpriv.sql'>showpriv.sql</a> - Show privileges granted to a role or user
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showprofile.sql'>showprofile.sql</a> - Show resources for a profile from dba_profiles
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showrbslock.sql'>showrbslock.sql</a> - Show RBS locks
@@ -692,7 +697,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/privmaps.sql'>privmaps.sql</a> - Show all privileges granted to a user, and whether direct or through a role
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/orapwdhash.sql'>orapwdhash.sql</a> - Determine the 10g password hash for username and password. Good for detecting accounts where username = password
 </pre>
-<h3>Unified Auditing</h3>
+<h3>UNIFIED AUDITING:</h3>
 <pre>
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/options.sql'>options.sql</a> - report from v$option - check for 'Unified Auditing'
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/ua-actions.sql'>ua-actions.sql</a> - All possible Unified Auditing Actions
@@ -750,6 +755,8 @@
 <h3>DATES: Dates and Date Math</h3>
 <pre>
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/between-trunc-demo.sql'>between-trunc-demo.sql</a> - demo of using dates and timestamps with BETWEEN or similar so that indexes can be used
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/datemath-pkg.sql'>datemath-pkg.sql</a> - currently does only conversions of date, timestamp, timestamp with timezeon to and from epoch
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/datemath-test.sql'>datemath-test.sql</a> - tests for datemath package
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/date_math.sql'>date_math.sql</a> - how to get the minutes between to dates of the same day
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/date_math_2.sql'>date_math_2.sql</a> - how to get the minutes between to dates of the same day
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/date_math_3.sql'>date_math_3.sql</a> - cause a job to run at exactly 00
@@ -804,6 +811,8 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/metrics-available-awr.sql'>metrics-available-awr.sql</a> - metrics that are recorded in v$sysmtetric_history
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/metrics-available-ash.sql'>metrics-available-ash.sql</a> - metrics that are recorded in dba_hist_sysmetric_history
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/metric-names.sql'>metric-names.sql</a> - detail of metrics reported along with collection intervals
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/my-pga-temp.sql'>my-pga-temp.sql</a> - pga usage for session
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/my-redo.sql'>my-redo.sql</a> - redo usage for session
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/os-load.sql'>os-load.sql</a> - OS Load as reported by oracle for past hour
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-read-write-size.sql'>sql-read-write-size.sql</a> - get the read and write sizes per sql where write size > 0
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/sql-read-write-size-sql.sql'>sql-read-write-size-sql.sql</a> - get the read and write sizes per sql, with sql_text, where write size > 0
