@@ -43,6 +43,7 @@ SUPPORTING SCRIPTS:
 @ascii.sql: generate a simple ascii table
 @bad-date.sql:  Oracle believes there is a year zero
 @bitwalk.sql: discover which bits are set in a bitmap column
+@character-sets.sql: show character sets
 @clears.sql: clear sqlplus settings
 @clear_for_spool.sql: set sqlplus for spooling output without headers,etc
 @colors.sql: define values for sqlprompt colors
@@ -78,6 +79,7 @@ RDBMS UTILITIES:
 @bootstrap_objects.sql: report objects from sys.bootstrap$ that may not be modified
 @cf-size.sql: show the control file size
 @cluster-factor.sql: get the clustering factor for all indexes on a table
+@code-inventory.sql: report on stored code for all users - types and names only
 @cores.sql: report the number of CPU cores from v$osstat - may be subject to hyperthreading
 @dirs.sql: show database directories
 @dp-filter-types.sql: show the filters available for expdp/impdp
@@ -90,6 +92,8 @@ RDBMS UTILITIES:
 @dumptrace_on.sql: Turn off SQL_trace in a session
 @dumptracem_off.sql: Turn on SQL_trace for all sessions for a user
 @dumptracem_on.sql: Turn off SQL_trace for all sessions for a user
+@set-tracefile-id-external.sql: script that uses oradebug to set tracefile_identifier for other sessions of a user
+@Dump-Trace-Multi-Session.md: some documentation for dumptracem_[on|off].sql scripts
 @dup-user-profile.sql: Duplicate a user profile
 @dup_role.sql: Generate SQL script to duplicate a database role
 @dup_role_users.sql: Generate SQL script to duplicate all users of a role
@@ -413,7 +417,7 @@ PL/SQL:
 @bulk-collect-1.sql: demo of fetch .. bulk collect into
 @dbms_output-abstracted.sql: abstracted procedures and functions for dbms_output
 @get_table_lock.sql:  runs a tight loop trying to acquire lock on table - use on busy systems to get the lock required - DO NOT LEAVE TABLE LOCKED!
-@package-error.sql: show the source lines for a PL/SQL error
+@plsql-error.sql: show the source lines for a PL/SQL error
 @plsql-return-bool-from-sql.sql: demo of returning a boolean from a function when based on a numeric value
 @raise_error.sql: raise any error in the database
 @sqlplus_return_code.sql: examples of exiting SQLPlus with an error code
@@ -628,6 +632,7 @@ INSTANCE and/or DATABASE:
 @showpin.sql: Show objects pinned in the shared pool
 @showpipes.sql: Show database pipes
 @show-pk.sql: Show all primary keys for a user
+@show-pk-with-idx.sql: Show primary keys with indexes
 @showpriv.sql: Show privileges granted to a role or user
 @showprofile.sql: Show resources for a profile from dba_profiles
 @showrbslock.sql: Show RBS locks
@@ -690,7 +695,7 @@ Legacy Auditing
 @privmaps.sql: Show all privileges granted to a user, and whether direct or through a role
 @orapwdhash.sql: Determine the 10g password hash for username and password.  Good for detecting accounts where username = password
 
-Unified Auditing
+UNIFIED AUDITING:
 
 @options.sql: report from v$option - check for 'Unified Auditing'
 @ua-actions.sql: All possible Unified Auditing Actions
@@ -749,6 +754,8 @@ DRCP: Database Resident Connection Pooling
 DATES: Dates and Date Math
 
 @between-trunc-demo.sql: demo of using dates and timestamps with BETWEEN or similar so that indexes can be used
+@datemath-pkg.sql: currently does only conversions of date, timestamp, timestamp with timezeon to and from epoch
+@datemath-test.sql: tests for datemath package
 @date_math.sql: how to get the minutes between to dates of the same day
 @date_math_2.sql: how to get the minutes between to dates of the same day
 @date_math_3.sql: cause a job to run at exactly 00:30 or 12:30, regardless of the last time it started
@@ -803,6 +810,8 @@ METRICS: Metrics reported by oracle - v$sysmetric, v$sysmetric_history ...
 @metrics-available-awr.sql: metrics that are recorded in v$sysmtetric_history
 @metrics-available-ash.sql: metrics that are recorded in dba_hist_sysmetric_history
 @metric-names.sql: detail of metrics reported along with collection intervals
+@my-pga-temp.sql: pga usage for session
+@my-redo.sql: redo usage for session
 @os-load.sql: OS Load as reported by oracle for past hour
 @sql-read-write-size.sql: get the read and write sizes per sql where write size > 0
 @sql-read-write-size-sql.sql: get the read and write sizes per sql, with sql_text, where write size > 0
