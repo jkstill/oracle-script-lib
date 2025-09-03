@@ -3,7 +3,7 @@
 -- get top 5 events per AWR snapshot, per instance
 -- Jared Still  jkstill@gmail.com
 
--- requires https://github.com/jkstill/oracle-script-lib/blob/master/get_date_range.sql
+-- requires https://github.com/jkstill/oracle-script-lib/blob/master/sql/get_date_range.sql
 
 -- prompt for date range
 @get_date_range 
@@ -31,7 +31,7 @@ data as (
 			else h.event
 		end event
 	from dba_hist_active_sess_history h
-		and h.event != 'ges generic event' -- see MOS 2638401.1
+	where h.event != 'ges generic event' -- see MOS 2638401.1
 ),
 agg_data as (
 select  distinct

@@ -7,7 +7,7 @@
 
 col metric_unit format a30
 col metric_name format a30
-
+col value format 999,999,999,999 
 set linesize 200 trimspool on
 set pagesize 100
      

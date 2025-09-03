@@ -1,5 +1,5 @@
 
---liveplan.sql
+--liveplan-9i.sql
 -- this is for 9i and earlier
 -- see liveplan_10g.sql
 

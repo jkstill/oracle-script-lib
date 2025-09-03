@@ -91,7 +91,8 @@ with dep_recurse (
 	, referenced_type
 	, referenced_link_name
 	, dependency_type
-	, lvl 
+	, status
+	, lvl
 	, idx
 ) as (
 	select
@@ -103,12 +104,16 @@ with dep_recurse (
 		, d.referenced_type
 		, d.referenced_link_name
 		, d.dependency_type
+		, o.status
 		, 1 as lvl
 		, rownum - 1 as idx
-	FROM dba_dependencies d
+	FROM dba_dependencies d, dba_objects o
 	WHERE d.owner = '&u_owner'
 		and d.name = '&u_object'
 		and d.type = '&u_type'
+		and o.owner = d.owner
+		and o.object_name = d.name
+		and o.object_type = d.type
 	-- anchor member
 	union all
 	-- recursive member
@@ -121,6 +126,7 @@ with dep_recurse (
 		, d.referenced_type
 		, d.referenced_link_name
 		, d.dependency_type
+		, o.status
 		, dr.lvl +1 as lvl
 		, dr.idx +1 as idx
 	FROM dba_dependencies d
@@ -128,6 +134,10 @@ with dep_recurse (
 		on d.owner = dr.referenced_owner
 		and d.name = dr.referenced_name
 		and d.type = dr.referenced_type
+	JOIN dba_objects o
+		on o.owner = d.owner
+		and o.object_name = d.name
+		and o.object_type = d.type	
 )
 search depth first by owner set order1 -- display in std heirarchical order
 --search breadth first by owner set order1 -- display in order of levels
@@ -137,12 +147,14 @@ search depth first by owner set order1 -- display in std heirarchical order
 	 &u_hier_view lpad(' ', lvl*2-1,' ') || referenced_owner ||'.'|| referenced_name object
 	&u_hier_view , idx
 	&u_hier_view , referenced_type
+	&u_hier_view , status
 &u_hier_view from dep_recurse dr
 --&u_hier_view order by idx
 --
 &u_list_view SELECT  distinct
 	 &u_list_view  referenced_owner ||'.'|| referenced_name object
 	&u_list_view , referenced_type
+	&u_list_view , status
 &u_list_view from dep_recurse dr
 &u_list_view order by 1
 /

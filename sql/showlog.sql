@@ -1,6 +1,6 @@
 
 @clears
-set line 140
+set line 240 trimspool on
 set pagesize 60
 
 col member format a50 head 'MEMBER'
@@ -32,7 +32,7 @@ select
 from v$log l, v$logfile f
 where l.group# = f.group#
 --and l.inst_id = f.inst_id
-order by thread#,group#
+order by thread#,sequence#
 /
 
 

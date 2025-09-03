@@ -22,7 +22,7 @@ union all
 SELECT 'TABLE' obj_type, named, object_path, comments
   FROM table_export_objects
  WHERE object_path NOT LIKE '%/%'
-order by obj_type, named, object_path
+order by obj_type, object_path
 /
 
 

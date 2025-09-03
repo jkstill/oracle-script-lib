@@ -22,16 +22,20 @@ from dba_views
 where view_name like upper('%&&uview%')
 /
 
-select view_name, view_definition
-from v$fixed_view_definition
-where view_name like upper('%&&uview%')
-/
+--select view_name, view_definition
+--from v$fixed_view_definition
+--where view_name like upper('%&&uview%')
+--/
 
 spool off
 set term on
 
 undef 1
-@clears
+--@clears
+
+set pagesize 100
+set linesize 200 trimspool on
+
 
 ed view.txt
 

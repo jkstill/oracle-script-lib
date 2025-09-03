@@ -1,6 +1,8 @@
 
 -- table_ddl.sql
 
+-- see Object types for DBMS_METADATA (Doc ID 207859.1)
+
 @clears
 
 col v_owner new_value v_owner noprint
@@ -132,7 +134,7 @@ undef 1 2
 
 prompt
 prompt ===========================================================================
-prompt == &&sqlfile..sql contains DDL for tables
+prompt == &&sqlfile..sql contains DDL for table &v_owner..&v_table_name
 prompt ===========================================================================
 prompt
 

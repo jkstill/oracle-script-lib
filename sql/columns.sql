@@ -1,4 +1,9 @@
 
+
+col description format a40
+
+
+col type format a15
 col sid format 9999
 col directory_path format a60
 col blocks format 99,999,999 head 'BLOCKS'

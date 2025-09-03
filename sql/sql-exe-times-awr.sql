@@ -72,6 +72,7 @@ with sql_data as (
 	join dba_hist_snapshot s on s.snap_id = h.snap_id
 		and s.dbid = h.dbid
 		and s.instance_number = h.instance_number
+		and h.sql_exec_id is not null
 	where s.begin_interval_time >= systimestamp - interval '&u_days_back' day
 	--where s.snap_id between 130328 and 130329
 		and h.sql_id = :v_sql_id

@@ -8,6 +8,14 @@
 spool oradebug_docs.txt
 
 prompt #############################
+prompt ## oradebug help
+prompt #############################
+
+oradebug help
+
+prompt
+
+prompt #############################
 prompt ## oradebug doc event 
 prompt #############################
 prompt   ########################
