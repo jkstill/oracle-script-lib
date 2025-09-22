@@ -1,59 +1,22 @@
--- asm_files_path.sql
--- from Oracle Note 470211.1
+-- asm_files.sql
+-- logon to ASM with sqlplus
+-- currently shows DATAFILES only
+-- does not show aliases for filenames
+-- if system_created = 'N' then it is not a datafile
+-- not using GV view as datafiles are the same between instances
 
---spool asm<#>_full_path_alias_directory.html
--- ASM Versions 10.1, 10.2, 11.1  & 11.2
+col bytes format 99,999,999,999,999
+col type format a15
+col name format a60
+set line 200 pagesize 60
 
---SET MARKUP HTML ON
---set echo on
-
-set pagesize 200 linesize 200
-alter session set nls_date_format='YYYY-MM-DD HH24:MI:SS';
-
-col full_path format a80
-col db format a15
-
---select 'THIS ASM REPORT WAS GENERATED AT: ==)> ' , sysdate " "	from dual;
-
---select 'HOSTNAME ASSOCIATED WITH THIS ASM INSTANCE: ==)> ' , MACHINE " " from v$session where program like '%SMON%';
-
-select
-	substr(full_path,instr(full_path,'/')+1,instr(full_path,'/',1,2) - instr(full_path,'/',1,1) -1) db
-	, full_path
-	, system_created
-	, alias_directory
-	--, file_type
-	, modification_date
-from (
-select
-	concat('+'||gname, sys_connect_by_path(aname, '/')) full_path
-	, system_created
-	, alias_directory
-	, file_type
-	, modification_date
-from
-(
-	select
-		b.name gname
-		, a.parent_index pindex
-		, a.name aname
-		, a.reference_index rindex
-		, a.system_created, a.alias_directory
-		, c.type file_type
-		, c.modification_date
-	from v$asm_alias a, v$asm_diskgroup b, v$asm_file c
-	where a.group_number = b.group_number
-	and a.group_number = c.group_number(+)
-	and a.file_number = c.file_number(+)
-	and a.file_incarnation = c.incarnation(+)
-)
-start with (mod(pindex, power(2, 24))) = 0
-connect by prior rindex = pindex
-)
-where file_type = 'DATAFILE'
-order by modification_date
+select f.file_number, f.type, f.bytes, f.modification_date, fn.name
+from v$asm_file f
+join v$asm_alias fn on fn.file_number = f.file_number
+	and fn.group_number = f.group_number
+	and f.type in( 'DATAFILE','ARCHIVELOG')
+	and fn.system_created = 'Y' -- discriminate datafile from alias
+join v$asm_diskgroup dg on f.group_number = dg.group_number
+order by type,file_number
 /
-
-
---spool off
 
