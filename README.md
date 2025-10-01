@@ -732,6 +732,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/asm_disk_stats.sql'>asm_disk_stats.sql</a> - show ASM disk statistics
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/asm_diskgroups.sql'>asm_diskgroups.sql</a> - show diskgroups
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/asm_diskgroup_attributes.sql'>asm_diskgroup_attributes.sql</a> - show diskgroup attributes
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/asm-diskgroup-stat.sql'>asm-diskgroup-stat.sql</a> - Show output similar to asmcmd lsdg
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/asm_diskgroup_templates.sql'>asm_diskgroup_templates.sql</a> - show diskgroup template values
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/asm_failgroup_members.sql'>asm_failgroup_members.sql</a> - show diskgroups by failgroup and members
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/asm_extent_distribution.sql'>asm_extent_distribution.sql</a> - show extent distribution across disks

@@ -731,6 +731,7 @@ ASM:
 @asm_disk_stats.sql: show ASM disk statistics
 @asm_diskgroups.sql: show diskgroups
 @asm_diskgroup_attributes.sql: show diskgroup attributes
+@asm-diskgroup-stat.sql: Show output similar to asmcmd lsdg
 @asm_diskgroup_templates.sql: show diskgroup template values
 @asm_failgroup_members.sql: show diskgroups by failgroup and members
 @asm_extent_distribution.sql: show extent distribution across disks
