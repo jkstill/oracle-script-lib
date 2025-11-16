@@ -410,6 +410,8 @@ EXECUTION_PLAN:
 @gen_bind_vars_awr-loop.sql: new version of gen_bind_vars_awr.sql - does not use utl_file
 @get_bind_values.sql:  get the bind values for a sql_id
 @get_awr_bind_values.sql:  get the bind values for a sql_id from AWR
+@xb.sql: Tanel Poder script for execution plan of most recent sql executed in session
+@xbi.sql: Tanel Poder script for execution plan by SQL_ID
 
 PL/SQL:
 

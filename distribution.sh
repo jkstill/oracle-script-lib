@@ -35,8 +35,13 @@ rm -f ashtop.sql.[1-9] ashtop.sql
 wget https://raw.githubusercontent.com/tanelpoder/tpt-oracle/master/ash/ashtop.sql
 # remove old backup copies of snapper that were created by wget - keep one available
 
-# h dereferences symbolic links and gets the file instead of the link
+# get current version of xb[i].sql from Tanel Poder
+rm -f xb.sql.[1-9] xb.sql
+rm -f xbi.sql.[1-9] xbi.sql
+wget https://raw.githubusercontent.com/tanelpoder/tpt-oracle/refs/heads/master/xb.sql
+wget https://raw.githubusercontent.com/tanelpoder/tpt-oracle/refs/heads/master/xbi.sql
 
+# h dereferences symbolic links and gets the file instead of the link
 CMD="tar chvf $TARFILE ../INDEX* $FILES"
 #echo CMD:$CMD
 $CMD

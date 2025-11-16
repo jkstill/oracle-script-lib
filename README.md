@@ -411,6 +411,8 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/gen_bind_vars_awr-loop.sql'>gen_bind_vars_awr-loop.sql</a> - new version of gen_bind_vars_awr.sql - does not use utl_file
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get_bind_values.sql'>get_bind_values.sql</a> - get the bind values for a sql_id
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get_awr_bind_values.sql'>get_awr_bind_values.sql</a> - get the bind values for a sql_id from AWR
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/xb.sql'>xb.sql</a> - Tanel Poder script for execution plan of most recent sql executed in session
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/xbi.sql'>xbi.sql</a> - Tanel Poder script for execution plan by SQL_ID
 </pre>
 <h3>PL/SQL:</h3>
 <pre>
