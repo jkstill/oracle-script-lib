@@ -166,6 +166,7 @@ IO:
 @ioweight.sql: Show IO per tablespace order by weight
 @redo-per-second.sql: show min/max redo per second
 @redo-rate.sql: show real time redo rates at the db level
+@redo-sysmetric.sql: show redo rates per second by all and transaction
 @showtrans.sql: Show current transactions with IO
 @trans_per_hour.sql: Transactions per hour with statistics per xaction
 
