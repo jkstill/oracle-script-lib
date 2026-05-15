@@ -286,6 +286,7 @@ AWR/ASH:
 @flash-hist-stats.sql: retrieve recent flash cache stats from AWR
 @get-binds.sql: get bind values from dba_hist_sqlbind
 @getsql-awr.sql: call with sql_id to get SQL text from AWR
+@metrics-not-saved-in-awr.sql:  show metrics that appear in gv$sysmetric_history, but have not been recorded in dba_hist_sysmetric_history
 @osstat-cpu.sql: dump OS CPU metrics to CSV file
 @osstat-cpu-10g.sql: dump OS CPU metrics to CSV file for 10g
 @osstat-cpu-rpt.sql: report of OS CPU metrics

@@ -288,6 +288,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/flash-hist-stats.sql'>flash-hist-stats.sql</a> - retrieve recent flash cache stats from AWR
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/get-binds.sql'>get-binds.sql</a> - get bind values from dba_hist_sqlbind
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/getsql-awr.sql'>getsql-awr.sql</a> - call with sql_id to get SQL text from AWR
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/metrics-not-saved-in-awr.sql'>metrics-not-saved-in-awr.sql</a> - show metrics that appear in gv$sysmetric_history, but have not been recorded in dba_hist_sysmetric_history
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/osstat-cpu.sql'>osstat-cpu.sql</a> - dump OS CPU metrics to CSV file
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/osstat-cpu-10g.sql'>osstat-cpu-10g.sql</a> - dump OS CPU metrics to CSV file for 10g
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/osstat-cpu-rpt.sql'>osstat-cpu-rpt.sql</a> - report of OS CPU metrics

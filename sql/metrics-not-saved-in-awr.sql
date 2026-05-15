@@ -7,7 +7,7 @@
 set pagesize 100
 set linesize 200 trimspool on
 col metric_name format a60
-col source_id format 999999 head 'ASH ID'
+col source_id format 999999 head 'SOURCE|ID'
 col hist_id format a7 head 'AWR|HIST ID'
 
 with sm as (
@@ -29,5 +29,6 @@ from sm
 left outer join h
 	on h.metric_id = sm.metric_id
 join n on n.metric_id = sm.metric_id
+where h.metric_id is null
 order by 1
 /
