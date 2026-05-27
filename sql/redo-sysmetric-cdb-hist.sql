@@ -1,7 +1,9 @@
 
--- redo-sysmetric.sql
--- Description: This script retrieves redo generation metrics from the gv$sysmetric_history view, specifically focusing on "Redo Generated Per Sec" and "Redo Generated Per Txn". 
+-- redo-sysmetric-cdb-hist.sql
+-- Description: This script retrieves redo generation metrics from the cdb_hist_sysmetric_history, specifically focusing on "Redo Generated Per Sec" and "Redo Generated Per Txn". 
 -- It pivots the data to display these metrics side by side for easier analysis. The script also calculates an estimated transaction count based on the redo generation rates.
+-- Note: This script is designed for Oracle Database 12.2 and later versions that support the cdb_hist_sysmetric_history view.
+--       The script will work in both CDB and non-CDB environments, but the con_id column will be relevant only in CDB environments.
 -- Jared Still 2026-05-15
 
 
@@ -9,7 +11,6 @@ set linesize 250 trimspool on
 set pagesize 1000
 col inst_id format 999
 col begin_time format a20
-col interval_duration format a15
 col metric_name format a30
 col metric_value format 999999.99
 col metric_unit format a30
@@ -25,9 +26,8 @@ col estimated_txn format 99999999 head 'Estimated|Txn Count'
 with data as (
 select
 	h.con_id,
-	h.inst_id,
+	h.instance_number inst_id,
 	to_char(h.begin_time, 'YYYY-MM-DD HH24:MI:SS') as begin_time,
-	max(h.intsize_csec/100)                        as interval_sec,
 	group_id,
 	max(case when h.metric_name = 'Redo Generated Per Sec' then h.metric_id end) as metric_id_redo_bytes_per_sec,
 	max(case when h.metric_name = 'Redo Generated Per Txn' then h.metric_id end) as metric_id_redo_bytes_per_txn,
@@ -36,24 +36,25 @@ select
 	--
 	max(case when h.metric_name = 'Redo Generated Per Txn' then h.value end) as redo_bytes_per_txn
 from
-	gv$sysmetric_history h
+	cdb_hist_sysmetric_history h
+	join v$database d 
+		on d.dbid = h.dbid
 where
-    h.group_id = 2
-    AND h.metric_name IN (
+    h.group_id = 2 -- long duration metrics
+    AND metric_name IN (
 		'Redo Generated Per Sec',
 		'Redo Generated Per Txn'
     )
 GROUP BY
-	 con_id,
-    inst_id,
-    begin_time,
-    group_id
+	 h.con_id,
+    h.instance_number,
+    h.begin_time,
+    h.group_id
 )
 select
 	con_id,
 	 inst_id,
 	 begin_time,
-	 interval_sec,
 	 group_id,
 	 metric_id_redo_bytes_per_sec,
 	 metric_id_redo_bytes_per_txn,

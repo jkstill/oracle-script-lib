@@ -170,6 +170,8 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/redo-per-second.sql'>redo-per-second.sql</a> - show min/max redo per second
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/redo-rate.sql'>redo-rate.sql</a> - show real time redo rates at the db level
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/redo-sysmetric.sql'>redo-sysmetric.sql</a> - show redo rates per second by all and transaction
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/redo-sysmetric-cdb-hist.sql'>redo-sysmetric-cdb-hist.sql</a> - show historical redo rates per second
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/redo-sysmetric-cdb-hist-csv.sql'>redo-sysmetric-cdb-hist-csv.sql</a> - show historical redo rates per second - spools to csv
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/showtrans.sql'>showtrans.sql</a> - Show current transactions with IO
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/trans_per_hour.sql'>trans_per_hour.sql</a> - Transactions per hour with statistics per xaction
 </pre>

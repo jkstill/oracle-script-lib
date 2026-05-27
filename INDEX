@@ -167,6 +167,8 @@ IO:
 @redo-per-second.sql: show min/max redo per second
 @redo-rate.sql: show real time redo rates at the db level
 @redo-sysmetric.sql: show redo rates per second by all and transaction
+@redo-sysmetric-cdb-hist.sql: show historical redo rates per second 
+@redo-sysmetric-cdb-hist-csv.sql: show historical redo rates per second - spools to csv
 @showtrans.sql: Show current transactions with IO
 @trans_per_hour.sql: Transactions per hour with statistics per xaction
 
