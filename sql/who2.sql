@@ -38,9 +38,9 @@ col client_program format a20 head 'CLIENT PROGRAM'
 col server_program format a20 head 'SERVER PROGRAM'
 col spid format a7 head 'SRVR|PID'
 col serial# format 99999 head 'SERIAL#'
-col client_process format a13 head 'CLIENT|PID'
+col client_process format a16 head 'CLIENT|PID'
 col osuser format a10
-col logon_time format a17 head 'LOGON TIME'
+col logon_time format a19 head 'LOGON TIME'
 col idle_time format a11 head 'IDLE TIME'
 col ppid format 99999 head 'PID'
 col sql_id format a13 head 'SQL ID'
@@ -71,7 +71,7 @@ select
 	substr(s.program,1,20) client_program,
 	s.process client_process,
 	--substr(p.program,1,20) server_program,
-	to_char(logon_time, 'mm/dd/yy hh24:mi:ss') logon_time,
+	to_char(logon_time, 'yyyy-mm-dd hh24:mi:ss') logon_time,
 	-- idle time
 	-- days added to hours
 	--( trunc(LAST_CALL_ET/86400) * 24 ) || ':'  ||
