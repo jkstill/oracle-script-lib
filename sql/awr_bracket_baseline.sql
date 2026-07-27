@@ -4,13 +4,16 @@
 -- at the same time create a script to generate AWR reports
 -- for RAC this will be a report for that instance only
 --
--- awr_bracket_baseline.sql <timestamp> <bracket_hours> <retention_days>
+-- awr_bracket_baseline.sql <timestamp> <bracket_minutes> <retention_days>
 -- timestamp is yyyy-mm-dd hh24:mi:ss 
 -- awr_bracket_baseline '2018-02-27 14:15:00' 2 30
 --
 -- the AWR reports are based on script awr_defined.sql
 -- to report clusterwide, see awr_RAC_defined.sql
-
+--
+-- Jared Still 2026-07-27
+--   updated to use interval minutes rather than hours
+--   used dbms_workload_repository.local_awr_dbid to get the dbid as the database may be a PDB and the dbid in dba_hist_snapshot is the CDB dbid
 
 set serveroutput on size unlimited
 
@@ -18,7 +21,7 @@ set serveroutput on size unlimited
 
 col u_expire_days new_value u_expire_days
 col u_timestamp new_value u_timestamp
-col u_bracket_hours new_value u_bracket_hours
+col u_bracket_minutes new_value u_bracket_minutes
 
 prompt Timestamp (YYYY-MM-DD HH24:MI:SS) : 
 prompt
@@ -28,9 +31,9 @@ select '&1' u_timestamp from dual;
 set term on feed on
 
 
-prompt Bracket Hours: 
+prompt Bracket Minutes: 
 set term off feed off
-select '&2' u_bracket_hours from dual;
+select '&2' u_bracket_minutes from dual;
 set term on feed on
 
 prompt Days until Expiration:  
@@ -39,9 +42,9 @@ select '&3' u_expire_days from dual;
 set term on feed on
 
 var n_expire_days number
-var n_bracket_hours number
+var n_bracket_minutes number
 exec :n_expire_days := &u_expire_days
-exec :n_bracket_hours := &u_bracket_hours
+exec :n_bracket_minutes := &u_bracket_minutes
 
 set pause off echo off term on pagesize 0 linesize 200 trimspool on 
 set feed off timing off
@@ -80,14 +83,16 @@ for aasrec in (
    with snaps as (
       select distinct
          h.instance_number
-         , h.dbid
+         --, h.dbid
+			, ( select dbms_workload_repository.local_awr_dbid as dbid from dual ) dbid
          , min(h.begin_interval_time) over (partition by h.instance_number) begin_time
          , max(h.end_interval_time) over(partition by h.instance_number)  end_time
          , min(h.snap_id) over(partition by h.instance_number) begin_snap_id
          , max(h.snap_id) over(partition by h.instance_number) end_snap_id
       from dba_hist_snapshot h
-      where h.end_interval_time between to_timestamp('&&u_timestamp','YYYY-MM-DD HH24:MI:SS') - interval '&&u_bracket_hours' hour
-         and to_timestamp('&u_timestamp','YYYY-MM-DD HH24:MI:SS') + interval '&u_bracket_hours' hour
+      where h.end_interval_time between to_timestamp('&&u_timestamp','YYYY-MM-DD HH24:MI:SS') - interval '&&u_bracket_minutes' minute
+         and to_timestamp('&u_timestamp','YYYY-MM-DD HH24:MI:SS') + interval '&u_bracket_minutes' minute
+			and h.dbid = ( select dbms_workload_repository.local_awr_dbid as dbid from dual)
    ),
    -- get absolute min/max snap id
    -- only necessary if RAC as the snap times may differ between instances
