@@ -147,6 +147,7 @@
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/table_ddl.sql'>table_ddl.sql</a> - generate DDL for owner.table, with indexes, constraints, etc
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/user_ddl.sql'>user_ddl.sql</a> - Generate SQL script to duplicate a database user using DBMS_METADATA
 <a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/utl_file-test.sql'>utl_file-test.sql</a> - Test the use of a database directory and file.
+<a href='https://github.com/jkstill/oracle-script-lib/blob/master/sql/v-view-role.sql'>v-view-role.sql</a> - Create the role V_VIEW_ROLE and grant SELECT on all v$ views to the role
 </pre>
 <h3>TEMPORARY SEGMENTS/SORTS:</h3>
 <pre>

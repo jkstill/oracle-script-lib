@@ -143,6 +143,7 @@ RDBMS UTILITIES:
 @table_ddl.sql: generate DDL for owner.table, with indexes, constraints, etc
 @user_ddl.sql: Generate SQL script to duplicate a database user using DBMS_METADATA
 @utl_file-test.sql: Test the use of a database directory and file.
+@v-view-role.sql: Create the role V_VIEW_ROLE and grant SELECT on all v$ views to the role
 
 
 TEMPORARY SEGMENTS/SORTS:
